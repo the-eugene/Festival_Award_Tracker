@@ -1,0 +1,18 @@
+Index: app/src/main/java/com/example/festivalawardtracker/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.festivalawardtracker;\n\nimport androidx.appcompat.app.AppCompatActivity;\n\nimport android.os.Bundle;\n\npublic class MainActivity extends AppCompatActivity {\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        //This is from Jimmy\n        //This is my comment\n        // Carlos\n        \n        setContentView(R.layout.activity_main);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/festivalawardtracker/MainActivity.java	(revision e9d46a91926de6f5cc0f0173f93b44c400f50b8f)
++++ app/src/main/java/com/example/festivalawardtracker/MainActivity.java	(date 1603843784000)
+@@ -9,7 +9,7 @@
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+-        //This is from Jimmy
++        //This is from cayla
+         //This is my comment
+         // Carlos
+         
