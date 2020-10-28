@@ -10,7 +10,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //This is from James
-        //This is from cayla T
+        //This is from cayla
         //Eugene
         //This is my comment
         // Carlos
