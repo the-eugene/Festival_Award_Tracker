@@ -11,6 +11,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //This is from Jimmy ONE-CAT
         //This is from cayla
+        //This is from James
+        //This is from cayla T
         //Eugene
         //This is my comment
         // Carlos
