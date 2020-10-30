@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "965698590839",
+    "firebase_url": "https://festival-award-tracker.firebaseio.com",
+    "project_id": "festival-award-tracker",
+    "storage_bucket": "festival-award-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:965698590839:android:7e5f26469b89dc0fa48e72",
+        "android_client_info": {
+          "package_name": "com.example.festivalawardtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "965698590839-lgs8dkdpgafhe1i87c18vhii7g7767hm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDItb_FKfYcs3DYUV-ZXZxYl26iyKaL-_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "965698590839-lgs8dkdpgafhe1i87c18vhii7g7767hm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
