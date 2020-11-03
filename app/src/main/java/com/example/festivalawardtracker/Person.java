@@ -2,9 +2,8 @@ package com.example.festivalawardtracker;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Date;
 
-public class Person {
+public class Person implements DatabaseAware{
     String firstName;
     String middleName;
     String lastName;
@@ -15,5 +14,15 @@ public class Person {
     public int getAge(){return getAge(LocalDate.now());}
     public int getAge(LocalDate onDate){
         return Period.between(birthday,onDate).getYears();
+    }
+
+    @Override
+    public boolean Save() {
+        return false;
+    }
+
+    @Override
+    public boolean Load() {
+        return false;
     }
 }
