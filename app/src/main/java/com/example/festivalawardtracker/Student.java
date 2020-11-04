@@ -7,4 +7,7 @@ public class Student extends Person {
     List<Instrument> instruments;
     List<Award> awards;
     int[] performanceIDList;
+
+    public void addInstrument(Instrument piano) {
+    }
 }

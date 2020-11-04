@@ -25,4 +25,7 @@ public class Person implements DatabaseAware{
     public boolean Load() {
         return false;
     }
+
+    public void setName(String first, String middle, String last) {
+    }
 }
