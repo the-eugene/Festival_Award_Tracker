@@ -3,10 +3,11 @@ package com.example.festivalawardtracker;
 import java.util.List;
 
 public class Student extends Person {
-    int[] parents;
+    int[] teacherIDs;
+    int[] parentIDs;
     List<Instrument> instruments;
     List<Award> awards;
-    int[] performanceIDList;
+    int[] performanceIDs;
 
     public void addInstrument(Instrument piano) {
     }

@@ -1,12 +1,7 @@
 package com.example.festivalawardtracker;
 
-import java.time.LocalDate;
-
-public class Event implements DatabaseAware{
-int schoolYearID;
-LocalDate start;
-LocalDate end;
-Contact location;
+public class Teacher implements DatabaseAware {
+    int[] studentIDs;
 
     @Override
     public boolean Save() {

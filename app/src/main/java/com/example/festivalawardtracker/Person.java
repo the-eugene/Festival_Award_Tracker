@@ -10,11 +10,18 @@ public class Person{
     Gender gender;
     LocalDate birthday;
     Contact contact;
+    enum Gender {
+        MALE,
+        FEMALE
+    }
 
     public int getAge(){return getAge(LocalDate.now());}
     public int getAge(LocalDate onDate){
         return Period.between(birthday,onDate).getYears();
     }
     public void setName(String first, String middle, String last) {
+        firstName=first;
+        middleName=middle;
+        lastName=last;
     }
 }
