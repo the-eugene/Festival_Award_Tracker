@@ -1,0 +1,124 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20,_8_09_PM_[Default_Changelist]/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20,_8_09_PM_[Default_Changelist]/shelved.patch	(revision 560d532bf8f99a9696e8048a13070beec523835f)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20,_8_09_PM_[Default_Changelist]/shelved.patch	(revision 560d532bf8f99a9696e8048a13070beec523835f)
+@@ -1,18 +0,0 @@
+-Index: app/src/main/java/com/example/festivalawardtracker/MainActivity.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example.festivalawardtracker;\n\nimport androidx.appcompat.app.AppCompatActivity;\n\nimport android.os.Bundle;\n\npublic class MainActivity extends AppCompatActivity {\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        //This is from Jimmy\n        //This is my comment\n        // Carlos\n        \n        setContentView(R.layout.activity_main);\n    }\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/com/example/festivalawardtracker/MainActivity.java	(revision e9d46a91926de6f5cc0f0173f93b44c400f50b8f)
+-+++ app/src/main/java/com/example/festivalawardtracker/MainActivity.java	(date 1603843784000)
+-@@ -9,7 +9,7 @@
+-     @Override
+-     protected void onCreate(Bundle savedInstanceState) {
+-         super.onCreate(savedInstanceState);
+--        //This is from Jimmy
+-+        //This is from cayla
+-         //This is my comment
+-         // Carlos
+-         
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20__8_09_PM__Default_Changelist_.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20__8_09_PM__Default_Changelist_.xml	(revision 560d532bf8f99a9696e8048a13070beec523835f)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20__8_09_PM__Default_Changelist_.xml	(revision 560d532bf8f99a9696e8048a13070beec523835f)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_10_27_20,_8_09_PM_[Default_Changelist]" date="1603843786344" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_27_20,_8_09_PM_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 10/27/20, 8:09 PM [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20,_7_44_PM_[Default_Changelist]/shelved.patch
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20,_7_44_PM_[Default_Changelist]/shelved.patch	(revision 560d532bf8f99a9696e8048a13070beec523835f)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20,_7_44_PM_[Default_Changelist]/shelved.patch	(revision 560d532bf8f99a9696e8048a13070beec523835f)
+@@ -1,73 +0,0 @@
+-Index: .idea/jarRepositories.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/jarRepositories.xml	(date 1603841780000)
+-+++ .idea/jarRepositories.xml	(date 1603841780000)
+-@@ -0,0 +1,25 @@
+-+<?xml version="1.0" encoding="UTF-8"?>
+-+<project version="4">
+-+  <component name="RemoteRepositoriesConfiguration">
+-+    <remote-repository>
+-+      <option name="id" value="central" />
+-+      <option name="name" value="Maven Central repository" />
+-+      <option name="url" value="https://repo1.maven.org/maven2" />
+-+    </remote-repository>
+-+    <remote-repository>
+-+      <option name="id" value="jboss.community" />
+-+      <option name="name" value="JBoss Community repository" />
+-+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+-+    </remote-repository>
+-+    <remote-repository>
+-+      <option name="id" value="BintrayJCenter" />
+-+      <option name="name" value="BintrayJCenter" />
+-+      <option name="url" value="https://jcenter.bintray.com/" />
+-+    </remote-repository>
+-+    <remote-repository>
+-+      <option name="id" value="Google" />
+-+      <option name="name" value="Google" />
+-+      <option name="url" value="https://dl.google.com/dl/android/maven2/" />
+-+    </remote-repository>
+-+  </component>
+-+</project>
+-\ No newline at end of file
+-Index: .idea/vcs.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/vcs.xml	(date 1603842172000)
+-+++ .idea/vcs.xml	(date 1603842172000)
+-@@ -0,0 +1,6 @@
+-+<?xml version="1.0" encoding="UTF-8"?>
+-+<project version="4">
+-+  <component name="VcsDirectoryMappings">
+-+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+-+  </component>
+-+</project>
+-\ No newline at end of file
+-Index: .idea/gradle.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"GradleSettings\">\n    <option name=\"linkedExternalProjectsSettings\">\n      <GradleProjectSettings>\n        <option name=\"testRunner\" value=\"PLATFORM\" />\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"gradleJvm\" value=\"1.8\" />\n        <option name=\"modules\">\n          <set>\n            <option value=\"$PROJECT_DIR$\" />\n            <option value=\"$PROJECT_DIR$/app\" />\n          </set>\n        </option>\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\n      </GradleProjectSettings>\n    </option>\n  </component>\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/gradle.xml	(revision 952f1ba6548fc6aab86986ab3e180f7ffdffec78)
+-+++ .idea/gradle.xml	(date 1603842172000)
+-@@ -1,5 +1,6 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+-+  <component name="GradleMigrationSettings" migrationVersion="1" />
+-   <component name="GradleSettings">
+-     <option name="linkedExternalProjectsSettings">
+-       <GradleProjectSettings>
+-@@ -14,6 +15,7 @@
+-           </set>
+-         </option>
+-         <option name="resolveModulePerSourceSet" value="false" />
+-+        <option name="useQualifiedModuleNames" value="true" />
+-       </GradleProjectSettings>
+-     </option>
+-   </component>
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20__7_44_PM__Default_Changelist_.xml
+===================================================================
+--- .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20__7_44_PM__Default_Changelist_.xml	(revision 560d532bf8f99a9696e8048a13070beec523835f)
++++ .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20__7_44_PM__Default_Changelist_.xml	(revision 560d532bf8f99a9696e8048a13070beec523835f)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_10_27_20,_7_44_PM_[Default_Changelist]" date="1603842275556" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_27_20,_7_44_PM_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 10/27/20, 7:44 PM [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+diff --git .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20__7_39_PM__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20__7_39_PM__Default_Changelist_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20__7_38_PM__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20__7_38_PM__Default_Changelist_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20__7_39_PM__Default_Changelist_1.xml .idea/shelf/Uncommitted_changes_before_Update_at_10_27_20__7_39_PM__Default_Changelist_1.xml
