@@ -23,6 +23,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+Reimport androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private static final int RC_SIGN_IN = 123;
+
+    // FRAGMENT HOME RECYCLERVIEW variables
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +65,21 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        // FRAGMENT HOME RECYCLERVIEW
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView_home);
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+//        recyclerView.setHasFixedSize(true);
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(this);
+//        recyclerView.setLayoutManager(layoutManager);
+        // TODO: specify an adapter (see also next example) using information from the links
+//        mAdapter = new MyAdapter(myDataset);
+        /* https://medium.com/@relferreira/goodbye-listview-recyclerview-f83dc1133850
+        * https://developer.android.com/guide/topics/ui/layout/recyclerview?authuser=1 */
+//        recyclerView.setAdapter(mAdapter);
+
     }
 
     @Override

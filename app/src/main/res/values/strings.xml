@@ -11,4 +11,10 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="element_text">Element</string>
+    <string name="birthday">Birthday</string>
+    <string name="age">Age</string>
+    <string name="gender">Gender</string>
+    <string name="awards">Awards</string>
+    <string name="student_full_name">Student Full Name</string>
 </resources>
