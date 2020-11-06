@@ -17,4 +17,5 @@
     <string name="gender">Gender</string>
     <string name="awards">Awards</string>
     <string name="student_full_name">Student Full Name</string>
+    <string name="search_student">Search student</string>
 </resources>
