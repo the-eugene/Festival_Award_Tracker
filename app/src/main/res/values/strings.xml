@@ -24,10 +24,19 @@
     <string name="todo">TODO</string>
     <string name="person">Person</string>
     <string name="menu_new_student">New Student</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="teacher_name">Teacher\' Name</string>
 
     <string-array name="gender_array">
+        <item>Select Gender</item>
         <item>Male</item>
         <item>Female</item>
         <item>Unspecified</item>
+    </string-array>
+
+    <string-array name="instruments_array">
+        <item>Select Instrument</item>
+        <item>Piano</item>
+        <item>Voice</item>
     </string-array>
 </resources>

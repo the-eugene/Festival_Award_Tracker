@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
@@ -152,5 +153,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         // [END auth_fui_signout]
+    }
+
+    public void questionIsItClickable(View view) {
+        Toast.makeText(this, "It is toasting, yeah.", Toast.LENGTH_SHORT).show();
     }
 }

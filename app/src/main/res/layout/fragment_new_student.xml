@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:fillViewport="true">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".ui.newstudent.NewStudentFragment">
 
-    <ImageView
-        android:id="@+id/imageViewStudent"
-        android:layout_width="10dp"
-        android:layout_height="120dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="260dp"
-        android:background="#8BC34A"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:onClick="questionIsItClickable"
+        android:src="@drawable/ic_baseline_add_a_photo_48"
+        app:maxImageSize="30dp"
         android:contentDescription="@string/todo" />
 
     <EditText
         android:id="@+id/editTextStudentName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="170dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/floatingActionButton"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginTop="35dp"
         android:ems="10"
         android:hint="@string/name"
         android:importantForAutofill="no"
@@ -36,32 +37,116 @@
     <EditText
         android:id="@+id/editTextStudentLastName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@+id/editTextStudentName"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="170dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="@string/last_name"
         android:importantForAutofill="no"
         android:inputType="textPersonName" />
 
+    <EditText
+        android:id="@+id/editTextBirthDate"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/editTextStudentLastName"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/birthdate"
+        android:importantForAutofill="no"
+        android:inputType="date" />
+
     <Spinner
         android:id="@+id/spinnerGender"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextStudentLastName"
-        android:layout_marginTop="23dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="170dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/editTextBirthDate"
         android:layout_alignParentStart="false"
         android:layout_alignParentBottom="false"
-
-        android:layout_marginBottom="313dp"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginTop="30dp"
         android:dropDownWidth="match_parent"
         android:entries="@array/gender_array"
         android:visibility="visible"
         tools:spinnerMode="dropdown" />
+
+    <EditText
+        android:id="@+id/editTextPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/spinnerGender"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/fui_phone_hint"
+        android:importantForAutofill="no"
+        android:inputType="phone" />
+
+    <TextView
+        android:id="@+id/textViewAddAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextPhoneNumber"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:onClick="questionIsItClickable"
+        android:text="Add address"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16dp" />
+
+    <Spinner
+        android:id="@+id/spinnerInstruments"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/editTextPhoneNumber"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentBottom="false"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginTop="50dp"
+        android:dropDownWidth="match_parent"
+        android:entries="@array/instruments_array"
+        android:visibility="visible"
+        tools:spinnerMode="dropdown" />
+
+    <EditText
+        android:id="@+id/editTextTeachersName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/spinnerInstruments"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/teacher_name"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="@dimen/fui_auth_method_button_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextTeachersName"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/common_google_signin_btn_text_dark"
+        android:layout_centerHorizontal="true"
+        android:text="Save" />
+
+
+
 </RelativeLayout>
+</ScrollView>
