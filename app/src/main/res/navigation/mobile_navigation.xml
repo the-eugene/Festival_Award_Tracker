@@ -22,4 +22,9 @@
         android:name="com.example.festivalawardtracker.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_new_student"
+        android:name="com.example.festivalawardtracker.ui.newstudent.NewStudentFragment"
+        android:label="@string/menu_new_student"
+        tools:layout="@layout/fragment_new_student" />
 </navigation>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.newstudent.NewStudentFragment">
+
+    <ImageView
+        android:id="@+id/imageViewStudent"
+        android:layout_width="10dp"
+        android:layout_height="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="260dp"
+        android:background="#8BC34A"
+        android:contentDescription="@string/todo" />
+
+    <EditText
+        android:id="@+id/editTextStudentName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:hint="@string/name"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextStudentLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextStudentName"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:ems="10"
+        android:hint="@string/last_name"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName" />
+
+    <Spinner
+        android:id="@+id/spinnerGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextStudentLastName"
+        android:layout_marginTop="23dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="170dp"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentBottom="false"
+
+        android:layout_marginBottom="313dp"
+        android:dropDownWidth="match_parent"
+        android:entries="@array/gender_array"
+        android:visibility="visible"
+        tools:spinnerMode="dropdown" />
+</RelativeLayout>

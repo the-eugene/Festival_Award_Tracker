@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
@@ -44,8 +46,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,19 +58,21 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_new_student)
                 .setDrawerLayout(drawer)
                 .build();
+        // https://developer.android.com/guide/navigation/navigation-navigate?authuser=1
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        // FRAGMENT HOME RECYCLERVIEW
+        // TODO: FRAGMENT HOME RECYCLERVIEW
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView_home);
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -76,10 +82,11 @@ public class MainActivity extends AppCompatActivity {
 //        recyclerView.setLayoutManager(layoutManager);
         // TODO: specify an adapter (see also next example) using information from the links
 //        mAdapter = new MyAdapter(myDataset);
-        /* https://medium.com/@relferreira/goodbye-listview-recyclerview-f83dc1133850
-        * https://developer.android.com/guide/topics/ui/layout/recyclerview?authuser=1 */
+        /*
+          https://medium.com/@relferreira/goodbye-listview-recyclerview-f83dc1133850
+          https://developer.android.com/guide/topics/ui/layout/recyclerview?authuser=1
+          */
 //        recyclerView.setAdapter(mAdapter);
-
     }
 
     @Override

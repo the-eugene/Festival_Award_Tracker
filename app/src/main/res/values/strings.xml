@@ -7,7 +7,6 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
@@ -18,4 +17,17 @@
     <string name="awards">Awards</string>
     <string name="student_full_name">Student Full Name</string>
     <string name="search_student">Search student</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="this_is_new_student_fragment">This is new student fragment</string>
+    <string name="last_name">Last Name</string>
+    <string name="name">Name</string>
+    <string name="todo">TODO</string>
+    <string name="person">Person</string>
+    <string name="menu_new_student">New Student</string>
+
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Unspecified</item>
+    </string-array>
 </resources>
