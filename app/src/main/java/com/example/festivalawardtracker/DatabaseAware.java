@@ -1,7 +1,9 @@
 package com.example.festivalawardtracker;
 
-public interface DatabaseAware {
-    int ID = 0;
-    boolean Save();
-    boolean Load();
+public class DatabaseAware {
+    String ID;
+
+    public boolean save(){
+        return DBManager.saveData(this);
+    }
 }

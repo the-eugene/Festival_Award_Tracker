@@ -1,15 +1,7 @@
 package com.example.festivalawardtracker;
 
-public class Teacher implements DatabaseAware {
-    int[] studentIDs;
+import java.util.ArrayList;
 
-    @Override
-    public boolean Save() {
-        return false;
-    }
-
-    @Override
-    public boolean Load() {
-        return false;
-    }
+public class Teacher extends Person {
+    ArrayList<String> studentIDs;
 }

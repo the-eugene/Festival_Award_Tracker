@@ -25,12 +25,10 @@ public class ExampleUnitTest {
         assertEquals(P.getAge(LocalDate.of(2020,11,4)),10);
     }
     @Test
-    public void person_set_name(){
+    public void person_get_fullname(){
         Person p = new Person();
-        p.setName("Timmy","E","hello");
-        assertEquals("Timmy", p.firstName);
-        assertEquals("E",p.middleName);
-        assertEquals( "hello",p.lastName);
+        p.setName("Timmy","Earl","Smith");
+        assertEquals("Timmy E. Smith", p.getFullName());
     }
     @Test
     public void student_add_instrument(){

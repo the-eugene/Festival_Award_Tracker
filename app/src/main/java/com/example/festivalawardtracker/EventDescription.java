@@ -4,5 +4,5 @@ public class EventDescription {
     String name;
     String description;
     Instrument instrument;
-    int festivalID;
+    String festivalID;
 }
