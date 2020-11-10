@@ -3,6 +3,7 @@ package com.example.festivalawardtracker;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.core.Tag;
 
 public class SignUp extends AppCompatActivity {
@@ -22,6 +25,7 @@ public class SignUp extends AppCompatActivity {
     EditText emailId, password;
     Button btnSignUp;
     FirebaseAuth mAuth;
+    DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,17 @@ public class SignUp extends AppCompatActivity {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d("SignUp", "createUserWithEmail:success");
                                         //FirebaseUser user = mAuth.getCurrentUser();
+                                        // Get a reference to the database service
+                                        database = FirebaseDatabase.getInstance().getReference("user");
+                                        EditText userName = (EditText) findViewById(R.id.SignUpEmailAddress);
+                                        String uName = userName.getText().toString().trim();
+                                        UserDatabase User = new UserDatabase(uName);
+                                        String id = database.push().getKey();
+                                        database.child(id).setValue(User);
+                                        Intent activityIntent = new Intent(SignUp.this, MainActivity.class);
+                                        startActivity(activityIntent);
+                                        finish();
+
                                     }
                                     else {
                                         // If sign in fails, display a message to the user.
