@@ -31,22 +31,26 @@ public class SignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        email = sharedPref.getString("email", "");
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        email = sharedPref.getString("Email","default");
         Log.d("email is ", email);
 
         mAuth = FirebaseAuth.getInstance();
         emailId = findViewById(R.id.SignInEmailAddress);
         password = findViewById(R.id.SignInPassword);
         btnSignIn = findViewById(R.id.SignIn2);
+
+        emailId.setText(email);
+
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                email = emailId.getText().toString();
-                SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(v);
+                SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("Email", email);
-                editor.apply();
+                editor.commit();
+
+                email = emailId.getText().toString();
                 String passwd = password.getText().toString();
                 if(email.isEmpty()){
                     emailId.setError("Please Enter your Email");
@@ -85,11 +89,5 @@ public class SignIn extends AppCompatActivity {
             }
         });
     }
-    @Override
-    public void onPause() {
 
-
-
-        super.onPause();
-    }
 }
