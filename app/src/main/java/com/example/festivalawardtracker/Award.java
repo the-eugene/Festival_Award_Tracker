@@ -21,9 +21,8 @@ public class Award {
         return DBManager.Students.get(studentID).performances.get(performanceID);
     }
 
-    public boolean isInYear(SchoolYear lastYear) {
-        return true;
-        //TODO: FINISH isInYear
+    public boolean isInYear(SchoolYear year) {
+        return getPerformance().isInYear(year);
     }
 
     enum AwardType{

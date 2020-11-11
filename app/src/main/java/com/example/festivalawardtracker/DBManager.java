@@ -1,9 +1,16 @@
 package com.example.festivalawardtracker;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class DBManager {
+    static FirebaseDatabase DB;
+    static{
+        DB=FirebaseDatabase.getInstance();
+    }
+
 //    static Map<Class<?>,Object> cache=new HashMap<>();
 //    static Map<String,Class<?>> mapping=new HashMap<>();
 //    static{
@@ -22,17 +29,14 @@ public class DBManager {
 //        }
 //    }
 
-    static Map<String, Teacher> Teachers=new DatabaseHashMap<>();
-    static Map<String, Student> Students=new DatabaseHashMap<>();
-    static Map<String, Person> Parents=new DatabaseHashMap<>();
-    static Map<String, Event> Events=new DatabaseHashMap<>();
-    static Map<String, EventDescription> EventDescriptions=new DatabaseHashMap<>();
-    static Map<String, Festival> Festivals=new DatabaseHashMap<>();
-    static Map<String, SchoolYear> SchoolYears=new DatabaseHashMap<>();
+    static Map<String, Teacher> Teachers=new DatabaseHashMap<>("Teachers");
+    static Map<String, Student> Students=new DatabaseHashMap<>("Students");
+    static Map<String, Person> Parents=new DatabaseHashMap<>("Parents");
+    static Map<String, Event> Events=new DatabaseHashMap<>("Events");
+    static Map<String, EventDescription> EventDescriptions=new DatabaseHashMap<>("EventDescriptions");
+    static Map<String, Festival> Festivals=new DatabaseHashMap<>("Festivals");
+    static Map<String, SchoolYear> SchoolYears=new DatabaseHashMap<>("SchoolYears");
 
-    public static <T> T getData(String key){
-        return null; //TODO: implement getting single item by key
-    }
     public static <T extends DatabaseAware> boolean saveData(T obj){
         String key=obj.ID;
         //TODO: implement saving single item by key
@@ -40,11 +44,18 @@ public class DBManager {
     }
 
     public static SchoolYear getPreviousSchoolYear(SchoolYear year) {
-//        for(Map.Entry<String, SchoolYear> y:SchoolYears.entrySet()){
-//            y.getValue().
-//        }
-// TODO: Finish prev SchoolYear
+        if (year.sequence>0)
+            return DBManager.getYearBySequence(year.sequence-1);
         return null;
+    }
+
+    private static SchoolYear getYearBySequence(int seq) {
+        for (Map.Entry<String,SchoolYear> line:SchoolYears.entrySet()) {
+            if (line.getValue().sequence==seq)
+                return line.getValue();
+        }
+        //not in cache
+        return null; //TODO: Search DB by sequence
     }
 }
 

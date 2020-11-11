@@ -12,6 +12,25 @@ public class Contact {
     String state;
     String zip;
 
+    Contact(String business, String phone, String email, String street, String city, String state, String zip){
+        this.business=business;
+        this.phone=phone;
+        this.email=email;
+        this.street=street;
+        this.city=city;
+        this.zip=zip;
+        if (state.length()==2) {
+            this.state = state;
+        } else if (STATE_MAP.containsValue(state)){
+            for (Map.Entry<String,String> line:STATE_MAP.entrySet()) {
+                if (line.getValue().equals(state)){
+                    this.state=line.getKey();
+                    break;
+                }
+            }
+        }
+    }
+
     public String getStateCode() {return state;}
     public String getStateName() {return STATE_MAP.get(state);}
     public String getAddress(){
