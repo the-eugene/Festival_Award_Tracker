@@ -22,6 +22,8 @@ public class NewStudentFragment extends Fragment {
         //Required empty public constructor
     }
 
+    // TODO: Does anyone know what is this class doing? Carlos.
+
 //    @Override
 //    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //        final View view = inflater.inflate(R.layout.fragment_new_student,
