@@ -3,8 +3,11 @@ package com.example.festivalawardtracker;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,11 +25,15 @@ public class SignIn extends AppCompatActivity {
     EditText emailId, password;
     Button btnSignIn;
     FirebaseAuth mAuth;
+    String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        email = sharedPref.getString("email", "");
+        Log.d("email is ", email);
 
         mAuth = FirebaseAuth.getInstance();
         emailId = findViewById(R.id.SignInEmailAddress);
@@ -35,7 +42,11 @@ public class SignIn extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = emailId.getText().toString();
+                email = emailId.getText().toString();
+                SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(v);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("Email", email);
+                editor.apply();
                 String passwd = password.getText().toString();
                 if(email.isEmpty()){
                     emailId.setError("Please Enter your Email");
@@ -73,5 +84,12 @@ public class SignIn extends AppCompatActivity {
                 }
             }
         });
+    }
+    @Override
+    public void onPause() {
+
+
+
+        super.onPause();
     }
 }

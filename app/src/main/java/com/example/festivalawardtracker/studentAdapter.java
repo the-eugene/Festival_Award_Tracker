@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ public class studentAdapter extends FirebaseRecyclerAdapter<studentDatabase, Dat
     @Override
     public void onBindViewHolder(@NonNull DatabaseViewHolder holder, int position, @NonNull studentDatabase model) {
         holder.setName(model.getFname() + model.getLname());
+        Log.d("setName", model.getFname());
         holder.setGender(model.getGender());
         holder.setBirthday(model.getBdate());
     }
