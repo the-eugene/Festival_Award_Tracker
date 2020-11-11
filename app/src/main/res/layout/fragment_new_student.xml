@@ -139,13 +139,13 @@
         android:layout_width="@dimen/fui_auth_method_button_width"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextTeachersName"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:background="@color/colorPrimary"
-        android:textColor="@color/common_google_signin_btn_text_dark"
-        android:layout_centerHorizontal="true"
-        android:onClick="questionIsItClickable"
-        android:text="Save" />
+        android:onClick="saveStudent"
+        android:text="Save"
+        android:textColor="@color/common_google_signin_btn_text_dark" />
 
 
 </RelativeLayout>
