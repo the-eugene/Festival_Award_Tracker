@@ -36,12 +36,13 @@ public class Student extends Person {
     }
 
     public void addAward(@NotNull Performance performance) {
-        Event event=DBManager.Events.get(performance.eventID);
-        SchoolYear year=DBManager.SchoolYears.get(event.schoolYearID);
-        EventDescription description=DBManager.EventDescriptions.get(event.EventDescriptionID);
-        Festival festival=DBManager.Festivals.get(description.festivalID);
+        Event event=performance.getEvent();
+        SchoolYear year=event.getYear();
+        EventDescription description=event.getDescription();
+        Festival festival=description.getFestival();
         if (festival.isNFMC){
-                //TODO NFMC Award Logic
+            int totalPoints=getAccumulatedPoints(event);
+            Award lastYearsAward=getLastYearsAward(event);
         } else {
             awards.add(
                     new Award(Award.AwardType.OTHER_PARTICIPATION,
@@ -52,5 +53,25 @@ public class Student extends Person {
                 )
             );
         }
+    }
+
+    private Award getLastYearsAward(Event event) {
+        SchoolYear lastYear=DBManager.getPreviousSchoolYear(event.getYear());
+        for (Award award:awards){
+            if (award.isInYear(lastYear)){
+                return award;
+            }
+        }
+        return null;
+    }
+
+    private int getAccumulatedPoints(Event event) {
+        int points=0;
+        for (Performance p: performances) {
+            if (p.getEvent().ID.equals(event.ID)){
+                points+=p.rating;
+            }
+        }
+        return points;
     }
 }

@@ -16,4 +16,8 @@ public class Performance {
         this.level=level;
         this.rating=rating;
     }
+
+    public Event getEvent() {
+        return DBManager.Events.get(eventID);
+    }
 }

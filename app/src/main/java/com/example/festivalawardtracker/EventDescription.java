@@ -5,4 +5,8 @@ public class EventDescription {
     String description;
     Instrument instrument;
     String festivalID;
+
+    public Festival getFestival() {
+        return DBManager.Festivals.get(festivalID);
+    }
 }

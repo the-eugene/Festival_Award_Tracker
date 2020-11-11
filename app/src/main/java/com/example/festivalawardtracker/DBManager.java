@@ -38,5 +38,13 @@ public class DBManager {
         //TODO: implement saving single item by key
         return false;
     }
+
+    public static SchoolYear getPreviousSchoolYear(SchoolYear year) {
+//        for(Map.Entry<String, SchoolYear> y:SchoolYears.entrySet()){
+//            y.getValue().
+//        }
+// TODO: Finish prev SchoolYear
+        return null;
+    }
 }
 

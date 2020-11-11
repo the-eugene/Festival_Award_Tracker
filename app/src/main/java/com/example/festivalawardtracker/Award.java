@@ -21,6 +21,11 @@ public class Award {
         return DBManager.Students.get(studentID).performances.get(performanceID);
     }
 
+    public boolean isInYear(SchoolYear lastYear) {
+        return true;
+        //TODO: FINISH isInYear
+    }
+
     enum AwardType{
         NFMC_CERT,
         SUPERIOR_CERT,

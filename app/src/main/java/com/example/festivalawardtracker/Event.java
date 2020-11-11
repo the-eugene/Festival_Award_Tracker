@@ -8,4 +8,12 @@ LocalDate start;
 LocalDate end;
 Contact location;
 String EventDescriptionID;
+
+    public SchoolYear getYear() {
+        return DBManager.SchoolYears.get(schoolYearID);
+    }
+
+    public EventDescription getDescription() {
+        return DBManager.EventDescriptions.get(EventDescriptionID);
+    }
 }
