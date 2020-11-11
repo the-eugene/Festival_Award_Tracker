@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -23,6 +25,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -63,24 +66,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
-        //TODO: Floating action bar to new_student_fragment
-//        FloatingActionButton fab_new = findViewById(R.id.fab_newStudent);
-//        fab_new.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // ViewPager viewPager = (ViewPager) findViewById(R.id.nav_new_student);
-//                // startActivity(new Intent(MainActivity.this, DatabaseTest.class));
-//                NewStudentFragment student_new = new NewStudentFragment();
-//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.nav_host_fragment, student_new);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
-//            }
-//        });
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -125,6 +110,21 @@ public class MainActivity extends AppCompatActivity {
           https://developer.android.com/guide/topics/ui/layout/recyclerview?authuser=1
           */
 //        recyclerView.setAdapter(mAdapter);
+
+        //TODO: Floating action bar to new_student_fragment
+//        FloatingActionButton fab_new = findViewById(R.id.fab_newStudent);
+//        fab_new.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // ViewPager viewPager = (ViewPager) findViewById(R.id.nav_new_student);
+//                // startActivity(new Intent(MainActivity.this, DatabaseTest.class));
+//                NewStudentFragment student_new = new NewStudentFragment();
+//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.nav_host_fragment, student_new);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+//            }
+//        });
     }
 
 

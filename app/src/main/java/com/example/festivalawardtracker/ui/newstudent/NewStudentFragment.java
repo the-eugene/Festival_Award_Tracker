@@ -8,18 +8,57 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import com.example.festivalawardtracker.R;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class NewStudentFragment extends Fragment {
 
-    private NewStudentViewModel mViewModel;
+    NewStudentViewModel mViewModel;
+    TextInputLayout textInputLayoutGender;
+    AutoCompleteTextView autoCompleteTextViewGender;
+
+
     public static NewStudentFragment newInstance() {
         return new NewStudentFragment();
     }
+
+    @Override
+    public void onCreate (Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        /* TODO: Implement somehow the drowp-down list. CARLOS
+        https://material.io/develop/android/components/menu
+        https://youtu.be/d6lDVQ8aBRc
+        */
+
+//        textInputLayoutGender = getActivity().findViewById(R.id.textInputLayoutStudentGender);
+//        autoCompleteTextViewGender = getActivity().findViewById(R.id.dropdown_gender);
+//
+//        String[] itemsGender = new String[] {
+//                "Male",
+//                "Female",
+//                "Other"
+//        };
+//
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+//                this.getContext(),
+//                R.layout.dropdown_listitem_gender,
+//                itemsGender
+//        );
+//
+//        Log.d("Element CWM:", String.valueOf(textInputLayoutGender));
+//        Log.d("Element CWM:", String.valueOf(autoCompleteTextViewGender));
+//
+//        autoCompleteTextViewGender.setAdapter(adapter);
+    }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
