@@ -20,4 +20,8 @@ public class Performance {
     public Event getEvent() {
         return DBManager.Events.get(eventID);
     }
+
+    public boolean isInYear(SchoolYear year) {
+        return getEvent().isInYear(year);
+    }
 }

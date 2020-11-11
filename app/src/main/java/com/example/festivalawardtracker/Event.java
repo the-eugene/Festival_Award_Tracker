@@ -16,4 +16,8 @@ String EventDescriptionID;
     public EventDescription getDescription() {
         return DBManager.EventDescriptions.get(EventDescriptionID);
     }
+
+    public boolean isInYear(SchoolYear year) {
+        return year.ID.equals(schoolYearID);
+    }
 }

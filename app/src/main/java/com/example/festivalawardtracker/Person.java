@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.List;
 
 public class Person extends DatabaseAware{
     String firstName;
@@ -13,6 +12,12 @@ public class Person extends DatabaseAware{
     Gender gender;
     LocalDate birthday;
     Contact contact;
+
+    public void setContact(String business, String phone, String email, String street, String city, String state, String zip) {
+        contact=new Contact(business, phone, email, street, city, state, zip);
+        //TODO: V2, search db for identical contact (Parents, repeat Event Locations)
+    }
+
     enum Gender {
         MALE,
         FEMALE
@@ -33,7 +38,7 @@ public class Person extends DatabaseAware{
         //TODO save();
     }
     public String getFullName(){
-        return "%s %s. %s".format(firstName,middleName.charAt(0),lastName);
+        return String.format("%s %s. %s",firstName,middleName.charAt(0),lastName);
     }
     public String getGenderString(){return gender.toString();}
     public int getAge(){return getAge(LocalDate.now());}

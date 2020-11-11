@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Student extends Person {
-    ArrayList<String> teacherIDs;
-    ArrayList<String> parentIDs;
-    List<Instrument> instruments;
-    List<Award> awards;
-    List<Performance> performances;
+    List<String> teacherIDs= new ArrayList<>();
+    List<String> parentIDs=new ArrayList<>();
+    List<Instrument> instruments=new ArrayList<>();
+    List<Award> awards=new ArrayList<>();
+    List<Performance> performances=new ArrayList<>();
 
     public void addParent(@NotNull Person p){
         parentIDs.add(p.ID);
@@ -41,7 +41,7 @@ public class Student extends Person {
         EventDescription description=event.getDescription();
         Festival festival=description.getFestival();
         if (festival.isNFMC){
-            int totalPoints=getAccumulatedPoints(event);
+            int totalPoints= getTotalAccumulatedPoints(event);
             Award lastYearsAward=getLastYearsAward(event);
         } else {
             awards.add(
@@ -65,7 +65,7 @@ public class Student extends Person {
         return null;
     }
 
-    private int getAccumulatedPoints(Event event) {
+    private int getTotalAccumulatedPoints(Event event) {
         int points=0;
         for (Performance p: performances) {
             if (p.getEvent().ID.equals(event.ID)){
