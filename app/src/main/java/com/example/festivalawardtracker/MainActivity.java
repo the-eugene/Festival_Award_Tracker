@@ -1,7 +1,6 @@
 package com.example.festivalawardtracker;
 
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,6 +21,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -38,6 +39,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import java.util.Arrays;
 import java.util.List;
@@ -54,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
 //    private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,16 +63,21 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Button save = (Button) findViewById(R.id.button2);
+
 
 
         //TODO: Floating action bar to new_student_fragment
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
+//        FloatingActionButton fab_new = findViewById(R.id.fab_newStudent);
+//        fab_new.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                ViewPager viewPager = (ViewPager) findViewById(R.id.nav_new_student);
-//                startActivity(new Intent(MainActivity.this, DatabaseTest.class));
+//                // ViewPager viewPager = (ViewPager) findViewById(R.id.nav_new_student);
+//                // startActivity(new Intent(MainActivity.this, DatabaseTest.class));
+//                NewStudentFragment student_new = new NewStudentFragment();
+//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.nav_host_fragment, student_new);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
 //            }
 //        });
 
@@ -223,28 +228,27 @@ public class MainActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance().getReference("student");
         EditText editFirstName = (EditText) findViewById(R.id.editTextStudentName);
-        EditText editLastName = (EditText) findViewById(R.id.editTextStudentLastName);
-        EditText editBirthDate = (EditText) findViewById(R.id.editTextBirthDate);
-        Spinner editGender = (Spinner) findViewById(R.id.spinnerGender);
-        EditText editPhoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
-        Spinner editInstruments = (Spinner) findViewById(R.id.spinnerInstruments);
-        EditText editTeacher = (EditText) findViewById(R.id.editTextTeachersName);
+//        EditText editLastName = (EditText) findViewById(R.id.editTextStudentLastName);
+//        EditText editBirthDate = (EditText) findViewById(R.id.editTextBirthDate);
+//        Spinner editGender = (Spinner) findViewById(R.id.spinnerGender);
+//        EditText editPhoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
+//        Spinner editInstruments = (Spinner) findViewById(R.id.spinnerInstruments);
+//        EditText editTeacher = (EditText) findViewById(R.id.editTextTeachersName);
 
         String FirstName = editFirstName.getText().toString().trim();
-        String lastName = editLastName.getText().toString().trim();
-        String birthDate = editBirthDate.getText().toString().trim();
-        String gender = editGender.getSelectedItem().toString();
-        String phoneNumber = editPhoneNumber.getText().toString().trim();
-        String instrument = editInstruments.getSelectedItem().toString();
-        String teacher = editTeacher.getText().toString().trim();
+//        String lastName = editLastName.getText().toString().trim();
+//        String birthDate = editBirthDate.getText().toString().trim();
+//        String gender = editGender.getSelectedItem().toString();
+//        String phoneNumber = editPhoneNumber.getText().toString().trim();
+//        String instrument = editInstruments.getSelectedItem().toString();
+//        String teacher = editTeacher.getText().toString().trim();
 
-        studentDatabase student = new studentDatabase(FirstName, lastName, birthDate, gender, phoneNumber, instrument, teacher);
+//        studentDatabase student = new studentDatabase(FirstName, lastName, birthDate, gender, phoneNumber, instrument, teacher);
+//        studentDatabase student = new studentDatabase(FirstName);
         String id = database.push().getKey();
 
-        database.child(id).setValue(student);
+//        database.child(id).setValue(student);
 
 
     }
-
-
 }

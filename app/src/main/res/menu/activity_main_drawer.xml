@@ -20,5 +20,9 @@
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_baseline_exit_to_app_24"
             android:title="@string/log_out" />
+        <item
+            android:id="@+id/nav_new_student"
+            android:icon="@drawable/ic_baseline_error_outline_24"
+            android:title="Test_NewStudent" />
     </group>
 </menu>

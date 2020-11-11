@@ -22,18 +22,28 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SignIn extends AppCompatActivity {
 
-    EditText emailId, password;
+    EditText emailId;
+    EditText password;
+
+    String email;
+    String passw;
+
     Button btnSignIn;
     FirebaseAuth mAuth;
-    String email;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        email = sharedPref.getString("Email","default");
+
+        // I added default values for a quicker logging just for testing purposes. Add yours. Carlos.
+        email = sharedPref.getString("Email","carloswm.uni@gmail.com");
+        passw = "manzanas";
         Log.d("email is ", email);
+        Log.d("password is ", passw);
 
         mAuth = FirebaseAuth.getInstance();
         emailId = findViewById(R.id.SignInEmailAddress);
@@ -41,6 +51,7 @@ public class SignIn extends AppCompatActivity {
         btnSignIn = findViewById(R.id.SignIn2);
 
         emailId.setText(email);
+        password.setText(passw);
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
