@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class Person extends DatabaseAware{
     String firstName;
@@ -14,8 +16,56 @@ public class Person extends DatabaseAware{
     Contact contact;
 
     public void setContact(String business, String phone, String email, String street, String city, String state, String zip) {
-        contact=new Contact(business, phone, email, street, city, state, zip);
+        setContact(new Contact(business, phone, email, street, city, state, zip));
         //TODO: V2, search db for identical contact (Parents, repeat Event Locations)
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public String getBirthday() {
+        return birthday.toString();
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = LocalDate.parse(birthday);
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     enum Gender {
@@ -32,20 +82,20 @@ public class Person extends DatabaseAware{
     }
 
     public void setName(String first, String middle, String last) {
-        firstName=first;
-        middleName=middle;
-        lastName=last;
+        setFirstName(first);
+        setMiddleName(middle);
+        setLastName(last);
         //TODO save();
     }
     public String getFullName(){
-        return String.format("%s %s. %s",firstName,middleName.charAt(0),lastName);
+        return String.format("%s %s. %s", getFirstName(), getMiddleName().charAt(0), getLastName());
     }
-    public String getGenderString(){return gender.toString();}
+    public String getGenderString(){return getGender().toString();}
     public int getAge(){return getAge(LocalDate.now());}
     public int getAge(LocalDate onDate){
         return Period.between(birthday,onDate).getYears();
     }
     public String getShortLocation() {
-        return String.format("%s, %s", contact.city,contact.getStateCode());
+        return String.format("%s, %s", getContact().city, getContact().getStateCode());
     }
 }

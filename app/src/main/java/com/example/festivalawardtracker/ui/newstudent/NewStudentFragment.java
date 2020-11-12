@@ -38,25 +38,24 @@ public class NewStudentFragment extends Fragment {
         https://youtu.be/d6lDVQ8aBRc
         */
 
-//        textInputLayoutGender = getActivity().findViewById(R.id.textInputLayoutStudentGender);
-//        autoCompleteTextViewGender = getActivity().findViewById(R.id.dropdown_gender);
-//
-//        String[] itemsGender = new String[] {
-//                "Male",
-//                "Female",
-//                "Other"
-//        };
-//
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-//                this.getContext(),
-//                R.layout.dropdown_listitem_gender,
-//                itemsGender
-//        );
-//
-//        Log.d("Element CWM:", String.valueOf(textInputLayoutGender));
-//        Log.d("Element CWM:", String.valueOf(autoCompleteTextViewGender));
-//
-//        autoCompleteTextViewGender.setAdapter(adapter);
+        textInputLayoutGender = getActivity().findViewById(R.id.textInputLayoutStudentGender);
+        autoCompleteTextViewGender = getActivity().findViewById(R.id.dropdown_gender);
+
+        String[] itemsGender = new String[] {
+                "Male",
+                "Female"
+        };
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this.getContext(),
+                R.layout.dropdown_listitem_gender,
+                itemsGender
+        );
+
+        Log.d("Element CWM:", String.valueOf(textInputLayoutGender));
+        Log.d("Element CWM:", String.valueOf(autoCompleteTextViewGender));
+
+        autoCompleteTextViewGender.setAdapter(adapter);
     }
 
 

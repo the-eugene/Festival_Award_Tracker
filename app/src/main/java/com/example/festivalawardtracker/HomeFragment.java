@@ -68,7 +68,7 @@ public class HomeFragment extends Fragment {
 
                         String studentName = snapshot.child("StudentName").getValue().toString();
                         String studentGender = snapshot.child("Gender").getValue().toString();
-                        String studentBirthday = snapshot.child("Bithday").getValue().toString();
+                        String studentBirthday = snapshot.child("Birthday").getValue().toString();
                         String studentAwards = snapshot.child("Awards").getValue().toString();
                         String studentAge = snapshot.child("Age").getValue().toString();
 

@@ -11,7 +11,7 @@ public class PersonUnitTest {
     static Person person=new Person();
     static{
         person.setName("Eugene", "Alexander", "Williams");
-        person.gender= Person.Gender.MALE;
+        person.setGender(Person.Gender.MALE);
         person.birthday=LocalDate.of(1977,9,24);
         person.setContact("Natasha's Cafe",
                 "859-259-2754",
@@ -25,7 +25,7 @@ public class PersonUnitTest {
     @Test
     public void get_age(){
         Person P = new Person();
-        P.birthday = LocalDate.of(2010,11,3);
+        P.birthday=LocalDate.of(2010,11,3);
         assertEquals(P.getAge(),10);
         assertEquals(P.getAge(LocalDate.of(2020,11,2)),9);
         assertEquals(P.getAge(LocalDate.of(2020,11,4)),10);
@@ -34,17 +34,17 @@ public class PersonUnitTest {
     public void name(){
         Person p = new Person();
         p.setName("Timmy","Earl","Smith");
-        assertEquals("Timmy", p.firstName);
-        assertEquals("Earl", p.middleName);
-        assertEquals("Smith", p.lastName);
+        assertEquals("Timmy", p.getFirstName());
+        assertEquals("Earl", p.getMiddleName());
+        assertEquals("Smith", p.getLastName());
         assertEquals("Timmy E. Smith", p.getFullName());
     }
     @Test
     public void gender(){
         Person p = new Person();
-        p.gender= Person.Gender.FEMALE;
+        p.setGender(Person.Gender.FEMALE);
         assertEquals(p.getGenderString(),"Female");
-        p.gender= Person.Gender.MALE;
+        p.setGender(Person.Gender.MALE);
         assertEquals(p.getGenderString(),"Male");
     }
     @Test
@@ -58,7 +58,7 @@ public class PersonUnitTest {
                 "KY",
                 "40508"
         );
-        assertEquals("KY",p.contact.state);
+        assertEquals("KY", p.getContact().state);
 
         p.setContact("Natasha's Cafe",
                 "859-259-2754",
@@ -68,9 +68,9 @@ public class PersonUnitTest {
                 "Kentucky",
                 "40508"
         );
-        assertEquals("KY",p.contact.state);
-        assertEquals("Kentucky",p.contact.getStateName());
-        assertEquals("Natasha's Cafe\n112 Esplanade\nLexington, KY  40508",p.contact.getAddress());
+        assertEquals("KY", p.getContact().state);
+        assertEquals("Kentucky", p.getContact().getStateName());
+        assertEquals("Natasha's Cafe\n112 Esplanade\nLexington, KY  40508", p.getContact().getAddress());
     }
     @Test
     public void save(){
