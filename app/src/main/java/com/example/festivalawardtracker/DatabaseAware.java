@@ -1,5 +1,7 @@
 package com.example.festivalawardtracker;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.Task;
@@ -27,15 +29,17 @@ public class DatabaseAware {
         saveTo.setValue(this);
     }
 
-    public static <T> T load(String key){
-        DatabaseReference loadFrom=DBManager.DB.getReference().child(MethodHandles.lookup().lookupClass().getSimpleName()).child(key);
+    public <T> T load(String key){
+
+        DatabaseReference loadFrom=DBManager.DB.getReference().child(this.getClass().getSimpleName()).child(key);
+        Log.d("Child", MethodHandles.lookup().lookupClass().getSimpleName());
         final TaskCompletionSource<T> task = new TaskCompletionSource<>();
         loadFrom.addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         GenericTypeIndicator<T> v=new GenericTypeIndicator<T>() {};
-                        task.setResult(snapshot.getValue(v));
+                        task.setResult(snapshot.getValue(clazz.getClass()));
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
