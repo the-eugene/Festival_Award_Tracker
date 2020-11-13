@@ -29,5 +29,9 @@ public class PersonInstrumentedTest {
         Person p2=Person.load(person.ID, Person.class);
         assertEquals(person.lastName,p2.lastName);
         assertEquals(person.contact.email,p2.contact.email);
+        person.firstName="The Incomparable Eugene";
+        person.save();
+        p2.lastName="His Royal Williamsness";
+        p2.save();
     }
 }

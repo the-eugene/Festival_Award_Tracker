@@ -18,6 +18,8 @@ import java.util.concurrent.ExecutionException;
 
 public class DatabaseAware {
     String ID=null;
+    public void setID(String ID) {this.ID = ID;}
+
     public void save(){
         DatabaseReference saveTo;
         if (ID==null){
@@ -29,7 +31,7 @@ public class DatabaseAware {
         saveTo.setValue(this);
     }
 
-    public static <T> T load(String key, final Class<T> type){
+    public static <T extends DatabaseAware> T load(String key, final Class<T> type){
         DatabaseReference loadFrom=DBManager.DB.getReference().child(type.getSimpleName()).child(key);
         final TaskCompletionSource<T> task = new TaskCompletionSource<>();
         loadFrom.addListenerForSingleValueEvent(
@@ -52,7 +54,9 @@ public class DatabaseAware {
             return null;
         }
         if(t.isSuccessful()) {
-            return t.getResult();
+            T obj=t.getResult();
+            obj.ID=key;
+            return obj;
         }
         return null;
     }
