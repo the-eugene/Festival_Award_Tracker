@@ -4,7 +4,5 @@
     android:padding="16dp"
     android:text="Sample_Gender"
     android:maxLines="1"
-    android:textAppearance="?attr/textAppearanceSubtitle1"
-
-    >
+    android:textAppearance="?attr/textAppearanceSubtitle1" >
 </TextView>

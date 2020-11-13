@@ -5,13 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.FirebaseUserMetadata;
-import com.google.firebase.auth.GetTokenResult;
 
 public class MainEmptyActivity extends AppCompatActivity {
 
@@ -32,7 +28,7 @@ public class MainEmptyActivity extends AppCompatActivity {
             activityIntent = new Intent(this, MainActivity.class);
 
         } else {
-            activityIntent = new Intent(this, Options.class);
+            activityIntent = new Intent(this, LogInOptions.class);
         }
 
         startActivity(activityIntent);
