@@ -17,12 +17,52 @@ public class Award {
         this.performanceID=performanceID;
     }
 
-    public Performance getPerformance(){
+    public Performance retrievePerformance(){
         return DBManager.Students.get(studentID).performances.get(performanceID);
     }
 
     public boolean isInYear(SchoolYear year) {
-        return getPerformance().isInYear(year);
+        return retrievePerformance().isInYear(year);
+    }
+
+    public String getStudentID() {
+        return studentID;
+    }
+
+    public void setStudentID(String studentID) {
+        this.studentID = studentID;
+    }
+
+    public LocalDate getDateReceived() {
+        return dateReceived;
+    }
+
+    public void setDateReceived(LocalDate dateReceived) {
+        this.dateReceived = dateReceived;
+    }
+
+    public String getEventID() {
+        return eventID;
+    }
+
+    public void setEventID(String eventID) {
+        this.eventID = eventID;
+    }
+
+    public int getPerformanceID() {
+        return performanceID;
+    }
+
+    public void setPerformanceID(int performanceID) {
+        this.performanceID = performanceID;
+    }
+
+    public AwardType getType() {
+        return type;
+    }
+
+    public void setType(AwardType type) {
+        this.type = type;
     }
 
     enum AwardType{

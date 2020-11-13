@@ -55,6 +55,30 @@ public class Person extends DatabaseAware{
         this.contact = contact;
     }
 
+    public void setName(String first, String middle, String last) {
+        setFirstName(first);
+        setMiddleName(middle);
+        setLastName(last);
+    }
+
+    public String getFullName(){
+        return String.format("%s %s. %s", getFirstName(), getMiddleName().charAt(0), getLastName());
+    }
+
+    public String getGenderString(){return getGender().toString();}
+
+    public int getAge(){return getAge(LocalDate.now());}
+
+    public int getAge(LocalDate onDate){
+        return Period.between(birthday,onDate).getYears();
+    }
+
+    public String getShortLocation() {
+        return String.format("%s, %s", getContact().city, getContact().stateCode());
+    }
+
+    public static Class<Person> ofType(){return Person.class;}
+
     enum Gender {
         MALE,
         FEMALE
@@ -66,23 +90,5 @@ public class Person extends DatabaseAware{
             if (this==MALE) {return "Male";}
             else{return "Female";}
         }
-    }
-
-    public void setName(String first, String middle, String last) {
-        setFirstName(first);
-        setMiddleName(middle);
-        setLastName(last);
-        //TODO save();
-    }
-    public String getFullName(){
-        return String.format("%s %s. %s", getFirstName(), getMiddleName().charAt(0), getLastName());
-    }
-    public String getGenderString(){return getGender().toString();}
-    public int getAge(){return getAge(LocalDate.now());}
-    public int getAge(LocalDate onDate){
-        return Period.between(birthday,onDate).getYears();
-    }
-    public String getShortLocation() {
-        return String.format("%s, %s", getContact().city, getContact().stateCode());
     }
 }

@@ -32,7 +32,11 @@ public class DatabaseAware {
     }
 
     public static <T extends DatabaseAware> T load(String key, final Class<T> type){
-        DatabaseReference loadFrom=DBManager.DB.getReference().child(type.getSimpleName()).child(key);
+        return load(key, type.getSimpleName(),type);
+    }
+
+    public static <T extends DatabaseAware> T load(String key, String location, final Class<T> type){
+        DatabaseReference loadFrom=DBManager.DB.getReference(location).child(key);
         final TaskCompletionSource<T> task = new TaskCompletionSource<>();
         loadFrom.addListenerForSingleValueEvent(
                 new ValueEventListener() {

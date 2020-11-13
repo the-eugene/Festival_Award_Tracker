@@ -13,19 +13,18 @@ public class Student extends Person {
     List<Award> awards=new ArrayList<>();
     List<Performance> performances=new ArrayList<>();
 
+    Student(){}
+
     public void addParent(@NotNull Person p){
         parentIDs.add(p.ID);
-        //TODO: save();
     }
     public int countParents(){return parentIDs.size();}
 
     public void addTeacher(String teacherID){
         teacherIDs.add(teacherID);
-        //TODO save();
     }
     public void addInstrument(Instrument i) {
         instruments.add(i);
-        //TODO save();
     }
     //TODO ? getAwardSummary(){}
     public void addPerformance(String eventID, LocalDate date, String level, int rating){
@@ -36,13 +35,13 @@ public class Student extends Person {
     }
 
     public void addAward(@NotNull Performance performance) {
-        Event event=performance.getEvent();
-        SchoolYear year=event.getYear();
+        Event event=performance.retrieveEvent();
+        SchoolYear year=event.retrieveYear();
         EventDescription description=event.getDescription();
-        Festival festival=description.getFestival();
+        Festival festival=description.retrieveFestival();
         if (festival.isNFMC){
-            int totalPoints= getTotalAccumulatedPoints(event);
-            Award lastYearsAward=getLastYearsAward(event);
+            int totalPoints= totalAccumulatedPoints(event);
+            Award lastYearsAward= retrieveLastYearsAward(event);
         } else {
             awards.add(
                     new Award(Award.AwardType.OTHER_PARTICIPATION,
@@ -55,23 +54,63 @@ public class Student extends Person {
         }
     }
 
-    private Award getLastYearsAward(Event event) {
-        SchoolYear lastYear=DBManager.getPreviousSchoolYear(event.getYear());
+    private Award retrieveLastYearsAward(Event event) {
+        SchoolYear lastYear=DBManager.getPreviousSchoolYear(event.retrieveYear());
         for (Award award:awards){
-            if (award.isInYear(lastYear)){
+            if (award.isInYear(lastYear)&&award.getEventID().equals(event.ID)){
                 return award;
             }
         }
         return null;
     }
 
-    private int getTotalAccumulatedPoints(Event event) {
+    private int totalAccumulatedPoints(Event event) {
         int points=0;
         for (Performance p: performances) {
-            if (p.getEvent().ID.equals(event.ID)){
+            if (p.retrieveEvent().ID.equals(event.ID)){
                 points+=p.rating;
             }
         }
         return points;
+    }
+
+    public List<String> getTeacherIDs() {
+        return teacherIDs;
+    }
+
+    public void setTeacherIDs(List<String> teacherIDs) {
+        this.teacherIDs = teacherIDs;
+    }
+
+    public List<String> getParentIDs() {
+        return parentIDs;
+    }
+
+    public void setParentIDs(List<String> parentIDs) {
+        this.parentIDs = parentIDs;
+    }
+
+    public List<Instrument> getInstruments() {
+        return instruments;
+    }
+
+    public void setInstruments(List<Instrument> instruments) {
+        this.instruments = instruments;
+    }
+
+    public List<Award> getAwards() {
+        return awards;
+    }
+
+    public void setAwards(List<Award> awards) {
+        this.awards = awards;
+    }
+
+    public List<Performance> getPerformances() {
+        return performances;
+    }
+
+    public void setPerformances(List<Performance> performances) {
+        this.performances = performances;
     }
 }

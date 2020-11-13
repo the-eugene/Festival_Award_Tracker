@@ -29,13 +29,13 @@ public class DBManager {
 //        }
 //    }
 
-    static Map<String, Teacher> Teachers=new DatabaseHashMap<>("Teachers");
-    static Map<String, Student> Students=new DatabaseHashMap<>("Students");
-    static Map<String, Person> Parents=new DatabaseHashMap<>("Parents");
-    static Map<String, Event> Events=new DatabaseHashMap<>("Events");
-    static Map<String, EventDescription> EventDescriptions=new DatabaseHashMap<>("EventDescriptions");
-    static Map<String, Festival> Festivals=new DatabaseHashMap<>("Festivals");
-    static Map<String, SchoolYear> SchoolYears=new DatabaseHashMap<>("SchoolYears");
+    static Map<String, Teacher> Teachers=new DatabaseHashMap<>(Teacher.class);
+    static Map<String, Student> Students=new DatabaseHashMap<>(Student.class);
+    static Map<String, Person> Parents=new DatabaseHashMap<>("Parents", Person.class);
+    static Map<String, Event> Events=new DatabaseHashMap<>(Event.class);
+    static Map<String, EventDescription> EventDescriptions=new DatabaseHashMap<>(EventDescription.class);
+    static Map<String, Festival> Festivals=new DatabaseHashMap<>(Festival.class);
+    static Map<String, SchoolYear> SchoolYears=new DatabaseHashMap<>(SchoolYear.class);
 
     public static <T extends DatabaseAware> boolean saveData(T obj){
         String key=obj.ID;
