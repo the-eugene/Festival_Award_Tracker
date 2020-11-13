@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.firebase.auth.FirebaseAuth;
-
-public class Options extends AppCompatActivity {
+public class LogInOptions extends AppCompatActivity {
 
     Button btnSignUp;
     Button btnSignIn;
@@ -18,13 +16,13 @@ public class Options extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_options);
+        setContentView(R.layout.activity_login_options);
         btnSignUp = findViewById(R.id.signUp);
         btnSignIn = findViewById(R.id.signIn);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View V){
-               Intent activityIntent = new Intent(Options.this, SignUp.class);
+               Intent activityIntent = new Intent(LogInOptions.this, SignUp.class);
                startActivity(activityIntent);
                finish();
            }
@@ -32,7 +30,7 @@ public class Options extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View V){
-                Intent activityIntent = new Intent(Options.this, SignIn.class);
+                Intent activityIntent = new Intent(LogInOptions.this, SignIn.class);
                 startActivity(activityIntent);
                 finish();
             }

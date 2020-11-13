@@ -39,7 +39,7 @@ public class NewStudentFragment extends Fragment {
         */
 
         textInputLayoutGender = getActivity().findViewById(R.id.textInputLayoutStudentGender);
-        autoCompleteTextViewGender = getActivity().findViewById(R.id.dropdown_gender);
+//        autoCompleteTextViewGender = getActivity().findViewById(R.id.dropdown_gender);
 
         String[] itemsGender = new String[] {
                 "Male",
@@ -48,14 +48,14 @@ public class NewStudentFragment extends Fragment {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this.getContext(),
-                R.layout.dropdown_listitem_gender,
+                R.layout.dropdown_gender,
                 itemsGender
         );
 
         Log.d("Element CWM:", String.valueOf(textInputLayoutGender));
         Log.d("Element CWM:", String.valueOf(autoCompleteTextViewGender));
 
-        autoCompleteTextViewGender.setAdapter(adapter);
+//        autoCompleteTextViewGender.setAdapter(adapter);
     }
 
 
@@ -63,7 +63,7 @@ public class NewStudentFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_new_student, container, false);
+        return inflater.inflate(R.layout.activity_new_student, container, false);
     }
 
     @Override

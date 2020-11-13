@@ -1,56 +1,33 @@
 package com.example.festivalawardtracker;
 
-import android.app.FragmentManager;
-import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
 
 
 import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.auth.IdpResponse;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -96,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                       .signOut(MainActivity.this)
                       .addOnCompleteListener(new OnCompleteListener<Void>() {
                       public void onComplete(@NonNull Task<Void> task) {
-                          Intent activityIntent = new Intent(MainActivity.this, Options.class);
+                          Intent activityIntent = new Intent(MainActivity.this, LogInOptions.class);
                           startActivity(activityIntent);
                           finish();
                       }
@@ -138,20 +115,18 @@ public class MainActivity extends AppCompatActivity {
           */
 //        recyclerView.setAdapter(mAdapter);
 
-        //TODO: Floating action bar to new_student_fragment
-//        FloatingActionButton fab_new = findViewById(R.id.fab_newStudent);
-//        fab_new.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // ViewPager viewPager = (ViewPager) findViewById(R.id.nav_new_student);
-//                // startActivity(new Intent(MainActivity.this, DatabaseTest.class));
-//                NewStudentFragment student_new = new NewStudentFragment();
-//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.nav_host_fragment, student_new);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
-//            }
-//        });
+        /**
+         * @author Carlos W Mercado
+         * @see NewStudentActivity
+         */
+        FloatingActionButton fab_new = findViewById(R.id.fab_newStudent);
+        fab_new.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activityIntent = new Intent(MainActivity.this, NewStudentActivity.class);
+                startActivity(activityIntent);
+            }
+        });
     }
 
 
