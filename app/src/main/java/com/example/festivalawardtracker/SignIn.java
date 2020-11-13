@@ -26,7 +26,7 @@ public class SignIn extends AppCompatActivity {
     EditText password;
 
     String email;
-    String passw;
+    String passwd;
 
     Button btnSignIn;
     FirebaseAuth mAuth;
@@ -39,11 +39,9 @@ public class SignIn extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
 
-        // I added default values for a quicker logging just for testing purposes. Add yours. Carlos.
-        email = sharedPref.getString("Email","carloswm.uni@gmail.com");
-        passw = "manzanas";
-        Log.d("email is ", email);
-        Log.d("password is ", passw);
+        email = sharedPref.getString("Email",null);
+//        Log.d("email is ", email);
+//        Log.d("password is ", passw);
 
         mAuth = FirebaseAuth.getInstance();
         emailId = findViewById(R.id.SignInEmailAddress);
@@ -51,18 +49,18 @@ public class SignIn extends AppCompatActivity {
         btnSignIn = findViewById(R.id.SignIn2);
 
         emailId.setText(email);
-        password.setText(passw);
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                email = emailId.getText().toString();
                 SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("Email", email);
                 editor.commit();
 
-                email = emailId.getText().toString();
-                String passwd = password.getText().toString();
+
+                passwd = password.getText().toString();
                 if(email.isEmpty()){
                     emailId.setError("Please Enter your Email");
                     emailId.requestFocus();
