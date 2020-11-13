@@ -36,7 +36,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutBusiness"
+                android:id="@+id/textInputLayoutContactBusiness"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -51,13 +51,13 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextBusiness"
+                    android:id="@+id/editTextContactBusiness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutPhone"
+                android:id="@+id/textInputLayoutContactPhone"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -68,16 +68,16 @@
                 app:boxBackgroundMode="outline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutBusiness">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContactBusiness">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextPhone"
+                    android:id="@+id/editTextContactPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutEmail"
+                android:id="@+id/textInputLayoutContactEmail"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,16 +88,16 @@
                 app:boxBackgroundMode="outline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPhone">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContactPhone">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextContactPhone"
+                    android:id="@+id/editTextContactEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutStreet"
+                android:id="@+id/textInputLayoutContactStreet"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -108,16 +108,16 @@
                 app:boxBackgroundMode="outline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContactEmail">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextStreet"
+                    android:id="@+id/editTextContactStreet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutCity"
+                android:id="@+id/textInputLayoutContactCity"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -128,16 +128,16 @@
                 app:boxBackgroundMode="outline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutStreet">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContactStreet">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextCity"
+                    android:id="@+id/editTextContactCity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutState"
+                android:id="@+id/textInputLayoutContactState"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -148,16 +148,16 @@
                 app:boxBackgroundMode="outline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCity">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContactCity">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextState"
+                    android:id="@+id/editTextContactState"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutZip"
+                android:id="@+id/textInputLayoutContactZip"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -168,10 +168,10 @@
                 app:boxBackgroundMode="outline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutState">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContactState">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextZip"
+                    android:id="@+id/editTextContactZip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -185,7 +185,7 @@
                 android:text="@string/fui_button_text_save"
                 app:flow_horizontalAlign="start"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutZip"/>
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContactZip"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
