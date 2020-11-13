@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.ZoneId;
-import java.util.Date;
 
 public class Person extends DatabaseAware{
     String firstName;
@@ -96,6 +94,6 @@ public class Person extends DatabaseAware{
         return Period.between(birthday,onDate).getYears();
     }
     public String getShortLocation() {
-        return String.format("%s, %s", getContact().city, getContact().getStateCode());
+        return String.format("%s, %s", getContact().city, getContact().stateCode());
     }
 }

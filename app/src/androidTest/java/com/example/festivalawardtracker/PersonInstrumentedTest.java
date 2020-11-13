@@ -26,7 +26,8 @@ public class PersonInstrumentedTest {
     public void save(){
         person.save();
         assertNotNull(person.ID);
-        Person p2=new Person().load(person.ID);
+        Person p2=Person.load(person.ID, Person.class);
         assertEquals(person.lastName,p2.lastName);
+        assertEquals(person.contact.email,p2.contact.email);
     }
 }

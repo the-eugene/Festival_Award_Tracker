@@ -69,8 +69,8 @@ public class PersonUnitTest {
                 "40508"
         );
         assertEquals("KY", p.getContact().state);
-        assertEquals("Kentucky", p.getContact().getStateName());
-        assertEquals("Natasha's Cafe\n112 Esplanade\nLexington, KY  40508", p.getContact().getAddress());
+        assertEquals("Kentucky", p.getContact().stateName());
+        assertEquals("Natasha's Cafe\n112 Esplanade\nLexington, KY  40508", p.getContact().fullAddress());
     }
     @Test
     public void save(){

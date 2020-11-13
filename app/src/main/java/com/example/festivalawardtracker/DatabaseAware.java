@@ -29,17 +29,14 @@ public class DatabaseAware {
         saveTo.setValue(this);
     }
 
-    public <T> T load(String key){
-
-        DatabaseReference loadFrom=DBManager.DB.getReference().child(this.getClass().getSimpleName()).child(key);
-        Log.d("Child", MethodHandles.lookup().lookupClass().getSimpleName());
+    public static <T> T load(String key, final Class<T> type){
+        DatabaseReference loadFrom=DBManager.DB.getReference().child(type.getSimpleName()).child(key);
         final TaskCompletionSource<T> task = new TaskCompletionSource<>();
         loadFrom.addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        GenericTypeIndicator<T> v=new GenericTypeIndicator<T>() {};
-                        task.setResult(snapshot.getValue(clazz.getClass()));
+                        task.setResult(snapshot.getValue(type));
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {

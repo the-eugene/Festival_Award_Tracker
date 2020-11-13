@@ -12,6 +12,7 @@ public class Contact {
     String state;
     String zip;
 
+    Contact(){}
     Contact(String business, String phone, String email, String street, String city, String state, String zip){
         this.business=business;
         this.phone=phone;
@@ -31,9 +32,9 @@ public class Contact {
         }
     }
 
-    public String getStateCode() {return state;}
-    public String getStateName() {return STATE_MAP.get(state);}
-    public String getAddress(){
+    public String stateCode() {return state;}
+    public String stateName() {return STATE_MAP.get(state);}
+    public String fullAddress(){
         return String.format("%s\n%s\n%s, %s  %s", business, street, city, state, zip);
     }
 
@@ -107,6 +108,62 @@ public class Contact {
         STATE_MAP.put("WI", "Wisconsin");
         STATE_MAP.put("WY", "Wyoming");
         STATE_MAP.put("YT", "Yukon Territory");
+    }
+
+    public String getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(String business) {
+        this.business = business;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 }
 
