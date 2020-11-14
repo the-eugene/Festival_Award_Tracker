@@ -2,7 +2,6 @@ package com.example.festivalawardtracker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -19,7 +18,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.Group;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -97,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         fab_new.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent activityIntent = new Intent(MainActivity.this, NewStudentActivity.class);
+                Intent activityIntent = new Intent(MainActivity.this, StudentActivity.class);
                 startActivity(activityIntent);
             }
         });
