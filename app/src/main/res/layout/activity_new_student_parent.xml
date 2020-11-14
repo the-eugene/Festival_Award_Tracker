@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" >
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarNewStudentContact"
+            android:id="@+id/toolbarNewStudentParent"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_baseline_close_24"/>
@@ -36,14 +36,14 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutContactBusiness"
+                android:id="@+id/textInputLayoutParentFirstName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="80dp"
                 android:layout_marginEnd="32dp"
-                android:hint="@string/business"
+                android:hint="@string/first_name"
                 app:boxBackgroundMode="outline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -51,133 +51,112 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextContactBusiness"
+                    android:id="@+id/editTextParentFirstName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutContactPhone"
+                android:id="@+id/textInputLayoutParentMiddleName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="32dp"
-                android:hint="@string/fui_phone_hint"
+                android:hint="@string/middle_name"
                 app:boxBackgroundMode="outline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContactBusiness">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutParentFirstName">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextContactPhone"
+                    android:id="@+id/editTextParentMiddleName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutContactEmail"
+                android:id="@+id/textInputLayoutParentLastName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="32dp"
-                android:hint="@string/fui_email_hint"
+                android:hint="@string/last_name"
                 app:boxBackgroundMode="outline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContactPhone">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutParentMiddleName">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextContactEmail"
+                    android:id="@+id/editTextParentLastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutContactStreet"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/textInputLayoutParentGender"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="32dp"
-                android:hint="@string/street"
+                android:hint="@string/gender"
                 app:boxBackgroundMode="outline"
+                app:endIconMode="dropdown_menu"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContactEmail">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutParentLastName">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextContactStreet"
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextViewParentDropdownGender"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:labelFor="@id/autoCompleteTextViewParentDropdownGender"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutContactCity"
+                android:id="@+id/textInputLayoutParentBirthdate"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="32dp"
-                android:hint="@string/city"
+                android:hint="@string/birthdate"
                 app:boxBackgroundMode="outline"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/ic_baseline_cake_24"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContactStreet">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutParentGender">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextContactCity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutContactState"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="32dp"
-                android:hint="@string/state"
-                app:boxBackgroundMode="outline"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContactCity">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextContactState"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutContactZip"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="32dp"
-                android:hint="@string/zip"
-                app:boxBackgroundMode="outline"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContactState">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextContactZip"
+                    android:id="@+id/editTextParentBirthdate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSaveContact"
+                android:id="@+id/btnParentAddContact"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="148dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="32dp"
+                android:text="@string/add_contact"
+                app:flow_horizontalAlign="start"
+                app:layout_constraintEnd_toStartOf="@+id/btnSaveParent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutParentBirthdate" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveParent"
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -185,7 +164,7 @@
                 android:text="@string/fui_button_text_save"
                 app:flow_horizontalAlign="start"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutContactZip"/>
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutParentBirthdate"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

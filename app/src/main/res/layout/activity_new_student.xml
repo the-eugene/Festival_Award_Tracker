@@ -117,7 +117,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutStudentLastName">
 
                 <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextViewDropdownGender"
+                    android:id="@+id/autoCompleteTextViewStudentDropdownGender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -194,12 +194,12 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="32dp"
-                android:text="Add contact"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="32dp"
+                android:text="@string/add_contact"
                 app:flow_horizontalAlign="start"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btnStudentAddParent"
+                app:layout_constraintEnd_toStartOf="@+id/btnStudentAddParent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutStudentInstruments" />
 
             <com.google.android.material.button.MaterialButton
@@ -207,19 +207,19 @@
                 android:layout_width="148dp"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="10dp"
-                android:text="Add parent"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/add_parent"
                 app:flow_horizontalAlign="start"
-                app:layout_constraintEnd_toStartOf="@+id/btnStudentAddContact"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnStudentAddContact"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutStudentInstruments" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSaveStudent"
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:text="@string/save_student"
                 app:flow_horizontalAlign="center"
                 app:layout_constraintBottom_toBottomOf="parent"

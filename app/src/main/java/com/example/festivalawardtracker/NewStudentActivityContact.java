@@ -15,7 +15,7 @@ public class NewStudentActivityContact extends AppCompatActivity {
 
     /**
      *
-     * @param savedInstanceState
+     * @param savedInstanceState Add.
      */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class NewStudentActivityContact extends AppCompatActivity {
 
         // ACTION BAR
         toolbar = findViewById(R.id.toolbarNewStudentContact);
-        toolbar.setTitle("Add information");
+        toolbar.setTitle("Add contact");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

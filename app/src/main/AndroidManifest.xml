@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main2"
@@ -44,7 +45,10 @@
             android:parentActivityName=".NewStudentActivity" >
         </activity>
 
-
+        <activity
+            android:name=".NewStudentActivityParent"
+            android:parentActivityName=".NewStudentActivity" >
+        </activity>
     </application>
 
 </manifest>

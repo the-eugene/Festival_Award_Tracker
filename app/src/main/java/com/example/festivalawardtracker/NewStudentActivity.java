@@ -39,7 +39,7 @@ public class NewStudentActivity extends AppCompatActivity {
 
     /**
      *
-     * @param savedInstanceState
+     * @param savedInstanceState Add.
      * @see MainActivity
      */
     @Override
@@ -61,7 +61,7 @@ public class NewStudentActivity extends AppCompatActivity {
                         R.layout.dropdown_gender,
                         GENDER);
         AutoCompleteTextView editTextFilledExposedDropdownGender =
-                this.findViewById(R.id.autoCompleteTextViewDropdownGender);
+                this.findViewById(R.id.autoCompleteTextViewStudentDropdownGender);
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
 
         /* DROPDOWN LIST INSTRUMENTS */
@@ -94,7 +94,7 @@ public class NewStudentActivity extends AppCompatActivity {
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Object selection) {
-                // HEADS UP!
+                // HEADS UP! The date can be retrieved either as plaintext or as object
                 editTextDatePicker.setText(materialDatePicker.getHeaderText());
 
             }
@@ -106,6 +106,16 @@ public class NewStudentActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent activityIntent = new Intent(NewStudentActivity.this, NewStudentActivityContact.class);
+                startActivity(activityIntent);
+            }
+        });
+
+        /* NEW ACTIVITY: Student Parent */
+        MaterialButton btnAddParent = findViewById(R.id.btnStudentAddParent);
+        btnAddParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activityIntent = new Intent(NewStudentActivity.this, NewStudentActivityParent.class);
                 startActivity(activityIntent);
             }
         });

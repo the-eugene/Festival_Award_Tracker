@@ -75,4 +75,6 @@
     <string name="first_name">First Name</string>
     <string name="instrument">Instrument</string>
     <string name="street">Street</string>
+    <string name="add_contact">Add contact</string>
+    <string name="add_parent">Add parent</string>
 </resources>
