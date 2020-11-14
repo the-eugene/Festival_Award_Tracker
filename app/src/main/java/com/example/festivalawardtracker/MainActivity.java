@@ -93,10 +93,6 @@ public class MainActivity extends AppCompatActivity {
           */
 //        recyclerView.setAdapter(mAdapter);
 
-        /**
-         * @author Carlos W Mercado
-         * @see NewStudentActivity
-         */
         FloatingActionButton fab_new = findViewById(R.id.fab_newStudent);
         fab_new.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loggingOut(MenuItem item) {
-        // Accesing Items in the Menu Drawer
+        // Accesing Items in the Menu Drawer, using OnClick attribute in the drawer menu xml file
         // https://developer.android.com/guide/topics/resources/menu-resource
         AuthUI.getInstance()
         .signOut(MainActivity.this)
