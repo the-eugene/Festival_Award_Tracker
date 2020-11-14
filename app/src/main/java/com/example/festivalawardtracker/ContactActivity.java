@@ -9,7 +9,7 @@ import androidx.appcompat.widget.Toolbar;
 /**
  * @author Carlos W Mercado
  */
-public class NewStudentActivityContact extends AppCompatActivity {
+public class ContactActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 

@@ -14,11 +14,11 @@ import androidx.fragment.app.Fragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class NewStudentFragment extends Fragment {
+public class StudentFragment extends Fragment {
     String FirstName;
     DatabaseReference database;
 
-    public NewStudentFragment() {
+    public StudentFragment() {
         //Required empty public constructor
     }
 

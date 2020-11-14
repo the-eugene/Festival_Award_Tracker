@@ -1,13 +1,14 @@
 package com.example.festivalawardtracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -15,10 +16,9 @@ import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClic
 import com.google.android.material.textfield.TextInputEditText;
 
 /**
- * @author Carlos W Mercado *
+ * @author Carlos W Mercado
  */
-
-public class NewStudentActivity extends AppCompatActivity {
+public class ParentActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TextInputEditText editTextDatePicker;
@@ -26,16 +26,15 @@ public class NewStudentActivity extends AppCompatActivity {
     /**
      *
      * @param savedInstanceState Add.
-     * @see MainActivity
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_student);
+        setContentView(R.layout.activity_new_student_parent);
 
-        /* ACTION BAR */
-        toolbar = findViewById(R.id.toolbarNewStudent);
-        toolbar.setTitle("Add student");
+        // ACTION BAR
+        toolbar = findViewById(R.id.toolbarNewStudentParent);
+        toolbar.setTitle("Add parent");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -47,28 +46,17 @@ public class NewStudentActivity extends AppCompatActivity {
                         R.layout.dropdown_layout,
                         GENDER);
         AutoCompleteTextView editTextFilledExposedDropdownGender =
-                this.findViewById(R.id.autoCompleteTextViewStudentDropdownGender);
+                this.findViewById(R.id.autoCompleteTextViewParentDropdownGender);
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
-
-        /* DROPDOWN LIST INSTRUMENTS */
-        String[] INSTRUMENTS = new String[] {"Piano", "Violin", "Viola", "Cello"};
-        ArrayAdapter<String> adapterInstruments =
-                new ArrayAdapter<>(
-                        this,
-                        R.layout.dropdown_layout,
-                        INSTRUMENTS);
-        AutoCompleteTextView editTextFilledExposedDropdownInstruments =
-                this.findViewById(R.id.autoCompleteTextViewDropdownInstruments);
-        editTextFilledExposedDropdownInstruments.setAdapter(adapterInstruments);
 
         /* DATE PICKER */
         // Material Date Picker
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
-        builder.setTitleText("Student Birthday");
+        builder.setTitleText("Parent Birthday");
         final MaterialDatePicker materialDatePicker = builder.build();
 
         // Setting Listener for Material Date Picker
-        editTextDatePicker = findViewById(R.id.editTextStudentBirthdate);
+        editTextDatePicker = findViewById(R.id.editTextParentBirthdate);
         editTextDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,22 +74,12 @@ public class NewStudentActivity extends AppCompatActivity {
             }
         });
 
-        /* NEW ACTIVITY: Student Contact */
-        MaterialButton btnAddContact = findViewById(R.id.btnStudentAddContact);
+        /* NEW ACTIVITY: Parent Contact */
+        MaterialButton btnAddContact = findViewById(R.id.btnParentAddContact);
         btnAddContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent activityIntent = new Intent(NewStudentActivity.this, NewStudentActivityContact.class);
-                startActivity(activityIntent);
-            }
-        });
-
-        /* NEW ACTIVITY: Student Parent */
-        MaterialButton btnAddParent = findViewById(R.id.btnStudentAddParent);
-        btnAddParent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent activityIntent = new Intent(NewStudentActivity.this, NewStudentActivityParent.class);
+                Intent activityIntent = new Intent(ParentActivity.this, ContactActivity.class);
                 startActivity(activityIntent);
             }
         });

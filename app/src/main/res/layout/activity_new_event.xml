@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent" >
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarNewFestival"
+            android:id="@+id/toolbarNewEvent"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_baseline_close_24"/>
@@ -33,14 +33,14 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutNewtFestivalName"
+                android:id="@+id/textInputLayoutNewEventSchoolYear"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="80dp"
                 android:layout_marginEnd="32dp"
-                android:hint="@string/festival_name"
+                android:hint="School Year"
                 app:boxBackgroundMode="outline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -53,60 +53,96 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutNewFestivalNFMC"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:id="@+id/textInputLayoutNewEventStartingDate"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="32dp"
-                android:hint="Is this festival NFMC?"
+                android:hint="Starting Date"
                 app:boxBackgroundMode="outline"
-                app:endIconMode="dropdown_menu"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/ic_baseline_event_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewtFestivalName" >
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventSchoolYear">
 
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextViewDropdownNewFestivalNFMC"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextNewEventStartingDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutNewtFestivalDescription"
+                android:id="@+id/textInputLayoutNewEventEndingDate"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="32dp"
+                android:hint="Ending Date"
+                app:boxBackgroundMode="outline"
+                app:endIconMode="clear_text"
+                app:startIconDrawable="@drawable/ic_baseline_event_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventStartingDate">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextNewEventEndingDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutNewEventDescription"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="32dp"
-                android:hint="Add festival description"
+                android:hint="Add event description"
                 app:boxBackgroundMode="outline"
                 app:endIconMode="clear_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewFestivalNFMC">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventEndingDate">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextNewFestivalDescription"
+                    android:id="@+id/editTextNewEventDescription"
                     android:inputType="textMultiLine"
                     android:layout_width="match_parent"
                     android:layout_height="150dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSaveFestival"
+                android:id="@+id/btnEventAddContact"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="SAVE FESTIVAL"
-                app:flow_horizontalAlign="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="32dp"
+                android:text="@string/add_contact"
+                app:flow_horizontalAlign="start"
+                app:layout_constraintEnd_toStartOf="@+id/btnSaveParent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewtFestivalDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventDescription" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveParent"
+                android:layout_width="148dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="32dp"
+                android:text="SAVE EVENT"
+                app:flow_horizontalAlign="start"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventDescription"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
