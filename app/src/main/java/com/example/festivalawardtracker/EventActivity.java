@@ -14,7 +14,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class EventActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    private Toolbar toolbarEvent;
     private TextInputEditText editTextDatePickerStart;
     private TextInputEditText editTextDatePickerEnd;
 
@@ -29,9 +29,9 @@ public class EventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_event);
 
         /* ACTION BAR */
-        toolbar = findViewById(R.id.toolbarNewStudent);
-        toolbar.setTitle("Add event");
-        setSupportActionBar(toolbar);
+        toolbarEvent = findViewById(R.id.toolbarNewEvent);
+        toolbarEvent.setTitle("Add event");
+        setSupportActionBar(toolbarEvent);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         /* DATE PICKER START */

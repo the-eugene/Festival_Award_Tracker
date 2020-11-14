@@ -28,7 +28,7 @@ public class studentAdapter extends FirebaseRecyclerAdapter<studentDatabase, Dat
     @Override
     public DatabaseViewHolder
     onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_home_recyclerview_row_studentminiawards, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_students_recyclerview, parent, false);
         return new DatabaseViewHolder(view);
     }
 

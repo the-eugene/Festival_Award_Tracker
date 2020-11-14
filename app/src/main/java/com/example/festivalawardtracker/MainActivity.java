@@ -92,11 +92,20 @@ public class MainActivity extends AppCompatActivity {
           */
 //        recyclerView.setAdapter(mAdapter);
 
-        FloatingActionButton fab_new = findViewById(R.id.fab_newStudent);
-        fab_new.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fabNewStudent = findViewById(R.id.fab_newStudent);
+        fabNewStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent activityIntent = new Intent(MainActivity.this, StudentActivity.class);
+                startActivity(activityIntent);
+            }
+        });
+
+        FloatingActionButton fabNewEvent = findViewById(R.id.fab_newEvent);
+        fabNewEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activityIntent = new Intent(MainActivity.this, EventActivity.class);
                 startActivity(activityIntent);
             }
         });

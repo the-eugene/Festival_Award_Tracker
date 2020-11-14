@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
             @NonNull
             @Override
             public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment_home_recyclerview_row_studentminiawards, viewGroup, false);
+                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_students_recyclerview, viewGroup, false);
                 StudentViewHolder viewHolder = new StudentViewHolder(view);
                 return viewHolder;
             }
@@ -106,11 +106,11 @@ public class HomeFragment extends Fragment {
         TextView Name, Gender, Birthday, Age, Awards;
         public StudentViewHolder(@NonNull View itemView) {
             super(itemView);
-            Name = itemView.findViewById(R.id.StudentName);
-            Gender = itemView.findViewById(R.id.Gender);
-            Birthday = itemView.findViewById(R.id.Birthday);
-            Age = itemView.findViewById(R.id.Age);
-            Awards = itemView.findViewById(R.id.AwardsInfo);
+            Name = itemView.findViewById(R.id.rowStudentName);
+            Gender = itemView.findViewById(R.id.rowStudentGender);
+            Birthday = itemView.findViewById(R.id.rowStudentBirthday);
+            Age = itemView.findViewById(R.id.rowStudentAge);
+//            Awards = itemView.findViewById(R.id.rowStudentRating);
         }
     }
 }

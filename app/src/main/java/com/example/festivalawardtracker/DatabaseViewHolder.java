@@ -14,17 +14,17 @@ public class DatabaseViewHolder extends RecyclerView.ViewHolder {
     }
     public void setName(String name)
     {
-        TextView student_name=(TextView)mView.findViewById(R.id.StudentName);
+        TextView student_name=(TextView)mView.findViewById(R.id.rowStudentName);
         student_name.setText(name);
     }
     public void setGender(String gender)
     {
-        TextView student_gender=(TextView)mView.findViewById(R.id.Gender);
+        TextView student_gender=(TextView)mView.findViewById(R.id.rowStudentGender);
         student_gender.setText(gender);
     }
     public void setBirthday(String birthday)
     {
-        TextView student_birthday=(TextView)mView.findViewById(R.id.Birthday);
+        TextView student_birthday=(TextView)mView.findViewById(R.id.rowStudentBirthday);
         student_birthday.setText(birthday);
     }
 }
