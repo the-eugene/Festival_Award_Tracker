@@ -44,8 +44,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        Toolbar mToolbar = findViewById(R.id.main_toolbar);
+        setSupportActionBar(mToolbar);
+        mToolbarMenuAction(mToolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -101,8 +102,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void mToolbarMenuAction(Toolbar mToolbar) {
+        // TODO Maybe with a OnClickListener, for the items in the inflated menu
+    }
+
 
 //      TODO: delete this if new implementation works.
+    // Whos deleting this? Carlos
 
 //    @Override
 //    protected  void onStart() {
@@ -130,8 +136,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_activity, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
+
+        // TODO https://developer.android.com/guide/topics/search/search-dialog.html#UsingSearchWidget
+        // It is possible to generate a query seach from the main toolbar search option (magnifier). CARLOS
+
+//        Inflate the options menu from XML
+//        MenuInflater mMenuInflater = getMenuInflater();
+//        mMenuInflater.inflate(R.menu.main_activity, menu);
+//
+//        // Get the SearchView and set the searchable configuration
+//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+//        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+//        // Assumes current activity is the searchable activity
+//        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+//        searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
     }
 
     @Override
@@ -176,6 +196,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * @author Carlos
+     * @param item
+     * Functionality for the log out button.
+     */
     public void loggingOut(MenuItem item) {
         // Accesing Items in the Menu Drawer, using OnClick attribute in the drawer menu xml file
         // https://developer.android.com/guide/topics/resources/menu-resource

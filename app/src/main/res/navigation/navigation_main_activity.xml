@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.festivalawardtracker.ui.home.HomeFragment"
+        android:name="com.example.festivalawardtracker.ui.student.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/main_fragment_student" />
     <fragment
         android:id="@+id/nav_festival"
         android:name="com.example.festivalawardtracker.ui.festival.FestivalFragment"
         android:label="@string/menu_festival"
-        tools:layout="@layout/fragment_festival" />
+        tools:layout="@layout/main_fragment_festival" />
 </navigation>

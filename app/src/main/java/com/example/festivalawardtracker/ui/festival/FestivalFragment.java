@@ -22,14 +22,7 @@ public class FestivalFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         festivalViewModel =
                 new ViewModelProvider(this).get(FestivalViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_festival, container, false);
-        final TextView textView = root.findViewById(R.id.textView2);
-        festivalViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        View root = inflater.inflate(R.layout.main_fragment_festival, container, false);
         return root;
     }
 }

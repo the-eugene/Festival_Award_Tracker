@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker.ui.home;
+package com.example.festivalawardtracker.ui.student;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

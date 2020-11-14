@@ -35,7 +35,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        StudentView = inflater.inflate(R.layout.fragment_home, container, false);
+        StudentView = inflater.inflate(R.layout.main_fragment_student, container, false);
 
 //        myStudentList = (RecyclerView) StudentView.findViewById(R.id.student_list);
         myStudentList.setLayoutManager(new LinearLayoutManager(getContext()));
