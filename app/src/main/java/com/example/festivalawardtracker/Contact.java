@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +39,11 @@ public class Contact {
         return String.format("%s\n%s\n%s, %s  %s", business, street, city, state, zip);
     }
 
+    public static String[] OptionsStates(){
+        String[] options=STATE_MAP.keySet().toArray(new String[0]);
+        Arrays.sort(options);
+        return options;
+    }
     public static final Map<String, String> STATE_MAP;
     static {
         STATE_MAP = new HashMap<String, String>();

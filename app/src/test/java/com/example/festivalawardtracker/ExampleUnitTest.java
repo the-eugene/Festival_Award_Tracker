@@ -18,7 +18,14 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void instrument_isCorrect() {
+    public void instrument_Options() {
         assertEquals("Piano", Instrument.Options()[0]);
+
     }
+    @Test
+    public void States_List() {
+        assertEquals("AB", Contact.OptionsStates()[0]);
+
+    }
+
 }
