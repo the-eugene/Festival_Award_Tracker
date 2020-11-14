@@ -83,6 +83,5 @@ public class ParentActivity extends AppCompatActivity {
                 startActivity(activityIntent);
             }
         });
-
     }
 }

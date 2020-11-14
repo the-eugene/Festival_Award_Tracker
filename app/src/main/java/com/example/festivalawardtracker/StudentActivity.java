@@ -20,7 +20,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class StudentActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    private Toolbar toolbarStudent;
     private TextInputEditText editTextDatePicker;
 
     /**
@@ -34,9 +34,9 @@ public class StudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_student);
 
         /* ACTION BAR */
-        toolbar = findViewById(R.id.toolbarNewStudent);
-        toolbar.setTitle("Add student");
-        setSupportActionBar(toolbar);
+        toolbarStudent = findViewById(R.id.toolbarNewStudent);
+        toolbarStudent.setTitle("Add student");
+        setSupportActionBar(toolbarStudent);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         /* DROPDOWN LIST GENDER */
