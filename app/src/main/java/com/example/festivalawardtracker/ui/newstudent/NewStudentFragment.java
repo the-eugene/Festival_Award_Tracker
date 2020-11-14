@@ -48,7 +48,7 @@ public class NewStudentFragment extends Fragment {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this.getContext(),
-                R.layout.dropdown_gender,
+                R.layout.dropdown_layout,
                 itemsGender
         );
 

@@ -77,4 +77,5 @@
     <string name="street">Street</string>
     <string name="add_contact">Add contact</string>
     <string name="add_parent">Add parent</string>
+    <string name="festival_name">Festival Name</string>
 </resources>

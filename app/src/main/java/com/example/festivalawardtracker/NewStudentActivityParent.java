@@ -43,7 +43,7 @@ public class NewStudentActivityParent extends AppCompatActivity {
         ArrayAdapter<String> adapterGender =
                 new ArrayAdapter<>(
                         this,
-                        R.layout.dropdown_gender,
+                        R.layout.dropdown_layout,
                         GENDER);
         AutoCompleteTextView editTextFilledExposedDropdownGender =
                 this.findViewById(R.id.autoCompleteTextViewParentDropdownGender);
