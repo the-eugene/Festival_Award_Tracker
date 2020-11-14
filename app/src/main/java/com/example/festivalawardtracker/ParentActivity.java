@@ -30,7 +30,7 @@ public class ParentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_student_parent);
+        setContentView(R.layout.activity_new_parent);
 
         // ACTION BAR
         toolbar = findViewById(R.id.toolbarNewStudentParent);

@@ -20,7 +20,7 @@ public class ContactActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_student_contact);
+        setContentView(R.layout.activity_new_contact);
 
         // ACTION BAR
         toolbar = findViewById(R.id.toolbarNewStudentContact);
