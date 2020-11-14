@@ -2,6 +2,7 @@ package com.example.festivalawardtracker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -18,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.Group;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -59,29 +61,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                if( id == R.id.nav_logout) {
-//                    Toast.makeText(MainActivity.this, "It's Clickable!", Toast.LENGTH_SHORT).show();
-                    // [START auth_fui_signout]
-                      AuthUI.getInstance()
-                      .signOut(MainActivity.this)
-                      .addOnCompleteListener(new OnCompleteListener<Void>() {
-                      public void onComplete(@NonNull Task<Void> task) {
-                          Intent activityIntent = new Intent(MainActivity.this, LogInOptions.class);
-                          startActivity(activityIntent);
-                          finish();
-                      }
-                      });
-                    // [END auth_fui_signout]
-                }
-                return true;
-            }
-        });
-
 
         // TODO: FRAGMENT HOME RECYCLERVIEW
 //        StudentDisplay studentDisplay = new StudentDisplay();
@@ -201,5 +180,19 @@ public class MainActivity extends AppCompatActivity {
 //        database.child(id).setValue(student);
 
 
+    }
+
+    public void loggingOut(MenuItem item) {
+        // Accesing Items in the Menu Drawer
+        // https://developer.android.com/guide/topics/resources/menu-resource
+        AuthUI.getInstance()
+        .signOut(MainActivity.this)
+        .addOnCompleteListener(new OnCompleteListener<Void>() {
+            public void onComplete(@NonNull Task<Void> task) {
+                Intent activityIntent = new Intent(MainActivity.this, LogInOptions.class);
+                startActivity(activityIntent);
+                finish();
+            }
+        });
     }
 }
