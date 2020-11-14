@@ -1,6 +1,5 @@
 package com.example.festivalawardtracker;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,7 +10,6 @@ import android.widget.Toast;
 
 
 import com.firebase.ui.auth.AuthUI;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -54,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_home, R.id.nav_festival)
                 .setDrawerLayout(drawer)
                 .build();
         // https://developer.android.com/guide/navigation/navigation-navigate?authuser=1
@@ -79,11 +77,12 @@ public class MainActivity extends AppCompatActivity {
                       }
                       });
                     // [END auth_fui_signout]
-
                 }
                 return true;
             }
         });
+
+
         // TODO: FRAGMENT HOME RECYCLERVIEW
 //        StudentDisplay studentDisplay = new StudentDisplay();
 //        FragmentManager fragmentManager = getFragmentManager();
@@ -158,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_activity2, menu);
+        getMenuInflater().inflate(R.menu.main_activity, menu);
         return true;
     }
 

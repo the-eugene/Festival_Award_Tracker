@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker.ui.gallery;
+package com.example.festivalawardtracker.ui.festival;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.festivalawardtracker.R;
 
-public class GalleryFragment extends Fragment {
+public class FestivalFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private FestivalViewModel festivalViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        festivalViewModel =
+                new ViewModelProvider(this).get(FestivalViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_festival, container, false);
+        final TextView textView = root.findViewById(R.id.textView2);
+        festivalViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

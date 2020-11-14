@@ -2,36 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
+    android:id="@+id/navigation_main_activity"
     app:startDestination="@+id/nav_home">
 
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.festivalawardtracker.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_nav_home_to_newStudentFragment3"
-            app:destination="@id/nav_new_student_activity" />
-    </fragment>
-
+        tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/nav_new_student_activity"
-        android:name="com.example.festivalawardtracker.ui.newstudent.NewStudentFragment"
-        android:label="activity_new_student"
-        tools:layout="@layout/activity_new_student" >
-        <action
-            android:id="@+id/action_nav_new_student_activity_to_nav_new_student_activity_contact"
-            app:destination="@id/nav_new_student_activity_contact" />
-        <action
-            android:id="@+id/action_nav_new_student_activity_to_nav_new_student_activity_contact2"
-            app:destination="@id/nav_new_student_activity_contact" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/nav_new_student_activity_contact"
-        android:name="com.example.festivalawardtracker.ui.newstudent.NewStudentFragment"
-        android:label="activity_new_student"
-        tools:layout="@layout/activity_new_student_contact" />
-
+        android:id="@+id/nav_festival"
+        android:name="com.example.festivalawardtracker.ui.festival.FestivalFragment"
+        android:label="@string/menu_festival"
+        tools:layout="@layout/fragment_festival" />
 </navigation>

@@ -12,7 +12,6 @@ public class LogInOptions extends AppCompatActivity {
     Button btnSignUp;
     Button btnSignIn;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

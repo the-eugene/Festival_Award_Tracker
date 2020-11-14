@@ -1,14 +1,14 @@
-package com.example.festivalawardtracker.ui.gallery;
+package com.example.festivalawardtracker.ui.festival;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class FestivalViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public FestivalViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is gallery fragment");
     }
