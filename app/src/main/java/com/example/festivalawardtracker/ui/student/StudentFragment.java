@@ -28,6 +28,9 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
      * @param container
      * @param savedInstanceState
      * @return root Returning view to the fragment
+     * @link <a>https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener</a>
+     * Implementing listeners for buttons on fragments seems to be something not that straight
+     * forward to do.
      */
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
@@ -36,7 +39,6 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
         View root = inflater.inflate(R.layout.main_fragment_student, container, false);
 
         // Setting up the FAB button for add student
-        // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener
         fabNewStudent = root.findViewById(R.id.fab_newStudent);
         fabNewStudent.setOnClickListener(this);
 

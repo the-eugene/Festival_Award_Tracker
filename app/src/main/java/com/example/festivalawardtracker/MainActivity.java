@@ -1,5 +1,7 @@
 package com.example.festivalawardtracker;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -18,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -124,25 +127,30 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
 
+    /**
+     * @author carloswashingtonmercado@gmail.com
+     * @param menu
+     * @return
+     * @link <a>https://stackoverflow.com/a/37562572/7389293</a> Not used
+     * @link <a>https://developer.android.com/guide/topics/search/search-dialog.html#UsingSearchWidget</a>
+     * This is the solution I used here.
+     * @link <a>https://developer.android.com/guide/topics/ui/layout/recyclerview?authuser=1</a>
+     * Not used
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_menu, menu);
+        final MenuItem searchItem = menu.findItem(R.id.action_search);
+
+        // Get the SearchView and set the searchable configuration
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        // Assumes current activity is the searchable activity
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setIconifiedByDefault(true); // Iconify the widget by default
+
         return true;
-
-        // TODO https://developer.android.com/guide/topics/search/search-dialog.html#UsingSearchWidget
-        // It is possible to generate a query seach from the main toolbar search option (magnifier). CARLOS
-
-//        Inflate the options menu from XML
-//        MenuInflater mMenuInflater = getMenuInflater();
-//        mMenuInflater.inflate(R.menu.main_activity, menu);
-//
-//        // Get the SearchView and set the searchable configuration
-//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-//        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-//        // Assumes current activity is the searchable activity
-//        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-//        searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
     }
 
     @Override
