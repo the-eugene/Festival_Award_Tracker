@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.festivalawardtracker.ui.student.HomeFragment"
+        android:name="com.example.festivalawardtracker.ui.student.StudentFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/main_fragment_student" />
     <fragment

@@ -22,23 +22,4 @@
 
     <include layout="@layout/activity_main_container" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_newStudent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_baseline_person_add_24"
-        android:contentDescription="@string/todo" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_newEvent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="80dp"
-        android:layout_marginRight="16dp"
-        app:srcCompat="@drawable/ic_baseline_event_24"
-        android:contentDescription="@string/todo" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

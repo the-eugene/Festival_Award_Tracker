@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker.ui.event;
+package com.example.festivalawardtracker.ui.student;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.festivalawardtracker.EventActivity;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.StudentActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -18,10 +17,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 /**
  * @author carloswashingtonmercado@gmail.com
  */
-public class EventFragment extends Fragment implements View.OnClickListener {
+public class StudentFragment extends Fragment implements View.OnClickListener {
 
-    private EventViewModel eventViewModel;
-    FloatingActionButton fabNewEvent;
+    private StudentViewModel studentViewModel;
+    FloatingActionButton fabNewStudent;
 
     /**
      *
@@ -30,15 +29,15 @@ public class EventFragment extends Fragment implements View.OnClickListener {
      * @param savedInstanceState
      * @return root Returning view to the fragment
      */
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater,
+                             final ViewGroup container, Bundle savedInstanceState) {
 
-        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
-        View root = inflater.inflate(R.layout.main_fragment_event, container, false);
+        studentViewModel = new ViewModelProvider(this).get(StudentViewModel.class);
+        View root = inflater.inflate(R.layout.main_fragment_student, container, false);
 
-        // Setting up the FAB button for add event
-        fabNewEvent = root.findViewById(R.id.fab_newEvent);
-        fabNewEvent.setOnClickListener(this);
+        // Setting up the FAB button for add student
+        fabNewStudent = root.findViewById(R.id.fab_newStudent);
+        fabNewStudent.setOnClickListener(this);
 
         return root; // Returning the view.
     }
@@ -49,7 +48,7 @@ public class EventFragment extends Fragment implements View.OnClickListener {
      */
     @Override
     public void onClick(View v) {
-        Intent activityIntent = new Intent( v.getContext(), EventActivity.class);
+        Intent activityIntent = new Intent( v.getContext(), StudentActivity.class);
         startActivity(activityIntent);
     }
 }

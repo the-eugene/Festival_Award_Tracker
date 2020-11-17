@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:nestedScrollingEnabled="false"
-    tools:context=".ui.student.HomeFragment">
+    tools:context=".ui.student.StudentFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

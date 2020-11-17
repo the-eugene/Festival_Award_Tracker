@@ -21,7 +21,7 @@ public class FestivalActivity extends AppCompatActivity {
                         R.layout.dropdown_layout,
                         YESORNO);
         AutoCompleteTextView editTextFilledExposedDropdownInstruments =
-                this.findViewById(R.id.autoCompleteTextViewDropdownInstruments);
+                this.findViewById(R.id.autoCompleteTextViewDropdownNewFestivalNFMC);
         editTextFilledExposedDropdownInstruments.setAdapter(adapterYesOrNO);
 
     } // End OnCreate
