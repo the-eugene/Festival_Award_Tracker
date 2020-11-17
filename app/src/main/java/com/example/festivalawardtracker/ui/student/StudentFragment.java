@@ -36,6 +36,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
         View root = inflater.inflate(R.layout.main_fragment_student, container, false);
 
         // Setting up the FAB button for add student
+        // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener
         fabNewStudent = root.findViewById(R.id.fab_newStudent);
         fabNewStudent.setOnClickListener(this);
 

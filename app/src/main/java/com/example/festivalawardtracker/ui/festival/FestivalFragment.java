@@ -41,6 +41,7 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
         View root = inflater.inflate(R.layout.main_fragment_festival, container, false);
 
         // Setting up the FAB button for add festival
+        // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener
         fabNewFestival = root.findViewById(R.id.fab_newFestival);
         fabNewFestival.setOnClickListener(this);
 

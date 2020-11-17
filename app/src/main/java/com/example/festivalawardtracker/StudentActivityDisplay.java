@@ -7,6 +7,9 @@ import android.os.Bundle;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+/**
+ * @author carloswashingtonmercado@gmail.com
+ */
 public class StudentActivityDisplay extends AppCompatActivity {
 
     private Toolbar toolbar;

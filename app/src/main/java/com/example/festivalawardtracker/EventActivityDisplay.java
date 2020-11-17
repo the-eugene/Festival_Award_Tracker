@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+/**
+ * @author carloswashingtonmercado@gmail.com
+ */
 public class EventActivityDisplay extends AppCompatActivity {
 
     @Override

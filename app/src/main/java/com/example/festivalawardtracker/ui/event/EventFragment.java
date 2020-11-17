@@ -37,6 +37,7 @@ public class EventFragment extends Fragment implements View.OnClickListener {
         View root = inflater.inflate(R.layout.main_fragment_event, container, false);
 
         // Setting up the FAB button for add event
+        // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener
         fabNewEvent = root.findViewById(R.id.fab_newEvent);
         fabNewEvent.setOnClickListener(this);
 

@@ -15,9 +15,8 @@ import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClic
 import com.google.android.material.textfield.TextInputEditText;
 
 /**
- * @author Carlos W Mercado *
+ * @author carloswashingtonmercado@gmail.com
  */
-
 public class StudentActivity extends AppCompatActivity {
 
     private Toolbar toolbarStudent;

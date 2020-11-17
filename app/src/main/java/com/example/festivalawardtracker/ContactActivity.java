@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 /**
- * @author Carlos W Mercado
+ * @author carloswashingtonmercado@gmail.com
  */
 public class ContactActivity extends AppCompatActivity {
 
