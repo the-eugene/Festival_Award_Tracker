@@ -39,7 +39,7 @@ public class StudentActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         /* DROPDOWN LIST GENDER */
-        String[] GENDER = new String[] {"Male", "Female"};
+        String[] GENDER = Gender.Options();
         ArrayAdapter<String> adapterGender =
                 new ArrayAdapter<>(
                         this,
@@ -50,7 +50,7 @@ public class StudentActivity extends AppCompatActivity {
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
 
         /* DROPDOWN LIST INSTRUMENTS */
-        String[] INSTRUMENTS = new String[] {"Piano", "Violin", "Viola", "Cello"};
+        String[] INSTRUMENTS = Instrument.Options();
         ArrayAdapter<String> adapterInstruments =
                 new ArrayAdapter<>(
                         this,

@@ -26,7 +26,7 @@ public class FestivalActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         /* DROPDOWN LIST is NFMC festival? Yes or No question */
-        String[] YESORNO = new String[] {"Yes", "No"};
+        String[] YESORNO = Answer.Options();
         // ADAPTER
         ArrayAdapter<String> adapterYesOrNO =
                 new ArrayAdapter<>(
