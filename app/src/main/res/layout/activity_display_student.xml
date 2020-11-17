@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:nestedScrollingEnabled="false"
-    tools:context=".ui.newstudent.NewStudentFragment">
+    tools:context=".ui.student.StudentFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -252,42 +252,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewStudentState" />
 
             <TextView
-                android:id="@+id/textViewStudentTeacherID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="32dp"
-                android:outlineProvider="bounds"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:text="TeacherID"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewStudentZip" />
-
-            <TextView
-                android:id="@+id/textViewStudentParentID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="32dp"
-                android:outlineProvider="bounds"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:text="ParentID"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.501"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewStudentTeacherID" />
-
-            <TextView
                 android:id="@+id/textViewStudentInstrument"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -303,7 +267,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewStudentParentID" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewStudentZip" />
 
             <TextView
                 android:id="@+id/textViewStudentAward"

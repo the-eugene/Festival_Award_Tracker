@@ -48,7 +48,8 @@
             android:name=".ParentActivity"
             android:parentActivityName=".StudentActivity" />
         <activity
-            android:name=".FestivalActivity" />
+            android:name=".FestivalActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

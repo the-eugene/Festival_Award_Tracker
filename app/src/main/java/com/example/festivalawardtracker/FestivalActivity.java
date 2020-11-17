@@ -20,7 +20,7 @@ public class FestivalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_festival);
 
         /* ACTION BAR */
-        toolbarFestival = findViewById(R.id.toolbarNewEvent);
+        toolbarFestival = findViewById(R.id.toolbarNewFestival);
         toolbarFestival.setTitle("Add Festival");
         setSupportActionBar(toolbarFestival);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
