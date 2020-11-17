@@ -13,6 +13,10 @@
             android:icon="@drawable/ic_baseline_view_list_24"
             android:title="@string/menu_festival" />
         <item
+            android:id="@+id/nav_event"
+            android:icon="@drawable/ic_baseline_view_list_24"
+            android:title="@string/event_list" />
+        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_baseline_exit_to_app_24"
             android:title="@string/log_out"

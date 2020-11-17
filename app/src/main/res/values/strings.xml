@@ -80,4 +80,6 @@
     <string name="festival_name">Festival Name</string>
     <string name="sample_text">Sample_Text</string>
     <string name="search">Search</string>
+    <string name="search_event">Search Event</string>
+    <string name="event_list">Event List</string>
 </resources>

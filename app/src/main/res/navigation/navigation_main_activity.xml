@@ -15,4 +15,9 @@
         android:name="com.example.festivalawardtracker.ui.festival.FestivalFragment"
         android:label="@string/menu_festival"
         tools:layout="@layout/main_fragment_festival" />
+    <fragment
+        android:id="@+id/nav_event"
+        android:name="com.example.festivalawardtracker.ui.event.EventFragment"
+        android:label="Event List"
+        tools:layout="@layout/main_fragment_event" />
 </navigation>
