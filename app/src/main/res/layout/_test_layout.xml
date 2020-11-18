@@ -28,7 +28,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/_section_name"
+        layout="@layout/include_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -38,7 +38,7 @@
         tools:layout_editor_absoluteY="132dp" />
 
     <include
-        layout="@layout/_section_contact"
+        layout="@layout/include_contact"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"

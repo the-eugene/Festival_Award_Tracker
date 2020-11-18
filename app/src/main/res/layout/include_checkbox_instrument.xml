@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/checkBox01"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:width="100dp"
+        android:checked="false"
+        android:text="Piano"
+        app:layout_constraintBottom_toTopOf="@+id/checkBox04"
+        app:layout_constraintEnd_toStartOf="@+id/checkBox02"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/checkBox02"
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:width="100dp"
+        android:checked="false"
+        android:text="Violin"
+        app:layout_constraintBottom_toTopOf="@+id/checkBox05"
+        app:layout_constraintEnd_toStartOf="@+id/checkBox03"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/checkBox01"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/checkBox03"
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:width="100dp"
+        android:checked="false"
+        android:text="Viola"
+        app:layout_constraintBottom_toTopOf="@+id/checkBox06"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/checkBox02"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/checkBox04"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:width="100dp"
+        android:checked="false"
+        android:text="Cello"
+        app:layout_constraintEnd_toStartOf="@+id/checkBox05"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox01" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/checkBox05"
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:width="100dp"
+        android:checked="false"
+        android:text="VeryLongInstrumentName"
+        app:layout_constraintEnd_toStartOf="@+id/checkBox06"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/checkBox04"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox02" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/checkBox06"
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:width="100dp"
+        android:checked="false"
+        android:text="ItemTest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/checkBox05"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox03" />
+</androidx.constraintlayout.widget.ConstraintLayout>
