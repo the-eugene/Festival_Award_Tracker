@@ -29,7 +29,7 @@ public class StudentDisplay extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         FirebaseRecyclerOptions<studentDatabase> options
                 = new FirebaseRecyclerOptions.Builder<studentDatabase>().setQuery(database,studentDatabase.class).build();
-        mAdapter = new studentAdapter(options);
+//        mAdapter = new studentAdapter(options);
         recyclerView.setAdapter(mAdapter);
         return view;
     }

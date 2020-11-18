@@ -9,6 +9,7 @@ public class StudentInstrumentedTest {
 
     @Test
     public void testSave1(){
+
         //student.save();
     }
 }

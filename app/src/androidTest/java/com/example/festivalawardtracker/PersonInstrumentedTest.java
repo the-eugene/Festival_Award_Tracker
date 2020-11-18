@@ -1,5 +1,7 @@
 package com.example.festivalawardtracker;
 
+import android.util.Log;
+
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -25,6 +27,7 @@ public class PersonInstrumentedTest {
     @Test
     public void save(){
         person.save();
+        Log.d("PersonTest","Person saved to database");
         assertNotNull(person.ID);
         Person p2=Person.load(person.ID, Person.class);
         assertEquals(person.lastName,p2.lastName);
@@ -33,5 +36,6 @@ public class PersonInstrumentedTest {
         person.save();
         p2.lastName="His Royal Williamsness";
         p2.save();
+
     }
 }

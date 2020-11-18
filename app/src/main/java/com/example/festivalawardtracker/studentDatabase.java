@@ -9,6 +9,17 @@ public class studentDatabase {
     String instrument;
     String teacher;
 
+    public studentDatabase(String firstName, String lastName, String birthDate, String Gender
+            , String phoneNumber, String Instrument, String Teacher) {
+        fname = firstName;
+        lname = lastName;
+        bdate = birthDate;
+        gender = Gender;
+        number = phoneNumber;
+        instrument = Instrument;
+        teacher = Teacher;
+    }
+
 
     public String getFname() {
         return fname;
@@ -65,18 +76,6 @@ public class studentDatabase {
     public void setTeacher(String teacher) {
         this.teacher = teacher;
     }
-
-    public studentDatabase(String firstName, String lastName, String birthDate, String Gender
-          , String phoneNumber, String Instrument, String Teacher) {
-        fname = firstName;
-        lname = lastName;
-        bdate = birthDate;
-        gender = Gender;
-        number = phoneNumber;
-        instrument = Instrument;
-        teacher = Teacher;
-    }
-
 
 
 }

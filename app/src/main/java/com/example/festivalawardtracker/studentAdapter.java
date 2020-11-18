@@ -4,24 +4,27 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 
 
-public class studentAdapter extends FirebaseRecyclerAdapter<studentDatabase, DatabaseViewHolder> {
+public class studentAdapter extends FirebaseRecyclerAdapter<
+        StudentDisplay, studentAdapter.DatabaseViewHolder> {
 
-    public studentAdapter(@NonNull FirebaseRecyclerOptions<studentDatabase> options){
+    public studentAdapter(@NonNull FirebaseRecyclerOptions<StudentDisplay> options) {
         super(options);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DatabaseViewHolder holder, int position, @NonNull studentDatabase model) {
-        holder.setName(model.getFname() + model.getLname());
-        Log.d("setName", model.getFname());
-        holder.setGender(model.getGender());
-        holder.setBirthday(model.getBdate());
+    protected void onBindViewHolder(@NonNull DatabaseViewHolder holder, int position, @NonNull StudentDisplay model) {
+//        holder.name.setText(model.getFname());
+//        Log.d("setName", model.getFname());
+//        holder.gender.setText(model.getGender());
+//        holder.brithdate.setText(model.getBdate());
     }
 
     @NonNull
@@ -29,7 +32,22 @@ public class studentAdapter extends FirebaseRecyclerAdapter<studentDatabase, Dat
     public DatabaseViewHolder
     onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_students_recyclerview, parent, false);
-        return new DatabaseViewHolder(view);
+        return new studentAdapter.DatabaseViewHolder(view);
     }
 
+    // Sub Class to create references of the views in Crad
+    // view (here "person.xml")
+    class DatabaseViewHolder
+            extends RecyclerView.ViewHolder {
+        TextView name, gender, brithdate;
+
+        public DatabaseViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+//            name = itemView.findViewById(R.id.StudentName);
+//            gender = itemView.findViewById(R.id.Gender);
+//            brithdate = itemView.findViewById(R.id.Age);
+        }
+
+    }
 }

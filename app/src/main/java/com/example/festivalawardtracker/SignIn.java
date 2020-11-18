@@ -49,6 +49,7 @@ public class SignIn extends AppCompatActivity {
         btnSignIn = findViewById(R.id.SignIn2);
 
         emailId.setText(email);
+        password.setText(passwd);
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override

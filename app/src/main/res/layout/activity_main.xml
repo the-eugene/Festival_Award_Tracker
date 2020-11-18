@@ -8,6 +8,11 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleTest"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <include
         layout="@layout/main_app_bar"
         android:layout_width="match_parent"
@@ -21,4 +26,6 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/main_header"
         app:menu="@menu/main_drawer" />
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" >
 </androidx.drawerlayout.widget.DrawerLayout>
