@@ -1,6 +1,10 @@
 package com.example.festivalawardtracker;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
+
+import com.google.android.material.tabs.TabLayout;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -53,15 +57,16 @@ public class Person extends DatabaseAware{
         return birthday.toString();
     }
     public void setBirthday(String birthday) {
-        /**
+        /*
          * MaterialDatePicker: https://developer.android.com/reference/com/google/android/material/datepicker/MaterialDatePicker.Builder?authuser=1
          * Date parsing issue: https://docs.oracle.com/javase/tutorial/datetime/iso/format.html
           */
+        DateTimeFormatter pattern;
         try {
-            DateTimeFormatter pattern = DateTimeFormatter.ofPattern("MMM dd, yyyy");
+            pattern = DateTimeFormatter.ofPattern("MMM dd, yyyy");
             this.birthday = LocalDate.parse(birthday, pattern);
         } catch (DateTimeParseException e) {
-            DateTimeFormatter pattern = DateTimeFormatter.ofPattern("MMM d, yyyy");
+            pattern = DateTimeFormatter.ofPattern("MMM d, yyyy");
             this.birthday = LocalDate.parse(birthday, pattern);
         }
     }
@@ -85,7 +90,7 @@ public class Person extends DatabaseAware{
         return Period.between(birthday, onDate).getYears();
     }
 
-    public String getShortLocation() {
+    public String shortLocation() {
         return String.format("%s, %s", getContact().city, getContact().stateCode());
     }
 

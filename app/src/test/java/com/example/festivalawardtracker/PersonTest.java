@@ -28,7 +28,7 @@ public class PersonTest {
     }
 
     @Test
-    public void name(){
+    public void testName(){
         Person p = new Person();
         p.setName("Timmy","Earl","Smith");
         assertEquals("Timmy", p.getFirstName());
@@ -38,7 +38,7 @@ public class PersonTest {
     }
 
     @Test
-    public void gender(){
+    public void testGender(){
         Person p = new Person();
         p.setGender(Person.Gender.FEMALE);
         assertEquals(p.getGenderString(),"Female");
@@ -47,27 +47,24 @@ public class PersonTest {
     }
 
     @Test
-    public void get_age() {
-        Person P = new Person();
-        P.setBirthday("Nov 3, 2010");
-        assertEquals(P.getAge(),10);
-        assertEquals(P.getAge(LocalDate.of(2020,11,2)),9);
-        assertEquals(P.getAge(LocalDate.of(2020,11,4)),10);
+    public void testAge() {
+        Person p = new Person();
+        p.setBirthday("Nov 3, 2010");
+        assertEquals(p.getAge(),10);
+        assertEquals(p.getAge(LocalDate.of(2020,11,2)),9);
+        assertEquals(p.getAge(LocalDate.of(2020,11,4)),10);
     }
 
     @Test
-    public void contact(){
+    public void testBirthday() {
         Person p = new Person();
-        p.setContact("Natasha's Cafe",
-                "859-259-2754",
-                "natasha@beetnik.com",
-                "112 Esplanade",
-                "Lexington",
-                "KY",
-                "40508"
-        );
-        assertEquals("KY", p.getContact().state);
+        p.setBirthday("Nov 23, 1990");
+        assertEquals(p.getBirthday(), "1990-11-23");
+    }
 
+    @Test
+    public void testContact(){
+        Person p = new Person();
         p.setContact("Natasha's Cafe",
                 "859-259-2754",
                 "natasha@beetnik.com",
@@ -82,9 +79,10 @@ public class PersonTest {
     }
 
     @Test
-    public void save(){
+    public void testSave(){
         person.save();
         assertNotNull(person.ID);
     }
 
+    @Test public void testLocation() { assertEquals( "Lexington, KY", person.shortLocation()); }
 }
