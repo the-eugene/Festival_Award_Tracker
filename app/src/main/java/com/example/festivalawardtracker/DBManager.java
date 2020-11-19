@@ -8,7 +8,7 @@ import java.util.Map;
 public class DBManager {
     static FirebaseDatabase DB;
     static{
-        DB=FirebaseDatabase.getInstance();
+        DB = FirebaseDatabase.getInstance();
     }
 
 //    static Map<Class<?>,Object> cache=new HashMap<>();

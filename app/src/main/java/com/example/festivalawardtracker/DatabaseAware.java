@@ -17,14 +17,14 @@ import java.lang.invoke.MethodHandles;
 import java.util.concurrent.ExecutionException;
 
 public class DatabaseAware {
-    String ID=null;
-    public void setID(String ID) {this.ID = ID;}
+    String ID = null;
+    public void setID(String ID) { this.ID = ID; }
 
     public void save(){
         DatabaseReference saveTo;
-        if (ID==null){
-            saveTo=DBManager.DB.getReference().child(this.getClass().getSimpleName()).push();
-            ID=saveTo.getKey();
+        if (ID == null) {
+            saveTo = DBManager.DB.getReference().child(this.getClass().getSimpleName()).push();
+            ID = saveTo.getKey();
         } else {
             saveTo=DBManager.DB.getReference().child(this.getClass().getSimpleName()).child(ID);
         }
