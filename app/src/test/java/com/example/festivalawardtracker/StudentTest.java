@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class StudentUnitTest {
+public class StudentTest {
     @Test
     public void instrument(){
         Student s = new Student();

@@ -9,9 +9,15 @@ import static org.junit.Assert.*;
 /**
  * Example local unit test, which will execute on the development machine (host).
  * @author Android SDK
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class _ExampleUnitTest {
+public class ExampleTest {
+    /**
+     * Useful reading on Unit Testing:
+     * http://d.android.com/tools/testing
+     * https://junit.org/junit4/cookbook.html Really quick reference.
+     * https://junit.org/junit4/faq.html#atests_16 Here you'll also find good examples.
+     */
+
     @Test
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);

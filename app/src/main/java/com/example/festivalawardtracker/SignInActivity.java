@@ -21,16 +21,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SignInActivity extends AppCompatActivity {
 
-    EditText emailId;
-    EditText password;
+    EditText emailInput;
+    EditText passwordInput;
 
     String email;
-    String passwd;
+    String password;
 
     Button btnSignIn;
     FirebaseAuth mAuth;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,37 +38,39 @@ public class SignInActivity extends AppCompatActivity {
 
         email = sharedPref.getString("Email",null);
 //        Log.d("email is ", email);
-//        Log.d("password is ", passw);
+//        Log.d("passwordInput is ", passw);
 
         mAuth = FirebaseAuth.getInstance();
-        emailId = findViewById(R.id.SignInEmailAddress);
-        password = findViewById(R.id.SignInPassword);
+        emailInput = findViewById(R.id.SignInEmailAddress);
+        passwordInput = findViewById(R.id.SignInPassword);
         btnSignIn = findViewById(R.id.SignIn2);
 
-        emailId.setText(email);
-        password.setText(passwd);
+        emailInput.setText(email);
+        passwordInput.setText(password);
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                email = emailId.getText().toString();
+                email = emailInput.getText().toString();
                 SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("Email", email);
-                editor.commit();
+                // https://medium.com/@dynamicy/the-difference-between-commit-and-apply-3093da13b831
+                editor.apply();
 
+                password = passwordInput.getText().toString();
 
-                passwd = password.getText().toString();
-                if(email.isEmpty()){
-                    emailId.setError("Please Enter your Email");
-                    emailId.requestFocus();
+                if(email.isEmpty()) {
+                    emailInput.setError("Please Enter your Email");
+                    emailInput.requestFocus();
                 }
-                else if (passwd.isEmpty()){
-                    password.setError("Please enter your password");
-                    password.requestFocus();
+                else if (password.isEmpty()){
+                    passwordInput.setError("Please enter your Password");
+                    passwordInput.requestFocus();
                 }
-                else if (!(email.isEmpty() && passwd.isEmpty())){
-                    mAuth.signInWithEmailAndPassword(email, passwd)
+                else if (!(email.isEmpty() && password.isEmpty())){
+                    // TODO The entire set of conditions above could be deleted and the activity would still works. Carlos
+                    mAuth.signInWithEmailAndPassword(email, password)
                             .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -85,7 +85,7 @@ public class SignInActivity extends AppCompatActivity {
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.w("SignInActivity", "signInWithEmail:failure", task.getException());
-                                        Toast.makeText(SignInActivity.this, "Authentication failed.",
+                                        Toast.makeText(SignInActivity.this, "Authentication failed",
                                                 Toast.LENGTH_SHORT).show();
                                         //updateUI(null);
                                         // ...

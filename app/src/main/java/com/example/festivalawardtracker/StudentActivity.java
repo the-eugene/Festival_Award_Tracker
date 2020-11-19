@@ -14,6 +14,10 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Objects;
+
+import static com.google.android.material.datepicker.MaterialDatePicker.*;
+
 /**
  * @author carloswashingtonmercado@gmail.com
  */
@@ -36,7 +40,7 @@ public class StudentActivity extends AppCompatActivity {
         toolbarStudent = findViewById(R.id.toolbarNewStudent);
         toolbarStudent.setTitle("Add student");
         setSupportActionBar(toolbarStudent);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         /* DROPDOWN LIST GENDER */
         String[] GENDER = Gender.Options();
@@ -62,9 +66,9 @@ public class StudentActivity extends AppCompatActivity {
 
         /* DATE PICKER */
         // Material Date Picker
-        MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
+        Builder<Long> builder = Builder.datePicker();
         builder.setTitleText("Student Birthday");
-        final MaterialDatePicker materialDatePicker = builder.build();
+        final MaterialDatePicker<Long> materialDatePicker = builder.build();
 
         // Setting Listener for Material Date Picker
         editTextDatePicker = findViewById(R.id.editTextStudentBirthdate);

@@ -44,7 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
                     emailId.requestFocus();
                 }
                 else if (passwd.isEmpty()) {
-                    password.setError("Please enter your password");
+                    password.setError("Please enter your Password");
                     password.requestFocus();
                 }
                 else if (!(email.isEmpty() && passwd.isEmpty())) {
