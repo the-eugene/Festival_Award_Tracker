@@ -14,7 +14,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class StudentDisplay extends Fragment {
+public class StudentDisplayFragment extends Fragment {
     private RecyclerView recyclerView;
     DatabaseReference database;
 

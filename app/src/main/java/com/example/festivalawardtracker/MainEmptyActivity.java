@@ -28,7 +28,7 @@ public class MainEmptyActivity extends AppCompatActivity {
             activityIntent = new Intent(this, MainActivity.class);
 
         } else {
-            activityIntent = new Intent(this, LogInOptions.class);
+            activityIntent = new Intent(this, LogInOptionsActivity.class);
         }
 
         startActivity(activityIntent);

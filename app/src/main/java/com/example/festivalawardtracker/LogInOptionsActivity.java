@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class LogInOptions extends AppCompatActivity {
+public class LogInOptionsActivity extends AppCompatActivity {
 
     Button btnSignUp;
     Button btnSignIn;
@@ -21,7 +21,7 @@ public class LogInOptions extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View V){
-               Intent activityIntent = new Intent(LogInOptions.this, SignUp.class);
+               Intent activityIntent = new Intent(LogInOptionsActivity.this, SignUpActivity.class);
                startActivity(activityIntent);
                finish();
            }
@@ -29,7 +29,7 @@ public class LogInOptions extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View V){
-                Intent activityIntent = new Intent(LogInOptions.this, SignIn.class);
+                Intent activityIntent = new Intent(LogInOptionsActivity.this, SignInActivity.class);
                 startActivity(activityIntent);
                 finish();
             }

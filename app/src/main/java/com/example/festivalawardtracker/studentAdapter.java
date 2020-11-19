@@ -1,6 +1,5 @@
 package com.example.festivalawardtracker;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +12,14 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 
 public class studentAdapter extends FirebaseRecyclerAdapter<
-        StudentDisplay, studentAdapter.DatabaseViewHolder> {
+        StudentDisplayFragment, studentAdapter.DatabaseViewHolder> {
 
-    public studentAdapter(@NonNull FirebaseRecyclerOptions<StudentDisplay> options) {
+    public studentAdapter(@NonNull FirebaseRecyclerOptions<StudentDisplayFragment> options) {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull DatabaseViewHolder holder, int position, @NonNull StudentDisplay model) {
+    protected void onBindViewHolder(@NonNull DatabaseViewHolder holder, int position, @NonNull StudentDisplayFragment model) {
 //        holder.name.setText(model.getFname());
 //        Log.d("setName", model.getFname());
 //        holder.gender.setText(model.getGender());

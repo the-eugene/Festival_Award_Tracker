@@ -7,7 +7,7 @@ import android.os.Bundle;
 /**
  * @author carloswashingtonmercado@gmail.com
  */
-public class EventActivityDisplay extends AppCompatActivity {
+public class EventDisplayActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
