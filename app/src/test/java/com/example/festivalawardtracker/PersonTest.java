@@ -78,11 +78,11 @@ public class PersonTest {
         assertEquals("Natasha's Cafe\n112 Esplanade\nLexington, KY  40508", p.getContact().fullAddress());
     }
 
-    @Test
-    public void testSave(){
-        person.save();
-        assertNotNull(person.ID);
-    }
+//    @Test
+//    public void testSave() {
+//        person.ID = null;
+//        person.save();
+//    }
 
     @Test public void testLocation() { assertEquals( "Lexington, KY", person.shortLocation()); }
 }
