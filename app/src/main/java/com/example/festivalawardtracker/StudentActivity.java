@@ -89,16 +89,6 @@ public class StudentActivity extends AppCompatActivity {
             }
         });
 
-        /* NEW ACTIVITY: Student Contact */
-        MaterialButton btnAddContact = findViewById(R.id.btnStudentAddContact);
-        btnAddContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent activityIntent = new Intent(StudentActivity.this, ContactActivity.class);
-                startActivity(activityIntent);
-            }
-        });
-
         /* NEW ACTIVITY: Student Parent */
         MaterialButton btnAddParent = findViewById(R.id.btnStudentAddParent);
         btnAddParent.setOnClickListener(new View.OnClickListener() {

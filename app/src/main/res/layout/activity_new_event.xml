@@ -100,6 +100,40 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutStudentPhoneNumber"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="32dp"
+                android:hint="@string/phone_number"
+                app:boxBackgroundMode="outline"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventEndingDate">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextStudentPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <include
+                android:id="@+id/include_address"
+                layout="@layout/include_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutStudentPhoneNumber">
+
+            </include>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutNewEventDescription"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -113,7 +147,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventEndingDate">
+                app:layout_constraintTop_toBottomOf="@+id/include_address">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextNewEventDescription"
                     android:inputType="textMultiLine"
@@ -122,29 +156,18 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnEventAddContact"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="148dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="32dp"
-                android:text="@string/add_contact"
-                app:flow_horizontalAlign="start"
-                app:layout_constraintEnd_toStartOf="@+id/btnSaveParent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventDescription" />
-
-            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSaveParent"
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="40dp"
                 android:text="SAVE EVENT"
                 app:flow_horizontalAlign="start"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventDescription"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventDescription" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_search"
@@ -14,36 +9,6 @@
         android:icon="@drawable/ic_baseline_search_24"
         android:title="Search"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
-
-    <item
-        android:id="@+id/action_export"
-        android:orderInCategory="100"
-        app:showAsAction="never"
-        android:title="Export" />
-
-    <item
-        android:id="@+id/action_feedback"
-        android:orderInCategory="100"
-        app:showAsAction="never"
-        android:title="Feedback" />
-
-    <item
-        android:id="@+id/action_about"
-        android:orderInCategory="100"
-        app:showAsAction="never"
-        android:title="About" />
-
-    <item
-        android:id="@+id/action_test1"
-        android:orderInCategory="100"
-        app:showAsAction="never"
-        android:title="Test1" />
-
-    <item
-        android:id="@+id/action_test2"
-        android:orderInCategory="100"
-        app:showAsAction="never"
-        android:title="Test2" />
 
 
 </menu>

@@ -47,6 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
                     password.setError("Please enter your Password");
                     password.requestFocus();
                 }
+
                 else if (!(email.isEmpty() && passwd.isEmpty())) {
                     mAuth.createUserWithEmailAndPassword(email, passwd)
                             .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {

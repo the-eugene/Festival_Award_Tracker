@@ -68,7 +68,7 @@
         "interact, and exist in space and in relation to each other. Realistic lighting shows "
         "seams, divides space, and indicates moving parts.\n\n"
     </string>
-    <string name="business">Business</string>
+    <string name="type">Type</string>
     <string name="city">City</string>
     <string name="state">State</string>
     <string name="zip">Zip</string>
@@ -82,4 +82,7 @@
     <string name="search">Search</string>
     <string name="search_event">Search Event</string>
     <string name="event_list">Event List</string>
+    <string name="business">Business</string>
+    <string name="add_address">Add Address</string>
+    <string name="festival_award_tracker">Festival Award Tracker</string>
 </resources>

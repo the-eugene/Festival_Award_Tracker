@@ -141,29 +141,28 @@
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnParentAddContact"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="148dp"
+            <include
+                android:id="@+id/include_address"
+                layout="@layout/include_address"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="32dp"
-                android:text="@string/add_contact"
-                app:flow_horizontalAlign="start"
-                app:layout_constraintEnd_toStartOf="@+id/btnSaveParent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutParentBirthdate" />
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutParentBirthdate">
+
+            </include>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSaveParent"
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="32dp"
                 android:text="@string/fui_button_text_save"
                 app:flow_horizontalAlign="start"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutParentBirthdate"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include_address" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

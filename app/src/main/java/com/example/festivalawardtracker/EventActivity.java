@@ -87,14 +87,5 @@ public class EventActivity extends AppCompatActivity {
             }
         });
 
-        /* NEW ACTIVITY: Event Contact */
-        MaterialButton btnAddContact = findViewById(R.id.btnEventAddContact);
-        btnAddContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent activityIntent = new Intent(EventActivity.this, ContactActivity.class);
-                startActivity(activityIntent);
-            }
-        });
     }
 }

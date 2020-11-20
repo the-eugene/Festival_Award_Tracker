@@ -74,14 +74,5 @@ public class ParentActivity extends AppCompatActivity {
             }
         });
 
-        /* NEW ACTIVITY: Parent Contact */
-        MaterialButton btnAddContact = findViewById(R.id.btnParentAddContact);
-        btnAddContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent activityIntent = new Intent(ParentActivity.this, ContactActivity.class);
-                startActivity(activityIntent);
-            }
-        });
     }
 }
