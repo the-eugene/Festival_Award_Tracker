@@ -16,7 +16,7 @@ public class PersonTest {
     static {
         person.setName("Eugene", "Alexander", "Williams");
         person.setGender(Person.Gender.MALE);
-        person.setBirthday("Aug 24, 1977");
+        person.birthday = LocalDate.of(1977,9,24);
         person.setContact("Natasha's Cafe",
                 "859-259-2754",
                 "natasha@beetnik.com",
@@ -49,7 +49,7 @@ public class PersonTest {
     @Test
     public void testAge() {
         Person p = new Person();
-        p.setBirthday("Nov 3, 2010");
+        p.birthday = LocalDate.of(2010,11,3);
         assertEquals(p.getAge(),10);
         assertEquals(p.getAge(LocalDate.of(2020,11,2)),9);
         assertEquals(p.getAge(LocalDate.of(2020,11,4)),10);
@@ -58,7 +58,8 @@ public class PersonTest {
     @Test
     public void testBirthday() {
         Person p = new Person();
-        p.setBirthday("Nov 23, 1990");
+//        p.setBirthday("Nov 23, 1990");
+        p.birthday = LocalDate.of(1990,11,23);
         assertEquals(p.getBirthday(), "1990-11-23");
     }
 
