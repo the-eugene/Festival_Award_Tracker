@@ -56,21 +56,8 @@ public class Person extends DatabaseAware{
     public String getBirthday() {
         return birthday.toString();
     }
-    public void setBirthday(String birthday) {
-        /*
-         * MaterialDatePicker: https://developer.android.com/reference/com/google/android/material/datepicker/MaterialDatePicker.Builder?authuser=1
-         * Date parsing issue: https://docs.oracle.com/javase/tutorial/datetime/iso/format.html
-          */
-        DateTimeFormatter pattern;
-        try {
-            pattern = DateTimeFormatter.ofPattern("MMM dd, yyyy");
-            this.birthday = LocalDate.parse(birthday, pattern);
-        } catch (DateTimeParseException e) {
-            pattern = DateTimeFormatter.ofPattern("MMM d, yyyy");
-            this.birthday = LocalDate.parse(birthday, pattern);
-        }
+    public void setBirthday(String birthday) { this.birthday = LocalDate.parse(birthday);
     }
-
     public Contact getContact() { return contact; }
     public void setContact(Contact contact) { this.contact = contact; }
 
