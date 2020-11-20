@@ -1,0 +1,107 @@
+Index: app/src/main/java/com/example/festivalawardtracker/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.festivalawardtracker;\n\nimport android.app.SearchManager;\nimport android.content.Context;\nimport android.content.Context;\nimport android.content.Intent;\nimport android.os.Bundle;\nimport android.view.MenuItem;\nimport android.os.Parcel;\nimport android.os.Parcelable;\nimport android.util.Log;\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.Menu;\nimport android.widget.EditText;\nimport android.widget.Toast;\n\n\nimport com.firebase.ui.auth.AuthUI;\n\nimport com.firebase.ui.auth.IdpResponse;\nimport com.firebase.ui.database.FirebaseRecyclerOptions;\nimport com.google.android.gms.tasks.OnCompleteListener;\nimport com.google.android.gms.tasks.Task;\nimport com.google.android.material.button.MaterialButton;\nimport com.google.android.material.floatingactionbutton.FloatingActionButton;\nimport com.google.android.material.navigation.NavigationView;\nimport com.google.android.material.textfield.TextInputLayout;\nimport com.google.firebase.auth.FirebaseAuth;\nimport com.google.firebase.auth.FirebaseUser;\nimport com.google.firebase.database.DataSnapshot;\nimport com.google.firebase.database.DatabaseError;\nimport com.google.firebase.database.DatabaseReference;\nimport com.google.firebase.database.FirebaseDatabase;\nimport com.google.firebase.database.ValueEventListener;\n\nimport androidx.annotation.NonNull;\nimport androidx.appcompat.widget.SearchView;\nimport androidx.navigation.NavController;\nimport androidx.navigation.Navigation;\nimport androidx.navigation.ui.AppBarConfiguration;\nimport androidx.navigation.ui.NavigationUI;\nimport androidx.drawerlayout.widget.DrawerLayout;\nimport androidx.appcompat.app.AppCompatActivity;\nimport androidx.appcompat.widget.Toolbar;\nimport androidx.recyclerview.widget.LinearLayoutManager;\nimport androidx.recyclerview.widget.RecyclerView;\nimport androidx.viewpager.widget.ViewPager;\n\nimport java.util.Arrays;\nimport java.util.HashMap;\nimport java.util.List;\n\npublic class MainActivity extends AppCompatActivity {\n\n    private AppBarConfiguration mAppBarConfiguration;\n    private static final int RC_SIGN_IN = 123;\n\n    // FRAGMENT HOME RECYCLERVIEW variables\n    private RecyclerView recyclerView;\n    studentAdapter adapter;\n    DatabaseReference database;\n//    private RecyclerView.Adapter mAdapter;\n    private RecyclerView.LayoutManager layoutManager;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_main);\n\n        Toolbar mToolbar = findViewById(R.id.main_toolbar);\n        setSupportActionBar(mToolbar);\n        mToolbarMenuAction(mToolbar);\n\n        DrawerLayout drawer = findViewById(R.id.drawer_layout);\n        NavigationView navigationView = findViewById(R.id.nav_view);\n        // Passing each menu ID as a set of Ids because each\n        // menu should be considered as top level destinations.\n        mAppBarConfiguration = new AppBarConfiguration.Builder(\n                R.id.nav_home, R.id.nav_festival, R.id.nav_event)\n                .setDrawerLayout(drawer)\n                .build();\n        // https://developer.android.com/guide/navigation/navigation-navigate?authuser=1\n        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);\n        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);\n        NavigationUI.setupWithNavController(navigationView, navController);\n\n        // TODO: FRAGMENT HOME RECYCLERVIEW\n        database = FirebaseDatabase.getInstance().getReference();\n        recyclerView = findViewById(R.id.recycleTest);\n        recyclerView.setLayoutManager(new LinearLayoutManager(this));\n\n        FirebaseRecyclerOptions<StudentDisplay> options = new FirebaseRecyclerOptions.Builder<StudentDisplay>()\n                .setQuery(database, StudentDisplay.class).build();\n        adapter = new studentAdapter(options);\n        recyclerView.setAdapter(adapter);\n\n\n//        @Override\n//        public int describeContents () {\n//            return 0;\n//        }\n//\n//        @Override\n//        public void writeToParcel (Parcel dest,int flags){\n//\n//        }\n//\n//        public static final Parcelable.Creator<> CREATOR = new Parcelable.Creator<>() {\n//            @Override\n//            public  createFromParcel(Parcel in) {\n//                return new (in);\n//            }\n//\n//            @Override\n//            public [] newArray(int size) {\n//                return new [size];\n//            }\n//        };\n\n        // TODO: Works Here but I think it should have its own class?\n//        MaterialButton button = findViewById(R.id.btnSaveStudent);\n//        button.setOnClickListener((View.OnClickListener) {\n//\n////                Toast.makeText(this, \"Student Saved\", Toast.LENGTH_SHORT).show();\n//\n//        database = FirebaseDatabase.getInstance().getReference(\"student\");\n//        EditText editFirstName = (EditText) findViewById(R.id.editTextStudentName);\n//        //        EditText editLastName = (EditText) findViewById(R.id.editTextStudentLastName);\n//        //        EditText editBirthDate = (EditText) findViewById(R.id.editTextBirthDate);\n//        //        Spinner editGender = (Spinner) findViewById(R.id.spinnerGender);\n//        //        EditText editPhoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);\n//        //        Spinner editInstruments = (Spinner) findViewById(R.id.spinnerInstruments);\n//        //        EditText editTeacher = (EditText) findViewById(R.id.editTextTeachersName);\n//\n//        String FirstName = editFirstName.getText().toString().trim();\n//        //        String lastName = editLastName.getText().toString().trim();\n//        //        String birthDate = editBirthDate.getText().toString().trim();\n//        //        String gender = editGender.getSelectedItem().toString();\n//        //        String phoneNumber = editPhoneNumber.getText().toString().trim();\n//        //        String instrument = editInstruments.getSelectedItem().toString();\n//        //        String teacher = editTeacher.getText().toString().trim();\n//\n//        //        studentDatabase student = new studentDatabase(FirstName, lastName, birthDate, gender, phoneNumber, instrument, teacher);\n//        //        studentDatabase student = new studentDatabase(FirstName);\n//        String id = database.push().getKey();\n//\n//        //        database.child(id).setValue(student);\n//\n//\n//        recyclerView.setAdapter(mAdapter);\n        // TODO: specify an adapter (see also next example) using information from the links\n//        mAdapter = new MyAdapter(myDataset);\n        /*\n          https://medium.com/@relferreira/goodbye-listview-recyclerview-f83dc1133850\n          https://developer.android.com/guide/topics/ui/layout/recyclerview?authuser=1\n          */\n//        recyclerView.setAdapter(mAdapter);\n    }\n\n    private void mToolbarMenuAction(Toolbar mToolbar) {\n        // TODO Maybe with a OnClickListener, for the items in the inflated menu\n    }\n\n\n//      TODO: delete this if new implementation works. - Jimmy\n    // Whos deleting this? Carlos\n\n//    @Override\n//    protected  void onStart() {\n//        super.onStart();\n//        FirebaseRecyclerAdapter<studentDatabase,DatabaseViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerOptions<studentDatabase, DatabaseViewHolder>\n//                (studentDatabase.class, R.layout.fragment_home_recyclerview_row_studentminiawards, DatabaseViewHolder.class,database) {\n//\n//\n//            @Override\n//            protected void onBindViewHolder(DatabaseViewHolder holder, int position,studentDatabase model) {\n//                holder.setName(model.getFname() + model.getLname());\n//                holder.setGender(model.getGender());\n//                holder.setBirthday(model.getBdate());\n//            }\n//\n//        };\n//\n//        recyclerView.setAdapter(firebaseRecyclerAdapter);\n//        firebaseRecyclerAdapter.startListening();\n//\n//\n//    }\n\n\n    /**\n     * @author carloswashingtonmercado@gmail.com\n     * @param menu\n     * @return\n     * @link <a>https://stackoverflow.com/a/37562572/7389293</a> Not used\n     * @link <a>https://developer.android.com/guide/topics/search/search-dialog.html#UsingSearchWidget</a>\n     * This is the solution I used here.\n     * @link <a>https://developer.android.com/guide/topics/ui/layout/recyclerview?authuser=1</a>\n     * Not used\n     */\n    @Override\n    public boolean onCreateOptionsMenu(Menu menu) {\n        // Inflate the menu; this adds items to the action bar if it is present.\n//        getMenuInflater().inflate(R.menu.main_activity2, menu);\n        getMenuInflater().inflate(R.menu.main_menu, menu);\n        final MenuItem searchItem = menu.findItem(R.id.action_search);\n\n        // Get the SearchView and set the searchable configuration\n        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);\n        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();\n        // Assumes current activity is the searchable activity\n        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));\n        searchView.setIconifiedByDefault(true); // Iconify the widget by default\n\n        return true;\n\n        // TODO https://developer.android.com/guide/topics/search/search-dialog.html#UsingSearchWidget\n        // It is possible to generate a query seach from the main toolbar search option (magnifier). CARLOS\n\n//        Inflate the options menu from XML\n//        MenuInflater mMenuInflater = getMenuInflater();\n//        mMenuInflater.inflate(R.menu.main_activity, menu);\n//\n//        // Get the SearchView and set the searchable configuration\n//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);\n//        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();\n//        // Assumes current activity is the searchable activity\n//        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));\n//        searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default\n    }\n\n    @Override\n    public boolean onSupportNavigateUp() {\n        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);\n        return NavigationUI.navigateUp(navController, mAppBarConfiguration)\n                || super.onSupportNavigateUp();\n    }\n\n    public void createSignInIntent(View view) {\n        // [START auth_fui_create_intent]\n        // Choose authentication providers\n        List<AuthUI.IdpConfig> providers = Arrays.asList(\n                new AuthUI.IdpConfig.EmailBuilder().build());\n\n        // Create and launch sign-in intent\n        startActivityForResult(\n                AuthUI.getInstance()\n                        .createSignInIntentBuilder()\n                        .setAvailableProviders(providers)\n                        .build(),\n                RC_SIGN_IN);\n        // [END auth_fui_create_intent]\n    }\n\n    // [START auth_fui_result]\n    @Override\n    protected void onActivityResult(int requestCode, int resultCode, Intent data) {\n        super.onActivityResult(requestCode, resultCode, data);\n\n        if (requestCode == RC_SIGN_IN) {\n            IdpResponse response = IdpResponse.fromResultIntent(data);\n\n            if (resultCode == RESULT_OK) {\n                // Successfully signed in\n                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();\n                // ...\n            } else {\n                // Sign in failed. If response is null the user canceled the\n                // sign-in flow using the back button. Otherwise check\n                // response.getError().getErrorCode() and handle the error.\n                // ...\n            }\n        }\n    }\n    // [END auth_fui_result]\n\n    public void signOut(View view) {\n        // [START auth_fui_signout]\n        AuthUI.getInstance()\n                .signOut(this)\n                .addOnCompleteListener(new OnCompleteListener<Void>() {\n                    public void onComplete(@NonNull Task<Void> task) {\n                        // ...\n                    }\n                });\n        // [END auth_fui_signout]\n    }\n\n    public void questionIsItClickable(View view) {\n        Toast.makeText(this, \"It is toasting, yeah.\", Toast.LENGTH_SHORT).show();\n    }\n\n// TODO: Works Here but I think it should have its own class?\n\n    public void saveStudent(View view) {\n        Toast.makeText(this, \"Student Saved\", Toast.LENGTH_SHORT).show();\n\n        database = FirebaseDatabase.getInstance().getReference(\"student\");\n        EditText editFirstName = (EditText) findViewById(R.id.editTextStudentName);\n//        EditText editLastName = (EditText) findViewById(R.id.editTextStudentLastName);\n//        EditText editBirthDate = (EditText) findViewById(R.id.editTextBirthDate);\n//        Spinner editGender = (Spinner) findViewById(R.id.spinnerGender);\n//        EditText editPhoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);\n//        Spinner editInstruments = (Spinner) findViewById(R.id.spinnerInstruments);\n//        EditText editTeacher = (EditText) findViewById(R.id.editTextTeachersName);\n\n        String FirstName = editFirstName.getText().toString().trim();\n//        String lastName = editLastName.getText().toString().trim();\n//        String birthDate = editBirthDate.getText().toString().trim();\n//        String gender = editGender.getSelectedItem().toString();\n//        String phoneNumber = editPhoneNumber.getText().toString().trim();\n//        String instrument = editInstruments.getSelectedItem().toString();\n//        String teacher = editTeacher.getText().toString().trim();\n\n//        studentDatabase student = new studentDatabase(FirstName, lastName, birthDate, gender, phoneNumber, instrument, teacher);\n//        studentDatabase student = new studentDatabase(FirstName);\n        String id = database.push().getKey();\n\n//        database.child(id).setValue(student);\n\n\n    }\n\n    /**\n     * @author Carlos\n     * @param item\n     * Functionality for the log out button.\n     */\n    public void loggingOut(MenuItem item) {\n        // Accesing Items in the Menu Drawer, using OnClick attribute in the drawer menu xml file\n        // https://developer.android.com/guide/topics/resources/menu-resource\n        AuthUI.getInstance()\n        .signOut(MainActivity.this)\n        .addOnCompleteListener(new OnCompleteListener<Void>() {\n            public void onComplete(@NonNull Task<Void> task) {\n                Intent activityIntent = new Intent(MainActivity.this, LogInOptions.class);\n                startActivity(activityIntent);\n                finish();\n            }\n        });\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/festivalawardtracker/MainActivity.java	(revision d183a2d873dac8b1d5bf1e3863a6a5a3586423e0)
++++ app/src/main/java/com/example/festivalawardtracker/MainActivity.java	(date 1605832207000)
+@@ -253,39 +253,7 @@
+         // [END auth_fui_create_intent]
+     }
+ 
+-    // [START auth_fui_result]
+-    @Override
+-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+-        super.onActivityResult(requestCode, resultCode, data);
+-
+-        if (requestCode == RC_SIGN_IN) {
+-            IdpResponse response = IdpResponse.fromResultIntent(data);
+ 
+-            if (resultCode == RESULT_OK) {
+-                // Successfully signed in
+-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+-                // ...
+-            } else {
+-                // Sign in failed. If response is null the user canceled the
+-                // sign-in flow using the back button. Otherwise check
+-                // response.getError().getErrorCode() and handle the error.
+-                // ...
+-            }
+-        }
+-    }
+-    // [END auth_fui_result]
+-
+-    public void signOut(View view) {
+-        // [START auth_fui_signout]
+-        AuthUI.getInstance()
+-                .signOut(this)
+-                .addOnCompleteListener(new OnCompleteListener<Void>() {
+-                    public void onComplete(@NonNull Task<Void> task) {
+-                        // ...
+-                    }
+-                });
+-        // [END auth_fui_signout]
+-    }
+ 
+     public void questionIsItClickable(View view) {
+         Toast.makeText(this, "It is toasting, yeah.", Toast.LENGTH_SHORT).show();
+Index: app/src/main/res/menu/main_menu.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<menu xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\">\n    <item\n        android:id=\"@+id/action_settings\"\n        android:orderInCategory=\"100\"\n        android:title=\"@string/action_settings\"\n        app:showAsAction=\"never\" />\n\n    <item\n        android:id=\"@+id/action_search\"\n        android:orderInCategory=\"100\"\n        app:showAsAction=\"always\"\n        android:icon=\"@drawable/ic_baseline_search_24\"\n        android:title=\"Search\"\n        app:actionViewClass=\"androidx.appcompat.widget.SearchView\" />\n\n    <item\n        android:id=\"@+id/action_export\"\n        android:orderInCategory=\"100\"\n        app:showAsAction=\"never\"\n        android:title=\"Export\" />\n\n    <item\n        android:id=\"@+id/action_feedback\"\n        android:orderInCategory=\"100\"\n        app:showAsAction=\"never\"\n        android:title=\"Feedback\" />\n\n    <item\n        android:id=\"@+id/action_about\"\n        android:orderInCategory=\"100\"\n        app:showAsAction=\"never\"\n        android:title=\"About\" />\n\n    <item\n        android:id=\"@+id/action_test1\"\n        android:orderInCategory=\"100\"\n        app:showAsAction=\"never\"\n        android:title=\"Test1\" />\n\n    <item\n        android:id=\"@+id/action_test2\"\n        android:orderInCategory=\"100\"\n        app:showAsAction=\"never\"\n        android:title=\"Test2\" />\n\n\n</menu>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/menu/main_menu.xml	(revision d183a2d873dac8b1d5bf1e3863a6a5a3586423e0)
++++ app/src/main/res/menu/main_menu.xml	(date 1605762379000)
+@@ -1,11 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <menu xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto">
+-    <item
+-        android:id="@+id/action_settings"
+-        android:orderInCategory="100"
+-        android:title="@string/action_settings"
+-        app:showAsAction="never" />
+ 
+     <item
+         android:id="@+id/action_search"
+@@ -15,35 +10,5 @@
+         android:title="Search"
+         app:actionViewClass="androidx.appcompat.widget.SearchView" />
+ 
+-    <item
+-        android:id="@+id/action_export"
+-        android:orderInCategory="100"
+-        app:showAsAction="never"
+-        android:title="Export" />
+-
+-    <item
+-        android:id="@+id/action_feedback"
+-        android:orderInCategory="100"
+-        app:showAsAction="never"
+-        android:title="Feedback" />
+-
+-    <item
+-        android:id="@+id/action_about"
+-        android:orderInCategory="100"
+-        app:showAsAction="never"
+-        android:title="About" />
+-
+-    <item
+-        android:id="@+id/action_test1"
+-        android:orderInCategory="100"
+-        app:showAsAction="never"
+-        android:title="Test1" />
+-
+-    <item
+-        android:id="@+id/action_test2"
+-        android:orderInCategory="100"
+-        app:showAsAction="never"
+-        android:title="Test2" />
+-
+ 
+ </menu>
+\ No newline at end of file
