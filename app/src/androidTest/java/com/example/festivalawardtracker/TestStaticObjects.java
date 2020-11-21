@@ -1,6 +1,7 @@
 package com.example.festivalawardtracker;
 
 import java.time.LocalDate;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class TestStaticObjects {
@@ -13,6 +14,17 @@ public class TestStaticObjects {
                 "KY",
                 "40508");
     }
+
+    static Contact setUpContact2(){
+        return new Contact(    "",
+                "(123) 456-7890",
+                "info@spacetime.com",
+                "1151 Manchester St",
+                "Baton Rouge",
+                "LA",
+                "70726");
+    }
+
     static Person setUpPerson(){
         Person person = new Person();
         person.setName("Eugene", "Alexander", "Williams");
@@ -30,77 +42,97 @@ public class TestStaticObjects {
         return person;
     }
 
+    static Festival setUpFestival1(){
+        Festival festival1 = new Festival();
+        festival1.isNFMC=true;
+        festival1.name="String Festival";
+        return festival1;
+    }
+
+    static Festival setUpFestival2(){
+        Festival festival = new Festival();
+        festival.isNFMC=true;
+        festival.name="Piano Festival";
+        return festival;
+    }
+
+    static EventDescription setUpEventDescription1(){
+        EventDescription eventDescription = new EventDescription();
+        eventDescription.setName("Violin Solo");
+        eventDescription.setDescription("Students play their violins all alone while the world judges");
+        eventDescription.setInstrument(Instrument.violin);
+        return eventDescription;
+    }
+
+    static EventDescription setUpEventDescription2(){
+        EventDescription eventDescription = new EventDescription();
+        eventDescription.setName("Violin Duet");
+        eventDescription.setDescription("Playing violins together, preferably in sync");
+        eventDescription.setInstrument(Instrument.violin);
+        return eventDescription;
+    }
+
+    static EventDescription setUpEventDescription3(){
+        EventDescription eventDescription = new EventDescription();
+        eventDescription.setName("Piano Solo");
+        eventDescription.setDescription("A solo piano event");
+        eventDescription.setInstrument(Instrument.piano);
+        return eventDescription;
+    }
+
+    static EventDescription setUpEventDescription4(){
+        EventDescription eventDescription = new EventDescription();
+        eventDescription.setName("Piano Hymn");
+        eventDescription.setDescription("Piano hymn event");
+        eventDescription.setInstrument(Instrument.piano);
+        return eventDescription;
+    }
+
+    static SchoolYear setUpSchoolYear1(){
+        SchoolYear year = new SchoolYear();
+        year.setName("2018-2019 School Year");
+        year.setStart(String.valueOf(LocalDate.of(2018,8,15)));
+        year.setEnd(String.valueOf(LocalDate.of(2019,5,15)));
+        year.setSequence(0);
+        return year;
+    }
+
+    static SchoolYear setUpSchoolYear2(){
+        SchoolYear year = new SchoolYear();
+        year.setName("2019-2020 School Year");
+        year.setStart(String.valueOf(LocalDate.of(2019,8,15)));
+        year.setEnd(String.valueOf(LocalDate.of(2020,5,15)));
+        year.setSequence(1);
+        return year;
+    }
+
+    static Event setUpEvent(SchoolYear year){
+        Event event=new Event();
+        event.start=between(year.start,year.end);
+        event.end=between(event.start,event.start.plusDays(7));
+        event.setLocation(setUpContact1());
+        return event;
+    }
+
     static Student setUpStudent() {
         Student student = new Student();
         student.setName("Alice", "Becky", "Callaway");
         student.setGender(Student.Gender.FEMALE);
         student.birthday = LocalDate.of(2007, 12, 20);
-        student.setContact("",
-                "(123) 456-7890",
-                "info@spacetime.com",
-                "1151 Manchester St",
-                "Baton Rouge",
-                "LA",
-                "70726"
-        );
+        student.setContact(setUpContact2());
         student.addInstrument(Instrument.violin);
         student.addInstrument(Instrument.cello);
-        student.addPerformance(setUpEvent1().ID,
-                LocalDate.of(2019,4,3),
-                "PP",
-                5);
         return student;
     }
+    public static LocalDate between(LocalDate startInclusive, LocalDate endExclusive) {
+        long startEpochDay = startInclusive.toEpochDay();
+        long endEpochDay = endExclusive.toEpochDay();
+        long randomDay = ThreadLocalRandom
+                .current()
+                .nextLong(startEpochDay, endEpochDay);
 
-    static Event setUpEvent1(){
-        Event event=new Event();
-        event.setSchoolYearID("2019");
-        event.setStart(String.valueOf(LocalDate.of(2019,4,3)));
-        event.setEnd(String.valueOf(LocalDate.of(2019,4,3)));
-        event.setLocation(setUpContact1());
-        event.setEventDescriptionID("NFMC Strings 001");
-        return event;
+        return LocalDate.ofEpochDay(randomDay);
     }
 
-    static Event setUpEvent2(){
-        Event event2=new Event();
-        event2.setSchoolYearID("2019");
-        event2.setStart(String.valueOf(LocalDate.of(2019,2,3)));
-        event2.setEnd(String.valueOf(LocalDate.of(2019,2,3)));
-        event2.setLocation(setUpContact1());
-        event2.setEventDescriptionID("NFMC Piano 001");
-        return event2;
-    }
-
-    static SchoolYear setUpSchoolYear1(){
-        SchoolYear year = new SchoolYear();
-        year.setName("Year One");
-        year.setStart(String.valueOf(LocalDate.of(2018,8,15)));
-        year.setEnd(String.valueOf(LocalDate.of(2019,5,15)));
-        year.setSequence(2019);
-        return year;
-    }
-
-    static EventDescription setUpEventDescriptions1(){
-        EventDescription eventDescription = new EventDescription();
-        eventDescription.setName("NFMC Strings");
-        eventDescription.setDescription("Strings Event for 2019");
-        eventDescription.setInstrument(Instrument.violin);
-        eventDescription.setFestivalID("NFMC Strings 001");
-        return eventDescription;
-    }
-
-    static EventDescription setUpEventDescriptions2(){
-        EventDescription eventDescription2 = new EventDescription();
-        eventDescription2.setName("NFMC Piano");
-        eventDescription2.setDescription("Piano Event for 2019");
-        eventDescription2.setInstrument(Instrument.piano);
-        eventDescription2.setFestivalID("NFMC Piano 001");
-        return eventDescription2;
-    }
-
-    static Festival setUpFestival1(){
-        Festival festival1 = new Festival();
-        return festival1;
-    }
 }
+

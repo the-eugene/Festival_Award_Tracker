@@ -1,33 +1,19 @@
 package com.example.festivalawardtracker;
 
+import com.google.common.net.InternetDomainName;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class DBManager {
-    static FirebaseDatabase DB;
-    static{
-        DB = FirebaseDatabase.getInstance();
-    }
 
-//    static Map<Class<?>,Object> cache=new HashMap<>();
-//    static Map<String,Class<?>> mapping=new HashMap<>();
-//    static{
-//        mapping.put("Teacher",Teacher.class);
-//        mapping.put("Student",Student.class);
-//        mapping.put("Person",Person.class);
-//        mapping.put("Event",Event.class);
-//        mapping.put("EventDescription",EventDescription.class);
-//        mapping.put("Festival",Festival.class);
-//        mapping.put("SchoolYear",SchoolYear.class);
-//        for (Map.Entry<String,Class<?>> entry : mapping.entrySet()) {
-//            cache.put(
-//                entry.getValue(),
-//                new DatabaseHashMap<String,Object>()
-//            );
-//        }
-//    }
+    public static FirebaseDatabase DB = FirebaseDatabase.getInstance();
+    public static DatabaseReference currentDB;
+    static {
+        setCurrentDB("");
+    }
 
     static Map<String, Teacher> Teachers=new DatabaseHashMap<>(Teacher.class);
     static Map<String, Student> Students=new DatabaseHashMap<>(Student.class);
@@ -36,6 +22,10 @@ public class DBManager {
     static Map<String, EventDescription> EventDescriptions=new DatabaseHashMap<>(EventDescription.class);
     static Map<String, Festival> Festivals=new DatabaseHashMap<>(Festival.class);
     static Map<String, SchoolYear> SchoolYears=new DatabaseHashMap<>(SchoolYear.class);
+
+    public static void setCurrentDB(String location){
+        currentDB=location.isEmpty()?DB.getReference():DB.getReference(location);
+    }
 
     public static <T extends DatabaseAware> boolean saveData(T obj){
         String key=obj.ID;
@@ -57,5 +47,33 @@ public class DBManager {
         //not in cache
         return null; //TODO: Search DB by sequence
     }
+
+    public static void linkFestivalEventDescription(Festival festival, EventDescription eventDescription) {
+        //ensure festival is in database and cache, generate ID if necessary
+        Festivals.put(festival.ID,festival);
+        //link one direction
+        eventDescription.festivalID=festival.ID;
+        //ensure EventDescription is in database and cache, generate ID if necessary
+        EventDescriptions.put(eventDescription.ID,eventDescription);
+        //link other direction
+        festival.eventDescriptionIDs.add(eventDescription.ID);
+        festival.save(); //update in db
+    }
+
+    public static void linkEvent(Event event, EventDescription eventDescription, SchoolYear schoolYear) {
+        //ensure EventDescription is in database and cache, generate ID if necessary
+        EventDescriptions.put(eventDescription.ID,eventDescription);
+        //ensure SchoolYear is in database and cache, generate ID if necessary
+        SchoolYears.put(schoolYear.ID,schoolYear);
+        //link to EventDescription
+        event.eventDescriptionID=eventDescription.ID;
+        event.schoolYearID=schoolYear.ID;
+        //ensure event is in database and cache, generate ID if necessary
+        Events.put(event.ID,event);
+        //link SchoolYear other direction
+        schoolYear.eventIDs.add(eventDescription.ID);
+        schoolYear.save(); //update in db
+    }
+
 }
 

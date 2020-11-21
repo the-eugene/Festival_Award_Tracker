@@ -23,10 +23,10 @@ public class DatabaseAware {
     public void save(){
         DatabaseReference saveTo;
         if (ID == null) {
-            saveTo = DBManager.DB.getReference().child(this.getClass().getSimpleName()).push();
+            saveTo = DBManager.currentDB.child(this.getClass().getSimpleName()).push();
             ID = saveTo.getKey();
         } else {
-            saveTo=DBManager.DB.getReference().child(this.getClass().getSimpleName()).child(ID);
+            saveTo=DBManager.currentDB.child(this.getClass().getSimpleName()).child(ID);
         }
         saveTo.setValue(this);
     }
@@ -36,7 +36,7 @@ public class DatabaseAware {
     }
 
     public static <T extends DatabaseAware> T load(String key, String location, final Class<T> type){
-        DatabaseReference loadFrom=DBManager.DB.getReference(location).child(key);
+        DatabaseReference loadFrom=DBManager.currentDB.child(location).child(key);
         final TaskCompletionSource<T> task = new TaskCompletionSource<>();
         loadFrom.addListenerForSingleValueEvent(
                 new ValueEventListener() {
