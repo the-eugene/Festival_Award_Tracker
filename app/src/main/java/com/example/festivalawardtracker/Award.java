@@ -33,12 +33,12 @@ public class Award {
         this.studentID = studentID;
     }
 
-    public LocalDate getDateReceived() {
-        return dateReceived;
+    public String getDateReceived() {
+        return dateReceived.toString();
     }
 
-    public void setDateReceived(LocalDate dateReceived) {
-        this.dateReceived = dateReceived;
+    public void setDateReceived(String dateReceived) {
+        this.dateReceived = LocalDate.parse(dateReceived);
     }
 
     public String getEventID() {
@@ -63,6 +63,18 @@ public class Award {
 
     public void setType(AwardType type) {
         this.type = type;
+    }
+
+   public static AwardType lookUpCupAwardType(int cuplevel){
+        switch (cuplevel) {
+            case 1: return AwardType.CUP;
+            case 2: return AwardType.CUP_2ND;
+            case 3: return AwardType.CUP_3RD;
+            case 4: return AwardType.CUP_4TH;
+            case 5: return AwardType.GRAND_CUP;
+            case 6: return AwardType.PRESIDENTS_CUP;
+        }
+        return null;
     }
 
     enum AwardType{

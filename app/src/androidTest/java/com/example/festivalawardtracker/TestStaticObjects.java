@@ -124,6 +124,23 @@ public class TestStaticObjects {
         student.addInstrument(Instrument.cello);
         return student;
     }
+
+    static Teacher setUpTeacher(){
+        Teacher t=new Teacher();
+        t.setName("Elaine", "Nina", "Wachter");
+        t.setBirthday("1971-04-16");
+        t.setContact("Wachter Music",
+                "920-857-6214",
+                "nina@wachtermusic.com",
+                "11020 Buddy Ellis Rd.",
+                "Denham Springs",
+                "LA",
+                "70726"
+        );
+        t.setGender(Person.Gender.FEMALE);
+        return t;
+    }
+
     public static LocalDate between(LocalDate startInclusive, LocalDate endExclusive) {
         long startEpochDay = startInclusive.toEpochDay();
         long endEpochDay = endExclusive.toEpochDay();

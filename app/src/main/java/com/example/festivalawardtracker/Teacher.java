@@ -13,4 +13,12 @@ public class Teacher extends Person {
     public void setStudentIDs(List<String> studentIDs) {
         this.studentIDs = studentIDs;
     }
+
+    public void addStudent(Student student) {
+        if (student.ID==null){
+            DBManager.Students.put(null,student);
+        }
+        studentIDs.add(student.ID);
+        DBManager.Teachers.put(ID,this); //not save
+    }
 }

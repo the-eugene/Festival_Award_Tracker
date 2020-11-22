@@ -14,7 +14,7 @@ public class ModelClassesInstrumentedTest {
 
         Festival f=TestStaticObjects.setUpFestival1();
         Festival f2=TestStaticObjects.setUpFestival2();
-        EventDescription ed[]={
+        EventDescription[] ed ={
                 TestStaticObjects.setUpEventDescription1(),
                 TestStaticObjects.setUpEventDescription2(),
                 TestStaticObjects.setUpEventDescription3(),
@@ -37,8 +37,8 @@ public class ModelClassesInstrumentedTest {
         DBManager.SchoolYears.put(year.ID,year);
         assertNotNull(year.ID);
 
-        Event e1[] = new Event[10];
-        Event e2[] = new Event[10];
+        Event[] e1 = new Event[10];
+        Event[] e2 = new Event[10];
         for (int i=0;i<10;i++) {
             e1[i] = TestStaticObjects.setUpEvent(year);
             DBManager.linkEvent(
@@ -55,5 +55,46 @@ public class ModelClassesInstrumentedTest {
                     ,year2
             );
         }
+
+        Student s=TestStaticObjects.setUpStudent();
+        s.addParent(TestStaticObjects.setUpPerson());
+        s.addParent(TestStaticObjects.setUpPerson2());
+        Teacher t=TestStaticObjects.setUpTeacher();
+        DBManager.linkTeacherStudent(t,s);
+
+        //working to here!
+        s.addPerformance(e1[0].ID,
+                TestStaticObjects.between(e1[0].start,e1[0].end),
+                "PP",4
+        );
+        s.addPerformance(e1[0].ID,
+                TestStaticObjects.between(e1[0].start,e1[0].end),
+                "PP",5
+        );
+        s.addPerformance(e1[0].ID,
+                TestStaticObjects.between(e1[0].start,e1[0].end),
+                "PP",4
+        );
+        s.addPerformance(e1[0].ID,
+                TestStaticObjects.between(e1[0].start,e1[0].end),
+                "PP",5
+        );
+        s.addPerformance(e1[0].ID,
+                TestStaticObjects.between(e1[0].start,e1[0].end),
+                "PP",4
+        );
+        s.addPerformance(e1[0].ID,
+                TestStaticObjects.between(e1[0].start,e1[0].end),
+                "PP",5
+        );
+        s.addPerformance(e1[0].ID,
+                TestStaticObjects.between(e1[0].start,e1[0].end),
+                "PP",4
+        );
+        s.addPerformance(e1[0].ID,
+                TestStaticObjects.between(e1[0].start,e1[0].end),
+                "PP",5
+        );
+        s.save();
     }
 }

@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 public class Performance {
     String eventID;
-    String studentID;
     String level;   //enum this?
                     // If there's a predetermined scale for levels, like intermediate, advance, etc, I think it should be enumed. CARLOS
     int rating;
@@ -12,8 +11,7 @@ public class Performance {
 
     public Performance() {}
 
-    public Performance(String studentID, String eventID, LocalDate date, String level, int rating) {
-        this.studentID=studentID;
+    public Performance(String eventID, LocalDate date, String level, int rating) {
         this.eventID=eventID;
         this.date=date;
         this.level=level;
@@ -34,14 +32,6 @@ public class Performance {
 
     public void setEventID(String eventID) {
         this.eventID = eventID;
-    }
-
-    public String getStudentID() {
-        return studentID;
-    }
-
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
     }
 
     public String getLevel() {

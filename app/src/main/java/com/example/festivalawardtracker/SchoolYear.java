@@ -51,4 +51,10 @@ public class SchoolYear extends DatabaseAware{
     public void setEventIDs(ArrayList<String> eventIDs) {
         this.eventIDs = eventIDs;
     }
+
+    public void addEvent(Event event) {
+        if (event.ID==null) DBManager.Events.put(null,event);
+        eventIDs.add(event.ID);
+        DBManager.SchoolYears.put(ID,this);
+    }
 }

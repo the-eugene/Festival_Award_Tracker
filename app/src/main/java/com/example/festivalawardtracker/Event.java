@@ -18,7 +18,7 @@ public class Event extends DatabaseAware{
     }
 
     public boolean isInYear(SchoolYear year) {
-        return year.ID.equals(schoolYearID);
+        return year!=null&&schoolYearID.equals(year.ID);
     }
 
     public String getSchoolYearID() {
@@ -59,5 +59,13 @@ public class Event extends DatabaseAware{
 
     public void setEventDescriptionID(String eventDescriptionID) {
         this.eventDescriptionID = eventDescriptionID;
+    }
+
+    public void addLinks(EventDescription eventDescription,SchoolYear year){
+        if (eventDescription.ID==null) DBManager.EventDescriptions.put(null,eventDescription);
+        if (year.ID==null) DBManager.SchoolYears.put(null,year);
+        eventDescriptionID=eventDescription.ID;
+        schoolYearID=year.ID;
+        DBManager.Events.put(ID,this); //not save()
     }
 }

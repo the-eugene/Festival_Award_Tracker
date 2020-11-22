@@ -1,10 +1,13 @@
 package com.example.festivalawardtracker;
 
+import android.util.Log;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Student extends Person {
     List<String> teacherIDs = new ArrayList<>();
@@ -17,13 +20,19 @@ public class Student extends Person {
 
     // When and how is parent ID set? Carlos
     public void addParent(@NotNull Person parent){
+        if(parent.ID == null)
+            DBManager.Parents.put(null,parent);
         parentIDs.add(parent.ID);
     }
+
     public int countParents(){return parentIDs.size();}
 
     // Shouldn't teachers be person object type? Carlos
-    public void addTeacher(String teacherID){
-        teacherIDs.add(teacherID);
+    public void addTeacher(Teacher teacher){
+        if(teacher.ID == null)
+            DBManager.Parents.put(null,teacher);
+        teacherIDs.add(teacher.ID);
+        DBManager.Students.put(ID,this); //instead of save
     }
 
     public void addInstrument(Instrument i) {
@@ -32,20 +41,40 @@ public class Student extends Person {
 
     //TODO ? getAwardSummary(){}
     public void addPerformance(String eventID, LocalDate date, String level, int rating){
-        Performance p=new Performance(ID, eventID,date,level, rating);
+        Performance p=new Performance(eventID,date,level, rating);
         performances.add(p);
         addAward(p);
-        save();
+        DBManager.Students.put(ID,this); //instead of save
     }
 
     public void addAward(@NotNull Performance performance) {
+        Log.d("award","Adding Awards");
         Event event=performance.retrieveEvent();
         SchoolYear year=event.retrieveYear();
         EventDescription description=event.getDescription();
         Festival festival=description.retrieveFestival();
         if (festival.isNFMC){
-            int totalPoints= totalAccumulatedPoints(event);
-            Award lastYearsAward= retrieveLastYearsAward(event);
+            //deal with cups
+            int TAP = totalAccumulatedPoints(description);
+            int PAP = TAP-performance.rating;
+            Log.d("award","Checking NFMC Cups");
+            Log.d("award", "PAP:"+PAP+" TAP: "+TAP);
+            int cupLevel=TAP/15;
+            if(TAP/15 > PAP/15) {
+                Log.d("award", "Getting a cup!");
+                Log.d("award", "CupLevel: " + cupLevel);
+                awards.add(new Award(Award.lookUpCupAwardType(cupLevel),
+                        ID,
+                        performance.date,
+                        event.ID,
+                        performances.indexOf(performance)
+                        )
+                );
+            }
+            //deal with Certificates
+            Log.d("award","Checking NFMC Certificates");
+
+            Award lastYearsAward = retrieveLastYearsAward(event);
         } else {
             awards.add(
                     new Award(Award.AwardType.OTHER_PARTICIPATION,
@@ -68,10 +97,10 @@ public class Student extends Person {
         return null;
     }
 
-    private int totalAccumulatedPoints(Event event) {
+    private int totalAccumulatedPoints(EventDescription ed) {
         int points=0;
         for (Performance p: performances) {
-            if (p.retrieveEvent().ID.equals(event.ID)){
+            if (p.retrieveEvent().eventDescriptionID.equals(ed.ID)){
                 points+=p.rating;
             }
         }

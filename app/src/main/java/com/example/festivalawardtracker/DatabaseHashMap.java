@@ -49,33 +49,4 @@ class DatabaseHashMap<V extends DatabaseAware> extends HashMap<String,V> {
         if (key==null) key=value.ID;
         return super.put(key, value);
     }
-
-    //    public V getData(String key){
-//            final TaskCompletionSource<V> task = new TaskCompletionSource<>();
-//            mapRoot.addListenerForSingleValueEvent(
-//                    new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            task.setResult(snapshot.getValue(type));
-//                        }
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//                            task.setException(error.toException());
-//                        }
-//                    }
-//            );
-//            Task<V> t = task.getTask();
-//            try {
-//                Tasks.await(t);
-//            } catch (ExecutionException | InterruptedException e) {
-//                t = Tasks.forException(e);
-//                return null;
-//            }
-//            if(t.isSuccessful()) {
-//                V obj=t.getResult();
-//                obj.ID=key;
-//                return obj;
-//            }
-//            return null;
-//        }
 }

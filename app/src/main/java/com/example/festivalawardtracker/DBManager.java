@@ -61,19 +61,13 @@ public class DBManager {
     }
 
     public static void linkEvent(Event event, EventDescription eventDescription, SchoolYear schoolYear) {
-        //ensure EventDescription is in database and cache, generate ID if necessary
-        EventDescriptions.put(eventDescription.ID,eventDescription);
-        //ensure SchoolYear is in database and cache, generate ID if necessary
-        SchoolYears.put(schoolYear.ID,schoolYear);
-        //link to EventDescription
-        event.eventDescriptionID=eventDescription.ID;
-        event.schoolYearID=schoolYear.ID;
-        //ensure event is in database and cache, generate ID if necessary
-        Events.put(event.ID,event);
-        //link SchoolYear other direction
-        schoolYear.eventIDs.add(eventDescription.ID);
-        schoolYear.save(); //update in db
+        event.addLinks(eventDescription,schoolYear);
+        schoolYear.addEvent(event);
     }
 
+    public static void linkTeacherStudent(Teacher teacher, Student student) {
+        student.addTeacher(teacher); //ID will be generated if necessary
+        teacher.addStudent(student); //ID will be generated if necessary
+    }
 }
 
