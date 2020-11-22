@@ -1,26 +1,44 @@
 package com.example.festivalawardtracker.ui.student;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.StudentActivity;
+import com.example.festivalawardtracker.StudentDisplayActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author carloswashingtonmercado@gmail.com
  */
-public class StudentFragment extends Fragment implements View.OnClickListener {
+public class StudentFragment extends Fragment implements View.OnClickListener, RecyclerViewClickInterface {
 
-    private StudentViewModel studentViewModel;
+    StudentRecyclerAdapter studentRecyclerAdapter;
     FloatingActionButton fabNewStudent;
+    RecyclerView recyclerView;
+    List<String> studentNames;
+    List<String> birthday;
+    List<String> age;
+    List<String> gender;
+    List<String> awardInfo;
 
     /**
      *
@@ -35,8 +53,90 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
 
-        studentViewModel = new ViewModelProvider(this).get(StudentViewModel.class);
         View root = inflater.inflate(R.layout.main_fragment_student, container, false);
+
+        Context context = root.getContext();
+
+        studentNames = new ArrayList<>();
+        birthday = new ArrayList<>();
+        age = new ArrayList<>();
+        gender = new ArrayList<>();
+        awardInfo = new ArrayList<>();
+
+        recyclerView = root.findViewById(R.id.recyclerView_student);
+
+        Log.d("StudentFragment", String.valueOf(studentNames));
+        studentRecyclerAdapter = new StudentRecyclerAdapter(studentNames,birthday,age,gender,awardInfo,this);
+        recyclerView.setAdapter(studentRecyclerAdapter);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
+        studentNames.add("Billy");
+        studentNames.add("Billy2");
+        studentNames.add("Billy3");
+        studentNames.add("Billy4");
+        studentNames.add("Billy5");
+        studentNames.add("Billy6");
+        studentNames.add("Billy");
+        studentNames.add("Billy2");
+        studentNames.add("Billy3");
+        studentNames.add("Billy4");
+        studentNames.add("Billy5");
+        studentNames.add("Billy6");
+
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+
+        age.add("1");
+        age.add("2");
+        age.add("3");
+        age.add("4");
+        age.add("5");
+        age.add("6");
+        age.add("1");
+        age.add("2");
+        age.add("3");
+        age.add("4");
+        age.add("5");
+        age.add("6");
+
+        gender.add("M");
+        gender.add("M");
+        gender.add("M");
+        gender.add("M");
+        gender.add("M");
+        gender.add("M");
+        gender.add("M");
+        gender.add("M");
+        gender.add("M");
+        gender.add("M");
+        gender.add("M");
+        gender.add("M");
+
+        awardInfo.add("Good Job");
+        awardInfo.add("Good Job");
+        awardInfo.add("Good Job");
+        awardInfo.add("Good Job");
+        awardInfo.add("Good Job");
+        awardInfo.add("Good Job");
+        awardInfo.add("Good Job");
+        awardInfo.add("Good Job");
+        awardInfo.add("Good Job");
+        awardInfo.add("Good Job");
+        awardInfo.add("Good Job");
+        awardInfo.add("Good Job");
+
 
         // Setting up the FAB button for add student
         fabNewStudent = root.findViewById(R.id.fab_newStudent);
@@ -54,4 +154,11 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
         Intent activityIntent = new Intent( v.getContext(), StudentActivity.class);
         startActivity(activityIntent);
     }
+
+    @Override
+    public void onItemClick(int position, View v) {
+        Intent intent = new Intent (v.getContext(), StudentDisplayActivity.class);
+        startActivity(intent);
+    }
+
 }

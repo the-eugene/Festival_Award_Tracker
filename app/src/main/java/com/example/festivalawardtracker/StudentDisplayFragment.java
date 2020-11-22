@@ -18,7 +18,7 @@ public class StudentDisplayFragment extends Fragment {
     private RecyclerView recyclerView;
     DatabaseReference database;
 
-    studentAdapter mAdapter;
+//    studentAdapter mAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment_student, container, false);
@@ -29,8 +29,8 @@ public class StudentDisplayFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         FirebaseRecyclerOptions<studentDatabase> options
                 = new FirebaseRecyclerOptions.Builder<studentDatabase>().setQuery(database,studentDatabase.class).build();
-//        mAdapter = new studentAdapter(options);
-        recyclerView.setAdapter(mAdapter);
+//        mAdapter = new com.example.festivalawardtracker.studentAdapter(options);
+//        recyclerView.setAdapter(mAdapter);
         return view;
     }
 }

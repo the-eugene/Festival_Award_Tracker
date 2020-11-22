@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     // FRAGMENT HOME RECYCLERVIEW variables
     private RecyclerView recyclerView;
-    studentAdapter adapter;
+//    studentAdapter adapter;
     DatabaseReference database;
 //    private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -77,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycleTest);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        FirebaseRecyclerOptions<StudentDisplayFragment> options = new FirebaseRecyclerOptions.Builder<StudentDisplayFragment>()
-                .setQuery(database, StudentDisplayFragment.class).build();
-        adapter = new studentAdapter(options);
-        recyclerView.setAdapter(adapter);
+//        FirebaseRecyclerOptions<StudentDisplayFragment> options = new FirebaseRecyclerOptions.Builder<StudentDisplayFragment>()
+//                .setQuery(database, StudentDisplayFragment.class).build();
+//        adapter = new studentAdapter(options);
+//        recyclerView.setAdapter(adapter);
 
 
 //        @Override
