@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main_activity"
+    app:startDestination="@+id/nav_home_student_user">
+
+    <fragment
+        android:id="@+id/nav_home_student_user"
+        android:name="com.example.festivalawardtracker.ui.studentUser.StudentUserFragment"
+        android:label="Testinggggggg"
+        tools:layout="@layout/main_fragment_student_user" />
+</navigation>

@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int userMode = 1;
+        int userMode = 1; // yserMode = 2 displays Student Mode
 
         super.onCreate(savedInstanceState);
 
@@ -80,22 +80,22 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("MAIN_ACTIVITY", "Switch: 1 case");
                 break;
             case 2:
-//                setContentView(R.layout.activity_main_student_user);
+                setContentView(R.layout.activity_main_student_user);
 
-//                Toolbar mToolbar = findViewById(R.id.main_toolbar);
-//                setSupportActionBar(mToolbar);
-//                mToolbarMenuAction(mToolbar);
+                Toolbar mToolbarStudentUser = findViewById(R.id.main_toolbar_student_user);
+                setSupportActionBar(mToolbarStudentUser);
+                mToolbarMenuAction(mToolbarStudentUser);
+
+                DrawerLayout drawerStudentUser = findViewById(R.id.drawer_layout_student_user);
+                NavigationView navigationViewStudentUser = findViewById(R.id.nav_view_student_user);
 //
-//                DrawerLayout drawer = findViewById(R.id.drawer_layout);
-//                NavigationView navigationView = findViewById(R.id.nav_view);
-//
-//                mAppBarConfiguration = new AppBarConfiguration.Builder(
-//                        R.id.nav_home, R.id.nav_festival, R.id.nav_event)
-//                        .setDrawerLayout(drawer)
-//                        .build();
-//                NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//                NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-//                NavigationUI.setupWithNavController(navigationView, navController);
+                mAppBarConfiguration = new AppBarConfiguration.Builder(
+                        R.id.nav_home_student_user)
+                        .setDrawerLayout(drawerStudentUser)
+                        .build();
+                NavController navControllerStudentUser = Navigation.findNavController(this, R.id.nav_host_fragment);
+                NavigationUI.setupActionBarWithNavController(this, navControllerStudentUser, mAppBarConfiguration);
+                NavigationUI.setupWithNavController(navigationViewStudentUser, navControllerStudentUser);
 
                 Log.d("MAIN_ACTIVITY", "Switch: 2 case");
                 break;
@@ -103,6 +103,18 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("MAIN_ACTIVITY", "Switch: Default case");
                 break;
         }
+    }
+
+    /**
+     * This method is called whenever the user chooses to navigate Up within your application's
+     * activity hierarchy from the action bar.
+     * @author Carlos
+     */
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
     }
 
     private void mToolbarMenuAction(Toolbar mToolbar) {
@@ -134,13 +146,6 @@ public class MainActivity extends AppCompatActivity {
         searchView.setIconifiedByDefault(true); // Iconify the widget by default
 
         return true;
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
     }
 
     public void createSignInIntent(View view) {
