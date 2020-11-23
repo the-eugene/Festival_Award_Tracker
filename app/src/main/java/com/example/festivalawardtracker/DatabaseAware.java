@@ -35,34 +35,15 @@ public class DatabaseAware {
         return load(key, type.getSimpleName(),type);
     }
 
-    public static <T extends DatabaseAware> T load(String key, String location, final Class<T> type){
+    public static <T extends DatabaseAware> T load(String key, String location, Class<T> type){
         DatabaseReference loadFrom=DBManager.currentDB.child(location).child(key);
-        final TaskCompletionSource<T> task = new TaskCompletionSource<>();
-        loadFrom.addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        task.setResult(snapshot.getValue(type));
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        task.setException(error.toException());
-                    }
-                }
-        );
-        Task<T> t = task.getTask();
-        try {
-            Tasks.await(t);
-        } catch (ExecutionException | InterruptedException e) {
-            t = Tasks.forException(e);
-            return null;
+        DataSnapshot ds=DBManager.runQuery(loadFrom);
+        T obj=null;
+        if (ds!=null) {
+            obj = ds.getValue(type);
+            obj.ID = key;
         }
-        if(t.isSuccessful()) {
-            T obj=t.getResult();
-            obj.ID=key;
-            return obj;
-        }
-        return null;
+        return obj;
     }
 }
 

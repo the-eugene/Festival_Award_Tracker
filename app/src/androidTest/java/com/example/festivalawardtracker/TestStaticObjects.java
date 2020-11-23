@@ -114,6 +114,19 @@ public class TestStaticObjects {
         return event;
     }
 
+    static SchoolYear setUpSchoolYear(int seq){
+        int start=2010;
+        SchoolYear year = new SchoolYear();
+
+        year.setName((start+seq)+"-"+(start+seq+1)+" School Year");
+        year.setStart(String.valueOf(LocalDate.of(start+seq,7,15)));
+        year.setEnd(String.valueOf(LocalDate.of(start+seq+1,7,14)));
+        year.setSequence(seq);
+        return year;
+    }
+
+
+
     static Student setUpStudent() {
         Student student = new Student();
         student.setName("Alice", "Becky", "Callaway");
@@ -143,7 +156,7 @@ public class TestStaticObjects {
 
     public static LocalDate between(LocalDate startInclusive, LocalDate endExclusive) {
         long startEpochDay = startInclusive.toEpochDay();
-        long endEpochDay = endExclusive.toEpochDay();
+        long endEpochDay = endExclusive.toEpochDay()+1;
         long randomDay = ThreadLocalRandom
                 .current()
                 .nextLong(startEpochDay, endEpochDay);

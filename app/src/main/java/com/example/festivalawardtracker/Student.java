@@ -7,7 +7,6 @@ import org.jetbrains.annotations.NotNull;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Student extends Person {
     List<String> teacherIDs = new ArrayList<>();
@@ -48,7 +47,6 @@ public class Student extends Person {
     }
 
     public void addAward(@NotNull Performance performance) {
-        Log.d("award","Adding Awards");
         Event event=performance.retrieveEvent();
         SchoolYear year=event.retrieveYear();
         EventDescription description=event.getDescription();
@@ -57,12 +55,10 @@ public class Student extends Person {
             //deal with cups
             int TAP = totalAccumulatedPoints(description);
             int PAP = TAP-performance.rating;
-            Log.d("award","Checking NFMC Cups");
-            Log.d("award", "PAP:"+PAP+" TAP: "+TAP);
+            Log.d("award", "Checking NFMC Cups, CAP: "+performance.rating+" PAP:"+PAP+" TAP: "+TAP);
             int cupLevel=TAP/15;
             if(TAP/15 > PAP/15) {
-                Log.d("award", "Getting a cup!");
-                Log.d("award", "CupLevel: " + cupLevel);
+                Log.d("award", "Getting a cup! CupLevel: " + cupLevel);
                 awards.add(new Award(Award.lookUpCupAwardType(cupLevel),
                         ID,
                         performance.date,
@@ -72,9 +68,26 @@ public class Student extends Person {
                 );
             }
             //deal with Certificates
-            Log.d("award","Checking NFMC Certificates");
-
-            Award lastYearsAward = retrieveLastYearsAward(event);
+            Award.AwardType type;
+            if (performance.rating!=5){
+                type= Award.AwardType.NFMC_CERT;
+            } else {
+                Performance lastYearsPerformance = retrieveLastYearsPerformance(event);
+                if(lastYearsPerformance!=null && lastYearsPerformance.rating==5){
+                    type= Award.AwardType.CONSECUTIVE_SUPERIOR_CERT;
+                } else {
+                    type= Award.AwardType.SUPERIOR_CERT;
+                }
+            }
+            awards.add(
+                    new Award(type,
+                            ID,
+                            performance.date,
+                            event.ID,
+                            performances.indexOf(performance)
+                    )
+            );
+            Log.d("award",type.toString());
         } else {
             awards.add(
                     new Award(Award.AwardType.OTHER_PARTICIPATION,
@@ -87,11 +100,12 @@ public class Student extends Person {
         }
     }
 
-    private Award retrieveLastYearsAward(Event event) {
+    private Performance retrieveLastYearsPerformance(Event event) {
         SchoolYear lastYear=DBManager.getPreviousSchoolYear(event.retrieveYear());
-        for (Award award:awards){
-            if (award.isInYear(lastYear)&&award.getEventID().equals(event.ID)){
-                return award;
+
+        for (Performance p:performances){
+            if (p.isInYear(lastYear)&&DBManager.Events.get(p.getEventID()).eventDescriptionID.equals(event.eventDescriptionID)){
+                return p;
             }
         }
         return null;

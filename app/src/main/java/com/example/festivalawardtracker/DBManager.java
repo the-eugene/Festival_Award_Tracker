@@ -1,11 +1,21 @@
 package com.example.festivalawardtracker;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.TaskCompletionSource;
+import com.google.android.gms.tasks.Tasks;
 import com.google.common.net.InternetDomainName;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 public class DBManager {
 
@@ -15,22 +25,16 @@ public class DBManager {
         setCurrentDB("");
     }
 
-    static Map<String, Teacher> Teachers=new DatabaseHashMap<>(Teacher.class);
-    static Map<String, Student> Students=new DatabaseHashMap<>(Student.class);
-    static Map<String, Person> Parents=new DatabaseHashMap<>("Parents", Person.class);
-    static Map<String, Event> Events=new DatabaseHashMap<>(Event.class);
-    static Map<String, EventDescription> EventDescriptions=new DatabaseHashMap<>(EventDescription.class);
-    static Map<String, Festival> Festivals=new DatabaseHashMap<>(Festival.class);
-    static Map<String, SchoolYear> SchoolYears=new DatabaseHashMap<>(SchoolYear.class);
+    static DatabaseHashMap<Teacher> Teachers=new DatabaseHashMap<>(Teacher.class);
+    static DatabaseHashMap<Student> Students=new DatabaseHashMap<>(Student.class);
+    static DatabaseHashMap<Person> Parents=new DatabaseHashMap<>("Parents", Person.class);
+    static DatabaseHashMap<Event> Events=new DatabaseHashMap<>(Event.class);
+    static DatabaseHashMap<EventDescription> EventDescriptions=new DatabaseHashMap<>(EventDescription.class);
+    static DatabaseHashMap<Festival> Festivals=new DatabaseHashMap<>(Festival.class);
+    static DatabaseHashMap<SchoolYear> SchoolYears=new DatabaseHashMap<>(SchoolYear.class);
 
     public static void setCurrentDB(String location){
         currentDB=location.isEmpty()?DB.getReference():DB.getReference(location);
-    }
-
-    public static <T extends DatabaseAware> boolean saveData(T obj){
-        String key=obj.ID;
-        //TODO: implement saving single item by key
-        return false;
     }
 
     public static SchoolYear getPreviousSchoolYear(SchoolYear year) {
@@ -45,7 +49,14 @@ public class DBManager {
                 return line.getValue();
         }
         //not in cache
-        return null; //TODO: Search DB by sequence
+        DataSnapshot ds=runQuery(currentDB.child("SchoolYear").orderByChild("sequence").equalTo(seq).limitToFirst(1));
+        if(ds!=null && ds.getChildrenCount()==1){
+            ds=ds.getChildren().iterator().next();
+            SchoolYear result=ds.getValue(SchoolYear.class);
+            result.ID= ds.getKey();
+            return result;
+        }
+        return null;
     }
 
     public static void linkFestivalEventDescription(Festival festival, EventDescription eventDescription) {
@@ -68,6 +79,30 @@ public class DBManager {
     public static void linkTeacherStudent(Teacher teacher, Student student) {
         student.addTeacher(teacher); //ID will be generated if necessary
         teacher.addStudent(student); //ID will be generated if necessary
+    }
+
+    public static DataSnapshot runQuery(Query query){
+        final TaskCompletionSource<DataSnapshot> task = new TaskCompletionSource<>();
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot ds) {
+                task.setResult(ds);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                task.setException(error.toException());
+            }
+        });
+        Task<DataSnapshot> t = task.getTask();
+        try {
+            Tasks.await(t);
+        } catch (ExecutionException | InterruptedException e) {
+            t = Tasks.forException(e);
+        }
+        if(t.isSuccessful()) {
+            return t.getResult();
+        }
+        return null;
     }
 }
 
