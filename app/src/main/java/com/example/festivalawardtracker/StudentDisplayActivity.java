@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Objects;
+
 /**
  * @author carloswashingtonmercado@gmail.com
  */
@@ -26,9 +28,9 @@ public class StudentDisplayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display_student);
 
 //        /* ACTION BAR */
-//        toolbar = findViewById(R.id.toolbarStudentDisplay);
-//        toolbar.setTitle("Student Data");
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar = findViewById(R.id.toolbarStudentDisplay);
+        toolbar.setTitle("Student Data");
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 }

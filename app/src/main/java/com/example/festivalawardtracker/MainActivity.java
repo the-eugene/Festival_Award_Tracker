@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -13,13 +14,9 @@ import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 
-import com.firebase.ui.auth.IdpResponse;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -45,136 +42,84 @@ public class MainActivity extends AppCompatActivity {
 
     // FRAGMENT HOME RECYCLERVIEW variables
     private RecyclerView recyclerView;
-//    studentAdapter adapter;
+    //    studentAdapter adapter;
     DatabaseReference database;
-//    private RecyclerView.Adapter mAdapter;
+    //    private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int userMode = 1; // yserMode = 2 displays Student Mode
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        Toolbar mToolbar = findViewById(R.id.main_toolbar);
-        setSupportActionBar(mToolbar);
-        mToolbarMenuAction(mToolbar);
+        switch(userMode) {
+            // https://brightinventions.pl/blog/handling-different-user-types-in-android-application
+            case 1:
+                setContentView(R.layout.activity_main);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_festival, R.id.nav_event)
-                .setDrawerLayout(drawer)
-                .build();
-        // https://developer.android.com/guide/navigation/navigation-navigate?authuser=1
+                Toolbar mToolbar = findViewById(R.id.main_toolbar);
+                setSupportActionBar(mToolbar);
+                mToolbarMenuAction(mToolbar);
+
+                DrawerLayout drawer = findViewById(R.id.drawer_layout);
+                NavigationView navigationView = findViewById(R.id.nav_view);
+
+                mAppBarConfiguration = new AppBarConfiguration.Builder(
+                        R.id.nav_home, R.id.nav_festival, R.id.nav_event)
+                        .setDrawerLayout(drawer)
+                        .build();
+                NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+                NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+                NavigationUI.setupWithNavController(navigationView, navController);
+
+                // TODO: FRAGMENT HOME RECYCLERVIEW
+                database = FirebaseDatabase.getInstance().getReference();
+                recyclerView = findViewById(R.id.recyclerView_student);
+
+                Log.d("MAIN_ACTIVITY", "Switch: 1 case");
+                break;
+            case 2:
+                setContentView(R.layout.activity_main_student_user);
+
+                Toolbar mToolbarStudentUser = findViewById(R.id.main_toolbar_student_user);
+                setSupportActionBar(mToolbarStudentUser);
+                mToolbarMenuAction(mToolbarStudentUser);
+
+                DrawerLayout drawerStudentUser = findViewById(R.id.drawer_layout_student_user);
+                NavigationView navigationViewStudentUser = findViewById(R.id.nav_view_student_user);
+//
+                mAppBarConfiguration = new AppBarConfiguration.Builder(
+                        R.id.nav_home_student_user)
+                        .setDrawerLayout(drawerStudentUser)
+                        .build();
+                NavController navControllerStudentUser = Navigation.findNavController(this, R.id.nav_host_fragment);
+                NavigationUI.setupActionBarWithNavController(this, navControllerStudentUser, mAppBarConfiguration);
+                NavigationUI.setupWithNavController(navigationViewStudentUser, navControllerStudentUser);
+
+                Log.d("MAIN_ACTIVITY", "Switch: 2 case");
+                break;
+            default:
+                Log.d("MAIN_ACTIVITY", "Switch: Default case");
+                break;
+        }
+    }
+
+    /**
+     * This method is called whenever the user chooses to navigate Up within your application's
+     * activity hierarchy from the action bar.
+     * @author Carlos
+     */
+    @Override
+    public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-
-        // TODO: FRAGMENT HOME RECYCLERVIEW
-        database = FirebaseDatabase.getInstance().getReference();
-        recyclerView = findViewById(R.id.recycleTest);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-//        FirebaseRecyclerOptions<StudentDisplayFragment> options = new FirebaseRecyclerOptions.Builder<StudentDisplayFragment>()
-//                .setQuery(database, StudentDisplayFragment.class).build();
-//        adapter = new studentAdapter(options);
-//        recyclerView.setAdapter(adapter);
-
-
-//        @Override
-//        public int describeContents () {
-//            return 0;
-//        }
-//
-//        @Override
-//        public void writeToParcel (Parcel dest,int flags){
-//
-//        }
-//
-//        public static final Parcelable.Creator<> CREATOR = new Parcelable.Creator<>() {
-//            @Override
-//            public  createFromParcel(Parcel in) {
-//                return new (in);
-//            }
-//
-//            @Override
-//            public [] newArray(int size) {
-//                return new [size];
-//            }
-//        };
-
-        // TODO: Works Here but I think it should have its own class?
-//        MaterialButton button = findViewById(R.id.btnSaveStudent);
-//        button.setOnClickListener((View.OnClickListener) {
-//
-////                Toast.makeText(this, "Student Saved", Toast.LENGTH_SHORT).show();
-//
-//        database = FirebaseDatabase.getInstance().getReference("student");
-//        EditText editFirstName = (EditText) findViewById(R.id.editTextStudentName);
-//        //        EditText editLastName = (EditText) findViewById(R.id.editTextStudentLastName);
-//        //        EditText editBirthDate = (EditText) findViewById(R.id.editTextBirthDate);
-//        //        Spinner editGender = (Spinner) findViewById(R.id.spinnerGender);
-//        //        EditText editPhoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
-//        //        Spinner editInstruments = (Spinner) findViewById(R.id.spinnerInstruments);
-//        //        EditText editTeacher = (EditText) findViewById(R.id.editTextTeachersName);
-//
-//        String FirstName = editFirstName.getText().toString().trim();
-//        //        String lastName = editLastName.getText().toString().trim();
-//        //        String birthDate = editBirthDate.getText().toString().trim();
-//        //        String gender = editGender.getSelectedItem().toString();
-//        //        String phoneNumber = editPhoneNumber.getText().toString().trim();
-//        //        String instrument = editInstruments.getSelectedItem().toString();
-//        //        String teacher = editTeacher.getText().toString().trim();
-//
-//        //        studentDatabase student = new studentDatabase(FirstName, lastName, birthDate, gender, phoneNumber, instrument, teacher);
-//        //        studentDatabase student = new studentDatabase(FirstName);
-//        String id = database.push().getKey();
-//
-//        //        database.child(id).setValue(student);
-//
-//
-//        recyclerView.setAdapter(mAdapter);
-        // TODO: specify an adapter (see also next example) using information from the links
-//        mAdapter = new MyAdapter(myDataset);
-        /*
-          https://medium.com/@relferreira/goodbye-listview-recyclerview-f83dc1133850
-          https://developer.android.com/guide/topics/ui/layout/recyclerview?authuser=1
-          */
-//        recyclerView.setAdapter(mAdapter);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
     }
 
     private void mToolbarMenuAction(Toolbar mToolbar) {
         // TODO Maybe with a OnClickListener, for the items in the inflated menu
     }
-
-
-//      TODO: delete this if new implementation works. - Jimmy
-    // Whos deleting this? Carlos
-
-//    @Override
-//    protected  void onStart() {
-//        super.onStart();
-//        FirebaseRecyclerAdapter<studentDatabase,DatabaseViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerOptions<studentDatabase, DatabaseViewHolder>
-//                (studentDatabase.class, R.layout.fragment_home_recyclerview_row_studentminiawards, DatabaseViewHolder.class,database) {
-//
-//
-//            @Override
-//            protected void onBindViewHolder(DatabaseViewHolder holder, int position,studentDatabase model) {
-//                holder.setName(model.getFname() + model.getLname());
-//                holder.setGender(model.getGender());
-//                holder.setBirthday(model.getBdate());
-//            }
-//
-//        };
-//
-//        recyclerView.setAdapter(firebaseRecyclerAdapter);
-//        firebaseRecyclerAdapter.startListening();
-//
-//
-//    }
-
 
     /**
      * @author carloswashingtonmercado@gmail.com
@@ -201,27 +146,6 @@ public class MainActivity extends AppCompatActivity {
         searchView.setIconifiedByDefault(true); // Iconify the widget by default
 
         return true;
-
-        // TODO https://developer.android.com/guide/topics/search/search-dialog.html#UsingSearchWidget
-        // It is possible to generate a query seach from the main toolbar search option (magnifier). CARLOS
-
-//        Inflate the options menu from XML
-//        MenuInflater mMenuInflater = getMenuInflater();
-//        mMenuInflater.inflate(R.menu.main_activity, menu);
-//
-//        // Get the SearchView and set the searchable configuration
-//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-//        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-//        // Assumes current activity is the searchable activity
-//        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-//        searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
     }
 
     public void createSignInIntent(View view) {
@@ -239,8 +163,6 @@ public class MainActivity extends AppCompatActivity {
                 RC_SIGN_IN);
         // [END auth_fui_create_intent]
     }
-
-
 
     public void questionIsItClickable(View view) {
         Toast.makeText(this, "It is toasting, yeah.", Toast.LENGTH_SHORT).show();
@@ -286,13 +208,13 @@ public class MainActivity extends AppCompatActivity {
         // Accesing Items in the Menu Drawer, using OnClick attribute in the drawer menu xml file
         // https://developer.android.com/guide/topics/resources/menu-resource
         AuthUI.getInstance()
-        .signOut(MainActivity.this)
-        .addOnCompleteListener(new OnCompleteListener<Void>() {
-            public void onComplete(@NonNull Task<Void> task) {
-                Intent activityIntent = new Intent(MainActivity.this, LogInOptionsActivity.class);
-                startActivity(activityIntent);
-                finish();
-            }
-        });
+                .signOut(MainActivity.this)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Intent activityIntent = new Intent(MainActivity.this, LogInOptionsActivity.class);
+                        startActivity(activityIntent);
+                        finish();
+                    }
+                });
     }
 }
