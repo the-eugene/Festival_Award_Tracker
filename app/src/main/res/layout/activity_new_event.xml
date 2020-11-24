@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".FestivalActivity">
+    tools:context=".EventActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -33,105 +33,40 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutNewEventSchoolYear"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
+            <include
+                android:id="@+id/event_dates"
+                layout="@layout/include_dates"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginEnd="32dp"
-                android:hint="School Year"
-                app:boxBackgroundMode="outline"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextNewFestivalName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutNewEventStartingDate"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="32dp"
-                android:hint="Starting Date"
-                app:boxBackgroundMode="outline"
-                app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/ic_baseline_event_24"
+                android:layout_marginTop="70dp"
+                app:layout_constraintBottom_toTopOf="@+id/event_contact"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventSchoolYear">
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextNewEventStartingDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutNewEventEndingDate"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
+            <include
+                android:id="@+id/event_contact"
+                layout="@layout/include_contact"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="32dp"
-                android:hint="Ending Date"
-                app:boxBackgroundMode="outline"
-                app:endIconMode="clear_text"
-                app:startIconDrawable="@drawable/ic_baseline_event_24"
+                app:layout_constraintBottom_toTopOf="@+id/include_address"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventStartingDate">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextNewEventEndingDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutStudentPhoneNumber"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="32dp"
-                android:hint="@string/phone_number"
-                app:boxBackgroundMode="outline"
-                app:endIconMode="clear_text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventEndingDate">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextStudentPhoneNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
+                app:layout_constraintTop_toBottomOf="@id/event_dates" />
 
             <include
                 android:id="@+id/include_address"
                 layout="@layout/include_address"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/textInputLayoutNewEventDescription"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutStudentPhoneNumber">
-
-            </include>
+                app:layout_constraintTop_toBottomOf="@+id/event_contact" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutNewEventDescription"
@@ -141,18 +76,21 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="32dp"
-                android:hint="Add event description"
+                android:layout_marginBottom="20dp"
+                android:hint="@string/add_event_description"
                 app:boxBackgroundMode="outline"
                 app:endIconMode="clear_text"
+                app:layout_constraintBottom_toTopOf="@+id/btnSaveParent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/include_address">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextNewEventDescription"
-                    android:inputType="textMultiLine"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp" />
+                    android:layout_height="150dp"
+                    android:inputType="textMultiLine" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -160,9 +98,10 @@
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="40dp"
-                android:text="SAVE EVENT"
+                android:layout_marginBottom="20dp"
+                android:text="@string/save_event"
                 app:flow_horizontalAlign="start"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventDescription" />

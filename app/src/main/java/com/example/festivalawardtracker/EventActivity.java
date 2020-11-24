@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
@@ -34,6 +35,7 @@ public class EventActivity extends AppCompatActivity {
         /* ACTION BAR */
         toolbarEvent = findViewById(R.id.toolbarNewEvent);
         toolbarEvent.setTitle("Add event");
+        toolbarEvent.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbarEvent);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -44,7 +46,7 @@ public class EventActivity extends AppCompatActivity {
         final MaterialDatePicker materialDatePickerStart = builderStart.build();
 
         // Setting Listener for Material Date Picker
-        editTextDatePickerStart = findViewById(R.id.editTextNewEventStartingDate);
+        editTextDatePickerStart = findViewById(R.id.editTextStartingDate);
         editTextDatePickerStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +71,7 @@ public class EventActivity extends AppCompatActivity {
         final MaterialDatePicker materialDatePickerEnd = builderEnd.build();
 
         // Setting Listener for Material Date Picker
-        editTextDatePickerEnd = findViewById(R.id.editTextNewEventEndingDate);
+        editTextDatePickerEnd = findViewById(R.id.editTextEndingDate);
         editTextDatePickerEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

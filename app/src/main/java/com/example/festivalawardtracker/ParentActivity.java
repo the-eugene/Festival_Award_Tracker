@@ -1,6 +1,7 @@
 package com.example.festivalawardtracker;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -35,6 +36,7 @@ public class ParentActivity extends AppCompatActivity {
         // ACTION BAR
         toolbar = findViewById(R.id.toolbarNewStudentParent);
         toolbar.setTitle("Add parent");
+        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -46,7 +48,7 @@ public class ParentActivity extends AppCompatActivity {
                         R.layout.dropdown_layout,
                         GENDER);
         AutoCompleteTextView editTextFilledExposedDropdownGender =
-                this.findViewById(R.id.autoCompleteTextViewParentDropdownGender);
+                this.findViewById(R.id.autoCompleteTextViewPersonDropdownGender);
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
 
         /* DATE PICKER */
@@ -56,7 +58,7 @@ public class ParentActivity extends AppCompatActivity {
         final MaterialDatePicker materialDatePicker = builder.build();
 
         // Setting Listener for Material Date Picker
-        editTextDatePicker = findViewById(R.id.editTextParentBirthdate);
+        editTextDatePicker = findViewById(R.id.editTextPersonBirthdate);
         editTextDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

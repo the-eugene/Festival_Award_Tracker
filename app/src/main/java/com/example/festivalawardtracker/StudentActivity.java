@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -39,6 +40,7 @@ public class StudentActivity extends AppCompatActivity {
         /* ACTION BAR */
         toolbarStudent = findViewById(R.id.toolbarNewStudent);
         toolbarStudent.setTitle("Add student");
+        toolbarStudent.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbarStudent);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 

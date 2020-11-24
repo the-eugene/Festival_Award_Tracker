@@ -3,6 +3,7 @@ package com.example.festivalawardtracker;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -22,6 +23,7 @@ public class FestivalActivity extends AppCompatActivity {
         /* ACTION BAR */
         toolbarFestival = findViewById(R.id.toolbarNewFestival);
         toolbarFestival.setTitle("Add Festival");
+        toolbarFestival.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbarFestival);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
