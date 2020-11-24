@@ -9,15 +9,51 @@
         android:id="@+id/nav_home"
         android:name="com.example.festivalawardtracker.ui.student.StudentFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/main_fragment_student" />
+        tools:layout="@layout/main_fragment_student" >
+
+        <action
+            android:id="@+id/action_home_to_festival"
+            app:destination="@id/nav_festival"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/nav_festival"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
     <fragment
         android:id="@+id/nav_festival"
         android:name="com.example.festivalawardtracker.ui.festival.FestivalFragment"
         android:label="@string/menu_festival"
-        tools:layout="@layout/main_fragment_festival" />
+        tools:layout="@layout/main_fragment_festival">
+
+        <action
+            android:id="@+id/action_festival_to_event"
+            app:destination="@id/nav_event"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/nav_event"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
     <fragment
         android:id="@+id/nav_event"
         android:name="com.example.festivalawardtracker.ui.event.EventFragment"
         android:label="Event List"
-        tools:layout="@layout/main_fragment_event" />
+        tools:layout="@layout/main_fragment_event">
+
+        <action
+            android:id="@+id/action_event_to_home"
+            app:destination="@id/nav_home"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+
+            app:popUpTo="@+id/nav_home"
+            app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>
