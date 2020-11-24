@@ -13,11 +13,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.MainActivity;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.StudentActivity;
 import com.example.festivalawardtracker.StudentDisplayActivity;
@@ -34,11 +36,8 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
     StudentRecyclerAdapter studentRecyclerAdapter;
     FloatingActionButton fabNewStudent;
     RecyclerView recyclerView;
-    List<String> studentNames;
-    List<String> birthday;
-    List<String> age;
-    List<String> gender;
-    List<String> awardInfo;
+    List<String> studentNames, birthday, age, gender, awardInfo;
+    Context thisContext;
 
     /**
      *
@@ -55,6 +54,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
 
         View root = inflater.inflate(R.layout.main_fragment_student, container, false);
 
+        thisContext = container.getContext();
         Context context = root.getContext();
 
         studentNames = new ArrayList<>();
@@ -68,6 +68,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
         Log.d("StudentFragment", String.valueOf(studentNames));
         studentRecyclerAdapter = new StudentRecyclerAdapter(studentNames,birthday,age,gender,awardInfo,this);
         recyclerView.setAdapter(studentRecyclerAdapter);
+        recyclerView.setMotionEventSplittingEnabled(false);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
@@ -156,9 +157,31 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
     }
 
     @Override
-    public void onItemClick(int position, View v) {
-        Intent intent = new Intent (v.getContext(), StudentDisplayActivity.class);
+    public void onItemClick(int position) {
+        Intent intent = new Intent (thisContext, StudentDisplayActivity.class);
         startActivity(intent);
     }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+
+        inflater.inflate(R.menu.main_menu,menu);
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView sv = (SearchView) menuItem.getActionView();
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                studentRecyclerAdapter.getFilter().filter(newText);
+                return false;
+
+            }
+        });
+        super.onCreateOptionsMenu(menu, inflater);
+
+    }
 }

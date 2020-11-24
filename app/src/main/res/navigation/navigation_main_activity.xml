@@ -14,7 +14,11 @@
         android:id="@+id/nav_festival"
         android:name="com.example.festivalawardtracker.ui.festival.FestivalFragment"
         android:label="@string/menu_festival"
-        tools:layout="@layout/main_fragment_festival" />
+        tools:layout="@layout/main_fragment_festival" >
+        <action
+            android:id="@+id/action_nav_festival_to_nav_event"
+            app:destination="@id/nav_event" />
+    </fragment>
     <fragment
         android:id="@+id/nav_event"
         android:name="com.example.festivalawardtracker.ui.event.EventFragment"

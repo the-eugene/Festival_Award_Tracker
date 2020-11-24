@@ -9,27 +9,18 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Objects;
 
-/**
- * @author carloswashingtonmercado@gmail.com
- */
+
 public class StudentDisplayActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private TextInputEditText editTextDatePicker;
 
-    /**
-     *
-     * @param savedInstanceState Add.
-     * @see MainActivity
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_student);
 
-//        /* ACTION BAR */
+        /* ACTION BAR */
         toolbar = findViewById(R.id.toolbarStudentDisplay);
-        toolbar.setTitle("Student Data");
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }

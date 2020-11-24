@@ -33,12 +33,8 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main2"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SignInActivity" />
@@ -47,14 +43,14 @@
             android:name=".StudentActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".ContactActivity"
-            android:parentActivityName=".StudentActivity" />
-        <activity
             android:name=".ParentActivity"
             android:parentActivityName=".StudentActivity" />
         <activity
             android:name=".FestivalActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".StudentRatingsActivity"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>
