@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Student Saved", Toast.LENGTH_SHORT).show();
 
         database = FirebaseDatabase.getInstance().getReference("student");
-        EditText editFirstName = (EditText) findViewById(R.id.editTextStudentName);
+        EditText editFirstName = (EditText) findViewById(R.id.editTextPersonName);
 //        EditText editLastName = (EditText) findViewById(R.id.editTextStudentLastName);
 //        EditText editBirthDate = (EditText) findViewById(R.id.editTextBirthDate);
 //        Spinner editGender = (Spinner) findViewById(R.id.spinnerGender);

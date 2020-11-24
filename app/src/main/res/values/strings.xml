@@ -85,4 +85,5 @@
     <string name="business">Business</string>
     <string name="add_address">Add Address</string>
     <string name="festival_award_tracker">Festival Award Tracker</string>
+    <string name="address">Address:</string>
 </resources>

@@ -10,14 +10,14 @@
 
     <TextView
         android:id="@+id/address_text"
-        android:layout_width="344dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="20dp"
         android:gravity="center_vertical"
-        android:text="Address:"
-        android:textSize="@dimen/activity_horizontal_margin"
+        android:text="@string/address"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="9dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/street"
         app:boxBackgroundMode="outline"

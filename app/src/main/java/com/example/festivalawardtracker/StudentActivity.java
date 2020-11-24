@@ -46,18 +46,18 @@ public class StudentActivity extends AppCompatActivity {
         String[] GENDER = Gender.Options();
         ArrayAdapter<String> adapterGender =
                 new ArrayAdapter<>(
-                        this,
+                        getBaseContext(),
                         R.layout.dropdown_layout,
                         GENDER);
         AutoCompleteTextView editTextFilledExposedDropdownGender =
-                this.findViewById(R.id.autoCompleteTextViewStudentDropdownGender);
+                this.findViewById(R.id.autoCompleteTextViewPersonDropdownGender);
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
 
         /* DROPDOWN LIST INSTRUMENTS */
         String[] INSTRUMENTS = Instrument.Options();
         ArrayAdapter<String> adapterInstruments =
                 new ArrayAdapter<>(
-                        this,
+                        getBaseContext(),
                         R.layout.dropdown_layout,
                         INSTRUMENTS);
         AutoCompleteTextView editTextFilledExposedDropdownInstruments =
@@ -71,7 +71,7 @@ public class StudentActivity extends AppCompatActivity {
         final MaterialDatePicker<Long> materialDatePicker = builder.build();
 
         // Setting Listener for Material Date Picker
-        editTextDatePicker = findViewById(R.id.editTextStudentBirthdate);
+        editTextDatePicker = findViewById(R.id.editTextPersonBirthdate);
         editTextDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,6 +98,5 @@ public class StudentActivity extends AppCompatActivity {
                 startActivity(activityIntent);
             }
         });
-
     }
 }
