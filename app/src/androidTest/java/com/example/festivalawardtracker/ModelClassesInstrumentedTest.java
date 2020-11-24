@@ -42,40 +42,7 @@ public class ModelClassesInstrumentedTest {
         DBManager.SchoolYears.clear();
         //load it from database!
         assertEquals(lastYear.ID,DBManager.getPreviousSchoolYear(years[6]).ID);
-
     }
-
-    // This code works, but cannot get it to work with generics.
-//    @Test
-//    public void testDBHashLoading(){
-//        DatabaseHashMap<SchoolYear> test =new DatabaseHashMap<>(SchoolYear.class);
-//
-//        final TaskCompletionSource<HashMap<String,SchoolYear>> task = new TaskCompletionSource<>();
-//        DBManager.currentDB.child(test.pathToData).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot ds) {
-//                GenericTypeIndicator<HashMap<String,SchoolYear>> t=new GenericTypeIndicator<HashMap<String, SchoolYear>>() {};
-//                task.setResult(ds.getValue(t));
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                task.setException(error.toException());
-//            }
-//        });
-//        Task<HashMap<String,SchoolYear>> t = task.getTask();
-//        try {
-//            Tasks.await(t);
-//        } catch (ExecutionException | InterruptedException e) {
-//            t = Tasks.forException(e);
-//            return;
-//        }
-//        if(t.isSuccessful()) {
-//            if (t.getResult()!=null) test.putAll(t.getResult());
-//        }
-//
-//        assertNotEquals(0,test.size());
-//        assertEquals(10,test.size());
-//    }
 
 
 
@@ -139,6 +106,9 @@ public class ModelClassesInstrumentedTest {
             }
         }
         s.save();
+
+        Teacher nina=DBManager.getTeacherByEmail("nina@wachtermusic.com");
+        assertEquals("nina@wachtermusic.com", nina.contact.email);
     }
 
 }

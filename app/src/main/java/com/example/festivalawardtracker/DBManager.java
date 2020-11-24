@@ -27,7 +27,7 @@ public class DBManager {
 
     static DatabaseHashMap<Teacher> Teachers=new DatabaseHashMap<>(Teacher.class);
     static DatabaseHashMap<Student> Students=new DatabaseHashMap<>(Student.class);
-    static DatabaseHashMap<Person> Parents=new DatabaseHashMap<>("Parents", Person.class);
+    static DatabaseHashMap<Person> Parents=new DatabaseHashMap<>(Person.class);
     static DatabaseHashMap<Event> Events=new DatabaseHashMap<>(Event.class);
     static DatabaseHashMap<EventDescription> EventDescriptions=new DatabaseHashMap<>(EventDescription.class);
     static DatabaseHashMap<Festival> Festivals=new DatabaseHashMap<>(Festival.class);
@@ -101,6 +101,21 @@ public class DBManager {
         }
         if(t.isSuccessful()) {
             return t.getResult();
+        }
+        return null;
+    }
+
+    public static Teacher getTeacherByEmail(String email){
+        for (Map.Entry<String,Teacher> e:Teachers.entrySet()){
+            if (e.getValue().getEmail().equals(email))
+                return e.getValue();
+        }
+        DataSnapshot ds=runQuery(currentDB.child("Teachers").orderByChild("email").equalTo(email).limitToFirst(1));
+        if(ds!=null && ds.getChildrenCount()==1){
+            ds=ds.getChildren().iterator().next();
+            Teacher result=ds.getValue(Teacher.class);
+            result.ID= ds.getKey();
+            return result;
         }
         return null;
     }
