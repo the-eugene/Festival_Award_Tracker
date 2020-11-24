@@ -1,0 +1,1188 @@
+Index: app/src/main/java/com/example/festivalawardtracker/ui/event/EventViewModel.java
+===================================================================
+--- app/src/main/java/com/example/festivalawardtracker/ui/event/EventViewModel.java	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/java/com/example/festivalawardtracker/ui/event/EventViewModel.java	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
+@@ -1,22 +0,0 @@
+-package com.example.festivalawardtracker.ui.event;
+-
+-import androidx.lifecycle.LiveData;
+-import androidx.lifecycle.MutableLiveData;
+-import androidx.lifecycle.ViewModel;
+-
+-/**
+- * @author carloswashingtonmercado@gmail.com
+- */
+-public class EventViewModel extends ViewModel {
+-
+-    private MutableLiveData<String> mText;
+-
+-    public EventViewModel() {
+-//        mText = new MutableLiveData<>();
+-//        mText.setValue("This is gallery fragment");
+-    }
+-
+-    public LiveData<String> getText() {
+-        return mText;
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/java/com/example/festivalawardtracker/ui/festival/FestivalViewModel.java
+===================================================================
+--- app/src/main/java/com/example/festivalawardtracker/ui/festival/FestivalViewModel.java	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/java/com/example/festivalawardtracker/ui/festival/FestivalViewModel.java	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
+@@ -1,22 +0,0 @@
+-package com.example.festivalawardtracker.ui.festival;
+-
+-import androidx.lifecycle.LiveData;
+-import androidx.lifecycle.MutableLiveData;
+-import androidx.lifecycle.ViewModel;
+-
+-/**
+- * @author carloswashingtonmercado@gmail.com
+- */
+-public class FestivalViewModel extends ViewModel {
+-
+-    private MutableLiveData<String> mText;
+-
+-    public FestivalViewModel() {
+-        mText = new MutableLiveData<>();
+-        mText.setValue("This is gallery fragment");
+-    }
+-
+-    public LiveData<String> getText() {
+-        return mText;
+-    }
+-}
+\ No newline at end of file
+Index: app/src/main/res/layout/row_students_recyclerview.xml
+===================================================================
+--- app/src/main/res/layout/row_students_recyclerview.xml	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/res/layout/row_students_recyclerview.xml	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
+@@ -1,86 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent">
+-
+-    <TextView
+-        android:id="@+id/rowStudentName"
+-        android:layout_width="0dp"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="8dp"
+-        android:layout_marginTop="8dp"
+-        android:text="StudentFullName"
+-        android:textSize="24sp"
+-        app:layout_constraintEnd_toStartOf="@+id/rowStudentGender"
+-        app:layout_constraintHorizontal_bias="0.5"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent" />
+-
+-    <TextView
+-        android:id="@+id/rowStudentBirthday"
+-        android:layout_width="wrap_content"
+-        android:layout_height="19dp"
+-        android:layout_marginStart="8dp"
+-        android:layout_marginTop="8dp"
+-        android:layout_marginBottom="8dp"
+-        android:text="StudentsBirthday"
+-        app:layout_constraintBottom_toBottomOf="@+id/rowStudentName"
+-        app:layout_constraintEnd_toStartOf="@+id/rowStudentAge"
+-        app:layout_constraintHorizontal_bias="0.5"
+-        app:layout_constraintStart_toEndOf="@+id/rowStudentGender"
+-        app:layout_constraintTop_toTopOf="parent" />
+-
+-    <TextView
+-        android:id="@+id/rowStudentAge"
+-        android:layout_width="wrap_content"
+-        android:layout_height="19dp"
+-        android:layout_marginStart="8dp"
+-        android:layout_marginTop="8dp"
+-        android:layout_marginEnd="8dp"
+-        android:layout_marginBottom="8dp"
+-        android:text="StudentsAge"
+-        app:layout_constraintBottom_toBottomOf="@+id/rowStudentName"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.5"
+-        app:layout_constraintStart_toEndOf="@+id/rowStudentBirthday"
+-        app:layout_constraintTop_toTopOf="parent" />
+-
+-    <TextView
+-        android:id="@+id/rowStudentGender"
+-        android:layout_width="wrap_content"
+-        android:layout_height="19dp"
+-        android:layout_marginStart="8dp"
+-        android:layout_marginTop="8dp"
+-        android:layout_marginBottom="8dp"
+-        android:text="StudentsGender"
+-        app:layout_constraintBottom_toBottomOf="@+id/rowStudentName"
+-        app:layout_constraintEnd_toStartOf="@+id/rowStudentBirthday"
+-        app:layout_constraintHorizontal_bias="0.5"
+-        app:layout_constraintStart_toEndOf="@+id/rowStudentName"
+-        app:layout_constraintTop_toTopOf="parent" />
+-
+-    <RatingBar
+-        android:id="@+id/rowStudentRating"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginTop="8dp"
+-        android:layout_marginEnd="8dp"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/rowStudentName" />
+-
+-    <TextView
+-        android:id="@+id/rowStudentLevel"
+-        android:layout_width="0dp"
+-        android:layout_height="0dp"
+-        android:layout_marginStart="8dp"
+-        android:layout_marginEnd="8dp"
+-        android:text="EZ1"
+-        android:textAlignment="center"
+-        android:textSize="36sp"
+-        app:layout_constraintBottom_toBottomOf="@+id/rowStudentRating"
+-        app:layout_constraintEnd_toStartOf="@+id/rowStudentRating"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="@+id/rowStudentRating" />
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/main_fragment_festival.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:layout_margin=\"10dp\"\n    tools:context=\".ui.festival.FestivalFragment\">\n\n    <EditText\n        android:padding=\"30dp\"\n        android:hint=\"Search Festival\"\n        android:id=\"@+id/mSearchNameFestival\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\"\n        android:inputType=\"text\"\n        android:importantForAutofill=\"no\" />\n\n    <LinearLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"0dp\"\n        android:orientation=\"vertical\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/mSearchNameFestival\"\n        tools:layout_editor_absoluteX=\"101dp\">\n\n        <androidx.recyclerview.widget.RecyclerView\n            android:id=\"@+id/recyclerView_festival\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\"\n            app:layout_constraintBottom_toBottomOf=\"parent\"\n            app:layout_constraintEnd_toEndOf=\"parent\"\n            app:layout_constraintStart_toStartOf=\"parent\"\n            app:layout_constraintTop_toTopOf=\"parent\" />\n    </LinearLayout>\n\n    <com.google.android.material.floatingactionbutton.FloatingActionButton\n        android:id=\"@+id/fab_newFestival\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_margin=\"@dimen/fab_margin\"\n        android:contentDescription=\"@string/todo\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:srcCompat=\"@drawable/ic_baseline_add_24\" />\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/main_fragment_festival.xml	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/res/layout/main_fragment_festival.xml	(date 1606205533000)
+@@ -5,7 +5,8 @@
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_margin="10dp"
+-    tools:context=".ui.festival.FestivalFragment">
++    tools:context=".ui.festival.FestivalFragment"
++    android:background="?attr/selectableItemBackground">
+ 
+     <EditText
+         android:padding="30dp"
+@@ -34,7 +35,8 @@
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintTop_toTopOf="parent" />
++            app:layout_constraintTop_toTopOf="parent"
++            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+     </LinearLayout>
+ 
+     <com.google.android.material.floatingactionbutton.FloatingActionButton
+Index: app/src/main/res/navigation/navigation_main_activity.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<navigation xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:id=\"@+id/navigation_main_activity\"\n    app:startDestination=\"@+id/nav_home\">\n\n    <fragment\n        android:id=\"@+id/nav_home\"\n        android:name=\"com.example.festivalawardtracker.ui.student.StudentFragment\"\n        android:label=\"@string/menu_home\"\n        tools:layout=\"@layout/main_fragment_student\" />\n    <fragment\n        android:id=\"@+id/nav_festival\"\n        android:name=\"com.example.festivalawardtracker.ui.festival.FestivalFragment\"\n        android:label=\"@string/menu_festival\"\n        tools:layout=\"@layout/main_fragment_festival\" />\n    <fragment\n        android:id=\"@+id/nav_event\"\n        android:name=\"com.example.festivalawardtracker.ui.event.EventFragment\"\n        android:label=\"Event List\"\n        tools:layout=\"@layout/main_fragment_event\" />\n</navigation>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/navigation/navigation_main_activity.xml	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/res/navigation/navigation_main_activity.xml	(date 1606203235000)
+@@ -14,7 +14,11 @@
+         android:id="@+id/nav_festival"
+         android:name="com.example.festivalawardtracker.ui.festival.FestivalFragment"
+         android:label="@string/menu_festival"
+-        tools:layout="@layout/main_fragment_festival" />
++        tools:layout="@layout/main_fragment_festival" >
++        <action
++            android:id="@+id/action_nav_festival_to_nav_event"
++            app:destination="@id/nav_event" />
++    </fragment>
+     <fragment
+         android:id="@+id/nav_event"
+         android:name="com.example.festivalawardtracker.ui.event.EventFragment"
+Index: app/src/main/java/com/example/festivalawardtracker/ui/event/EventFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.festivalawardtracker.ui.event;\n\nimport android.content.Intent;\nimport android.os.Bundle;\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\n\nimport androidx.annotation.NonNull;\nimport androidx.fragment.app.Fragment;\nimport androidx.lifecycle.ViewModelProvider;\n\nimport com.example.festivalawardtracker.EventActivity;\nimport com.example.festivalawardtracker.R;\nimport com.example.festivalawardtracker.StudentActivity;\nimport com.google.android.material.floatingactionbutton.FloatingActionButton;\n\n/**\n * @author carloswashingtonmercado@gmail.com\n */\npublic class EventFragment extends Fragment implements View.OnClickListener {\n\n    private EventViewModel eventViewModel;\n    FloatingActionButton fabNewEvent;\n\n    /**\n     *\n     * @param inflater\n     * @param container\n     * @param savedInstanceState\n     * @return root Returning view to the fragment\n     */\n    public View onCreateView(@NonNull LayoutInflater inflater,\n                             ViewGroup container, Bundle savedInstanceState) {\n\n        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);\n        View root = inflater.inflate(R.layout.main_fragment_event, container, false);\n\n        // Setting up the FAB button for add event\n        // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener\n        fabNewEvent = root.findViewById(R.id.fab_newEvent);\n        fabNewEvent.setOnClickListener(this);\n\n        return root; // Returning the view.\n    }\n\n    /**\n     *\n     * @param v\n     */\n    @Override\n    public void onClick(View v) {\n        Intent activityIntent = new Intent( v.getContext(), EventActivity.class);\n        startActivity(activityIntent);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/festivalawardtracker/ui/event/EventFragment.java	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/java/com/example/festivalawardtracker/ui/event/EventFragment.java	(date 1606196974000)
+@@ -1,5 +1,6 @@
+ package com.example.festivalawardtracker.ui.event;
+ 
++import android.content.Context;
+ import android.content.Intent;
+ import android.os.Bundle;
+ import android.view.LayoutInflater;
+@@ -9,19 +10,30 @@
+ import androidx.annotation.NonNull;
+ import androidx.fragment.app.Fragment;
+ import androidx.lifecycle.ViewModelProvider;
++import androidx.recyclerview.widget.DividerItemDecoration;
++import androidx.recyclerview.widget.RecyclerView;
+ 
+ import com.example.festivalawardtracker.EventActivity;
+ import com.example.festivalawardtracker.R;
+ import com.example.festivalawardtracker.StudentActivity;
++import com.example.festivalawardtracker.StudentRatingsActivity;
++import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
+ import com.google.android.material.floatingactionbutton.FloatingActionButton;
+ 
++import java.util.ArrayList;
++import java.util.List;
++
+ /**
+  * @author carloswashingtonmercado@gmail.com
+  */
+-public class EventFragment extends Fragment implements View.OnClickListener {
++public class EventFragment extends Fragment implements View.OnClickListener, RecyclerViewClickInterface {
+ 
+-    private EventViewModel eventViewModel;
++    RecyclerView recyclerView;
+     FloatingActionButton fabNewEvent;
++    EventRecyclerAdapter eventRecyclerAdapter;
++    List<String> eventName, startDate, endDate, eventLocation, eventInstruments;
++    Context thisContext;
++
+ 
+     /**
+      *
+@@ -33,14 +45,112 @@
+     public View onCreateView(@NonNull LayoutInflater inflater,
+                              ViewGroup container, Bundle savedInstanceState) {
+ 
+-        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
+         View root = inflater.inflate(R.layout.main_fragment_event, container, false);
+ 
++        thisContext = container.getContext();
++        Context context = root.getContext();
++
++        eventName = new ArrayList<>();
++        startDate = new ArrayList<>();
++        endDate = new ArrayList<>();
++        eventLocation = new ArrayList<>();
++        eventInstruments = new ArrayList<>();
++
++        recyclerView = root.findViewById(R.id.recyclerView_event);
++        eventRecyclerAdapter = new EventRecyclerAdapter(eventName,startDate,endDate,eventLocation,eventInstruments,this);
++        recyclerView.setAdapter(eventRecyclerAdapter);
++        recyclerView.setMotionEventSplittingEnabled(false);
++
++        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
++        recyclerView.addItemDecoration(dividerItemDecoration);
++
++        eventName.add("Event 1");
++        eventName.add("Event 2");
++        eventName.add("Event 3");
++        eventName.add("Event 4");
++        eventName.add("Event 5");
++        eventName.add("Event 6");
++        eventName.add("Event 7");
++        eventName.add("Event 8");
++        eventName.add("Event 9");
++        eventName.add("Event 10");
++        eventName.add("Event 11");
++        eventName.add("Event 12");
++        eventName.add("Event 13");
++        eventName.add("Event 14");
++        eventName.add("Event 15");
++
++        startDate.add("Today");
++        startDate.add("Today");
++        startDate.add("Today");
++        startDate.add("Today");
++        startDate.add("Today");
++        startDate.add("Today");
++        startDate.add("Today");
++        startDate.add("Today");
++        startDate.add("Today");
++        startDate.add("Today");
++        startDate.add("Today");
++        startDate.add("Today");
++        startDate.add("Today");
++        startDate.add("Today");
++        startDate.add("Today");
++
++        endDate.add("Tomorrow");
++        endDate.add("Tomorrow");
++        endDate.add("Tomorrow");
++        endDate.add("Tomorrow");
++        endDate.add("Tomorrow");
++        endDate.add("Tomorrow");
++        endDate.add("Tomorrow");
++        endDate.add("Tomorrow");
++        endDate.add("Tomorrow");
++        endDate.add("Tomorrow");
++        endDate.add("Tomorrow");
++        endDate.add("Tomorrow");
++        endDate.add("Tomorrow");
++        endDate.add("Tomorrow");
++        endDate.add("Tomorrow");
++
++        eventLocation.add("Here");
++        eventLocation.add("Here");
++        eventLocation.add("Here");
++        eventLocation.add("Here");
++        eventLocation.add("Here");
++        eventLocation.add("Here");
++        eventLocation.add("Here");
++        eventLocation.add("Here");
++        eventLocation.add("Here");
++        eventLocation.add("Here");
++        eventLocation.add("Here");
++        eventLocation.add("Here");
++        eventLocation.add("Here");
++        eventLocation.add("Here");
++        eventLocation.add("Here");
++
++        eventInstruments.add("Piano");
++        eventInstruments.add("Piano");
++        eventInstruments.add("Piano");
++        eventInstruments.add("Piano");
++        eventInstruments.add("Piano");
++        eventInstruments.add("Piano");
++        eventInstruments.add("Piano");
++        eventInstruments.add("Piano");
++        eventInstruments.add("Piano");
++        eventInstruments.add("Piano");
++        eventInstruments.add("Piano");
++        eventInstruments.add("Piano");
++        eventInstruments.add("Piano");
++        eventInstruments.add("Piano");
++        eventInstruments.add("Piano");
++
+         // Setting up the FAB button for add event
+         // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener
+         fabNewEvent = root.findViewById(R.id.fab_newEvent);
+         fabNewEvent.setOnClickListener(this);
+ 
++
++
+         return root; // Returning the view.
+     }
+ 
+@@ -53,4 +163,10 @@
+         Intent activityIntent = new Intent( v.getContext(), EventActivity.class);
+         startActivity(activityIntent);
+     }
++
++    @Override
++    public void onItemClick(int position) {
++        Intent activityIntent = new Intent(thisContext, StudentRatingsActivity.class);
++        startActivity(activityIntent);
++    }
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/example/festivalawardtracker/ui/student/StudentRecyclerAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.festivalawardtracker.ui.student;\n\nimport android.content.Context;\nimport android.util.Log;\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.TextView;\nimport android.widget.Toast;\n\nimport androidx.annotation.NonNull;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport com.example.festivalawardtracker.R;\n\nimport java.util.List;\n\npublic class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecyclerAdapter.ViewHolder> {\n\n    List<String> studentNames;\n    List<String> birthday;\n    List<String> age;\n    List<String> gender;\n    List<String> awardInfo;\n    private RecyclerViewClickInterface recyclerViewClickInterface;\n\n    public StudentRecyclerAdapter(List<String> studentNames,List<String> birthday,List<String> age,List<String> gender, List<String> awardInfo, RecyclerViewClickInterface recyclerViewClickInterface) {\n        this.studentNames = studentNames;\n        this.birthday = birthday;\n        this.age = age;\n        this.gender = gender;\n        this.awardInfo = awardInfo;\n        this.recyclerViewClickInterface = recyclerViewClickInterface;\n        Log.d(\"StudentRecyclerAdapter\", \"These are my students:\" + studentNames);\n    }\n\n    @NonNull\n    @Override\n    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {\n        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());\n        View view = layoutInflater.inflate(R.layout.student_display, parent,false);\n        ViewHolder viewHolder = new ViewHolder(view);\n        return viewHolder;\n    }\n\n    @Override\n    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {\n\n        holder.studentName.setText(studentNames.get(position));\n        holder.birthday.setText(birthday.get(position));\n        holder.age.setText(age.get(position));\n        holder.gender.setText(gender.get(position));\n        holder.awardsInfo.setText(awardInfo.get(position));\n    }\n\n    @Override\n    public int getItemCount() {\n        return studentNames.size();\n    }\n\n    class ViewHolder extends RecyclerView.ViewHolder{\n        TextView studentName, birthday, age, gender, awardsInfo;\n\n        public ViewHolder(@NonNull View itemView) {\n\n            super(itemView);\n            studentName = itemView.findViewById(R.id.StudentName);\n            birthday = itemView.findViewById(R.id.Birthday);\n            age = itemView.findViewById(R.id.Age);\n            gender = itemView.findViewById(R.id.Gender);\n            awardsInfo = itemView.findViewById((R.id.AwardsInfo));\n            itemView.setOnClickListener(new View.OnClickListener() {\n                @Override\n                public void onClick(View v) {\n                    recyclerViewClickInterface.onItemClick(getAdapterPosition(), v);\n                }\n            });\n        }\n\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/festivalawardtracker/ui/student/StudentRecyclerAdapter.java	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/java/com/example/festivalawardtracker/ui/student/StudentRecyclerAdapter.java	(date 1606201714000)
+@@ -1,36 +1,36 @@
+ package com.example.festivalawardtracker.ui.student;
+ 
+-import android.content.Context;
+ import android.util.Log;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
++import android.widget.Filter;
++import android.widget.Filterable;
+ import android.widget.TextView;
+-import android.widget.Toast;
+ 
+ import androidx.annotation.NonNull;
+ import androidx.recyclerview.widget.RecyclerView;
+ 
+ import com.example.festivalawardtracker.R;
+ 
++import java.util.ArrayList;
++import java.util.Collection;
+ import java.util.List;
+ 
+-public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecyclerAdapter.ViewHolder> {
++public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecyclerAdapter.ViewHolder> implements Filterable {
+ 
+-    List<String> studentNames;
+-    List<String> birthday;
+-    List<String> age;
+-    List<String> gender;
+-    List<String> awardInfo;
++    List<String> studentNames, birthday, age, gender, awardInfo;
++    List<String> studentNamesList;
+     private RecyclerViewClickInterface recyclerViewClickInterface;
+ 
+-    public StudentRecyclerAdapter(List<String> studentNames,List<String> birthday,List<String> age,List<String> gender, List<String> awardInfo, RecyclerViewClickInterface recyclerViewClickInterface) {
++    public StudentRecyclerAdapter(List<String> studentNames, List<String> birthday, List<String> age, List<String> gender, List<String> awardInfo, RecyclerViewClickInterface recyclerViewClickInterface) {
+         this.studentNames = studentNames;
+         this.birthday = birthday;
+         this.age = age;
+         this.gender = gender;
+         this.awardInfo = awardInfo;
+         this.recyclerViewClickInterface = recyclerViewClickInterface;
++        this.studentNamesList = new ArrayList<>(studentNames);
+         Log.d("StudentRecyclerAdapter", "These are my students:" + studentNames);
+     }
+ 
+@@ -38,7 +38,7 @@
+     @Override
+     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+-        View view = layoutInflater.inflate(R.layout.student_display, parent,false);
++        View view = layoutInflater.inflate(R.layout.student_display_recyclerview, parent, false);
+         ViewHolder viewHolder = new ViewHolder(view);
+         return viewHolder;
+     }
+@@ -58,6 +58,41 @@
+         return studentNames.size();
+     }
+ 
++    @Override
++    public Filter getFilter() {
++        return filter;
++    }
++
++    Filter filter = new Filter() {
++
++        //run on background thread
++        @Override
++        protected FilterResults performFiltering(CharSequence constraint) {
++            List<String> filteredList = new ArrayList<>();
++
++            if (constraint == null || constraint.length() == 0) {
++                filteredList.addAll(studentNamesList);
++            } else {
++                for (String student : studentNamesList) {
++                    if (student.toLowerCase().contains(constraint.toString().toLowerCase())) {
++                        filteredList.add(student);
++                    }
++                }
++            }
++
++            FilterResults filterResults = new FilterResults();
++            filterResults.values = filteredList;
++            return filterResults;
++        }
++
++        @Override
++        protected void publishResults(CharSequence constraint, FilterResults results) {
++            studentNames.clear();
++            studentNames.addAll((Collection<? extends String>) results.values);
++            notifyDataSetChanged();
++        }
++    };
++
+     class ViewHolder extends RecyclerView.ViewHolder{
+         TextView studentName, birthday, age, gender, awardsInfo;
+ 
+@@ -72,7 +107,7 @@
+             itemView.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+-                    recyclerViewClickInterface.onItemClick(getAdapterPosition(), v);
++                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
+                 }
+             });
+         }
+Index: app/src/main/java/com/example/festivalawardtracker/ui/student/RecyclerViewClickInterface.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.festivalawardtracker.ui.student;\n\nimport android.view.View;\n\npublic interface RecyclerViewClickInterface {\n    void onItemClick(int position, View v);\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/festivalawardtracker/ui/student/RecyclerViewClickInterface.java	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/java/com/example/festivalawardtracker/ui/student/RecyclerViewClickInterface.java	(date 1606189860000)
+@@ -3,5 +3,5 @@
+ import android.view.View;
+ 
+ public interface RecyclerViewClickInterface {
+-    void onItemClick(int position, View v);
++    void onItemClick(int position);
+ }
+Index: app/src/main/java/com/example/festivalawardtracker/ui/festival/FestivalFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.festivalawardtracker.ui.festival;\n\nimport android.content.Intent;\nimport android.os.Bundle;\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.TextView;\n\nimport androidx.annotation.NonNull;\nimport androidx.annotation.Nullable;\nimport androidx.fragment.app.Fragment;\nimport androidx.lifecycle.Observer;\nimport androidx.lifecycle.ViewModelProvider;\n\nimport com.example.festivalawardtracker.EventActivity;\nimport com.example.festivalawardtracker.FestivalActivity;\nimport com.example.festivalawardtracker.R;\nimport com.example.festivalawardtracker.StudentActivity;\nimport com.google.android.material.floatingactionbutton.FloatingActionButton;\n\n/**\n * @author carloswashingtonmercado@gmail.com\n */\npublic class FestivalFragment extends Fragment implements View.OnClickListener {\n\n    private FestivalViewModel festivalViewModel;\n    FloatingActionButton fabNewFestival;\n\n    /**\n     *\n     * @param inflater\n     * @param container\n     * @param savedInstanceState\n     * @return root Returning view to the fragment\n     */\n    public View onCreateView(@NonNull LayoutInflater inflater,\n                             ViewGroup container, Bundle savedInstanceState) {\n\n        festivalViewModel = new ViewModelProvider(this).get(FestivalViewModel.class);\n        View root = inflater.inflate(R.layout.main_fragment_festival, container, false);\n\n        // Setting up the FAB button for add festival\n        // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener\n        fabNewFestival = root.findViewById(R.id.fab_newFestival);\n        fabNewFestival.setOnClickListener(this);\n\n        return root;\n    }\n\n    /**\n     *\n     * @param v\n     */\n    @Override\n    public void onClick(View v) {\n        Intent activityIntent = new Intent( v.getContext(), FestivalActivity.class);\n        startActivity(activityIntent);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/festivalawardtracker/ui/festival/FestivalFragment.java	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/java/com/example/festivalawardtracker/ui/festival/FestivalFragment.java	(date 1606205533000)
+@@ -1,5 +1,6 @@
+ package com.example.festivalawardtracker.ui.festival;
+ 
++import android.content.Context;
+ import android.content.Intent;
+ import android.os.Bundle;
+ import android.view.LayoutInflater;
+@@ -10,22 +11,34 @@
+ import androidx.annotation.NonNull;
+ import androidx.annotation.Nullable;
+ import androidx.fragment.app.Fragment;
++import androidx.fragment.app.FragmentManager;
++import androidx.fragment.app.FragmentTransaction;
+ import androidx.lifecycle.Observer;
+ import androidx.lifecycle.ViewModelProvider;
++import androidx.recyclerview.widget.DividerItemDecoration;
++import androidx.recyclerview.widget.RecyclerView;
+ 
+ import com.example.festivalawardtracker.EventActivity;
+ import com.example.festivalawardtracker.FestivalActivity;
+ import com.example.festivalawardtracker.R;
+ import com.example.festivalawardtracker.StudentActivity;
++import com.example.festivalawardtracker.ui.event.EventFragment;
++import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
+ import com.google.android.material.floatingactionbutton.FloatingActionButton;
+ 
++import java.util.ArrayList;
++import java.util.List;
++
+ /**
+  * @author carloswashingtonmercado@gmail.com
+  */
+-public class FestivalFragment extends Fragment implements View.OnClickListener {
++public class FestivalFragment extends Fragment implements View.OnClickListener, RecyclerViewClickInterface {
+ 
+-    private FestivalViewModel festivalViewModel;
++    RecyclerView recyclerView;
+     FloatingActionButton fabNewFestival;
++    FestivalRecyclerAdapter festivalRecyclerAdapter;
++    List<String> festivalNames;
++    Context thisContext;
+ 
+     /**
+      *
+@@ -37,14 +50,43 @@
+     public View onCreateView(@NonNull LayoutInflater inflater,
+                              ViewGroup container, Bundle savedInstanceState) {
+ 
+-        festivalViewModel = new ViewModelProvider(this).get(FestivalViewModel.class);
+         View root = inflater.inflate(R.layout.main_fragment_festival, container, false);
+ 
++        thisContext = container.getContext();
++        Context context = root.getContext();
++
++        festivalNames = new ArrayList<>();
++        recyclerView = root.findViewById(R.id.recyclerView_festival);
++        festivalRecyclerAdapter = new FestivalRecyclerAdapter(festivalNames,this);
++        recyclerView.setAdapter(festivalRecyclerAdapter);
++        recyclerView.setMotionEventSplittingEnabled(false);
++
++        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
++        recyclerView.addItemDecoration(dividerItemDecoration);
++
++        festivalNames.add("festival1");
++        festivalNames.add("festival2");
++        festivalNames.add("festival3");
++        festivalNames.add("festival4");
++        festivalNames.add("festival5");
++        festivalNames.add("festival6");
++        festivalNames.add("festival7");
++        festivalNames.add("festival8");
++        festivalNames.add("festival9");
++        festivalNames.add("festival10");
++        festivalNames.add("festival11");
++        festivalNames.add("festival12");
++        festivalNames.add("festival13");
++        festivalNames.add("festival14");
++        festivalNames.add("festival15");
++
+         // Setting up the FAB button for add festival
+         // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener
+         fabNewFestival = root.findViewById(R.id.fab_newFestival);
+         fabNewFestival.setOnClickListener(this);
+ 
++
++
+         return root;
+     }
+ 
+@@ -57,4 +99,10 @@
+         Intent activityIntent = new Intent( v.getContext(), FestivalActivity.class);
+         startActivity(activityIntent);
+     }
++
++    @Override
++    public void onItemClick(int position) {
++
++
++    }
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/example/festivalawardtracker/ui/student/StudentFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.festivalawardtracker.ui.student;\n\nimport android.content.Context;\nimport android.content.Intent;\nimport android.os.Bundle;\nimport android.util.Log;\nimport android.view.LayoutInflater;\nimport android.view.Menu;\nimport android.view.MenuInflater;\nimport android.view.MenuItem;\nimport android.view.View;\nimport android.view.ViewGroup;\n\nimport androidx.annotation.NonNull;\nimport androidx.appcompat.widget.SearchView;\nimport androidx.fragment.app.Fragment;\nimport androidx.lifecycle.ViewModelProvider;\nimport androidx.recyclerview.widget.DividerItemDecoration;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport com.example.festivalawardtracker.R;\nimport com.example.festivalawardtracker.StudentActivity;\nimport com.example.festivalawardtracker.StudentDisplayActivity;\nimport com.google.android.material.floatingactionbutton.FloatingActionButton;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\n/**\n * @author carloswashingtonmercado@gmail.com\n */\npublic class StudentFragment extends Fragment implements View.OnClickListener, RecyclerViewClickInterface {\n\n    StudentRecyclerAdapter studentRecyclerAdapter;\n    FloatingActionButton fabNewStudent;\n    RecyclerView recyclerView;\n    List<String> studentNames;\n    List<String> birthday;\n    List<String> age;\n    List<String> gender;\n    List<String> awardInfo;\n\n    /**\n     *\n     * @param inflater\n     * @param container\n     * @param savedInstanceState\n     * @return root Returning view to the fragment\n     * @link <a>https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener</a>\n     * Implementing listeners for buttons on fragments seems to be something not that straight\n     * forward to do.\n     */\n    public View onCreateView(@NonNull final LayoutInflater inflater,\n                             final ViewGroup container, Bundle savedInstanceState) {\n\n        View root = inflater.inflate(R.layout.main_fragment_student, container, false);\n\n        Context context = root.getContext();\n\n        studentNames = new ArrayList<>();\n        birthday = new ArrayList<>();\n        age = new ArrayList<>();\n        gender = new ArrayList<>();\n        awardInfo = new ArrayList<>();\n\n        recyclerView = root.findViewById(R.id.recyclerView_student);\n\n        Log.d(\"StudentFragment\", String.valueOf(studentNames));\n        studentRecyclerAdapter = new StudentRecyclerAdapter(studentNames,birthday,age,gender,awardInfo,this);\n        recyclerView.setAdapter(studentRecyclerAdapter);\n\n        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);\n        recyclerView.addItemDecoration(dividerItemDecoration);\n\n        studentNames.add(\"Billy\");\n        studentNames.add(\"Billy2\");\n        studentNames.add(\"Billy3\");\n        studentNames.add(\"Billy4\");\n        studentNames.add(\"Billy5\");\n        studentNames.add(\"Billy6\");\n        studentNames.add(\"Billy\");\n        studentNames.add(\"Billy2\");\n        studentNames.add(\"Billy3\");\n        studentNames.add(\"Billy4\");\n        studentNames.add(\"Billy5\");\n        studentNames.add(\"Billy6\");\n\n        birthday.add(\"12/5/2000\");\n        birthday.add(\"12/5/2000\");\n        birthday.add(\"12/5/2000\");\n        birthday.add(\"12/5/2000\");\n        birthday.add(\"12/5/2000\");\n        birthday.add(\"12/5/2000\");\n        birthday.add(\"12/5/2000\");\n        birthday.add(\"12/5/2000\");\n        birthday.add(\"12/5/2000\");\n        birthday.add(\"12/5/2000\");\n        birthday.add(\"12/5/2000\");\n        birthday.add(\"12/5/2000\");\n\n        age.add(\"1\");\n        age.add(\"2\");\n        age.add(\"3\");\n        age.add(\"4\");\n        age.add(\"5\");\n        age.add(\"6\");\n        age.add(\"1\");\n        age.add(\"2\");\n        age.add(\"3\");\n        age.add(\"4\");\n        age.add(\"5\");\n        age.add(\"6\");\n\n        gender.add(\"M\");\n        gender.add(\"M\");\n        gender.add(\"M\");\n        gender.add(\"M\");\n        gender.add(\"M\");\n        gender.add(\"M\");\n        gender.add(\"M\");\n        gender.add(\"M\");\n        gender.add(\"M\");\n        gender.add(\"M\");\n        gender.add(\"M\");\n        gender.add(\"M\");\n\n        awardInfo.add(\"Good Job\");\n        awardInfo.add(\"Good Job\");\n        awardInfo.add(\"Good Job\");\n        awardInfo.add(\"Good Job\");\n        awardInfo.add(\"Good Job\");\n        awardInfo.add(\"Good Job\");\n        awardInfo.add(\"Good Job\");\n        awardInfo.add(\"Good Job\");\n        awardInfo.add(\"Good Job\");\n        awardInfo.add(\"Good Job\");\n        awardInfo.add(\"Good Job\");\n        awardInfo.add(\"Good Job\");\n\n\n        // Setting up the FAB button for add student\n        fabNewStudent = root.findViewById(R.id.fab_newStudent);\n        fabNewStudent.setOnClickListener(this);\n\n        return root; // Returning the view.\n    }\n\n    /**\n     *\n     * @param v\n     */\n    @Override\n    public void onClick(View v) {\n        Intent activityIntent = new Intent( v.getContext(), StudentActivity.class);\n        startActivity(activityIntent);\n    }\n\n    @Override\n    public void onItemClick(int position, View v) {\n        Intent intent = new Intent (v.getContext(), StudentDisplayActivity.class);\n        startActivity(intent);\n    }\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/festivalawardtracker/ui/student/StudentFragment.java	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/java/com/example/festivalawardtracker/ui/student/StudentFragment.java	(date 1606202077000)
+@@ -13,11 +13,13 @@
+ 
+ import androidx.annotation.NonNull;
+ import androidx.appcompat.widget.SearchView;
++import androidx.core.view.MenuItemCompat;
+ import androidx.fragment.app.Fragment;
+ import androidx.lifecycle.ViewModelProvider;
+ import androidx.recyclerview.widget.DividerItemDecoration;
+ import androidx.recyclerview.widget.RecyclerView;
+ 
++import com.example.festivalawardtracker.MainActivity;
+ import com.example.festivalawardtracker.R;
+ import com.example.festivalawardtracker.StudentActivity;
+ import com.example.festivalawardtracker.StudentDisplayActivity;
+@@ -34,11 +36,8 @@
+     StudentRecyclerAdapter studentRecyclerAdapter;
+     FloatingActionButton fabNewStudent;
+     RecyclerView recyclerView;
+-    List<String> studentNames;
+-    List<String> birthday;
+-    List<String> age;
+-    List<String> gender;
+-    List<String> awardInfo;
++    List<String> studentNames, birthday, age, gender, awardInfo;
++    Context thisContext;
+ 
+     /**
+      *
+@@ -55,6 +54,7 @@
+ 
+         View root = inflater.inflate(R.layout.main_fragment_student, container, false);
+ 
++        thisContext = container.getContext();
+         Context context = root.getContext();
+ 
+         studentNames = new ArrayList<>();
+@@ -68,6 +68,7 @@
+         Log.d("StudentFragment", String.valueOf(studentNames));
+         studentRecyclerAdapter = new StudentRecyclerAdapter(studentNames,birthday,age,gender,awardInfo,this);
+         recyclerView.setAdapter(studentRecyclerAdapter);
++        recyclerView.setMotionEventSplittingEnabled(false);
+ 
+         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
+         recyclerView.addItemDecoration(dividerItemDecoration);
+@@ -156,9 +157,31 @@
+     }
+ 
+     @Override
+-    public void onItemClick(int position, View v) {
+-        Intent intent = new Intent (v.getContext(), StudentDisplayActivity.class);
++    public void onItemClick(int position) {
++        Intent intent = new Intent (thisContext, StudentDisplayActivity.class);
+         startActivity(intent);
+     }
+ 
++    @Override
++    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
++
++        inflater.inflate(R.menu.main_menu,menu);
++        MenuItem menuItem = menu.findItem(R.id.action_search);
++        SearchView sv = (SearchView) menuItem.getActionView();
++        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
++            @Override
++            public boolean onQueryTextSubmit(String query) {
++                return false;
++            }
++
++            @Override
++            public boolean onQueryTextChange(String newText) {
++                studentRecyclerAdapter.getFilter().filter(newText);
++                return false;
++
++            }
++        });
++        super.onCreateOptionsMenu(menu, inflater);
++
++    }
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/main_fragment_event.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:layout_margin=\"10dp\"\n    tools:context=\".ui.event.EventFragment\">\n\n    <EditText\n        android:padding=\"30dp\"\n        android:hint=\"@string/search_event\"\n        android:id=\"@+id/mSearchNameEvent\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\"\n        android:inputType=\"text\"\n        android:importantForAutofill=\"no\" />\n\n    <LinearLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"0dp\"\n        android:orientation=\"vertical\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/mSearchNameEvent\"\n        tools:layout_editor_absoluteX=\"101dp\">\n\n        <androidx.recyclerview.widget.RecyclerView\n            android:id=\"@+id/recyclerView_event\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\"\n            app:layout_constraintBottom_toBottomOf=\"parent\"\n            app:layout_constraintEnd_toEndOf=\"parent\"\n            app:layout_constraintStart_toStartOf=\"parent\"\n            app:layout_constraintTop_toTopOf=\"parent\" />\n    </LinearLayout>\n\n    <com.google.android.material.floatingactionbutton.FloatingActionButton\n        android:id=\"@+id/fab_newEvent\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_margin=\"@dimen/fab_margin\"\n        android:contentDescription=\"@string/todo\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:srcCompat=\"@drawable/ic_baseline_add_24\" />\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/main_fragment_event.xml	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/res/layout/main_fragment_event.xml	(date 1606205533000)
+@@ -5,7 +5,8 @@
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_margin="10dp"
+-    tools:context=".ui.event.EventFragment">
++    tools:context=".ui.event.EventFragment"
++    android:background="?attr/selectableItemBackground">
+ 
+     <EditText
+         android:padding="30dp"
+@@ -34,7 +35,8 @@
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintTop_toTopOf="parent" />
++            app:layout_constraintTop_toTopOf="parent"
++            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+     </LinearLayout>
+ 
+     <com.google.android.material.floatingactionbutton.FloatingActionButton
+Index: app/src/main/res/menu/main_menu.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<menu xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\">\n\n    <item\n        android:id=\"@+id/action_search\"\n        android:orderInCategory=\"100\"\n        app:showAsAction=\"always\"\n        android:icon=\"@drawable/ic_baseline_search_24\"\n        android:title=\"Search\"\n        app:actionViewClass=\"androidx.appcompat.widget.SearchView\" />\n</menu>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/menu/main_menu.xml	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/res/menu/main_menu.xml	(date 1606200258000)
+@@ -5,7 +5,7 @@
+     <item
+         android:id="@+id/action_search"
+         android:orderInCategory="100"
+-        app:showAsAction="always"
++        app:showAsAction="always|collapseActionView"
+         android:icon="@drawable/ic_baseline_search_24"
+         android:title="Search"
+         app:actionViewClass="androidx.appcompat.widget.SearchView" />
+Index: app/src/main/res/layout/row_festivals_recyclerview.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\">\n\n    <TextView\n        android:id=\"@+id/rowFestivalName\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"29dp\"\n        android:text=\"FestivalName\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHorizontal_bias=\"0.5\"\n        app:layout_constraintStart_toEndOf=\"@+id/rowFestivalDate\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n\n    <TextView\n        android:id=\"@+id/rowFestivalDate\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"29dp\"\n        android:text=\"FestivalDate\"\n        app:layout_constraintEnd_toStartOf=\"@+id/rowFestivalName\"\n        app:layout_constraintHorizontal_bias=\"0.5\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/row_festivals_recyclerview.xml	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/res/layout/row_festivals_recyclerview.xml	(date 1606183205000)
+@@ -3,27 +3,18 @@
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+-    android:layout_height="match_parent">
++    android:layout_height="wrap_content">
+ 
+     <TextView
+         android:id="@+id/rowFestivalName"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
++        android:layout_width="match_parent"
++        android:layout_height="40dp"
+         android:layout_marginTop="29dp"
++        android:layout_marginBottom="29dp"
+         android:text="FestivalName"
++        app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.5"
+-        app:layout_constraintStart_toEndOf="@+id/rowFestivalDate"
+-        app:layout_constraintTop_toTopOf="parent" />
+-
+-    <TextView
+-        android:id="@+id/rowFestivalDate"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginTop="29dp"
+-        android:text="FestivalDate"
+-        app:layout_constraintEnd_toStartOf="@+id/rowFestivalName"
+-        app:layout_constraintHorizontal_bias="0.5"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
++
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/main_fragment_student.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:layout_margin=\"10dp\"\n    tools:context=\".ui.student.StudentFragment\">\n\n    <EditText\n        android:padding=\"30dp\"\n        android:hint=\"@string/search_student\"\n        android:id=\"@+id/mSearchNameStudent\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\"\n        android:inputType=\"text\"\n        android:importantForAutofill=\"no\" />\n\n    <LinearLayout\n        android:id=\"@+id/linearLayout\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"0dp\"\n        android:orientation=\"vertical\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/mSearchNameStudent\"\n        tools:layout_editor_absoluteX=\"101dp\">\n\n        <androidx.recyclerview.widget.RecyclerView\n            android:id=\"@+id/recyclerView_student\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\"\n            app:layout_constraintBottom_toBottomOf=\"parent\"\n            app:layout_constraintEnd_toEndOf=\"parent\"\n            app:layout_constraintStart_toStartOf=\"parent\"\n            app:layout_constraintTop_toTopOf=\"parent\"\n            app:layoutManager=\"androidx.recyclerview.widget.LinearLayoutManager\"/>\n    </LinearLayout>\n\n    <com.google.android.material.floatingactionbutton.FloatingActionButton\n        android:id=\"@+id/fab_newStudent\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_margin=\"@dimen/fab_margin\"\n        android:contentDescription=\"@string/todo\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:srcCompat=\"@drawable/ic_baseline_add_24\" />\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/main_fragment_student.xml	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/res/layout/main_fragment_student.xml	(date 1606205533000)
+@@ -5,7 +5,8 @@
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_margin="10dp"
+-    tools:context=".ui.student.StudentFragment">
++    tools:context=".ui.student.StudentFragment"
++    android:background="?attr/selectableItemBackground">
+ 
+     <EditText
+         android:padding="30dp"
+Index: app/src/main/java/com/example/festivalawardtracker/DatabaseViewHolder.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.festivalawardtracker;\n\nimport android.view.View;\nimport android.widget.TextView;\n\nimport androidx.recyclerview.widget.RecyclerView;\n\npublic class DatabaseViewHolder extends RecyclerView.ViewHolder {\n    View mView;\n    public DatabaseViewHolder(View itemView)\n    {\n        super(itemView);\n        mView=itemView;\n    }\n    public void setName(String name)\n    {\n        TextView student_name=(TextView)mView.findViewById(R.id.rowStudentName);\n        student_name.setText(name);\n    }\n    public void setGender(String gender)\n    {\n        TextView student_gender=(TextView)mView.findViewById(R.id.rowStudentGender);\n        student_gender.setText(gender);\n    }\n    public void setBirthday(String birthday)\n    {\n        TextView student_birthday=(TextView)mView.findViewById(R.id.rowStudentBirthday);\n        student_birthday.setText(birthday);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/festivalawardtracker/DatabaseViewHolder.java	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/java/com/example/festivalawardtracker/DatabaseViewHolder.java	(date 1606200172000)
+@@ -1,30 +1,30 @@
+-package com.example.festivalawardtracker;
+-
+-import android.view.View;
+-import android.widget.TextView;
+-
+-import androidx.recyclerview.widget.RecyclerView;
+-
+-public class DatabaseViewHolder extends RecyclerView.ViewHolder {
+-    View mView;
+-    public DatabaseViewHolder(View itemView)
+-    {
+-        super(itemView);
+-        mView=itemView;
+-    }
+-    public void setName(String name)
+-    {
+-        TextView student_name=(TextView)mView.findViewById(R.id.rowStudentName);
+-        student_name.setText(name);
+-    }
+-    public void setGender(String gender)
+-    {
+-        TextView student_gender=(TextView)mView.findViewById(R.id.rowStudentGender);
+-        student_gender.setText(gender);
+-    }
+-    public void setBirthday(String birthday)
+-    {
+-        TextView student_birthday=(TextView)mView.findViewById(R.id.rowStudentBirthday);
+-        student_birthday.setText(birthday);
+-    }
+-}
++//package com.example.festivalawardtracker;
++//
++//import android.view.View;
++//import android.widget.TextView;
++//
++//import androidx.recyclerview.widget.RecyclerView;
++//
++//public class DatabaseViewHolder extends RecyclerView.ViewHolder {
++//    View mView;
++//    public DatabaseViewHolder(View itemView)
++//    {
++//        super(itemView);
++//        mView=itemView;
++//    }
++//    public void setName(String name)
++//    {
++//        TextView student_name=(TextView)mView.findViewById(R.id.rowStudentName);
++//        student_name.setText(name);
++//    }
++//    public void setGender(String gender)
++//    {
++//        TextView student_gender=(TextView)mView.findViewById(R.id.rowStudentGender);
++//        student_gender.setText(gender);
++//    }
++//    public void setBirthday(String birthday)
++//    {
++//        TextView student_birthday=(TextView)mView.findViewById(R.id.rowStudentBirthday);
++//        student_birthday.setText(birthday);
++//    }
++//}
+Index: app/src/main/java/com/example/festivalawardtracker/HomeFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.festivalawardtracker;\n\nimport android.os.Bundle;\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.TextView;\n\nimport androidx.annotation.NonNull;\nimport androidx.fragment.app.Fragment;\nimport androidx.recyclerview.widget.LinearLayoutManager;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport com.firebase.ui.database.FirebaseRecyclerAdapter;\nimport com.firebase.ui.database.FirebaseRecyclerOptions;\nimport com.google.firebase.auth.FirebaseAuth;\nimport com.google.firebase.database.DataSnapshot;\nimport com.google.firebase.database.DatabaseError;\nimport com.google.firebase.database.DatabaseReference;\nimport com.google.firebase.database.FirebaseDatabase;\nimport com.google.firebase.database.ValueEventListener;\n\npublic class HomeFragment extends Fragment {\n    private View StudentView;\n    private RecyclerView myStudentList;\n    private DatabaseReference StudentsRef, UserRef;\n    private FirebaseAuth mAuth;\n    private String CurrentUserID;\n\n    public HomeFragment() {\n        //Required empty public constructor\n    }\n\n\n    @Override\n    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {\n\n        StudentView = inflater.inflate(R.layout.main_fragment_student, container, false);\n\n//        myStudentList = (RecyclerView) StudentView.findViewById(R.id.student_list);\n        myStudentList.setLayoutManager(new LinearLayoutManager(getContext()));\n\n        mAuth = FirebaseAuth.getInstance();\n        CurrentUserID = mAuth.getCurrentUser().getUid();\n        StudentsRef = FirebaseDatabase.getInstance().getReference().child(\"Student\");\n        UserRef = FirebaseDatabase.getInstance().getReference().child(\"Users\");\n\n        return StudentView;\n    }\n\n    @Override\n    public void onStart() {\n        super.onStart();\n\n        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<studentDatabase>()\n                .setQuery(StudentsRef, studentDatabase.class)\n                .build();\n\n        FirebaseRecyclerAdapter<studentDatabase, StudentViewHolder> adapter\n                = new FirebaseRecyclerAdapter<studentDatabase, StudentViewHolder>(options) {\n            @Override\n            protected void onBindViewHolder(@NonNull final StudentViewHolder holder, int position, @NonNull studentDatabase model) {\n                String userIDs = getRef(position).getKey();\n\n                UserRef.child(userIDs).addValueEventListener(new ValueEventListener() {\n                    @Override\n                    public void onDataChange(@NonNull DataSnapshot snapshot) {\n\n                        String studentName = snapshot.child(\"StudentName\").getValue().toString();\n                        String studentGender = snapshot.child(\"Gender\").getValue().toString();\n                        String studentBirthday = snapshot.child(\"Birthday\").getValue().toString();\n                        String studentAwards = snapshot.child(\"Awards\").getValue().toString();\n                        String studentAge = snapshot.child(\"Age\").getValue().toString();\n\n                        holder.Name.setText(studentName);\n                        holder.Gender.setText(studentGender);\n                        holder.Birthday.setText(studentBirthday);\n                        holder.Awards.setText(studentAwards);\n                        holder.Age.setText(studentAge);\n\n\n\n                    }\n\n                    @Override\n                    public void onCancelled(@NonNull DatabaseError error) {\n\n                    }\n                });\n\n            }\n\n            @NonNull\n            @Override\n            public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {\n                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_students_recyclerview, viewGroup, false);\n                StudentViewHolder viewHolder = new StudentViewHolder(view);\n                return viewHolder;\n            }\n        };\n        myStudentList.setAdapter(adapter);\n        adapter.startListening();\n    }\n\n    public static  class StudentViewHolder extends  RecyclerView.ViewHolder{\n        TextView Name, Gender, Birthday, Age, Awards;\n        public StudentViewHolder(@NonNull View itemView) {\n            super(itemView);\n            Name = itemView.findViewById(R.id.rowStudentName);\n            Gender = itemView.findViewById(R.id.rowStudentGender);\n            Birthday = itemView.findViewById(R.id.rowStudentBirthday);\n            Age = itemView.findViewById(R.id.rowStudentAge);\n//            Awards = itemView.findViewById(R.id.rowStudentRating);\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/festivalawardtracker/HomeFragment.java	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/java/com/example/festivalawardtracker/HomeFragment.java	(date 1606200072000)
+@@ -21,96 +21,96 @@
+ import com.google.firebase.database.ValueEventListener;
+ 
+ public class HomeFragment extends Fragment {
+-    private View StudentView;
+-    private RecyclerView myStudentList;
+-    private DatabaseReference StudentsRef, UserRef;
+-    private FirebaseAuth mAuth;
+-    private String CurrentUserID;
+-
+-    public HomeFragment() {
+-        //Required empty public constructor
+-    }
+-
+-
+-    @Override
+-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+-
+-        StudentView = inflater.inflate(R.layout.main_fragment_student, container, false);
+-
+-//        myStudentList = (RecyclerView) StudentView.findViewById(R.id.student_list);
+-        myStudentList.setLayoutManager(new LinearLayoutManager(getContext()));
+-
+-        mAuth = FirebaseAuth.getInstance();
+-        CurrentUserID = mAuth.getCurrentUser().getUid();
+-        StudentsRef = FirebaseDatabase.getInstance().getReference().child("Student");
+-        UserRef = FirebaseDatabase.getInstance().getReference().child("Users");
+-
+-        return StudentView;
+-    }
+-
+-    @Override
+-    public void onStart() {
+-        super.onStart();
+-
+-        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<studentDatabase>()
+-                .setQuery(StudentsRef, studentDatabase.class)
+-                .build();
+-
+-        FirebaseRecyclerAdapter<studentDatabase, StudentViewHolder> adapter
+-                = new FirebaseRecyclerAdapter<studentDatabase, StudentViewHolder>(options) {
+-            @Override
+-            protected void onBindViewHolder(@NonNull final StudentViewHolder holder, int position, @NonNull studentDatabase model) {
+-                String userIDs = getRef(position).getKey();
+-
+-                UserRef.child(userIDs).addValueEventListener(new ValueEventListener() {
+-                    @Override
+-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+-
+-                        String studentName = snapshot.child("StudentName").getValue().toString();
+-                        String studentGender = snapshot.child("Gender").getValue().toString();
+-                        String studentBirthday = snapshot.child("Birthday").getValue().toString();
+-                        String studentAwards = snapshot.child("Awards").getValue().toString();
+-                        String studentAge = snapshot.child("Age").getValue().toString();
+-
+-                        holder.Name.setText(studentName);
+-                        holder.Gender.setText(studentGender);
+-                        holder.Birthday.setText(studentBirthday);
+-                        holder.Awards.setText(studentAwards);
+-                        holder.Age.setText(studentAge);
+-
+-
+-
+-                    }
+-
+-                    @Override
+-                    public void onCancelled(@NonNull DatabaseError error) {
+-
+-                    }
+-                });
+-
+-            }
+-
+-            @NonNull
+-            @Override
+-            public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+-                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_students_recyclerview, viewGroup, false);
+-                StudentViewHolder viewHolder = new StudentViewHolder(view);
+-                return viewHolder;
+-            }
+-        };
+-        myStudentList.setAdapter(adapter);
+-        adapter.startListening();
+-    }
+-
+-    public static  class StudentViewHolder extends  RecyclerView.ViewHolder{
+-        TextView Name, Gender, Birthday, Age, Awards;
+-        public StudentViewHolder(@NonNull View itemView) {
+-            super(itemView);
+-            Name = itemView.findViewById(R.id.rowStudentName);
+-            Gender = itemView.findViewById(R.id.rowStudentGender);
+-            Birthday = itemView.findViewById(R.id.rowStudentBirthday);
+-            Age = itemView.findViewById(R.id.rowStudentAge);
+-//            Awards = itemView.findViewById(R.id.rowStudentRating);
+-        }
+-    }
++//    private View StudentView;
++//    private RecyclerView myStudentList;
++//    private DatabaseReference StudentsRef, UserRef;
++//    private FirebaseAuth mAuth;
++//    private String CurrentUserID;
++//
++//    public HomeFragment() {
++//        //Required empty public constructor
++//    }
++//
++//
++//    @Override
++//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
++//
++//        StudentView = inflater.inflate(R.layout.main_fragment_student, container, false);
++//
++////        myStudentList = (RecyclerView) StudentView.findViewById(R.id.student_list);
++//        myStudentList.setLayoutManager(new LinearLayoutManager(getContext()));
++//
++//        mAuth = FirebaseAuth.getInstance();
++//        CurrentUserID = mAuth.getCurrentUser().getUid();
++//        StudentsRef = FirebaseDatabase.getInstance().getReference().child("Student");
++//        UserRef = FirebaseDatabase.getInstance().getReference().child("Users");
++//
++//        return StudentView;
++//    }
++//
++//    @Override
++//    public void onStart() {
++//        super.onStart();
++//
++//        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<studentDatabase>()
++//                .setQuery(StudentsRef, studentDatabase.class)
++//                .build();
++//
++//        FirebaseRecyclerAdapter<studentDatabase, StudentViewHolder> adapter
++//                = new FirebaseRecyclerAdapter<studentDatabase, StudentViewHolder>(options) {
++//            @Override
++//            protected void onBindViewHolder(@NonNull final StudentViewHolder holder, int position, @NonNull studentDatabase model) {
++//                String userIDs = getRef(position).getKey();
++//
++//                UserRef.child(userIDs).addValueEventListener(new ValueEventListener() {
++//                    @Override
++//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
++//
++//                        String studentName = snapshot.child("StudentName").getValue().toString();
++//                        String studentGender = snapshot.child("Gender").getValue().toString();
++//                        String studentBirthday = snapshot.child("Birthday").getValue().toString();
++//                        String studentAwards = snapshot.child("Awards").getValue().toString();
++//                        String studentAge = snapshot.child("Age").getValue().toString();
++//
++//                        holder.Name.setText(studentName);
++//                        holder.Gender.setText(studentGender);
++//                        holder.Birthday.setText(studentBirthday);
++//                        holder.Awards.setText(studentAwards);
++//                        holder.Age.setText(studentAge);
++//
++//
++//
++//                    }
++//
++//                    @Override
++//                    public void onCancelled(@NonNull DatabaseError error) {
++//
++//                    }
++//                });
++//
++//            }
++//
++//            @NonNull
++//            @Override
++//            public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
++//                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_students_recyclerview, viewGroup, false);
++//                StudentViewHolder viewHolder = new StudentViewHolder(view);
++//                return viewHolder;
++//            }
++//        };
++//        myStudentList.setAdapter(adapter);
++//        adapter.startListening();
++//    }
++//
++//    public static  class StudentViewHolder extends  RecyclerView.ViewHolder{
++//        TextView Name, Gender, Birthday, Age, Awards;
++//        public StudentViewHolder(@NonNull View itemView) {
++//            super(itemView);
++//            Name = itemView.findViewById(R.id.rowStudentName);
++//            Gender = itemView.findViewById(R.id.rowStudentGender);
++//            Birthday = itemView.findViewById(R.id.rowStudentBirthday);
++//            Age = itemView.findViewById(R.id.rowStudentAge);
++////            Awards = itemView.findViewById(R.id.rowStudentRating);
++//        }
++//    }
+ }
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    package=\"com.example.festivalawardtracker\">\n\n    <uses-permission android:name=\"android.permission.WAKE_LOCK\" />\n    <uses-permission android:name=\"android.permission.INTERNET\" />\n\n    <application\n        android:allowBackup=\"true\"\n        android:icon=\"@mipmap/ic_launcher\"\n        android:label=\"@string/app_name\"\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\n        android:supportsRtl=\"true\"\n        android:theme=\"@style/AppTheme\">\n        <activity\n            android:name=\".EventDisplayActivity\"\n            android:parentActivityName=\".MainActivity\" />\n        <activity\n            android:name=\".StudentDisplayActivity\"\n            android:parentActivityName=\".MainActivity\" />\n        <activity\n            android:name=\".EventActivity\"\n            android:parentActivityName=\".MainActivity\" />\n        <activity\n            android:name=\".MainEmptyActivity\"\n            android:theme=\"@android:style/Theme.NoDisplay\">\n            <intent-filter>\n                <action android:name=\"android.intent.action.MAIN\" />\n\n                <category android:name=\"android.intent.category.LAUNCHER\" />\n            </intent-filter>\n        </activity>\n        <activity\n            android:name=\".MainActivity\"\n            android:label=\"@string/title_activity_main2\"\n            android:theme=\"@style/AppTheme.NoActionBar\">\n            <intent-filter>\n                <action android:name=\"android.intent.action.MAIN\" />\n\n                <category android:name=\"android.intent.category.LAUNCHER\" />\n            </intent-filter>\n        </activity>\n        <activity android:name=\".SignUpActivity\" />\n        <activity android:name=\".SignInActivity\" />\n        <activity android:name=\".LogInOptionsActivity\" />\n        <activity\n            android:name=\".StudentActivity\"\n            android:parentActivityName=\".MainActivity\" />\n        <activity\n            android:name=\".ContactActivity\"\n            android:parentActivityName=\".StudentActivity\" />\n        <activity\n            android:name=\".ParentActivity\"\n            android:parentActivityName=\".StudentActivity\" />\n        <activity\n            android:name=\".FestivalActivity\"\n            android:parentActivityName=\".MainActivity\" />\n    </application>\n\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/AndroidManifest.xml	(date 1606196190000)
+@@ -33,12 +33,8 @@
+         <activity
+             android:name=".MainActivity"
+             android:label="@string/title_activity_main2"
++            android:launchMode="singleTop"
+             android:theme="@style/AppTheme.NoActionBar">
+-            <intent-filter>
+-                <action android:name="android.intent.action.MAIN" />
+-
+-                <category android:name="android.intent.category.LAUNCHER" />
+-            </intent-filter>
+         </activity>
+         <activity android:name=".SignUpActivity" />
+         <activity android:name=".SignInActivity" />
+@@ -55,6 +51,9 @@
+         <activity
+             android:name=".FestivalActivity"
+             android:parentActivityName=".MainActivity" />
++        <activity
++            android:name=".StudentRatingsActivity"
++            android:parentActivityName=".MainActivity"/>
+     </application>
+ 
+ </manifest>
+\ No newline at end of file
+Index: app/src/main/java/com/example/festivalawardtracker/StudentDisplayActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.festivalawardtracker;\n\nimport androidx.appcompat.app.AppCompatActivity;\nimport androidx.appcompat.widget.Toolbar;\n\nimport android.os.Bundle;\n\nimport com.google.android.material.textfield.TextInputEditText;\n\nimport java.util.Objects;\n\n/**\n * @author carloswashingtonmercado@gmail.com\n */\npublic class StudentDisplayActivity extends AppCompatActivity {\n\n    private Toolbar toolbar;\n    private TextInputEditText editTextDatePicker;\n\n    /**\n     *\n     * @param savedInstanceState Add.\n     * @see MainActivity\n     */\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_display_student);\n\n//        /* ACTION BAR */\n        toolbar = findViewById(R.id.toolbarStudentDisplay);\n        toolbar.setTitle(\"Student Data\");\n        setSupportActionBar(toolbar);\n        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/festivalawardtracker/StudentDisplayActivity.java	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/java/com/example/festivalawardtracker/StudentDisplayActivity.java	(date 1606194746000)
+@@ -9,27 +9,18 @@
+ 
+ import java.util.Objects;
+ 
+-/**
+- * @author carloswashingtonmercado@gmail.com
+- */
++
+ public class StudentDisplayActivity extends AppCompatActivity {
+ 
+     private Toolbar toolbar;
+-    private TextInputEditText editTextDatePicker;
+ 
+-    /**
+-     *
+-     * @param savedInstanceState Add.
+-     * @see MainActivity
+-     */
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_display_student);
+ 
+-//        /* ACTION BAR */
++        /* ACTION BAR */
+         toolbar = findViewById(R.id.toolbarStudentDisplay);
+-        toolbar.setTitle("Student Data");
+         setSupportActionBar(toolbar);
+         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+     }
+Index: app/src/main/res/layout/row_events_recyclerview.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\">\n\n\n    <com.google.android.material.textview.MaterialTextView\n        android:id=\"@+id/textViewRowEventName\"\n        style=\"@style/Widget.MaterialComponents.TextView\"\n        android:layout_width=\"150dp\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginStart=\"32dp\"\n        android:layout_marginEnd=\"50dp\"\n        android:text=\"EventName\"\n        app:layout_constraintBottom_toBottomOf=\"@+id/textViewRowEventInstruments\"\n        app:layout_constraintEnd_toStartOf=\"@+id/textViewRowEventInstruments\"\n        app:layout_constraintHorizontal_bias=\"0.5\"\n        app:layout_constraintHorizontal_chainStyle=\"spread\"\n        app:layout_constraintStart_toStartOf=\"parent\" />\n\n    <com.google.android.material.textview.MaterialTextView\n        android:id=\"@+id/textViewRowDateStart\"\n        style=\"@style/Widget.MaterialComponents.TextView\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"23dp\"\n        android:text=\"DateStart\"\n        app:layout_constraintEnd_toStartOf=\"@+id/textViewRowDateEnd\"\n        app:layout_constraintHorizontal_bias=\"0.5\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/textViewRowEventName\" />\n\n    <com.google.android.material.textview.MaterialTextView\n        android:id=\"@+id/textViewRowDateEnd\"\n        style=\"@style/Widget.MaterialComponents.TextView\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"DateEnd\"\n        app:layout_constraintBottom_toBottomOf=\"@+id/textViewRowDateStart\"\n        app:layout_constraintEnd_toStartOf=\"@+id/textViewRowEventLocation\"\n        app:layout_constraintHorizontal_bias=\"0.5\"\n        app:layout_constraintStart_toEndOf=\"@+id/textViewRowDateStart\" />\n\n    <com.google.android.material.textview.MaterialTextView\n        android:id=\"@+id/textViewRowEventLocation\"\n        style=\"@style/Widget.MaterialComponents.TextView\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"Location\"\n        app:layout_constraintBottom_toBottomOf=\"@+id/textViewRowDateEnd\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHorizontal_bias=\"0.5\"\n        app:layout_constraintStart_toEndOf=\"@+id/textViewRowDateEnd\" />\n\n    <com.google.android.material.textview.MaterialTextView\n        android:id=\"@+id/textViewRowEventInstruments\"\n        style=\"@style/Widget.MaterialComponents.TextView\"\n        android:layout_width=\"150dp\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"30dp\"\n        android:layout_marginEnd=\"32dp\"\n        android:text=\"Instruments\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHorizontal_bias=\"0.5\"\n        app:layout_constraintStart_toEndOf=\"@+id/textViewRowEventName\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/row_events_recyclerview.xml	(revision d13cfe516adadc98cdc68a04ab6558c86991fe37)
++++ app/src/main/res/layout/row_events_recyclerview.xml	(date 1606186973000)
+@@ -3,7 +3,7 @@
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+-    android:layout_height="match_parent">
++    android:layout_height="wrap_content">
+ 
+ 
+     <com.google.android.material.textview.MaterialTextView
+@@ -26,7 +26,9 @@
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="23dp"
++        android:layout_marginBottom="30dp"
+         android:text="DateStart"
++        app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toStartOf="@+id/textViewRowDateEnd"
+         app:layout_constraintHorizontal_bias="0.5"
+         app:layout_constraintStart_toStartOf="parent"
+diff --git app/src/main/res/layout/student_mini_rating_recovered.xml app/src/main/res/layout/row_student_ratings_recyclerview.xml
+rename from app/src/main/res/layout/student_mini_rating_recovered.xml
+rename to app/src/main/res/layout/row_student_ratings_recyclerview.xml
+diff --git app/src/main/res/layout/student_display.xml app/src/main/res/layout/student_display_recyclerview.xml
+rename from app/src/main/res/layout/student_display.xml
+rename to app/src/main/res/layout/student_display_recyclerview.xml
