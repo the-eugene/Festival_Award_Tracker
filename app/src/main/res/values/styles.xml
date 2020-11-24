@@ -1,4 +1,7 @@
 <resources>
+    <!-- Building Material Themee:
+    https://material.io/blog/android-material-theme-color-->
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -14,6 +17,8 @@
 <!--        <item name="colorOnSurface">#212121</item>-->
 <!--        <item name="android:colorBackground">@color/background</item>-->
 <!--        <item name="colorOnBackground">#212121</item>-->
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
 <!--    <color name="background">#FAFAFA</color>-->
