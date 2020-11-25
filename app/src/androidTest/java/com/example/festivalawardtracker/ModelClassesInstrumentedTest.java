@@ -109,6 +109,12 @@ public class ModelClassesInstrumentedTest {
 
         Teacher nina=DBManager.getTeacherByEmail("nina@wachtermusic.com");
         assertEquals("nina@wachtermusic.com", nina.contact.email);
+        DBManager.Students.clear();
+        Student std=DBManager.getStudentByEmail("info@spacetime.com");
+        assertEquals("info@spacetime.com", std.contact.email);
+        DBManager.SchoolYears.clear();
+        DBManager.SchoolYears.loadAll();
+        assertTrue(DBManager.SchoolYears.containsKey(years[3].ID));
     }
 
 }

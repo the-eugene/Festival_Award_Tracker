@@ -80,7 +80,7 @@ public class Person extends DatabaseAware{
     public String shortLocation() {
         return String.format("%s, %s", getContact().city, getContact().stateCode());
     }
-
+    public String getEmail(){return contact.email;}
     public static Class<Person> ofType(){return Person.class;}
 
     enum Gender {

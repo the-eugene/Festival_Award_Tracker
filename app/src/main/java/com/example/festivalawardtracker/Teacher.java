@@ -9,7 +9,6 @@ public class Teacher extends Person {
     public List<String> getStudentIDs() {
         return studentIDs;
     }
-    public String getEmail(){return contact.email;}
 
     public void setStudentIDs(List<String> studentIDs) {
         this.studentIDs = studentIDs;

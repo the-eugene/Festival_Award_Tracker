@@ -8,7 +8,7 @@ public class Award {
     String eventID;
     int performanceID;
     AwardType type;
-
+    public Award(){}
     public Award(AwardType type, String studentID, LocalDate date, String eventID, int performanceID) {
         this.type=type;
         this.studentID=studentID;

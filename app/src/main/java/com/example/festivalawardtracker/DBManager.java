@@ -110,14 +110,37 @@ public class DBManager {
             if (e.getValue().getEmail().equals(email))
                 return e.getValue();
         }
-        DataSnapshot ds=runQuery(currentDB.child("Teachers").orderByChild("email").equalTo(email).limitToFirst(1));
+        DataSnapshot ds=runQuery(currentDB.child("Teacher").orderByChild("email").equalTo(email).limitToFirst(1));
         if(ds!=null && ds.getChildrenCount()==1){
             ds=ds.getChildren().iterator().next();
             Teacher result=ds.getValue(Teacher.class);
             result.ID= ds.getKey();
+            Teachers.put(result.ID,result);
             return result;
         }
         return null;
     }
+
+    public static Student getStudentByEmail(String email){
+        for (Map.Entry<String,Student> e:Students.entrySet()){
+            if (e.getValue().getEmail().equals(email))
+                return e.getValue();
+        }
+    return getOneByAttribute(Students,"email",email);
+    }
+
+    public static <T extends DatabaseAware> T getOneByAttribute(DatabaseHashMap<T> map,String attribute, String value){
+        DataSnapshot ds=runQuery(currentDB.child(map.pathToData).orderByChild(attribute).equalTo(value).limitToFirst(1));
+        if(ds!=null && ds.getChildrenCount()==1){
+            ds=ds.getChildren().iterator().next();
+            T result=ds.getValue(map.type);
+            result.ID= ds.getKey();
+            map.put(result.ID,result);
+            return result;
+        }
+        return null;
+    }
+
+
 }
 
