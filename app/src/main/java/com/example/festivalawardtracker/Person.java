@@ -1,19 +1,11 @@
 package com.example.festivalawardtracker;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
-
-import com.google.android.material.tabs.TabLayout;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.time.format.ResolverStyle;
-import java.util.Locale;
 
-public class Person extends DatabaseAware{
+public class Person extends DBAware {
     String firstName;
     String middleName;
     String lastName;

@@ -1,6 +1,6 @@
 package com.example.festivalawardtracker;
 
-public class EventDescription extends DatabaseAware {
+public class EventDescription extends DBAware {
     String name;
     String description;
     Instrument instrument;

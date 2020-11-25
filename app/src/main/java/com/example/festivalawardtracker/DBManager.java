@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskCompletionSource;
 import com.google.android.gms.tasks.Tasks;
-import com.google.common.net.InternetDomainName;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -13,7 +12,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -25,13 +23,13 @@ public class DBManager {
         setCurrentDB("");
     }
 
-    static DatabaseHashMap<Teacher> Teachers=new DatabaseHashMap<>(Teacher.class);
-    static DatabaseHashMap<Student> Students=new DatabaseHashMap<>(Student.class);
-    static DatabaseHashMap<Person> Parents=new DatabaseHashMap<>(Person.class);
-    static DatabaseHashMap<Event> Events=new DatabaseHashMap<>(Event.class);
-    static DatabaseHashMap<EventDescription> EventDescriptions=new DatabaseHashMap<>(EventDescription.class);
-    static DatabaseHashMap<Festival> Festivals=new DatabaseHashMap<>(Festival.class);
-    static DatabaseHashMap<SchoolYear> SchoolYears=new DatabaseHashMap<>(SchoolYear.class);
+    static DBHashMap<Teacher> Teachers=new DBHashMap<>(Teacher.class);
+    static DBHashMap<Student> Students=new DBHashMap<>(Student.class);
+    static DBHashMap<Person> Parents=new DBHashMap<>(Person.class);
+    static DBHashMap<Event> Events=new DBHashMap<>(Event.class);
+    static DBHashMap<EventDescription> EventDescriptions=new DBHashMap<>(EventDescription.class);
+    static DBHashMap<Festival> Festivals=new DBHashMap<>(Festival.class);
+    static DBHashMap<SchoolYear> SchoolYears=new DBHashMap<>(SchoolYear.class);
 
     public static void setCurrentDB(String location){
         currentDB=location.isEmpty()?DB.getReference():DB.getReference(location);

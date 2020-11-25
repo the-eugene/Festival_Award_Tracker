@@ -2,7 +2,7 @@ package com.example.festivalawardtracker;
 
 import java.time.LocalDate;
 
-public class Event extends DatabaseAware{
+public class Event extends DBAware {
     String schoolYearID;
     LocalDate start;
     LocalDate end;

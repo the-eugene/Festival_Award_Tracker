@@ -1,34 +1,24 @@
 package com.example.festivalawardtracker;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.TaskCompletionSource;
-import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
-class DatabaseHashMap<V extends DatabaseAware> extends HashMap<String,V> {
+class DBHashMap<V extends DBAware> extends HashMap<String,V> {
     final Class<V> type;
     String pathToData;
 
-    DatabaseHashMap( Class<V> type){
+    DBHashMap(Class<V> type){
         super();
         this.type=type;
         pathToData=type.getSimpleName();
     }
 
-    DatabaseHashMap(String pathToData, Class<V> type){
+    DBHashMap(String pathToData, Class<V> type){
         super();
         this.type=type;
         this.pathToData=pathToData;
@@ -38,7 +28,7 @@ class DatabaseHashMap<V extends DatabaseAware> extends HashMap<String,V> {
     public V get(Object key) {
         if (containsKey(key)){ return super.get(key);
         } else {
-            V val=DatabaseAware.load((String) key,pathToData,type);
+            V val= DBAware.load((String) key,pathToData,type);
             if (val!=null){super.put((String) key, val);}
             return val;
         }
@@ -58,7 +48,7 @@ class DatabaseHashMap<V extends DatabaseAware> extends HashMap<String,V> {
     }
 
     public Map<String,V> getMapByQuery(Query query){
-        DatabaseHashMap <V> result=new DatabaseHashMap<V>(type);
+        DBHashMap<V> result=new DBHashMap<V>(type);
         DataSnapshot ds=DBManager.runQuery(query);
         for (DataSnapshot row:ds.getChildren()){
             V item = row.getValue(type);
