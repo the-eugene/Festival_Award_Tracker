@@ -16,7 +16,7 @@
             android:name=".EventDisplayActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".StudentDisplayActivity"
+            android:name=".StudentActivityDisplay"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".EventActivity"

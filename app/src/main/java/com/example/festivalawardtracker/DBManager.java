@@ -39,6 +39,10 @@ public class DBManager {
             currentDB = DB.getReference(location);
     }
 
+    public static DatabaseReference getCurrentDC() {
+        return currentDB;
+    }
+
     public static SchoolYear getPreviousSchoolYear(SchoolYear year) {
         if (year.sequence > 0)
             return DBManager.getYearBySequence(year.sequence - 1);

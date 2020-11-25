@@ -10,7 +10,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.Objects;
 
 
-public class StudentDisplayActivity extends AppCompatActivity {
+public class StudentActivityDisplay extends AppCompatActivity {
 
     private Toolbar toolbar;
 

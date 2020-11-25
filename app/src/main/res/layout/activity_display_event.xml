@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarStudentDisplay"
+            android:id="@+id/toolbarEventDisplay"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_baseline_close_24" />

@@ -13,6 +13,15 @@ public class Person extends DBAware {
     LocalDate birthday;
     Contact contact;
 
+    public Person(String firstName, String middleName) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+    }
+
+    public Person() {
+
+    }
+
     public void setContact(String business, String phone, String email, String street, String city, String state, String zip) {
         setContact(new Contact(business, phone, email, street, city, state, zip));
         //TODO: V2, search db for identical contact (Parents, repeat Event Locations)
