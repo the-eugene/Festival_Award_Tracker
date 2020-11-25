@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SchoolYear extends DatabaseAware{
+public class SchoolYear extends DBAware {
     int sequence;
     String name;
     LocalDate start;

@@ -15,7 +15,14 @@ public class Student extends Person {
     List<Award> awards = new ArrayList<>();
     List<Performance> performances = new ArrayList<>();
 
-    Student() {}
+    Student() {
+        super();
+    }
+
+    public Student(String firstName, String middleName) {
+        super(firstName, middleName);
+
+    }
 
     // When and how is parent ID set? Carlos
     public void addParent(@NotNull Person parent){

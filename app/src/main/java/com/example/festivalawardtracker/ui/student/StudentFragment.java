@@ -13,16 +13,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
-import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.festivalawardtracker.MainActivity;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.StudentActivity;
-import com.example.festivalawardtracker.StudentDisplayActivity;
+import com.example.festivalawardtracker.StudentActivityDisplay;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -158,7 +155,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent (thisContext, StudentDisplayActivity.class);
+        Intent intent = new Intent (thisContext, StudentActivityDisplay.class);
         startActivity(intent);
     }
 

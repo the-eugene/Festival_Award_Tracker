@@ -1,0 +1,852 @@
+{
+  "TEST" : {
+    "Event" : {
+      "-MMzJ6EiYrTrpvzusfuf" : {
+        "description" : {
+          "description" : "Students play their violins all alone while the world judges",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Solo"
+        },
+        "end" : "2010-09-27",
+        "eventDescriptionID" : "-MMzJ6CawATDwWWpEXC7",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6DgcX5rs4BsG7gt",
+        "start" : "2010-09-21"
+      },
+      "-MMzJ6F6N5C-uLba197u" : {
+        "description" : {
+          "description" : "Students play their violins all alone while the world judges",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Solo"
+        },
+        "end" : "2011-08-25",
+        "eventDescriptionID" : "-MMzJ6CawATDwWWpEXC7",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6DszvYd3Y7339tZ",
+        "start" : "2011-08-18"
+      },
+      "-MMzJ6FIJBQQDm8CUA6w" : {
+        "description" : {
+          "description" : "Students play their violins all alone while the world judges",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Solo"
+        },
+        "end" : "2013-07-04",
+        "eventDescriptionID" : "-MMzJ6CawATDwWWpEXC7",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6DyOO5VQU2O-RWk",
+        "start" : "2013-06-27"
+      },
+      "-MMzJ6FTfzHqr8pm7ydq" : {
+        "description" : {
+          "description" : "Students play their violins all alone while the world judges",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Solo"
+        },
+        "end" : "2014-07-19",
+        "eventDescriptionID" : "-MMzJ6CawATDwWWpEXC7",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6E3dxjJCOtECpbw",
+        "start" : "2014-07-12"
+      },
+      "-MMzJ6FtIWi7Ch_1lVtk" : {
+        "description" : {
+          "description" : "Students play their violins all alone while the world judges",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Solo"
+        },
+        "end" : "2015-02-15",
+        "eventDescriptionID" : "-MMzJ6CawATDwWWpEXC7",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6E9NVBatAlbAl-Z",
+        "start" : "2015-02-13"
+      },
+      "-MMzJ6G3Vhz6NJC0sa0G" : {
+        "description" : {
+          "description" : "Students play their violins all alone while the world judges",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Solo"
+        },
+        "end" : "2015-10-03",
+        "eventDescriptionID" : "-MMzJ6CawATDwWWpEXC7",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EE5HP1zGj4XdV1",
+        "start" : "2015-09-30"
+      },
+      "-MMzJ6GDN4Qg31rleeoW" : {
+        "description" : {
+          "description" : "Students play their violins all alone while the world judges",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Solo"
+        },
+        "end" : "2017-03-09",
+        "eventDescriptionID" : "-MMzJ6CawATDwWWpEXC7",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EKu0eQMHYxFuNo",
+        "start" : "2017-03-09"
+      },
+      "-MMzJ6GNPZ8s5zBhDmyJ" : {
+        "description" : {
+          "description" : "Students play their violins all alone while the world judges",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Solo"
+        },
+        "end" : "2018-02-26",
+        "eventDescriptionID" : "-MMzJ6CawATDwWWpEXC7",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EPeTd6akIyhOKX",
+        "start" : "2018-02-23"
+      },
+      "-MMzJ6GX0mCKqdYfbqam" : {
+        "description" : {
+          "description" : "Students play their violins all alone while the world judges",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Solo"
+        },
+        "end" : "2019-06-10",
+        "eventDescriptionID" : "-MMzJ6CawATDwWWpEXC7",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EV1Y1mYr0ud1Ji",
+        "start" : "2019-06-06"
+      },
+      "-MMzJ6Ggt73ohmmaOpzr" : {
+        "description" : {
+          "description" : "Students play their violins all alone while the world judges",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Solo"
+        },
+        "end" : "2020-04-17",
+        "eventDescriptionID" : "-MMzJ6CawATDwWWpEXC7",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EaHYvaWyJA1jw9",
+        "start" : "2020-04-16"
+      },
+      "-MMzJ6GpRppZb6O3F4Ln" : {
+        "description" : {
+          "description" : "Playing violins together, preferably in sync",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Duet"
+        },
+        "end" : "2010-11-19",
+        "eventDescriptionID" : "-MMzJ6CqkDD21CyovAo_",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6DgcX5rs4BsG7gt",
+        "start" : "2010-11-12"
+      },
+      "-MMzJ6Gzqd7qZvvN97na" : {
+        "description" : {
+          "description" : "Playing violins together, preferably in sync",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Duet"
+        },
+        "end" : "2011-12-15",
+        "eventDescriptionID" : "-MMzJ6CqkDD21CyovAo_",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6DszvYd3Y7339tZ",
+        "start" : "2011-12-13"
+      },
+      "-MMzJ6H8wIPZOHcFrtkn" : {
+        "description" : {
+          "description" : "Playing violins together, preferably in sync",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Duet"
+        },
+        "end" : "2012-12-22",
+        "eventDescriptionID" : "-MMzJ6CqkDD21CyovAo_",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6DyOO5VQU2O-RWk",
+        "start" : "2012-12-22"
+      },
+      "-MMzJ6HLpts_S3prfMhb" : {
+        "description" : {
+          "description" : "Playing violins together, preferably in sync",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Duet"
+        },
+        "end" : "2013-12-18",
+        "eventDescriptionID" : "-MMzJ6CqkDD21CyovAo_",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6E3dxjJCOtECpbw",
+        "start" : "2013-12-18"
+      },
+      "-MMzJ6HXHqB2CMCe-wVf" : {
+        "description" : {
+          "description" : "Playing violins together, preferably in sync",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Duet"
+        },
+        "end" : "2014-12-07",
+        "eventDescriptionID" : "-MMzJ6CqkDD21CyovAo_",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6E9NVBatAlbAl-Z",
+        "start" : "2014-12-04"
+      },
+      "-MMzJ6HfDXanDVrpwhMG" : {
+        "description" : {
+          "description" : "Playing violins together, preferably in sync",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Duet"
+        },
+        "end" : "2016-05-01",
+        "eventDescriptionID" : "-MMzJ6CqkDD21CyovAo_",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EE5HP1zGj4XdV1",
+        "start" : "2016-04-27"
+      },
+      "-MMzJ6Hr8GAWCJYpNS6Z" : {
+        "description" : {
+          "description" : "Playing violins together, preferably in sync",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Duet"
+        },
+        "end" : "2016-10-16",
+        "eventDescriptionID" : "-MMzJ6CqkDD21CyovAo_",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EKu0eQMHYxFuNo",
+        "start" : "2016-10-09"
+      },
+      "-MMzJ6I-8F8-Kwi4QF7r" : {
+        "description" : {
+          "description" : "Playing violins together, preferably in sync",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Duet"
+        },
+        "end" : "2017-10-30",
+        "eventDescriptionID" : "-MMzJ6CqkDD21CyovAo_",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EPeTd6akIyhOKX",
+        "start" : "2017-10-28"
+      },
+      "-MMzJ6I8CxHt46U2eJTq" : {
+        "description" : {
+          "description" : "Playing violins together, preferably in sync",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Duet"
+        },
+        "end" : "2019-01-16",
+        "eventDescriptionID" : "-MMzJ6CqkDD21CyovAo_",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EV1Y1mYr0ud1Ji",
+        "start" : "2019-01-14"
+      },
+      "-MMzJ6IIR6ANkB9ARgnt" : {
+        "description" : {
+          "description" : "Playing violins together, preferably in sync",
+          "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+          "instrument" : "violin",
+          "name" : "Violin Duet"
+        },
+        "end" : "2020-07-03",
+        "eventDescriptionID" : "-MMzJ6CqkDD21CyovAo_",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EaHYvaWyJA1jw9",
+        "start" : "2020-06-29"
+      },
+      "-MMzJ6IRLXKfEYVoB3eE" : {
+        "description" : {
+          "description" : "A solo piano event",
+          "festivalID" : "-MMzJ6CwIYxYqeY1uFr9",
+          "instrument" : "piano",
+          "name" : "Piano Solo"
+        },
+        "end" : "2010-08-05",
+        "eventDescriptionID" : "-MMzJ6Czjpy-bBzWbJee",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6DgcX5rs4BsG7gt",
+        "start" : "2010-07-30"
+      },
+      "-MMzJ6I_WTeV0GsaSeET" : {
+        "description" : {
+          "description" : "A solo piano event",
+          "festivalID" : "-MMzJ6CwIYxYqeY1uFr9",
+          "instrument" : "piano",
+          "name" : "Piano Solo"
+        },
+        "end" : "2011-12-26",
+        "eventDescriptionID" : "-MMzJ6Czjpy-bBzWbJee",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6DszvYd3Y7339tZ",
+        "start" : "2011-12-22"
+      },
+      "-MMzJ6IjeiZTbiIwnbYC" : {
+        "description" : {
+          "description" : "A solo piano event",
+          "festivalID" : "-MMzJ6CwIYxYqeY1uFr9",
+          "instrument" : "piano",
+          "name" : "Piano Solo"
+        },
+        "end" : "2013-04-05",
+        "eventDescriptionID" : "-MMzJ6Czjpy-bBzWbJee",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6DyOO5VQU2O-RWk",
+        "start" : "2013-04-01"
+      },
+      "-MMzJ6IrfLSxFZEJ23FE" : {
+        "description" : {
+          "description" : "A solo piano event",
+          "festivalID" : "-MMzJ6CwIYxYqeY1uFr9",
+          "instrument" : "piano",
+          "name" : "Piano Solo"
+        },
+        "end" : "2013-09-10",
+        "eventDescriptionID" : "-MMzJ6Czjpy-bBzWbJee",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6E3dxjJCOtECpbw",
+        "start" : "2013-09-05"
+      },
+      "-MMzJ6J0sIpUlIYuxVVU" : {
+        "description" : {
+          "description" : "A solo piano event",
+          "festivalID" : "-MMzJ6CwIYxYqeY1uFr9",
+          "instrument" : "piano",
+          "name" : "Piano Solo"
+        },
+        "end" : "2015-04-17",
+        "eventDescriptionID" : "-MMzJ6Czjpy-bBzWbJee",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6E9NVBatAlbAl-Z",
+        "start" : "2015-04-10"
+      },
+      "-MMzJ6JBKupWjzp8P4Ce" : {
+        "description" : {
+          "description" : "A solo piano event",
+          "festivalID" : "-MMzJ6CwIYxYqeY1uFr9",
+          "instrument" : "piano",
+          "name" : "Piano Solo"
+        },
+        "end" : "2015-12-25",
+        "eventDescriptionID" : "-MMzJ6Czjpy-bBzWbJee",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EE5HP1zGj4XdV1",
+        "start" : "2015-12-22"
+      },
+      "-MMzJ6JK4U4XAKg9b-gP" : {
+        "description" : {
+          "description" : "A solo piano event",
+          "festivalID" : "-MMzJ6CwIYxYqeY1uFr9",
+          "instrument" : "piano",
+          "name" : "Piano Solo"
+        },
+        "end" : "2016-10-28",
+        "eventDescriptionID" : "-MMzJ6Czjpy-bBzWbJee",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EKu0eQMHYxFuNo",
+        "start" : "2016-10-23"
+      },
+      "-MMzJ6JTedFmZnScmuZG" : {
+        "description" : {
+          "description" : "A solo piano event",
+          "festivalID" : "-MMzJ6CwIYxYqeY1uFr9",
+          "instrument" : "piano",
+          "name" : "Piano Solo"
+        },
+        "end" : "2018-05-30",
+        "eventDescriptionID" : "-MMzJ6Czjpy-bBzWbJee",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EPeTd6akIyhOKX",
+        "start" : "2018-05-30"
+      },
+      "-MMzJ6Jbadr2cF_A-Qpm" : {
+        "description" : {
+          "description" : "A solo piano event",
+          "festivalID" : "-MMzJ6CwIYxYqeY1uFr9",
+          "instrument" : "piano",
+          "name" : "Piano Solo"
+        },
+        "end" : "2019-04-27",
+        "eventDescriptionID" : "-MMzJ6Czjpy-bBzWbJee",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EV1Y1mYr0ud1Ji",
+        "start" : "2019-04-20"
+      },
+      "-MMzJ6JkWTbnaF1K0X-r" : {
+        "description" : {
+          "description" : "A solo piano event",
+          "festivalID" : "-MMzJ6CwIYxYqeY1uFr9",
+          "instrument" : "piano",
+          "name" : "Piano Solo"
+        },
+        "end" : "2020-02-02",
+        "eventDescriptionID" : "-MMzJ6Czjpy-bBzWbJee",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6EaHYvaWyJA1jw9",
+        "start" : "2020-01-28"
+      },
+      "-MMzJ6JtMfdaVsK7xUOb" : {
+        "description" : {
+          "description" : "Piano hymn event",
+          "festivalID" : "-MMzJ6CwIYxYqeY1uFr9",
+          "instrument" : "piano",
+          "name" : "Piano Hymn"
+        },
+        "end" : "2011-05-27",
+        "eventDescriptionID" : "-MMzJ6D95T8vpSAZxYPC",
+        "location" : {
+          "business" : "Natasha's Cafe",
+          "city" : "Lexington",
+          "email" : "natasha@beetnik.com",
+          "phone" : "859-259-2754",
+          "state" : "KY",
+          "street" : "112 Esplanade",
+          "zip" : "40508"
+        },
+        "schoolYearID" : "-MMzJ6DgcX5rs4BsG7gt",
+        "start" : "2011-05-27"
+      }
+    },
+    "EventDescription" : {
+      "-MMzJ6CawATDwWWpEXC7" : {
+        "description" : "Students play their violins all alone while the world judges",
+        "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+        "instrument" : "violin",
+        "name" : "Violin Solo"
+      },
+      "-MMzJ6CqkDD21CyovAo_" : {
+        "description" : "Playing violins together, preferably in sync",
+        "festivalID" : "-MMzJ6CL57XQyUI7Akps",
+        "instrument" : "violin",
+        "name" : "Violin Duet"
+      },
+      "-MMzJ6Czjpy-bBzWbJee" : {
+        "description" : "A solo piano event",
+        "festivalID" : "-MMzJ6CwIYxYqeY1uFr9",
+        "instrument" : "piano",
+        "name" : "Piano Solo"
+      },
+      "-MMzJ6D95T8vpSAZxYPC" : {
+        "description" : "Piano hymn event",
+        "festivalID" : "-MMzJ6CwIYxYqeY1uFr9",
+        "instrument" : "piano",
+        "name" : "Piano Hymn"
+      }
+    },
+    "Festival" : {
+      "-MMzJ6CL57XQyUI7Akps" : {
+        "eventDescriptions" : [ "-MMzJ6CawATDwWWpEXC7", "-MMzJ6CqkDD21CyovAo_" ],
+        "name" : "String Festival",
+        "nfmc" : true
+      },
+      "-MMzJ6CwIYxYqeY1uFr9" : {
+        "eventDescriptions" : [ "-MMzJ6Czjpy-bBzWbJee", "-MMzJ6D95T8vpSAZxYPC" ],
+        "name" : "Piano Festival",
+        "nfmc" : true
+      }
+    },
+    "SchoolYear" : {
+      "-MMzJ6DgcX5rs4BsG7gt" : {
+        "end" : "2011-07-14",
+        "eventIDs" : [ "-MMzJ6EiYrTrpvzusfuf", "-MMzJ6GpRppZb6O3F4Ln", "-MMzJ6IRLXKfEYVoB3eE" ],
+        "name" : "2010-2011 School Year",
+        "sequence" : 0,
+        "start" : "2010-07-15"
+      },
+      "-MMzJ6DszvYd3Y7339tZ" : {
+        "end" : "2012-07-14",
+        "eventIDs" : [ "-MMzJ6F6N5C-uLba197u", "-MMzJ6Gzqd7qZvvN97na", "-MMzJ6I_WTeV0GsaSeET" ],
+        "name" : "2011-2012 School Year",
+        "sequence" : 1,
+        "start" : "2011-07-15"
+      },
+      "-MMzJ6DyOO5VQU2O-RWk" : {
+        "end" : "2013-07-14",
+        "eventIDs" : [ "-MMzJ6FIJBQQDm8CUA6w", "-MMzJ6H8wIPZOHcFrtkn", "-MMzJ6IjeiZTbiIwnbYC" ],
+        "name" : "2012-2013 School Year",
+        "sequence" : 2,
+        "start" : "2012-07-15"
+      },
+      "-MMzJ6E3dxjJCOtECpbw" : {
+        "end" : "2014-07-14",
+        "eventIDs" : [ "-MMzJ6FTfzHqr8pm7ydq", "-MMzJ6HLpts_S3prfMhb", "-MMzJ6IrfLSxFZEJ23FE" ],
+        "name" : "2013-2014 School Year",
+        "sequence" : 3,
+        "start" : "2013-07-15"
+      },
+      "-MMzJ6E9NVBatAlbAl-Z" : {
+        "end" : "2015-07-14",
+        "eventIDs" : [ "-MMzJ6FtIWi7Ch_1lVtk", "-MMzJ6HXHqB2CMCe-wVf", "-MMzJ6J0sIpUlIYuxVVU" ],
+        "name" : "2014-2015 School Year",
+        "sequence" : 4,
+        "start" : "2014-07-15"
+      },
+      "-MMzJ6EE5HP1zGj4XdV1" : {
+        "end" : "2016-07-14",
+        "eventIDs" : [ "-MMzJ6G3Vhz6NJC0sa0G", "-MMzJ6HfDXanDVrpwhMG", "-MMzJ6JBKupWjzp8P4Ce" ],
+        "name" : "2015-2016 School Year",
+        "sequence" : 5,
+        "start" : "2015-07-15"
+      },
+      "-MMzJ6EKu0eQMHYxFuNo" : {
+        "end" : "2017-07-14",
+        "eventIDs" : [ "-MMzJ6GDN4Qg31rleeoW", "-MMzJ6Hr8GAWCJYpNS6Z", "-MMzJ6JK4U4XAKg9b-gP" ],
+        "name" : "2016-2017 School Year",
+        "sequence" : 6,
+        "start" : "2016-07-15"
+      },
+      "-MMzJ6EPeTd6akIyhOKX" : {
+        "end" : "2018-07-14",
+        "eventIDs" : [ "-MMzJ6GNPZ8s5zBhDmyJ", "-MMzJ6I-8F8-Kwi4QF7r", "-MMzJ6JTedFmZnScmuZG" ],
+        "name" : "2017-2018 School Year",
+        "sequence" : 7,
+        "start" : "2017-07-15"
+      },
+      "-MMzJ6EV1Y1mYr0ud1Ji" : {
+        "end" : "2019-07-14",
+        "eventIDs" : [ "-MMzJ6GX0mCKqdYfbqam", "-MMzJ6I8CxHt46U2eJTq", "-MMzJ6Jbadr2cF_A-Qpm" ],
+        "name" : "2018-2019 School Year",
+        "sequence" : 8,
+        "start" : "2018-07-15"
+      },
+      "-MMzJ6EaHYvaWyJA1jw9" : {
+        "end" : "2020-07-14",
+        "eventIDs" : [ "-MMzJ6Ggt73ohmmaOpzr", "-MMzJ6IIR6ANkB9ARgnt", "-MMzJ6JkWTbnaF1K0X-r" ],
+        "name" : "2019-2020 School Year",
+        "sequence" : 9,
+        "start" : "2019-07-15"
+      }
+    }
+  },
+  "student" : {
+    "-MLjuTeAY7I3QCZFseJC" : {
+      "bdate" : "06/06/2006",
+      "fname" : "James",
+      "gender" : "androidx.appcompat.widget.AppCompatSpinner{4e8ae52 VFED..CL. ........ 44,1034-1036,1172 #7f0a0191 app:id/spinnerGender}",
+      "instrument" : "androidx.appcompat.widget.AppCompatSpinner{d959fd9 VFED..CL. ........ 44,1531-1036,1669 #7f0a0192 app:id/spinnerInstruments}",
+      "lname" : "England",
+      "number" : "666-666-6666",
+      "teacher" : "George"
+    },
+    "-MLjx2SFFz-o1uElcTdK" : {
+      "bdate" : "",
+      "fname" : "",
+      "gender" : "androidx.appcompat.widget.AppCompatSpinner{63fd46d VFED..CL. ........ 44,1034-1036,1172 #7f0a0191 app:id/spinnerGender}",
+      "instrument" : "androidx.appcompat.widget.AppCompatSpinner{b5e64f0 VFED..CL. ........ 44,1531-1036,1669 #7f0a0192 app:id/spinnerInstruments}",
+      "lname" : "",
+      "number" : "",
+      "teacher" : ""
+    },
+    "-MLmzXsykzPnwlMfTxvI" : {
+      "bdate" : "07-07-2007",
+      "fname" : "James",
+      "gender" : "androidx.appcompat.widget.AppCompatSpinner{a83510a VFED..CL. ........ 44,1034-1036,1172 #7f0a0191 app:id/spinnerGender}",
+      "instrument" : "androidx.appcompat.widget.AppCompatSpinner{741cbf1 VFED..CL. ........ 44,1531-1036,1669 #7f0a0192 app:id/spinnerInstruments}",
+      "lname" : "England",
+      "number" : "777-777-7777",
+      "teacher" : "Frank"
+    },
+    "-MLn-EAgew1Slw87XU1e" : {
+      "bdate" : "04/04/2004",
+      "fname" : "Jimmy",
+      "gender" : "Male",
+      "instrument" : "Piano",
+      "lname" : "England",
+      "number" : "444-444-4444",
+      "teacher" : "Frank"
+    },
+    "-MLoWh5BucAbUdltYEMo" : {
+      "bdate" : "03/03/2003",
+      "fname" : "Frank",
+      "gender" : "Male",
+      "instrument" : "Piano",
+      "lname" : "Frankie",
+      "number" : "333-333-3333",
+      "teacher" : "Frankie"
+    },
+    "-MLo_phmpOUT34dTpRzp" : {
+      "bdate" : "12/23/2012",
+      "fname" : "Frank jr",
+      "gender" : "Male",
+      "instrument" : "Voice",
+      "lname" : "England",
+      "number" : "555-555-5555",
+      "teacher" : "Jimmy"
+    }
+  },
+  "user" : {
+    "-MLiokjUO2z7-wrfVUV9" : {
+      "uname" : "jimengland13@gmail.com"
+    },
+    "-MLkDzilfektpGuMdMCc" : {
+      "uname" : "caylaew@gmail.com"
+    },
+    "-MLoHNokD0I3MgvnsNfn" : {
+      "uname" : "carloswashingtonmercado@gmail.com"
+    },
+    "-MLzQYboJgBBdFhWnsVp" : {
+      "uname" : "caylaew@gmail.com"
+    },
+    "-MMSsagYxiTqHc6Sk0ZQ" : {
+      "uname" : "carloswashingtonmercado@gmail.com"
+    },
+    "-MMV3fVAxQ6Wf4q_540I" : {
+      "uname" : "carloswm.lds@gmail.com"
+    },
+    "-MMcTJSPTEr-l4BAbWGA" : {
+      "uname" : "caylaew@gmail.com"
+    },
+    "-MMcTcne021EOUOs9IPC" : {
+      "uname" : "spiknspam@gmail.com"
+    },
+    "-MMpqZEnmdAM-rsg32-h" : {
+      "uname" : "superegotist@gmail.com"
+    }
+  }
+}

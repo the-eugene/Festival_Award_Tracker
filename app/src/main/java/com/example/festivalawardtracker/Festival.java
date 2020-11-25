@@ -3,7 +3,7 @@ package com.example.festivalawardtracker;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Festival extends DatabaseAware {
+public class Festival extends DBAware {
     String name;
     boolean isNFMC;
     List<String> eventDescriptionIDs = new ArrayList<>();

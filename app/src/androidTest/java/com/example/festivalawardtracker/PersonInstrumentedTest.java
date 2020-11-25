@@ -24,6 +24,7 @@ public class PersonInstrumentedTest {
                     "40508"
             );
         }
+
     @Test
     public void save(){
         person.save();
