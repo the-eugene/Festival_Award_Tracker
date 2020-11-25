@@ -23,10 +23,10 @@ public class DBAware {
     }
 
     public static <T extends DBAware> T load(String key, String location, Class<T> type){
-        DatabaseReference loadFrom=DBManager.currentDB.child(location).child(key);
-        DataSnapshot ds=DBManager.runQuery(loadFrom);
-        T obj=null;
-        if (ds!=null) {
+        DatabaseReference loadFrom = DBManager.currentDB.child(location).child(key);
+        DataSnapshot ds = DBManager.runQuery(loadFrom);
+        T obj = null;
+        if (ds != null) {
             obj = ds.getValue(type);
             obj.ID = key;
         }

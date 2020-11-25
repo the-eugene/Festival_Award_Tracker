@@ -8,28 +8,28 @@ import com.google.firebase.database.Query;
 import java.util.HashMap;
 import java.util.Map;
 
-class DBHashMap<V extends DBAware> extends HashMap<String,V> {
+class DBHashMap<V extends DBAware> extends HashMap<String, V> {
     final Class<V> type;
     String pathToData;
 
     DBHashMap(Class<V> type){
         super();
-        this.type=type;
-        pathToData=type.getSimpleName();
+        this.type = type;
+        pathToData = type.getSimpleName();
     }
 
     DBHashMap(String pathToData, Class<V> type){
         super();
-        this.type=type;
-        this.pathToData=pathToData;
+        this.type = type;
+        this.pathToData = pathToData;
     }
 
     @Override
     public V get(Object key) {
-        if (containsKey(key)){ return super.get(key);
+        if (containsKey(key)) { return super.get(key);
         } else {
-            V val= DBAware.load((String) key,pathToData,type);
-            if (val!=null){super.put((String) key, val);}
+            V val = DBAware.load((String) key, pathToData, type);
+            if (val != null){super.put((String) key, val);}
             return val;
         }
     }
@@ -38,7 +38,7 @@ class DBHashMap<V extends DBAware> extends HashMap<String,V> {
     @Override
     public V put(String key, V value) {
         value.save();
-        if (key==null) key=value.ID;
+        if (key == null) key = value.ID;
         return super.put(key, value);
     }
 
@@ -48,11 +48,11 @@ class DBHashMap<V extends DBAware> extends HashMap<String,V> {
     }
 
     public Map<String,V> getMapByQuery(Query query){
-        DBHashMap<V> result=new DBHashMap<V>(type);
-        DataSnapshot ds=DBManager.runQuery(query);
+        DBHashMap<V> result = new DBHashMap<V>(type);
+        DataSnapshot ds = DBManager.runQuery(query);
         for (DataSnapshot row:ds.getChildren()){
             V item = row.getValue(type);
-            item.ID=row.getKey();
+            item.ID = row.getKey();
             result.put(item.ID,item);
         }
         return result;

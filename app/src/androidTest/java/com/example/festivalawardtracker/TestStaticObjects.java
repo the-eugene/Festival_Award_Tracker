@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 
 public class TestStaticObjects {
-    static Contact setUpContact1(){
+    static Contact setUpContact1() {
         return new Contact("Natasha's Cafe",
                 "859-259-2754",
                 "natasha@beetnik.com",
@@ -15,8 +15,8 @@ public class TestStaticObjects {
                 "40508");
     }
 
-    static Contact setUpContact2(){
-        return new Contact(    "",
+    static Contact setUpContact2() {
+        return new Contact("",
                 "(123) 456-7890",
                 "info@spacetime.com",
                 "1151 Manchester St",
@@ -25,34 +25,34 @@ public class TestStaticObjects {
                 "70726");
     }
 
-    static Person setUpPerson(){
+    static Person setUpPerson() {
         Person person = new Person();
         person.setName("Eugene", "Alexander", "Williams");
         person.setGender(Person.Gender.MALE);
-        person.birthday= LocalDate.of(1977,9,24);
+        person.birthday = LocalDate.of(1977,9,24);
         person.setContact(setUpContact1());
         return person;
     }
-    static Person setUpPerson2(){
+    static Person setUpPerson2() {
         Person person = new Person();
         person.setName("Ronald", "H", "McDonald");
         person.setGender(Person.Gender.MALE);
-        person.birthday= LocalDate.of(1950,3,4);
+        person.birthday = LocalDate.of(1950,3,4);
         person.setContact(setUpContact1());
         return person;
     }
 
     static Festival setUpFestival1(){
         Festival festival1 = new Festival();
-        festival1.isNFMC=true;
-        festival1.name="String Festival";
+        festival1.isNFMC = true;
+        festival1.name = "String Festival";
         return festival1;
     }
 
     static Festival setUpFestival2(){
         Festival festival = new Festival();
-        festival.isNFMC=true;
-        festival.name="Piano Festival";
+        festival.isNFMC = true;
+        festival.name = "Piano Festival";
         return festival;
     }
 
@@ -160,7 +160,6 @@ public class TestStaticObjects {
         long randomDay = ThreadLocalRandom
                 .current()
                 .nextLong(startEpochDay, endEpochDay);
-
         return LocalDate.ofEpochDay(randomDay);
     }
 

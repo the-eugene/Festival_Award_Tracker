@@ -6,7 +6,7 @@ import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public class DataBaseHashMapInstrumentedTest {
+public class DBHashMapInstrumentedTest {
 
     static Map<String, Person> testMap = new DBHashMap<>(Person.class);
 
