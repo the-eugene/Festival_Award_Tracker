@@ -120,7 +120,7 @@ public class StudentActivity extends AppCompatActivity {
 
         /* INSTRUMENT CHECKBOXES */
         /* DROPDOWN LIST INSTRUMENTS */
-        String[] INSTRUMENTS = Instrument.Options();
+        final String[] INSTRUMENTS = Instrument.Options();
         ArrayAdapter<String> adapterInstruments =
                 new ArrayAdapter<>(
                         getBaseContext(),
@@ -160,7 +160,7 @@ public class StudentActivity extends AppCompatActivity {
                 /* Retrieve Student.java fields input */
                 newStudent.instruments.clear(); //necessary if editing student.
                 for (int i=0;i<INSTRUMENTS.length;i++){
-                    if(checkboxes[i].isChecked()) {
+                    if(checks[i].isChecked()) {
                         newStudent.addInstrument(Instrument.values()[i]);
                         Log.d("FOR", "Instruments: " + newStudent.instruments.toString());
                     }
