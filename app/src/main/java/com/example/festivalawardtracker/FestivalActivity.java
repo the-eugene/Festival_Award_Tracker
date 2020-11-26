@@ -49,8 +49,6 @@ public class FestivalActivity extends AppCompatActivity {
         editTextFilledExposedDropdownInstruments.setAdapter(adapterYesOrNO);
 
         //firebase set up
-        DBManager.setCurrentDB("Event");
-
         MaterialButton addFestival = findViewById(R.id.btnSaveFestival);
         addFestival.setOnClickListener(new View.OnClickListener() {
             @Override
