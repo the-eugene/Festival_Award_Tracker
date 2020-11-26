@@ -40,7 +40,7 @@ public class StudentActivity extends AppCompatActivity {
 //    private final DatabaseReference mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
 //    public static final String MESSAGES_CHILD = "zzz_student_test";
 
-    Map<String, Student> localDbHashMap = new DBHashMap<Student>(Student.class);
+    //Map<String, Student> localDbHashMap = new DBHashMap<Student>(Student.class); //unnecessary, Eugene
 
     /**
      *
@@ -154,7 +154,6 @@ public class StudentActivity extends AppCompatActivity {
                 newStudent.birthday = stringToLocalDate(editTextDatePicker.getText().toString());
 
                 /* Contact.java */
-                newContact.business = "EMPTY_1_How_should_this_field_be_used";
                 newContact.phone = phoneNumberInput.getText().toString();
                 newContact.email = emailInput.getText().toString();
                 newContact.street = streetInput.getText().toString();
@@ -167,8 +166,7 @@ public class StudentActivity extends AppCompatActivity {
 //                mFirebaseDatabaseReference.child(MESSAGES_CHILD).push().setValue(newStudent);
 
                 // Pushing to the DBHashMap
-                localDbHashMap.put(null, newStudent);
-                newStudent.save();
+                DBManager.Students.put(newStudent);
 
                 Toast toast = Toast.makeText(view.getContext(), "New student saved", Toast.LENGTH_SHORT);
                 toast.show();
