@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -57,9 +60,9 @@ public class StudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.students_new_activity);
 
-        // Student fields
-
-
+        // Student fields can go below here if needed
+        // Instrument checkboxes
+        final MaterialCheckBox checkBox1 = findViewById(R.id.checkBoxInstrument01);
 
         // Person fields
         final TextInputEditText firstNameInput = findViewById(R.id.editTextPersonName);
@@ -103,8 +106,7 @@ public class StudentActivity extends AppCompatActivity {
                 // HEADS UP! The date can be retrieved either as plaintext or as object
                 editTextDatePicker.setText(materialDatePicker.getHeaderText());
             }
-        });
-        /* End Birthday Date Picker */
+        }); /* End Birthday Date Picker */
 
         /* DROPDOWN LIST GENDER */
         String[] GENDER = Gender.Options();
@@ -115,6 +117,27 @@ public class StudentActivity extends AppCompatActivity {
                         GENDER);
         AutoCompleteTextView editTextFilledExposedDropdownGender = this.findViewById(R.id.dropdownGender);
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
+
+        /* INSTRUMENT CHECKBOXES */
+        /* DROPDOWN LIST INSTRUMENTS */
+        String[] INSTRUMENTS = Instrument.Options();
+        ArrayAdapter<String> adapterInstruments =
+                new ArrayAdapter<>(
+                        getBaseContext(),
+                        R.layout.dropdown_layout,
+                        INSTRUMENTS);
+        AutoCompleteTextView editTextFilledExposedDropdownInstruments =
+                this.findViewById(R.id.autoCompleteTextViewDropdownInstruments);
+        editTextFilledExposedDropdownInstruments.setAdapter(adapterInstruments);
+
+        LinearLayout insLayout=findViewById(R.id.InstrumentLayout);
+        for (int i=0;i<INSTRUMENTS.length;i++){
+            CheckBox checkBox= new CheckBox(this);
+            checkBox.setText(INSTRUMENTS[i]);
+            checkBox.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            insLayout.addView(checkBox);
+            checks[i]=checkBox;
+        }
 
         /* NEW ACTIVITY: Student Parent */
         MaterialButton btnAddParent = findViewById(R.id.btnStudentAddParent);
@@ -137,8 +160,9 @@ public class StudentActivity extends AppCompatActivity {
                 /* Retrieve Student.java fields input */
                 newStudent.instruments.clear(); //necessary if editing student.
                 for (int i=0;i<INSTRUMENTS.length;i++){
-                    if(checks[i].isChecked()) {
+                    if(checkboxes[i].isChecked()) {
                         newStudent.addInstrument(Instrument.values()[i]);
+                        Log.d("FOR", "Instruments: " + newStudent.instruments.toString());
                     }
                 }
 

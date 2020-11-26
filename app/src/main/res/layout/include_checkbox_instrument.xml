@@ -6,79 +6,79 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkBox01"
+        android:id="@+id/checkBoxInstrument01"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:width="100dp"
         android:checked="false"
-        android:text="Piano"
-        app:layout_constraintEnd_toStartOf="@+id/checkBox02"
+        android:text="@string/piano"
+        app:layout_constraintEnd_toStartOf="@+id/checkBoxInstrument02"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkBox02"
+        android:id="@+id/checkBoxInstrument02"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:width="100dp"
         android:checked="false"
-        android:text="Violin"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBox01"
-        app:layout_constraintEnd_toStartOf="@+id/checkBox03"
+        android:text="@string/violin"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxInstrument01"
+        app:layout_constraintEnd_toStartOf="@+id/checkBoxInstrument03"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/checkBox01"
+        app:layout_constraintStart_toEndOf="@+id/checkBoxInstrument01"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkBox03"
+        android:id="@+id/checkBoxInstrument03"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:width="100dp"
         android:checked="false"
-        android:text="Viola"
+        android:text="@string/viola"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/checkBox02"
+        app:layout_constraintStart_toEndOf="@+id/checkBoxInstrument02"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkBox04"
+        android:id="@+id/checkBoxInstrument04"
         android:layout_width="117dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:width="100dp"
         android:checked="false"
-        android:text="Cello"
+        android:text="@string/cello"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox01" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxInstrument01" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkBox05"
+        android:id="@+id/checkBoxInstrument05"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:width="100dp"
         android:checked="false"
-        android:text="Voice"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBox04"
+        android:text="@string/voice"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxInstrument04"
         app:layout_constraintEnd_toStartOf="@+id/textView8"
-        app:layout_constraintStart_toEndOf="@+id/checkBox04" />
+        app:layout_constraintStart_toEndOf="@+id/checkBoxInstrument04" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textView8"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="32dp"
         android:text=""
-        app:layout_constraintBottom_toBottomOf="@+id/checkBox05"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBoxInstrument05"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/checkBox05"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox03" />
+        app:layout_constraintStart_toEndOf="@+id/checkBoxInstrument05"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxInstrument03" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

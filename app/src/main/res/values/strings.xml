@@ -93,4 +93,9 @@
     <string name="save_event">SAVE EVENT</string>
     <string name="is_this_festival_nfmc">Is this festival NFMC?</string>
     <string name="save_festival">SAVE FESTIVAL</string>
+    <string name="piano">Piano</string>
+    <string name="violin">Violin</string>
+    <string name="viola">Viola</string>
+    <string name="cello">Cello</string>
+    <string name="voice">Voice</string>
 </resources>
