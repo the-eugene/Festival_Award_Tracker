@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Map;
 import java.util.Objects;
 
 import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
@@ -38,6 +39,8 @@ public class StudentActivity extends AppCompatActivity {
     //  This DB reference is here just for testing purposes
 //    private final DatabaseReference mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
 //    public static final String MESSAGES_CHILD = "zzz_student_test";
+
+    Map<String, Student> localDbHashMap = new DBHashMap<Student>(Student.class);
 
     /**
      *
@@ -162,6 +165,11 @@ public class StudentActivity extends AppCompatActivity {
 
                 // This DB reference is here just for testing purposes
 //                mFirebaseDatabaseReference.child(MESSAGES_CHILD).push().setValue(newStudent);
+
+                // Pushing to the DBHashMap
+                localDbHashMap.put(null, newStudent);
+                newStudent.save();
+
                 Toast toast = Toast.makeText(view.getContext(), "New student saved", Toast.LENGTH_SHORT);
                 toast.show();
 
