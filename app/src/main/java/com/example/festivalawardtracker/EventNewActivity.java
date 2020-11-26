@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * @author carloswashingtonmercado@gmail.com
  */
-public class EventNewActivity extends AppCompatActivity implements RecyclerViewClickInterface {
+public class EventNewActivity extends AppCompatActivity implements View.OnClickListener, RecyclerViewClickInterface {
 
     private Toolbar toolbarEvent;
     private TextInputEditText editTextDatePickerStart;
@@ -48,7 +48,7 @@ public class EventNewActivity extends AppCompatActivity implements RecyclerViewC
         birthday = new ArrayList<>();
         age = new ArrayList<>();
 
-        recyclerView = findViewById(R.id.recyclerViewStudentDisplayA);
+        recyclerView = findViewById(R.id.recyclerViewStudentDisplay);
 
         eventNewRecyclerAdapter = new EventNewRecyclerAdapter(studentNames,birthday,age,this);
         recyclerView.setAdapter(eventNewRecyclerAdapter);
@@ -56,6 +56,45 @@ public class EventNewActivity extends AppCompatActivity implements RecyclerViewC
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
+
+        studentNames.add("Billy");
+        studentNames.add("Billy2");
+        studentNames.add("Billy3");
+        studentNames.add("Billy4");
+        studentNames.add("Billy5");
+        studentNames.add("Billy6");
+        studentNames.add("Billy");
+        studentNames.add("Billy2");
+        studentNames.add("Billy3");
+        studentNames.add("Billy4");
+        studentNames.add("Billy5");
+        studentNames.add("Billy6");
+
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+        birthday.add("12/5/2000");
+
+        age.add("1");
+        age.add("2");
+        age.add("3");
+        age.add("4");
+        age.add("5");
+        age.add("6");
+        age.add("1");
+        age.add("2");
+        age.add("3");
+        age.add("4");
+        age.add("5");
+        age.add("6");
 
         /* ACTION BAR */
         toolbarEvent = findViewById(R.id.toolbarNewEvent);
@@ -118,6 +157,11 @@ public class EventNewActivity extends AppCompatActivity implements RecyclerViewC
 
     @Override
     public void onItemClick(int position) {
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

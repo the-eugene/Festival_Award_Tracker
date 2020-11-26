@@ -51,6 +51,9 @@
         <activity
             android:name=".StudentRatingsActivity"
             android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".EventDescriptionsActivity"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>

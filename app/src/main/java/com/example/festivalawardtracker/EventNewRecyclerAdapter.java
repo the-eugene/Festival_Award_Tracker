@@ -41,8 +41,7 @@ public class EventNewRecyclerAdapter extends RecyclerView.Adapter<EventNewRecycl
 
     @Override
     public int getItemCount() {
-        return 20;
-//        return studentNames.size();
+        return studentNames.size();
     }
 
 

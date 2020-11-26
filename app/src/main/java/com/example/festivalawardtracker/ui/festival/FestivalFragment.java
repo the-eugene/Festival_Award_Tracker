@@ -100,8 +100,8 @@ public class FestivalFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void onItemClick(int position) {
-//        Navigation.findNavController(EventDescriptionsActivity,);
-//        NavHostFragment.findNavController(this).navigate(R.id.);
+        Intent activityIntent = new Intent(context, EventDescriptionsActivity.class);
+        startActivity(activityIntent);
 
 //        NavHostFragment.findNavController(this).navigate(R.id.action_festival_to_event);
 
