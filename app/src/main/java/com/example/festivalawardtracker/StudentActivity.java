@@ -31,8 +31,12 @@ import java.util.Objects;
 import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
 
 /**
- *
- * @author carloswashingtonmercado@gmail.com
+ * Pre-loads the necessary information to the drop-down list and date-picker components.
+ * Retrieves the information input from the activity to the student class.
+ * Parses that information where necessary.
+ * Puts the class to the DBHashMAp class.
+ * @author Carlos
+ * @see DBHashMap
  */
 public class StudentActivity extends AppCompatActivity {
 
@@ -43,9 +47,9 @@ public class StudentActivity extends AppCompatActivity {
     //Map<String, Student> localDbHashMap = new DBHashMap<Student>(Student.class); //unnecessary, Eugene
 
     /**
-     *
+     * Sets all the layout components to their required values, where necessary.
      * @param savedInstanceState Add.
-     * @see MainActivity
+     * @see StudentFragment Where this activity is started.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +101,6 @@ public class StudentActivity extends AppCompatActivity {
             public void onPositiveButtonClick(Object selection) {
                 // HEADS UP! The date can be retrieved either as plaintext or as object
                 editTextDatePicker.setText(materialDatePicker.getHeaderText());
-
             }
         });
         /* End Birthday Date Picker */
@@ -189,7 +192,7 @@ public class StudentActivity extends AppCompatActivity {
     }
 
     /**
-     * It's expected that the parameter should come from
+     * It parses a string date in the given format into a LocalDate data type.
      * @param date Birthday, or any other date from the UI.
      */
     public LocalDate stringToLocalDate(String date) {
