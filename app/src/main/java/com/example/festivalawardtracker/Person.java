@@ -73,9 +73,9 @@ public class Person extends DBAware {
 
     public String getGenderString(){return getGender().toString();}
 
-    public int getAge(){return getAge(LocalDate.now());}
-    public int getAge(LocalDate onDate){
-        return Period.between(birthday, onDate).getYears();
+    public Integer getAge(){return getAge(LocalDate.now());}
+    public Integer getAge(LocalDate onDate){
+        return (Integer)Period.between(birthday, onDate).getYears();
     }
 
     public String shortLocation() {

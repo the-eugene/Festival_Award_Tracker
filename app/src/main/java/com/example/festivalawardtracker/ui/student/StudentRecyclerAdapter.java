@@ -12,48 +12,55 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.Student;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecyclerAdapter.ViewHolder> implements Filterable {
 
-    List<String> studentNames, birthday, age, awardInfo;
-    List<String> studentNamesList;
     private RecyclerViewClickInterface recyclerViewClickInterface;
+    Map<String, Student> students;
+    List<String> studentIDs=new ArrayList<>();
 
-    public StudentRecyclerAdapter(List<String> studentNames, List<String> birthday, List<String> age, List<String> awardInfo, RecyclerViewClickInterface recyclerViewClickInterface) {
-        this.studentNames = studentNames;
-        this.birthday = birthday;
-        this.age = age;
-        this.awardInfo = awardInfo;
-        this.recyclerViewClickInterface = recyclerViewClickInterface;
-        this.studentNamesList = new ArrayList<>(studentNames);
-        Log.d("StudentRecyclerAdapter", "These are my students:" + studentNames);
+    public StudentRecyclerAdapter(Map<String,Student> students, RecyclerViewClickInterface recyclerViewClickInterface) {
+        this.students=students;
+        studentIDs.addAll(students.keySet());
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.students_recyclerview_row, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        View view = layoutInflater.inflate(R.layout.student_display_recyclerview, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Log.d("Student Recycler: studentIDs.size()", ((Integer) studentIDs.size()).toString());
+        if (studentIDs.size()>0) {
+            String ID = studentIDs.get(position);
+            Student s = students.get(ID);
+            String name = s.getFullName();
+            holder.studentName.setText(name);
+            holder.birthday.setText(s.getBirthday());
+            holder.age.setText(s.getAge().toString());
+            holder.gender.setText(s.getGenderString());
+            holder.awardsInfo.setText("Working on it");
+        }
+    }
 
-        holder.studentName.setText(studentNames.get(position));
-        holder.birthday.setText(birthday.get(position));
-        holder.age.setText(age.get(position));
-        holder.awardsInfo.setText(awardInfo.get(position));
+    public void updateStudentList() {
+        studentIDs.clear();
+        studentIDs.addAll(students.keySet());
     }
 
     @Override
     public int getItemCount() {
-        return studentNames.size();
+        return students.size();
     }
 
     @Override
@@ -69,11 +76,11 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecycler
             List<String> filteredList = new ArrayList<>();
 
             if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(studentNamesList);
+                filteredList.addAll(students.keySet());
             } else {
-                for (String student : studentNamesList) {
-                    if (student.toLowerCase().contains(constraint.toString().toLowerCase())) {
-                        filteredList.add(student);
+                for (String studentID : students.keySet()) {
+                    if (students.get(studentID).getFullName().toLowerCase().contains(constraint.toString().toLowerCase())) {
+                        filteredList.add(studentID);
                     }
                 }
             }
@@ -85,14 +92,14 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecycler
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            studentNames.clear();
-            studentNames.addAll((Collection<? extends String>) results.values);
+            studentIDs.clear();
+            studentIDs.addAll((Collection<? extends String>) results.values);
             notifyDataSetChanged();
         }
     };
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        TextView studentName, birthday, age, awardsInfo;
+        TextView studentName, birthday, age, gender, awardsInfo;
 
         public ViewHolder(@NonNull View itemView) {
 
@@ -100,6 +107,7 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecycler
             studentName = itemView.findViewById(R.id.StudentName);
             birthday = itemView.findViewById(R.id.Birthday);
             age = itemView.findViewById(R.id.Age);
+            gender = itemView.findViewById(R.id.Gender);
             awardsInfo = itemView.findViewById((R.id.AwardsInfo));
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

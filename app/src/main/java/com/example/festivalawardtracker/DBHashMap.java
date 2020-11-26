@@ -12,7 +12,7 @@ import java.util.Map;
  * A HashMap that can save and load objects from firebase
  * @param <V> The type parameter of objects this Map will hold
  */
-class DBHashMap<V extends DBAware> extends HashMap<String, V> {
+public class DBHashMap<V extends DBAware> extends HashMap<String, V> {
     final Class<V> type; //holds type information for objects to be instantiated
     String pathToData; //holds the FireBase path where data for this HashMap will be stored in DB
 

@@ -30,7 +30,7 @@ public class DBManager {
 
     //HashMap objects holding String UID - Object key value pairs
     static DBHashMap<Teacher> Teachers = new DBHashMap<>(Teacher.class);
-    static DBHashMap<Student> Students = new DBHashMap<>(Student.class);
+    public static DBHashMap<Student> Students = new DBHashMap<>(Student.class);
     static DBHashMap<Person> Parents = new DBHashMap<>(Person.class);
     static DBHashMap<Event> Events = new DBHashMap<>(Event.class);
     static DBHashMap<EventDescription> EventDescriptions = new DBHashMap<>(EventDescription.class);

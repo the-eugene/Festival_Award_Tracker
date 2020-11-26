@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker.ui.student;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.StudentActivity;
 import com.example.festivalawardtracker.StudentActivityDisplay;
@@ -33,7 +35,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
     StudentRecyclerAdapter studentRecyclerAdapter;
     FloatingActionButton fabNewStudent;
     RecyclerView recyclerView;
-    List<String> studentNames, birthday, age, awardInfo;
+    List<String> studentNames, birthday, age, gender, awardInfo;
     Context thisContext;
 
     /**
@@ -54,73 +56,36 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
         thisContext = container.getContext();
         Context context = root.getContext();
 
-        studentNames = new ArrayList<>();
-        birthday = new ArrayList<>();
-        age = new ArrayList<>();
-        awardInfo = new ArrayList<>();
+
 
         recyclerView = root.findViewById(R.id.recyclerView_student);
-
-        Log.d("StudentFragment", String.valueOf(studentNames));
-        studentRecyclerAdapter = new StudentRecyclerAdapter(studentNames,birthday,age,awardInfo,this);
+        studentRecyclerAdapter = new StudentRecyclerAdapter(DBManager.Students,this);
         recyclerView.setAdapter(studentRecyclerAdapter);
+        //This is working but there has to be a better way...
+        class queryThread implements Runnable{
+            final Activity activity;
+            queryThread(Activity activity){
+               this.activity=activity;
+            }
+            @Override
+            public void run(){
+                DBManager.Students.loadAll();
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        studentRecyclerAdapter.updateStudentList();
+                        studentRecyclerAdapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        };
+        new Thread(new queryThread(getActivity())).start();
+
+
         recyclerView.setMotionEventSplittingEnabled(false);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
-
-        studentNames.add("Billy");
-        studentNames.add("Billy2");
-        studentNames.add("Billy3");
-        studentNames.add("Billy4");
-        studentNames.add("Billy5");
-        studentNames.add("Billy6");
-        studentNames.add("Billy");
-        studentNames.add("Billy2");
-        studentNames.add("Billy3");
-        studentNames.add("Billy4");
-        studentNames.add("Billy5");
-        studentNames.add("Billy6");
-
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-
-        age.add("1");
-        age.add("2");
-        age.add("3");
-        age.add("4");
-        age.add("5");
-        age.add("6");
-        age.add("1");
-        age.add("2");
-        age.add("3");
-        age.add("4");
-        age.add("5");
-        age.add("6");
-
-        awardInfo.add("Good Job");
-        awardInfo.add("Good Job");
-        awardInfo.add("Good Job");
-        awardInfo.add("Good Job");
-        awardInfo.add("Good Job");
-        awardInfo.add("Good Job");
-        awardInfo.add("Good Job");
-        awardInfo.add("Good Job");
-        awardInfo.add("Good Job");
-        awardInfo.add("Good Job");
-        awardInfo.add("Good Job");
-        awardInfo.add("Good Job");
-
 
         // Setting up the FAB button for add student
         fabNewStudent = root.findViewById(R.id.fab_newStudent);
