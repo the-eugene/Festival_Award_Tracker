@@ -25,7 +25,7 @@ public class FestivalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_festival);
+        setContentView(R.layout.festival_new_activity);
         final EditText editFestivalName = (EditText)findViewById(R.id.editTextNewFestivalName);
         final AutoCompleteTextView editIsNFMC = (AutoCompleteTextView)findViewById(R.id.autoCompleteTextViewDropdownNewFestivalNFMC);
 

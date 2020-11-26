@@ -9,63 +9,58 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewRowEventName"
         style="@style/Widget.MaterialComponents.TextView"
-        android:layout_width="150dp"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:text="EventName"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewRowEventInstruments"
-        app:layout_constraintEnd_toStartOf="@+id/textViewRowEventInstruments"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:textAlignment="viewStart"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewRowDateStart"
         style="@style/Widget.MaterialComponents.TextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         android:text="DateStart"
+        android:textAlignment="center"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textViewRowDateEnd"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRowEventName" />
+        app:layout_constraintStart_toEndOf="@+id/textViewRowEventName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRowEventInstruments"
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewRowDateEnd"
         style="@style/Widget.MaterialComponents.TextView"
-        android:layout_width="wrap_content"
+        android:layout_width="84dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:text="DateEnd"
+        android:textAlignment="center"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewRowDateStart"
-        app:layout_constraintEnd_toStartOf="@+id/textViewRowEventLocation"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textViewRowDateStart" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewRowEventLocation"
-        style="@style/Widget.MaterialComponents.TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Location"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewRowDateEnd"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textViewRowDateEnd" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textViewRowEventInstruments"
         style="@style/Widget.MaterialComponents.TextView"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="32dp"
-        android:text="Instruments"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Instrument"
+        android:textAlignment="center"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewRowEventName"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

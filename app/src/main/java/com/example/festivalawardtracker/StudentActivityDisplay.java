@@ -17,7 +17,7 @@ public class StudentActivityDisplay extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_student);
+        setContentView(R.layout.students_display_activity);
 
         /* ACTION BAR */
         toolbar = findViewById(R.id.toolbarStudentDisplay);

@@ -68,17 +68,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/student_contact" />
 
-            <LinearLayout
-                android:id="@+id/InstrumentLayout"
+            <include
+                android:id="@+id/checkboxStudentInstruments"
+                layout="@layout/include_checkbox_instrument"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/student_data"/>
+                app:layout_constraintTop_toBottomOf="@id/student_data"
+                />
 
             <include
                 android:id="@+id/student_address"
@@ -87,7 +83,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/InstrumentLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/checkboxStudentInstruments" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnStudentAddParent"

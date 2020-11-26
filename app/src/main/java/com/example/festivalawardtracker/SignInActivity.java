@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -27,8 +29,9 @@ public class SignInActivity extends AppCompatActivity {
     String email;
     String password;
 
-    Button btnSignIn;
+    Button btnSignIn, btnSignUp;
     FirebaseAuth mAuth;
+    DatabaseReference database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class SignInActivity extends AppCompatActivity {
         emailInput = findViewById(R.id.SignInEmailAddress);
         passwordInput = findViewById(R.id.SignInPassword);
         btnSignIn = findViewById(R.id.SignIn2);
+        btnSignUp = findViewById(R.id.button2);
 
         emailInput.setText(email);
         passwordInput.setText(password);
@@ -94,6 +98,57 @@ public class SignInActivity extends AppCompatActivity {
                                     // ...
                                 }
                             });
+                }
+            }
+        });
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = emailInput.getText().toString();
+                String passwd = passwordInput.getText().toString();
+                if (email.isEmpty()) {
+                    emailInput.setError("Please Enter your Email");
+                    emailInput.requestFocus();
+                }
+                else if (passwd.isEmpty()) {
+                    passwordInput.setError("Please enter your Password");
+                    passwordInput.requestFocus();
+                }
+
+                else if (!(email.isEmpty() && passwd.isEmpty())) {
+                    mAuth.createUserWithEmailAndPassword(email, passwd)
+                            .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Sign in success, update UI with the signed-in user's information
+                                        Log.d("SignUpActivity", "createUserWithEmail:success");
+                                        //FirebaseUser user = mAuth.getCurrentUser();
+                                        // Get a reference to the database service
+                                        database = FirebaseDatabase.getInstance().getReference("user");
+                                        EditText userName = (EditText) findViewById(R.id.SignUpEmailAddress);
+                                        String uName = userName.getText().toString().trim();
+                                        UserDatabase User = new UserDatabase(uName);
+                                        String id = database.push().getKey();
+                                        database.child(id).setValue(User);
+                                        Intent activityIntent = new Intent(SignInActivity.this, MainActivity.class);
+                                        startActivity(activityIntent);
+                                        finish();
+
+                                    }
+                                    else {
+                                        // If sign in fails, display a message to the user.
+                                        Log.w("SignUpActivity", "createUserWithEmail:failure", task.getException());
+                                        Toast.makeText(SignInActivity.this, "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    // ...
+                                }
+                            });
+                }
+                else {
+                    Toast.makeText(SignInActivity.this, "Error Occurred!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

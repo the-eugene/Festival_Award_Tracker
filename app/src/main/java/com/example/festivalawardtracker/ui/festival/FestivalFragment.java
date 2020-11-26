@@ -6,23 +6,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.festivalawardtracker.EventActivity;
+import com.example.festivalawardtracker.EventDescriptionsActivity;
 import com.example.festivalawardtracker.FestivalActivity;
 import com.example.festivalawardtracker.R;
-import com.example.festivalawardtracker.StudentActivity;
-import com.example.festivalawardtracker.ui.event.EventFragment;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -34,11 +29,13 @@ import java.util.List;
  */
 public class FestivalFragment extends Fragment implements View.OnClickListener, RecyclerViewClickInterface {
 
+    private Toolbar toolbar;
     RecyclerView recyclerView;
     FloatingActionButton fabNewFestival;
     FestivalRecyclerAdapter festivalRecyclerAdapter;
     List<String> festivalNames;
     Context thisContext;
+    Context context;
 
     /**
      *
@@ -50,12 +47,13 @@ public class FestivalFragment extends Fragment implements View.OnClickListener, 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.main_fragment_festival, container, false);
+        View root = inflater.inflate(R.layout.festival_recyclerview_fragment_main, container, false);
 
         thisContext = container.getContext();
-        Context context = root.getContext();
+        context = root.getContext();
 
         festivalNames = new ArrayList<>();
+
         recyclerView = root.findViewById(R.id.recyclerView_festival);
         festivalRecyclerAdapter = new FestivalRecyclerAdapter(festivalNames,this);
         recyclerView.setAdapter(festivalRecyclerAdapter);
@@ -102,7 +100,10 @@ public class FestivalFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void onItemClick(int position) {
+//        Navigation.findNavController(EventDescriptionsActivity,);
+//        NavHostFragment.findNavController(this).navigate(R.id.);
 
+//        NavHostFragment.findNavController(this).navigate(R.id.action_festival_to_event);
 
     }
 }

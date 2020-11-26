@@ -21,7 +21,7 @@ public class StudentFragmentDisplay extends Fragment {
 //    studentAdapter mAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.main_fragment_student, container, false);
+        View view = inflater.inflate(R.layout.students_recyclerview_fragment_main, container, false);
 
         database = FirebaseDatabase.getInstance().getReference();
 //        recyclerView = view.findViewById(R.id.student_list);

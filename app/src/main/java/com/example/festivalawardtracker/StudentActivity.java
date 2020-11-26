@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,13 +21,10 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Map;
 import java.util.Objects;
 
 import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
@@ -59,7 +55,7 @@ public class StudentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_student);
+        setContentView(R.layout.students_new_activity);
 
         // Student fields
 
@@ -120,15 +116,6 @@ public class StudentActivity extends AppCompatActivity {
         AutoCompleteTextView editTextFilledExposedDropdownGender = this.findViewById(R.id.dropdownGender);
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
 
-        /* DROPDOWN LIST INSTRUMENTS */
-        LinearLayout insLayout=findViewById(R.id.InstrumentLayout);
-        for (int i=0;i<INSTRUMENTS.length;i++){
-            CheckBox checkBox= new CheckBox(this);
-            checkBox.setText(INSTRUMENTS[i]);
-            checkBox.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            insLayout.addView(checkBox);
-            checks[i]=checkBox;
-        }
         /* NEW ACTIVITY: Student Parent */
         MaterialButton btnAddParent = findViewById(R.id.btnStudentAddParent);
         btnAddParent.setOnClickListener(new View.OnClickListener() {

@@ -9,13 +9,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.festivalawardtracker.EventActivity;
+import com.example.festivalawardtracker.EventNewActivity;
 import com.example.festivalawardtracker.R;
-import com.example.festivalawardtracker.StudentActivity;
 import com.example.festivalawardtracker.StudentRatingsActivity;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -31,7 +29,7 @@ public class EventFragment extends Fragment implements View.OnClickListener, Rec
     RecyclerView recyclerView;
     FloatingActionButton fabNewEvent;
     EventRecyclerAdapter eventRecyclerAdapter;
-    List<String> eventName, startDate, endDate, eventLocation, eventInstruments;
+    List<String> eventName, startDate, endDate, eventInstruments;
     Context thisContext;
 
 
@@ -45,7 +43,7 @@ public class EventFragment extends Fragment implements View.OnClickListener, Rec
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.main_fragment_event, container, false);
+        View root = inflater.inflate(R.layout.events_recyclerview_fragment_main, container, false);
 
         thisContext = container.getContext();
         Context context = root.getContext();
@@ -53,11 +51,10 @@ public class EventFragment extends Fragment implements View.OnClickListener, Rec
         eventName = new ArrayList<>();
         startDate = new ArrayList<>();
         endDate = new ArrayList<>();
-        eventLocation = new ArrayList<>();
         eventInstruments = new ArrayList<>();
 
         recyclerView = root.findViewById(R.id.recyclerView_event);
-        eventRecyclerAdapter = new EventRecyclerAdapter(eventName,startDate,endDate,eventLocation,eventInstruments,this);
+        eventRecyclerAdapter = new EventRecyclerAdapter(eventName,startDate,endDate,eventInstruments,this);
         recyclerView.setAdapter(eventRecyclerAdapter);
         recyclerView.setMotionEventSplittingEnabled(false);
 
@@ -112,22 +109,6 @@ public class EventFragment extends Fragment implements View.OnClickListener, Rec
         endDate.add("Tomorrow");
         endDate.add("Tomorrow");
 
-        eventLocation.add("Here");
-        eventLocation.add("Here");
-        eventLocation.add("Here");
-        eventLocation.add("Here");
-        eventLocation.add("Here");
-        eventLocation.add("Here");
-        eventLocation.add("Here");
-        eventLocation.add("Here");
-        eventLocation.add("Here");
-        eventLocation.add("Here");
-        eventLocation.add("Here");
-        eventLocation.add("Here");
-        eventLocation.add("Here");
-        eventLocation.add("Here");
-        eventLocation.add("Here");
-
         eventInstruments.add("Piano");
         eventInstruments.add("Piano");
         eventInstruments.add("Piano");
@@ -160,7 +141,7 @@ public class EventFragment extends Fragment implements View.OnClickListener, Rec
      */
     @Override
     public void onClick(View v) {
-        Intent activityIntent = new Intent( v.getContext(), EventActivity.class);
+        Intent activityIntent = new Intent( v.getContext(), EventNewActivity.class);
         startActivity(activityIntent);
     }
 

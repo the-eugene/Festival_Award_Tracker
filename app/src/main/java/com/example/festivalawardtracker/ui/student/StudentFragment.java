@@ -33,7 +33,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
     StudentRecyclerAdapter studentRecyclerAdapter;
     FloatingActionButton fabNewStudent;
     RecyclerView recyclerView;
-    List<String> studentNames, birthday, age, gender, awardInfo;
+    List<String> studentNames, birthday, age, awardInfo;
     Context thisContext;
 
     /**
@@ -49,7 +49,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.main_fragment_student, container, false);
+        View root = inflater.inflate(R.layout.students_recyclerview_fragment_main, container, false);
 
         thisContext = container.getContext();
         Context context = root.getContext();
@@ -57,13 +57,12 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
         studentNames = new ArrayList<>();
         birthday = new ArrayList<>();
         age = new ArrayList<>();
-        gender = new ArrayList<>();
         awardInfo = new ArrayList<>();
 
         recyclerView = root.findViewById(R.id.recyclerView_student);
 
         Log.d("StudentFragment", String.valueOf(studentNames));
-        studentRecyclerAdapter = new StudentRecyclerAdapter(studentNames,birthday,age,gender,awardInfo,this);
+        studentRecyclerAdapter = new StudentRecyclerAdapter(studentNames,birthday,age,awardInfo,this);
         recyclerView.setAdapter(studentRecyclerAdapter);
         recyclerView.setMotionEventSplittingEnabled(false);
 
@@ -108,19 +107,6 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
         age.add("4");
         age.add("5");
         age.add("6");
-
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
 
         awardInfo.add("Good Job");
         awardInfo.add("Good Job");

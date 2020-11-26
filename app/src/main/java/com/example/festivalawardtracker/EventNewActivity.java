@@ -2,25 +2,37 @@ package com.example.festivalawardtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
+import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
+import com.example.festivalawardtracker.ui.student.StudentRecyclerAdapter;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author carloswashingtonmercado@gmail.com
  */
-public class EventActivity extends AppCompatActivity {
+public class EventNewActivity extends AppCompatActivity implements RecyclerViewClickInterface {
 
     private Toolbar toolbarEvent;
     private TextInputEditText editTextDatePickerStart;
     private TextInputEditText editTextDatePickerEnd;
+    EventNewRecyclerAdapter eventNewRecyclerAdapter;
+    RecyclerView recyclerView;
+    List<String> studentNames, birthday, age;
 
     /**
      *
@@ -30,7 +42,20 @@ public class EventActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_event);
+        setContentView(R.layout.events_new_activity);
+
+        studentNames = new ArrayList<>();
+        birthday = new ArrayList<>();
+        age = new ArrayList<>();
+
+        recyclerView = findViewById(R.id.recyclerViewStudentDisplayA);
+
+        eventNewRecyclerAdapter = new EventNewRecyclerAdapter(studentNames,birthday,age,this);
+        recyclerView.setAdapter(eventNewRecyclerAdapter);
+        recyclerView.setMotionEventSplittingEnabled(false);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
 
         /* ACTION BAR */
         toolbarEvent = findViewById(R.id.toolbarNewEvent);
@@ -88,6 +113,11 @@ public class EventActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    @Override
+    public void onItemClick(int position) {
 
     }
 }

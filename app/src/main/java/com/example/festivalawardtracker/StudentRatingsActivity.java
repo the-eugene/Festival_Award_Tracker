@@ -1,14 +1,11 @@
 package com.example.festivalawardtracker;
 
 import android.os.Bundle;
-import android.widget.RatingBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,24 +16,20 @@ public class StudentRatingsActivity extends AppCompatActivity {
     private Toolbar toolbar;
     RecyclerView recyclerView;
     StudentRatingsRecyclerAdapter studentRatingsRecyclerAdapter;
-    List<String> name,age,birthday, gender, level;
-    RatingBar ratingBar;
+    List<String> name,age,birthday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_ratings);
+        setContentView(R.layout.student_ratings_recyclerview_activity);
 
         name = new ArrayList<>();
         age = new ArrayList<>();
         birthday = new ArrayList<>();
-        gender = new ArrayList<>();
-        level = new ArrayList<>();
 
 
         recyclerView =findViewById(R.id.recyclerView_student_ratings);
-        studentRatingsRecyclerAdapter = new StudentRatingsRecyclerAdapter(name,age,birthday,level,gender);
-
+        studentRatingsRecyclerAdapter = new StudentRatingsRecyclerAdapter(name,age,birthday);
         recyclerView.setAdapter(studentRatingsRecyclerAdapter);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
@@ -81,37 +74,6 @@ public class StudentRatingsActivity extends AppCompatActivity {
         age.add("4");
         age.add("5");
         age.add("6");
-
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-        gender.add("M");
-
-
-        level.add("2");
-        level.add("2");
-        level.add("2");
-        level.add("2");
-        level.add("2");
-        level.add("2");
-        level.add("2");
-        level.add("2");
-        level.add("2");
-        level.add("2");
-        level.add("2");
-        level.add("2");
-        level.add("2");
-        level.add("2");
-        level.add("2");
-
 
         /* ACTION BAR */
         toolbar = findViewById(R.id.toolbarStudentRatings);

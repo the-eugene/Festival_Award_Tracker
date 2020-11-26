@@ -1,25 +1,24 @@
-package com.example.festivalawardtracker.ui.festival;
+package com.example.festivalawardtracker;
+
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
-
 import java.util.List;
 
-public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecyclerAdapter.ViewHolder> {
+public class EventNewRecyclerAdapter extends RecyclerView.Adapter<EventNewRecyclerAdapter.ViewHolder> {
 
-    List<String> festivalNames;
+    List<String> studentNames, birthday, age;
     private RecyclerViewClickInterface recyclerViewClickInterface;
 
-    public FestivalRecyclerAdapter(List<String> festivalNames, RecyclerViewClickInterface recyclerViewClickInterface) {
-        this.festivalNames = festivalNames;
+    public EventNewRecyclerAdapter(List<String> studentNames, List<String> birthday, List<String> age, RecyclerViewClickInterface recyclerViewClickInterface) {
+        this.studentNames = studentNames;
+        this.birthday = birthday;
+        this.age = age;
         this.recyclerViewClickInterface = recyclerViewClickInterface;
     }
 
@@ -27,7 +26,7 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.festivals_recyclerview_row, parent, false);
+        View view = layoutInflater.inflate(R.layout.events_new_recyclerview_row, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -35,30 +34,34 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.festivalName.setText(festivalNames.get(position));
+        holder.studentName.setText(studentNames.get(position));
+        holder.birthday.setText(birthday.get(position));
+        holder.age.setText(age.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return festivalNames.size();
+        return 20;
+//        return studentNames.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView festivalName;
+    class ViewHolder extends RecyclerView.ViewHolder{
+        TextView studentName, birthday, age;
 
         public ViewHolder(@NonNull View itemView) {
+
             super(itemView);
-
-            festivalName = itemView.findViewById(R.id.rowFestivalName);
-
+            studentName = itemView.findViewById(R.id.StudentName);
+            birthday = itemView.findViewById(R.id.Birthday);
+            age = itemView.findViewById(R.id.Age);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     recyclerViewClickInterface.onItemClick(getAdapterPosition());
                 }
             });
-
         }
+
     }
 }

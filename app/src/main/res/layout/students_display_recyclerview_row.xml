@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textViewStudentDisplayRecyclerviewYear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Year"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewStudentDisplayRecyclerviewEvent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewStudentDisplayRecyclerviewEvent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewStudentDisplayRecyclerviewEvent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Event"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewStudentDisplayRecyclerviewYear"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewStudentDisplayRecyclerviewCCSLebel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="CCS:"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/textViewStudentDisplayRecyclerviewCCS"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStudentDisplayRecyclerviewYear" />
+
+    <TextView
+        android:id="@+id/textViewStudentDisplayRecyclerviewCCS"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="CCS"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewStudentDisplayRecyclerviewCCSLebel"
+        app:layout_constraintEnd_toStartOf="@id/textViewStudentDisplayRecyclerviewTPLabel"
+        app:layout_constraintStart_toEndOf="@id/textViewStudentDisplayRecyclerviewCCSLebel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStudentDisplayRecyclerviewYear" />
+
+    <TextView
+        android:id="@+id/textViewStudentDisplayRecyclerviewTPLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TP:"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewStudentDisplayRecyclerviewCCS"
+        app:layout_constraintEnd_toStartOf="@id/textViewStudentDisplayRecyclerviewTP"
+        app:layout_constraintStart_toEndOf="@id/textViewStudentDisplayRecyclerviewCCS"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStudentDisplayRecyclerviewYear" />
+
+    <TextView
+        android:id="@+id/textViewStudentDisplayRecyclerviewTP"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TP"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewStudentDisplayRecyclerviewTPLabel"
+        app:layout_constraintEnd_toStartOf="@id/textViewStudentDisplayRecyclerviewAwardsLabel"
+        app:layout_constraintStart_toEndOf="@id/textViewStudentDisplayRecyclerviewTPLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewStudentDisplayRecyclerviewTPLabel" />
+
+    <TextView
+        android:id="@+id/textViewStudentDisplayRecyclerviewAwardsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Awards:"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewStudentDisplayRecyclerviewTP"
+        app:layout_constraintEnd_toStartOf="@id/textViewStudentDisplayRecyclerviewAwards"
+        app:layout_constraintStart_toEndOf="@id/textViewStudentDisplayRecyclerviewTP"
+        app:layout_constraintTop_toTopOf="@+id/textViewStudentDisplayRecyclerviewTP" />
+
+    <TextView
+        android:id="@+id/textViewStudentDisplayRecyclerviewAwards"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Awards"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewStudentDisplayRecyclerviewAwardsLabel"
+        app:layout_constraintEnd_toStartOf="@id/textViewStudentDisplayRecyclerviewLevelLabel"
+        app:layout_constraintStart_toEndOf="@id/textViewStudentDisplayRecyclerviewAwardsLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewStudentDisplayRecyclerviewAwardsLabel" />
+
+    <TextView
+        android:id="@+id/textViewStudentDisplayRecyclerviewLevelLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level:"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewStudentDisplayRecyclerviewAwards"
+        app:layout_constraintEnd_toStartOf="@id/textViewStudentDisplayRecyclerviewLevel"
+        app:layout_constraintStart_toEndOf="@id/textViewStudentDisplayRecyclerviewAwards"
+        app:layout_constraintTop_toTopOf="@+id/textViewStudentDisplayRecyclerviewAwards" />
+
+    <TextView
+        android:id="@+id/textViewStudentDisplayRecyclerviewLevel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Level"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewStudentDisplayRecyclerviewLevelLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textViewStudentDisplayRecyclerviewLevelLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewStudentDisplayRecyclerviewLevelLabel" />
+</androidx.constraintlayout.widget.ConstraintLayout>
