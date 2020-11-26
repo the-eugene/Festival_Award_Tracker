@@ -44,6 +44,11 @@ public class Student extends Person {
     public void addInstrument(Instrument i) {
         instruments.add(i);
     }
+    public void addInstrument(String i){
+        for(Instrument instrument:Instrument.values()){
+            if(instrument.toString().equals(i.toLowerCase())) instruments.add(instrument);
+        }
+    }
 
     //TODO ? getAwardSummary(){}
     public void addPerformance(String eventID, LocalDate date, String level, int rating){

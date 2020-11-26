@@ -5,10 +5,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +44,8 @@ public class StudentActivity extends AppCompatActivity {
 //    public static final String MESSAGES_CHILD = "zzz_student_test";
 
     //Map<String, Student> localDbHashMap = new DBHashMap<Student>(Student.class); //unnecessary, Eugene
+    String[] INSTRUMENTS = Instrument.Options();
+    CheckBox[] checks = new CheckBox[INSTRUMENTS.length];
 
     /**
      *
@@ -53,8 +58,8 @@ public class StudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_student);
 
         // Student fields
-        final EditText editTextInstrument  = (EditText) findViewById(R.id.autoCompleteTextViewDropdownInstruments);
-        final String instrument;
+
+
 
         // Person fields
         final TextInputEditText firstNameInput = findViewById(R.id.editTextPersonName);
@@ -113,16 +118,14 @@ public class StudentActivity extends AppCompatActivity {
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
 
         /* DROPDOWN LIST INSTRUMENTS */
-        String[] INSTRUMENTS = Instrument.Options();
-        ArrayAdapter<String> adapterInstruments =
-                new ArrayAdapter<>(
-                        getBaseContext(),
-                        R.layout.dropdown_layout,
-                        INSTRUMENTS);
-        AutoCompleteTextView editTextFilledExposedDropdownInstruments =
-                this.findViewById(R.id.autoCompleteTextViewDropdownInstruments);
-        editTextFilledExposedDropdownInstruments.setAdapter(adapterInstruments);
-
+        LinearLayout insLayout=findViewById(R.id.InstrumentLayout);
+        for (int i=0;i<INSTRUMENTS.length;i++){
+            CheckBox checkBox= new CheckBox(this);
+            checkBox.setText(INSTRUMENTS[i]);
+            checkBox.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            insLayout.addView(checkBox);
+            checks[i]=checkBox;
+        }
         /* NEW ACTIVITY: Student Parent */
         MaterialButton btnAddParent = findViewById(R.id.btnStudentAddParent);
         btnAddParent.setOnClickListener(new View.OnClickListener() {
@@ -142,9 +145,12 @@ public class StudentActivity extends AppCompatActivity {
                 Contact newContact = new Contact();
 
                 /* Retrieve Student.java fields input */
-                // TODO I can add the checkbox layout, and then add the instrument List,
-                //  but I need the exhaustive list of instruments
-                newStudent.addInstrument(Instrument.violin);
+                newStudent.instruments.clear(); //necessary if editing student.
+                for (int i=0;i<INSTRUMENTS.length;i++){
+                    if(checks[i].isChecked()) {
+                        newStudent.addInstrument(Instrument.values()[i]);
+                    }
+                }
 
                 /* Person.java */
                 newStudent.firstName = firstNameInput.getText().toString();
