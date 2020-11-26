@@ -6,8 +6,8 @@ import java.util.Map;
 
 public class Contact {
     String business;
-    String phone;
     String email;
+    String phone;
     String street;
     String city;
     String state;

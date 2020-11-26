@@ -48,7 +48,7 @@ public class ParentActivity extends AppCompatActivity {
                         R.layout.dropdown_layout,
                         GENDER);
         AutoCompleteTextView editTextFilledExposedDropdownGender =
-                this.findViewById(R.id.autoCompleteTextViewPersonDropdownGender);
+                this.findViewById(R.id.dropdownGender);
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
 
         /* DATE PICKER */

@@ -1,16 +1,19 @@
 package com.example.festivalawardtracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -20,9 +23,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
-import static com.google.android.material.datepicker.MaterialDatePicker.*;
+import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
 
 /**
  *
@@ -30,9 +35,9 @@ import static com.google.android.material.datepicker.MaterialDatePicker.*;
  */
 public class StudentActivity extends AppCompatActivity {
 
-    private TextInputEditText editTextDatePicker;
-    private final DatabaseReference mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
-    public static final String MESSAGES_CHILD = "student"; // this is where it goes
+    //  This DB reference is here just for testing purposes
+//    private final DatabaseReference mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
+//    public static final String MESSAGES_CHILD = "zzz_student_test";
 
     /**
      *
@@ -44,21 +49,24 @@ public class StudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_student);
 
-        /* Layout information */
+        // Student fields
+        final EditText editTextInstrument  = (EditText) findViewById(R.id.autoCompleteTextViewDropdownInstruments);
+        final String instrument;
+
+        // Person fields
         final TextInputEditText firstNameInput = findViewById(R.id.editTextPersonName);
         final TextInputEditText middleNameInput = findViewById(R.id.editTextPersonMiddleName);
-        TextInputEditText lastNameInput;
-        TextInputEditText emailInput;
-        TextInputEditText phoneNumberInput;
-        TextInputEditText birthdateInput;
-        EditText editTextGender  = (EditText) findViewById(R.id.autoCompleteTextViewPersonDropdownGender);
-        String gender;
-        EditText editTextInstrument  = (EditText) findViewById(R.id.autoCompleteTextViewDropdownInstruments);
-        String instrument;
-        TextInputEditText StreetInput;
-        TextInputEditText CityInput;
-        TextInputEditText StateInput;
-        TextInputEditText ZipInput;
+        final TextInputEditText lastNameInput = findViewById(R.id.editTextPersonLastName);
+        final TextView editTextGender  = (TextView) findViewById(R.id.dropdownGender);
+        final TextInputEditText editTextDatePicker;
+
+        // Contact fields
+        final TextInputEditText emailInput = findViewById(R.id.editTextEmail);
+        final TextInputEditText phoneNumberInput = findViewById(R.id.editTextPhoneNumber);
+        final TextInputEditText streetInput = findViewById(R.id.editTextStreet);
+        final TextInputEditText cityInput = findViewById(R.id.editTextCity);
+        final TextInputEditText stateInput = findViewById(R.id.editTextState);
+        final TextInputEditText zipInput = findViewById(R.id.editTextZip);
 
         /* ACTION BAR */
         Toolbar toolbarStudent = findViewById(R.id.toolbarNewStudent);
@@ -72,7 +80,6 @@ public class StudentActivity extends AppCompatActivity {
         Builder<Long> builder = Builder.datePicker();
         builder.setTitleText("Student Birthday");
         final MaterialDatePicker<Long> materialDatePicker = builder.build();
-
         // Setting Listener for Material Date Picker
         editTextDatePicker = findViewById(R.id.editTextPersonBirthdate);
         editTextDatePicker.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +88,6 @@ public class StudentActivity extends AppCompatActivity {
                 materialDatePicker.show(getSupportFragmentManager(), "DATE_PICKER_BIRTHDAY");
             }
         });
-
         // Retrieving date
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
@@ -100,7 +106,7 @@ public class StudentActivity extends AppCompatActivity {
                         getBaseContext(),
                         R.layout.dropdown_layout,
                         GENDER);
-        AutoCompleteTextView editTextFilledExposedDropdownGender = this.findViewById(R.id.autoCompleteTextViewPersonDropdownGender);
+        AutoCompleteTextView editTextFilledExposedDropdownGender = this.findViewById(R.id.dropdownGender);
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
 
         /* DROPDOWN LIST INSTRUMENTS */
@@ -114,8 +120,6 @@ public class StudentActivity extends AppCompatActivity {
                 this.findViewById(R.id.autoCompleteTextViewDropdownInstruments);
         editTextFilledExposedDropdownInstruments.setAdapter(adapterInstruments);
 
-
-
         /* NEW ACTIVITY: Student Parent */
         MaterialButton btnAddParent = findViewById(R.id.btnStudentAddParent);
         btnAddParent.setOnClickListener(new View.OnClickListener() {
@@ -126,33 +130,89 @@ public class StudentActivity extends AppCompatActivity {
             }
         });
 
-        final Contact contact = new Contact();
-        contact.business = "Natasha's Cafe";
-        contact.phone = "859-259-2754";
-        contact.email = "natasha@beetnik.com";
-        contact.street = "112 Esplanade";
-        contact.city = "Lexington";
-        contact.state = "KY";
-        contact. zip = "40508";
-
         /* SAVE STUDENT BUTTON */
         Button studentSaveButton = (Button) findViewById(R.id.btnSaveStudent);
         studentSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Student newStudent = new Student(
-                    firstNameInput.getText().toString(),
-                    middleNameInput.getText().toString()
-                );
-                newStudent.setGender(Student.Gender.FEMALE);
-                newStudent.birthday = LocalDate.of(2007, 12, 20);
-                newStudent.setContact(contact);
+                Student newStudent = new Student();
+                Contact newContact = new Contact();
+
+                /* Retrieve Student.java fields input */
+                // TODO I can add the checkbox layout, and then add the instrument List,
+                //  but I need the exhaustive list of instruments
                 newStudent.addInstrument(Instrument.violin);
 
-                mFirebaseDatabaseReference.child(MESSAGES_CHILD).push().setValue(newStudent);
-                middleNameInput.setText("1");
+                /* Person.java */
+                newStudent.firstName = firstNameInput.getText().toString();
+                newStudent.middleName = middleNameInput.getText().toString();
+                newStudent.lastName = lastNameInput.getText().toString();
+                newStudent.gender = Person.Gender.valueOf(editTextGender.getText().toString().toUpperCase());
+                newStudent.birthday = stringToLocalDate(editTextDatePicker.getText().toString());
+
+                /* Contact.java */
+                newContact.business = "EMPTY_1_How_should_this_field_be_used";
+                newContact.phone = phoneNumberInput.getText().toString();
+                newContact.email = emailInput.getText().toString();
+                newContact.street = streetInput.getText().toString();
+                newContact.city = cityInput.getText().toString();
+                newContact.state = stateInput.getText().toString();
+                newContact.zip = zipInput.getText().toString();
+                newStudent.setContact(newContact);
+
+                // This DB reference is here just for testing purposes
+//                mFirebaseDatabaseReference.child(MESSAGES_CHILD).push().setValue(newStudent);
+                Toast toast = Toast.makeText(view.getContext(), "New student saved", Toast.LENGTH_SHORT);
+                toast.show();
+
+                /* Clearing input fields */
+                firstNameInput.setText("");
+                middleNameInput.setText("");
+                lastNameInput.setText("");
+                emailInput.setText("");
+                phoneNumberInput.setText("");
+                editTextDatePicker.setText("");
+                editTextGender.setText("");
+                // instrument.setText("");
+                streetInput.setText("");
+                cityInput.setText("");
+                stateInput.setText("");
+                zipInput.setText("");
             }
         });
-
     }
-}
+
+    /**
+     * It's expected that the parameter should come from
+     * @param date Birthday, or any other date from the UI.
+     */
+    public LocalDate stringToLocalDate(String date) {
+        /*
+         * MaterialDatePicker: https://developer.android.com/reference/com/google/android/material/datepicker/MaterialDatePicker.Builder?authuser=1
+         * Date parsing issue: https://docs.oracle.com/javase/tutorial/datetime/iso/format.html
+         */
+        DateTimeFormatter pattern;
+        LocalDate localDate = null;
+
+        try {
+
+            try {
+                pattern = DateTimeFormatter.ofPattern("MMM dd, yyyy");
+                localDate = LocalDate.parse(date, pattern);
+            } catch (DateTimeParseException e1) {
+                Log.e("DATE_TIME_PARSING", "Failed at first case.");
+            }
+
+            try {
+                pattern = DateTimeFormatter.ofPattern("MMM d, yyyy");
+                localDate = LocalDate.parse(date, pattern);
+            } catch (DateTimeParseException e2) {
+                Log.e("DATE_TIME_PARSING", "Failed at second case.");
+            }
+
+        } catch (DateTimeParseException e2) {
+            Log.wtf("DATE_TIME_PARSING", "Something terrible has just happened.");
+        }
+        return localDate;
+    } // End of stringToLocalDate()
+} // End of StudentActivity class

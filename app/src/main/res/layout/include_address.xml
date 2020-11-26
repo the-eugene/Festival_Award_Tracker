@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/address_text">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextAddressStreet"
+            android:id="@+id/editTextStreet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -59,7 +59,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAddressStreet">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextAddressCity"
+                    android:id="@+id/editTextCity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -80,7 +80,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAddressCity">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextAddressState"
+                    android:id="@+id/editTextState"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -101,12 +101,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAddressState">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextAddressZip"
+                    android:id="@+id/editTextZip"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 
