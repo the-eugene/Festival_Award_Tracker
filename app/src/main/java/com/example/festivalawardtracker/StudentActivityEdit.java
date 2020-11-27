@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -213,13 +214,20 @@ public class StudentActivityEdit extends AppCompatActivity {
         });
     }
 
+    /**
+     * It changes a given string date from on date format into another (string).
+     * @author Carlos
+     * @param dateStringIn string date provided by the database. Its format is provided by LocalDate.toString()
+     * @return string date in the format "MMM d, yyyy", which is the format used by materialDatePicker.
+     */
     private String formatLocalDate(String dateStringIn) {
         String dateStringOut = "Hello";
-        final SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
-        final SimpleDateFormat outputFormat = new SimpleDateFormat("MMM d, yyyy");
+        @SuppressLint("SimpleDateFormat") final SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") final SimpleDateFormat outputFormat = new SimpleDateFormat("MMM d, yyyy");
 
         try {
             Date dateCarrier = inputFormat.parse(dateStringIn);
+            assert dateCarrier != null;
             dateStringOut = outputFormat.format(dateCarrier);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -241,7 +249,6 @@ public class StudentActivityEdit extends AppCompatActivity {
         LocalDate localDate = null;
 
         try {
-
             try {
                 pattern = DateTimeFormatter.ofPattern("MMM dd, yyyy");
                 localDate = LocalDate.parse(date, pattern);
