@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker.ui.event;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.EventNewActivity;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.StudentRatingsActivity;
@@ -48,89 +50,40 @@ public class EventFragment extends Fragment implements View.OnClickListener, Rec
         thisContext = container.getContext();
         Context context = root.getContext();
 
-        eventName = new ArrayList<>();
-        startDate = new ArrayList<>();
-        endDate = new ArrayList<>();
-        eventInstruments = new ArrayList<>();
-
         recyclerView = root.findViewById(R.id.recyclerView_event);
-        eventRecyclerAdapter = new EventRecyclerAdapter(eventName,startDate,endDate,eventInstruments,this);
+        eventRecyclerAdapter = new EventRecyclerAdapter(DBManager.Events, DBManager.EventDescriptions,this);
         recyclerView.setAdapter(eventRecyclerAdapter);
+        class queryThread implements Runnable{
+            final Activity activity;
+            queryThread(Activity activity){
+                this.activity=activity;
+            }
+            @Override
+            public void run(){
+                DBManager.Events.loadAll();
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        eventRecyclerAdapter.updateEventsList();
+//                        EventRecyclerAdapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        };
+        new Thread(new queryThread(getActivity())).start();
+
+
+
         recyclerView.setMotionEventSplittingEnabled(false);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        eventName.add("Event 1");
-        eventName.add("Event 2");
-        eventName.add("Event 3");
-        eventName.add("Event 4");
-        eventName.add("Event 5");
-        eventName.add("Event 6");
-        eventName.add("Event 7");
-        eventName.add("Event 8");
-        eventName.add("Event 9");
-        eventName.add("Event 10");
-        eventName.add("Event 11");
-        eventName.add("Event 12");
-        eventName.add("Event 13");
-        eventName.add("Event 14");
-        eventName.add("Event 15");
-
-        startDate.add("Today");
-        startDate.add("Today");
-        startDate.add("Today");
-        startDate.add("Today");
-        startDate.add("Today");
-        startDate.add("Today");
-        startDate.add("Today");
-        startDate.add("Today");
-        startDate.add("Today");
-        startDate.add("Today");
-        startDate.add("Today");
-        startDate.add("Today");
-        startDate.add("Today");
-        startDate.add("Today");
-        startDate.add("Today");
-
-        endDate.add("Tomorrow");
-        endDate.add("Tomorrow");
-        endDate.add("Tomorrow");
-        endDate.add("Tomorrow");
-        endDate.add("Tomorrow");
-        endDate.add("Tomorrow");
-        endDate.add("Tomorrow");
-        endDate.add("Tomorrow");
-        endDate.add("Tomorrow");
-        endDate.add("Tomorrow");
-        endDate.add("Tomorrow");
-        endDate.add("Tomorrow");
-        endDate.add("Tomorrow");
-        endDate.add("Tomorrow");
-        endDate.add("Tomorrow");
-
-        eventInstruments.add("Piano");
-        eventInstruments.add("Piano");
-        eventInstruments.add("Piano");
-        eventInstruments.add("Piano");
-        eventInstruments.add("Piano");
-        eventInstruments.add("Piano");
-        eventInstruments.add("Piano");
-        eventInstruments.add("Piano");
-        eventInstruments.add("Piano");
-        eventInstruments.add("Piano");
-        eventInstruments.add("Piano");
-        eventInstruments.add("Piano");
-        eventInstruments.add("Piano");
-        eventInstruments.add("Piano");
-        eventInstruments.add("Piano");
 
         // Setting up the FAB button for add event
         // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener
         fabNewEvent = root.findViewById(R.id.fab_newEvent);
         fabNewEvent.setOnClickListener(this);
-
-
 
         return root; // Returning the view.
     }

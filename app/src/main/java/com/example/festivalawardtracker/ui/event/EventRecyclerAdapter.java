@@ -1,5 +1,7 @@
 package com.example.festivalawardtracker.ui.event;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,22 +10,35 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.Event;
+import com.example.festivalawardtracker.EventDescription;
+import com.example.festivalawardtracker.EventDisplayActivity;
 import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.StudentActivityDisplay;
+import com.example.festivalawardtracker.StudentRatingsActivity;
+import com.example.festivalawardtracker.StudentRatingsRecyclerAdapter;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdapter.ViewHolder>{
+    Map<String, Event> events;
+    List<String> eventsIDs=new ArrayList<>();
+    Map<String, EventDescription> eventDescription;
+    List<String> eventsDescriptionIDs=new ArrayList<>();
 
-    List<String> eventName, startDate, endDate, eventInstruments;
+
+//    List<String> eventName, startDate, endDate, eventInstruments;
     private RecyclerViewClickInterface recyclerViewClickInterface;
 
-    public EventRecyclerAdapter(List<String> eventName, List<String> startDate, List<String> endDate, List<String> eventInstruments, RecyclerViewClickInterface recyclerViewClickInterface) {
-        this.eventName = eventName;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.eventInstruments = eventInstruments;
-        this.recyclerViewClickInterface = recyclerViewClickInterface;
+    public EventRecyclerAdapter(Map<String, Event> events, Map<String,EventDescription> eventDescription, RecyclerViewClickInterface recyclerViewClickInterface) {
+        this.events = events;
+        eventsIDs.addAll(events.keySet());
+        this.eventDescription = eventDescription;
+        eventsDescriptionIDs.addAll(eventDescription.keySet());
+//        this.recyclerViewClickInterface = recyclerViewClickInterface;
     }
 
     @NonNull
@@ -37,30 +52,41 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-        holder.eventInstruments.setText(eventInstruments.get(position));
-        holder.endDate.setText(endDate.get(position));
-        holder.startDate.setText(startDate.get(position));
-        holder.eventName.setText(eventName.get(position));
+        Log.d("Event Recycler: eventIDs.size()", ((Integer) eventsIDs.size()).toString());
+        if(eventsIDs.size()>0){
+            String ID = eventsIDs.get(position);
+            String dID = eventsDescriptionIDs.get(position);
+            Event e = events.get(ID);
+            EventDescription ed = eventDescription.get(dID);
+            holder.eventName.setText(ed.getName());
+            //TODO: not sure how the instruments are stored?
+            holder.eventInstruments.setText("Voice");
+            holder.startDate.setText(e.getStart());
+            holder.endDate.setText(e.getEnd());
+        }
     }
+
+    public void updateEventsList(){
+        eventsIDs.clear();
+        eventsIDs.addAll(events.keySet());
+    }
+
+
 
     @Override
     public int getItemCount() {
-
-        if (eventName.size() == 0){
+        if (events.size() == 0){
             return 0;
         }else{
-            return eventName.size();
+            return events.size();
         }
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-
         TextView eventName, startDate, endDate, eventInstruments;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             eventName = itemView.findViewById(R.id.textViewRowEventName);
             startDate = itemView.findViewById(R.id.textViewRowDateStart);
             endDate = itemView.findViewById(R.id.textViewRowDateEnd);
@@ -69,7 +95,12 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
+//                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
+                    int p=getAdapterPosition();
+                    Log.d("RecyclerView Click", String.valueOf(events.get(eventsIDs.get(p))));
+                    Intent intent = new Intent( v.getContext(), EventDisplayActivity.class);
+                    intent.putExtra("StudentID", eventsIDs.get(p));
+                    v.getContext().startActivity(intent);
                 }
             });
 
