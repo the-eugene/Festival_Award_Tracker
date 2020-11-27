@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker.ui.festival;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.EventDescription;
+import com.example.festivalawardtracker.EventDescriptionsActivity;
 import com.example.festivalawardtracker.Festival;
+import com.example.festivalawardtracker.FestivalActivity;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 
@@ -18,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecyclerAdapter.ViewHolder> {
+
     private RecyclerViewClickInterface recyclerViewClickInterface;
     Map<String, Festival> festivalNames;
     List<String> festivalIDs=new ArrayList<>();
@@ -35,8 +40,7 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.festivals_recyclerview_row, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -47,7 +51,6 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
             Festival f = festivalNames.get(ID);
             holder.festivalName.setText(f.getName());
         }
-
     }
 
     public void updateFestivalList() {
@@ -61,21 +64,22 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-
         TextView festivalName;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             festivalName = itemView.findViewById(R.id.rowFestivalName);
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
-                }
+//                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
+                    int p=getAdapterPosition();
+                    Log.d("RecycleView Click", String.valueOf(festivalNames.get(festivalIDs.get(p))));
+                    Intent intent = new Intent(v.getContext(), EventDescriptionsActivity.class);
+                    intent.putExtra("festivalIDs",festivalIDs.get(p));
+                    v.getContext().startActivity(intent);
+                           }
             });
-
         }
     }
 }
