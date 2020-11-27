@@ -29,13 +29,13 @@ public class DBManager {
     }
 
     //HashMap objects holding String UID - Object key value pairs
-    static DBHashMap<Teacher> Teachers = new DBHashMap<>(Teacher.class);
+    public static DBHashMap<Teacher> Teachers = new DBHashMap<>(Teacher.class);
     public static DBHashMap<Student> Students = new DBHashMap<>(Student.class);
-    static DBHashMap<Person> Parents = new DBHashMap<>(Person.class);
+    public static DBHashMap<Person> Parents = new DBHashMap<>(Person.class);
     public static DBHashMap<Event> Events = new DBHashMap<>(Event.class);
     public static DBHashMap<EventDescription> EventDescriptions = new DBHashMap<>(EventDescription.class);
     public static DBHashMap<Festival> Festivals = new DBHashMap<>(Festival.class);
-    static DBHashMap<SchoolYear> SchoolYears = new DBHashMap<>(SchoolYear.class);
+    public static DBHashMap<SchoolYear> SchoolYears = new DBHashMap<>(SchoolYear.class);
 
     /**
      * Set rooot location for database operations

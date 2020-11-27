@@ -157,15 +157,8 @@ public class StudentActivityEdit extends AppCompatActivity {
                             ViewGroup.LayoutParams.WRAP_CONTENT,
                             ViewGroup.LayoutParams.WRAP_CONTENT
                     ));
+            checkBox.setChecked(studentDB.instruments.contains(Instrument.values()[i]));
             insLayout.addView(checkBox);
-            try {
-                String s1 = instrumentsDB[i].toString().toUpperCase();
-                String s2 = checkBox.getText().toString().toUpperCase();
-                if(s1.contentEquals(s2));
-                    checkBox.setChecked(true);
-            } catch (Exception e) {
-                Log.d(TAG, "Exception caught: " + e);
-            }
             checkboxes[i] = checkBox;
         }
 
