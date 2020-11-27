@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.Event;
 import com.example.festivalawardtracker.EventDescription;
-import com.example.festivalawardtracker.EventDisplayActivity;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 
@@ -92,12 +91,8 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
-                    int p=getAdapterPosition();
-                    Log.d("RecyclerView Click", String.valueOf(events.get(eventsIDs.get(p))));
-                    Intent intent = new Intent( v.getContext(), EventDisplayActivity.class);
-                    intent.putExtra("StudentID", eventsIDs.get(p));
-                    v.getContext().startActivity(intent);
+                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
+
                 }
             });
 
