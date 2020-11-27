@@ -148,6 +148,9 @@ public class StudentActivityEdit extends AppCompatActivity {
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
 
         /* INSTRUMENT CHECKBOXES */
+        // TODO Possible pragmatical solution for current checkbox layout:
+        //  https://spin.atomicobject.com/2019/04/08/constraintlayout-chaining-views-programmatically/
+        //  Carlos
         LinearLayout insLayout = findViewById(R.id.InstrumentLayout);
         for (int i = 0; i < INSTRUMENTS.length; i++){
             CheckBox checkBox = new CheckBox(this);
