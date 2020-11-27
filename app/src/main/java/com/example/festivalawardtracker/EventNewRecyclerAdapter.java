@@ -41,7 +41,12 @@ public class EventNewRecyclerAdapter extends RecyclerView.Adapter<EventNewRecycl
 
     @Override
     public int getItemCount() {
-        return studentNames.size();
+
+        if (studentNames.size() == 0){
+            return 0;
+        }else{
+            return studentNames.size();
+        }
     }
 
 

@@ -42,7 +42,12 @@ public class StudentRatingsRecyclerAdapter extends RecyclerView.Adapter<StudentR
 
     @Override
     public int getItemCount() {
-        return name.size();
+
+        if (name.size() == 0){
+            return 0;
+        }else {
+            return name.size();
+        }
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

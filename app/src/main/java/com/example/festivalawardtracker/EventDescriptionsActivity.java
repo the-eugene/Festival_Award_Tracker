@@ -83,7 +83,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
 
         /* ACTION BAR */
         toolbarEvent = findViewById(R.id.toolbarEventDescriptions);
-        toolbarEvent.setTitle("");
+        toolbarEvent.setTitle("Event Descriptions");
         setSupportActionBar(toolbarEvent);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

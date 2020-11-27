@@ -60,7 +60,14 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
 
     @Override
     public int getItemCount() {
-        return festivalNames.size();
+
+        if (festivalNames.size() == 0){
+            return 0;
+        }else{
+            return festivalNames.size();
+        }
+
+
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
