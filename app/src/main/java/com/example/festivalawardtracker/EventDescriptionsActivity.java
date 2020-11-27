@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.ui.event.EventFragment;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
     EventDescriptionsRecyclerAdapter eventDescriptionsRecyclerAdapter;
     RecyclerView recyclerView;
     List<String> Name, Instrument;
+    FloatingActionButton newEventDescription;
     Context context;
 
     @Override
@@ -76,9 +79,14 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         Instrument.add("Piano");
         Instrument.add("Piano");
 
-
-
-
+        newEventDescription = findViewById(R.id.new_event_description);
+        newEventDescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Intent = new Intent(EventDescriptionsActivity.this, EventDescriptionsNewActivity.class);
+                startActivity(Intent);
+            }
+        });
 
 
         /* ACTION BAR */
@@ -87,9 +95,12 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         setSupportActionBar(toolbarEvent);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+
     @Override
     public void onItemClick(int position) {
-        Navigation.findNavController(this,R.id.recyclerView_event_descriptions).navigate(R.id.action_festival_to_event);
+        Navigation.findNavController(this,R.id.recyclerView_event_descriptions).navigate(R.id.nav_event);
 
     }
+
 }

@@ -13,9 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".EventDisplayActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".StudentActivityDisplay"
             android:parentActivityName=".MainActivity" />
         <activity
@@ -54,6 +51,9 @@
         <activity
             android:name=".EventDescriptionsActivity"
             android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".EventDescriptionsNewActivity"
+            android:parentActivityName=".EventDescriptionsActivity" />
     </application>
 
 </manifest>
