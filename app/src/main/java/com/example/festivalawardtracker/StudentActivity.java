@@ -120,15 +120,15 @@ public class StudentActivity extends AppCompatActivity {
 
         /* INSTRUMENT CHECKBOXES */
         /* DROPDOWN LIST INSTRUMENTS */
-        final String[] INSTRUMENTS = Instrument.Options();
-        ArrayAdapter<String> adapterInstruments =
-                new ArrayAdapter<>(
-                        getBaseContext(),
-                        R.layout.dropdown_layout,
-                        INSTRUMENTS);
-        AutoCompleteTextView editTextFilledExposedDropdownInstruments =
-                this.findViewById(R.id.autoCompleteTextViewDropdownInstruments);
-        editTextFilledExposedDropdownInstruments.setAdapter(adapterInstruments);
+//        final String[] INSTRUMENTS = Instrument.Options();
+//        ArrayAdapter<String> adapterInstruments =
+//                new ArrayAdapter<>(
+//                        getBaseContext(),
+//                        R.layout.dropdown_layout,
+//                        INSTRUMENTS);
+//        AutoCompleteTextView editTextFilledExposedDropdownInstruments =
+//                this.findViewById(R.id.autoCompleteTextViewDropdownInstruments);
+//        editTextFilledExposedDropdownInstruments.setAdapter(adapterInstruments);
 
         LinearLayout insLayout=findViewById(R.id.InstrumentLayout);
         for (int i=0;i<INSTRUMENTS.length;i++){
