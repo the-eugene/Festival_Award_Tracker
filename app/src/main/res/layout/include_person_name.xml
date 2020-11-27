@@ -25,6 +25,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextPersonName"
+                    android:text="testName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -48,6 +49,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextPersonMiddleName"
+                    android:text="testMiddleName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -72,6 +74,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextPersonLastName"
+            android:text="testLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>

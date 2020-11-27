@@ -29,6 +29,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextPersonBirthdate"
+            android:text="Jun 11, 1975"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -53,6 +54,7 @@
 
         <AutoCompleteTextView
             android:id="@+id/dropdownGender"
+            android:text="Male"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
