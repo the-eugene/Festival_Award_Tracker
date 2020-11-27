@@ -3,10 +3,14 @@ package com.example.festivalawardtracker;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Objects;
@@ -14,7 +18,7 @@ import java.util.Objects;
 
 public class StudentActivityDisplay extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    public FloatingActionButton fabEditStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +26,11 @@ public class StudentActivityDisplay extends AppCompatActivity {
         setContentView(R.layout.students_display_activity);
 
         /* ACTION BAR */
-        toolbar = findViewById(R.id.toolbarStudentDisplay);
+        Toolbar toolbar = findViewById(R.id.toolbarStudentDisplay);
+        toolbar.setTitle("Student Data");
+        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
+
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         String StudentID=getIntent().getExtras().getString("StudentID",null);
         Student s=DBManager.Students.get(StudentID);
@@ -46,5 +53,16 @@ public class StudentActivityDisplay extends AppCompatActivity {
 
         TextView instruments=findViewById(R.id.textViewStudentInstrument);
         instruments.setText(s.instrumentList());
+
+        fabEditStudent = findViewById(R.id.fab_editStudent33);
+        fabEditStudent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent activityIntent = new Intent( view.getContext(), StudentActivity.class);
+                startActivity(activityIntent);
+            }
+        });
+
     }
 }
+
