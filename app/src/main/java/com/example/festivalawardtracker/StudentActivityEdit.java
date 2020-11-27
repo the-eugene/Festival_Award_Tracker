@@ -29,7 +29,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
@@ -46,6 +48,7 @@ public class StudentActivityEdit extends AppCompatActivity {
 //    private final DatabaseReference mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
 //    public static final String MESSAGES_CHILD = "zzz_student_test";
 
+    private static final String TAG = "STUDENT_EDIT";
     String[] INSTRUMENTS = Instrument.Options();
     CheckBox[] checkboxes = new CheckBox[INSTRUMENTS.length];
     String _studentID;
@@ -68,7 +71,8 @@ public class StudentActivityEdit extends AppCompatActivity {
 
         // Student fields can go below here if needed
         // Instrument checkboxes
-        final MaterialCheckBox checkBox1 = findViewById(R.id.checkBoxInstrument01);
+        Object[] instrumentsDB = studentDB.getInstruments().toArray();
+        Log.d(TAG, "Instruments from DB: " + Arrays.toString(instrumentsDB)); // It's working
 
         // Person fields
         final TextInputEditText firstNameInput = findViewById(R.id.editTextPersonName);
@@ -107,7 +111,7 @@ public class StudentActivityEdit extends AppCompatActivity {
 
         /* ACTION BAR */
         Toolbar toolbarStudent = findViewById(R.id.toolbarNewStudent);
-        toolbarStudent.setTitle("Add student");
+        toolbarStudent.setTitle("Change student data");
         toolbarStudent.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbarStudent);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -144,9 +148,9 @@ public class StudentActivityEdit extends AppCompatActivity {
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
 
         /* INSTRUMENT CHECKBOXES */
-        LinearLayout insLayout=findViewById(R.id.InstrumentLayout);
+        LinearLayout insLayout = findViewById(R.id.InstrumentLayout);
         for (int i = 0; i < INSTRUMENTS.length; i++){
-            CheckBox checkBox= new CheckBox(this);
+            CheckBox checkBox = new CheckBox(this);
             checkBox.setText(INSTRUMENTS[i]);
             checkBox.setLayoutParams(
                     new LinearLayout.LayoutParams(
@@ -154,6 +158,14 @@ public class StudentActivityEdit extends AppCompatActivity {
                             ViewGroup.LayoutParams.WRAP_CONTENT
                     ));
             insLayout.addView(checkBox);
+            try {
+                String s1 = instrumentsDB[i].toString().toUpperCase();
+                String s2 = checkBox.getText().toString().toUpperCase();
+                if(s1.contentEquals(s2));
+                    checkBox.setChecked(true);
+            } catch (Exception e) {
+                Log.d(TAG, "Exception caught: " + e);
+            }
             checkboxes[i] = checkBox;
         }
 

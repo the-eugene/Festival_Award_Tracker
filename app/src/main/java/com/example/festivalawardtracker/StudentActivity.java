@@ -60,15 +60,14 @@ public class StudentActivity extends AppCompatActivity {
         setContentView(R.layout.students_new_activity);
 
         // Student fields can go below here if needed
-        // Instrument checkboxes
-        final MaterialCheckBox checkBox1 = findViewById(R.id.checkBoxInstrument01);
+        // Instrument
 
         // Person fields
         final TextInputEditText firstNameInput = findViewById(R.id.editTextPersonName);
 
         final TextInputEditText middleNameInput = findViewById(R.id.editTextPersonMiddleName);
         final TextInputEditText lastNameInput = findViewById(R.id.editTextPersonLastName);
-        final TextView genderInput  = (TextView) findViewById(R.id.dropdownGender);
+        final TextView genderInput  = findViewById(R.id.dropdownGender);
         final TextInputEditText birthdayInput = findViewById(R.id.editTextPersonBirthdate);
 
         // Contact fields
