@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker.ui.festival;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.EventDescriptionsActivity;
 import com.example.festivalawardtracker.FestivalActivity;
 import com.example.festivalawardtracker.R;
@@ -55,28 +57,36 @@ public class FestivalFragment extends Fragment implements View.OnClickListener, 
         festivalNames = new ArrayList<>();
 
         recyclerView = root.findViewById(R.id.recyclerView_festival);
-        festivalRecyclerAdapter = new FestivalRecyclerAdapter(festivalNames,this);
+        festivalRecyclerAdapter = new FestivalRecyclerAdapter(DBManager.Festivals,this);
         recyclerView.setAdapter(festivalRecyclerAdapter);
+
+        class queryThread implements Runnable{
+            final Activity activity;
+            queryThread(Activity activity){
+                this.activity=activity;
+            }
+            @Override
+            public void run(){
+                DBManager.Festivals.loadAll();
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        festivalRecyclerAdapter.updateFestivalList();
+                        festivalRecyclerAdapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        };
+        new Thread(new queryThread(getActivity())).start();
+
+
+
         recyclerView.setMotionEventSplittingEnabled(false);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        festivalNames.add("festival1");
-        festivalNames.add("festival2");
-        festivalNames.add("festival3");
-        festivalNames.add("festival4");
-        festivalNames.add("festival5");
-        festivalNames.add("festival6");
-        festivalNames.add("festival7");
-        festivalNames.add("festival8");
-        festivalNames.add("festival9");
-        festivalNames.add("festival10");
-        festivalNames.add("festival11");
-        festivalNames.add("festival12");
-        festivalNames.add("festival13");
-        festivalNames.add("festival14");
-        festivalNames.add("festival15");
+
 
         // Setting up the FAB button for add festival
         // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener

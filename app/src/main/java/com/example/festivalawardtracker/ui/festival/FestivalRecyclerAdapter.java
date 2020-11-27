@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker.ui.festival;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,19 +9,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.Festival;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecyclerAdapter.ViewHolder> {
-
-    List<String> festivalNames;
     private RecyclerViewClickInterface recyclerViewClickInterface;
+    Map<String, Festival> festivalNames;
+    List<String> festivalIDs=new ArrayList<>();
 
-    public FestivalRecyclerAdapter(List<String> festivalNames, RecyclerViewClickInterface recyclerViewClickInterface) {
+
+
+    public FestivalRecyclerAdapter(Map<String, Festival> festivalNames, RecyclerViewClickInterface recyclerViewClickInterface) {
         this.festivalNames = festivalNames;
-        this.recyclerViewClickInterface = recyclerViewClickInterface;
+        festivalIDs.addAll(festivalNames.keySet());
+//        this.recyclerViewClickInterface = recyclerViewClickInterface;
     }
 
     @NonNull
@@ -34,8 +41,18 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Log.d("Festival Recycler: FestivalID.size()", ((Integer) festivalIDs.size()).toString());
+        if(festivalIDs.size()>0){
+            String ID = festivalIDs.get(position);
+            Festival f = festivalNames.get(ID);
+            holder.festivalName.setText(f.getName());
+        }
 
-        holder.festivalName.setText(festivalNames.get(position));
+    }
+
+    public void updateFestivalList() {
+        festivalIDs.clear();
+        festivalIDs.addAll(festivalNames.keySet());
     }
 
     @Override

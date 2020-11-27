@@ -34,7 +34,7 @@ public class DBManager {
     static DBHashMap<Person> Parents = new DBHashMap<>(Person.class);
     static DBHashMap<Event> Events = new DBHashMap<>(Event.class);
     static DBHashMap<EventDescription> EventDescriptions = new DBHashMap<>(EventDescription.class);
-    static DBHashMap<Festival> Festivals = new DBHashMap<>(Festival.class);
+    public static DBHashMap<Festival> Festivals = new DBHashMap<>(Festival.class);
     static DBHashMap<SchoolYear> SchoolYears = new DBHashMap<>(SchoolYear.class);
 
     /**
