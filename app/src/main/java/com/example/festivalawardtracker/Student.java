@@ -58,6 +58,14 @@ public class Student extends Person {
         DBManager.Students.put(ID,this); //instead of save
     }
 
+    public String instrumentList(){
+        String[] s=new String[instruments.size()];
+        for (int i=0;i<instruments.size();i++) {
+            s[i]=instruments.get(i).toString();
+        }
+        return String.join(", ",s);
+    }
+
     public void addAward(@NotNull Performance performance) {
         Event event=performance.retrieveEvent();
         SchoolYear year=event.retrieveYear();
