@@ -48,7 +48,7 @@ public class StudentActivity extends AppCompatActivity {
 
     //Map<String, Student> localDbHashMap = new DBHashMap<Student>(Student.class); //unnecessary, Eugene
     String[] INSTRUMENTS = Instrument.Options();
-    CheckBox[] checks = new CheckBox[INSTRUMENTS.length];
+    CheckBox[] checkboxes = new CheckBox[INSTRUMENTS.length];
 
     /**
      * Sets all the layout components to their required values, where necessary.
@@ -119,24 +119,17 @@ public class StudentActivity extends AppCompatActivity {
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
 
         /* INSTRUMENT CHECKBOXES */
-        /* DROPDOWN LIST INSTRUMENTS */
-//        final String[] INSTRUMENTS = Instrument.Options();
-//        ArrayAdapter<String> adapterInstruments =
-//                new ArrayAdapter<>(
-//                        getBaseContext(),
-//                        R.layout.dropdown_layout,
-//                        INSTRUMENTS);
-//        AutoCompleteTextView editTextFilledExposedDropdownInstruments =
-//                this.findViewById(R.id.autoCompleteTextViewDropdownInstruments);
-//        editTextFilledExposedDropdownInstruments.setAdapter(adapterInstruments);
-
         LinearLayout insLayout=findViewById(R.id.InstrumentLayout);
-        for (int i=0;i<INSTRUMENTS.length;i++){
+        for (int i = 0; i < INSTRUMENTS.length; i++){
             CheckBox checkBox= new CheckBox(this);
             checkBox.setText(INSTRUMENTS[i]);
-            checkBox.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            checkBox.setLayoutParams(
+                    new LinearLayout.LayoutParams(
+                            ViewGroup.LayoutParams.WRAP_CONTENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT
+                    ));
             insLayout.addView(checkBox);
-            checks[i]=checkBox;
+            checkboxes[i] = checkBox;
         }
 
         /* NEW ACTIVITY: Student Parent */
@@ -159,8 +152,8 @@ public class StudentActivity extends AppCompatActivity {
 
                 /* Retrieve Student.java fields input */
                 newStudent.instruments.clear(); //necessary if editing student.
-                for (int i=0;i<INSTRUMENTS.length;i++){
-                    if(checks[i].isChecked()) {
+                for (int i = 0; i < INSTRUMENTS.length; i++){
+                    if(checkboxes[i].isChecked()) {
                         newStudent.addInstrument(Instrument.values()[i]);
                         Log.d("FOR", "Instruments: " + newStudent.instruments.toString());
                     }
@@ -192,18 +185,17 @@ public class StudentActivity extends AppCompatActivity {
                 toast.show();
 
                 /* Clearing input fields */
-                firstNameInput.setText("");
-                middleNameInput.setText("");
-                lastNameInput.setText("");
-                emailInput.setText("");
-                phoneNumberInput.setText("");
-                editTextDatePicker.setText("");
-                editTextGender.setText("");
-                // instrument.setText("");
-                streetInput.setText("");
-                cityInput.setText("");
-                stateInput.setText("");
-                zipInput.setText("");
+                firstNameInput.setText("name");
+                middleNameInput.setText("mname");
+                lastNameInput.setText("lname");
+                emailInput.setText("em@il");
+                phoneNumberInput.setText("123");
+                editTextDatePicker.setText("Nov 2, 1945");
+                editTextGender.setText("Female");
+                streetInput.setText("street");
+                cityInput.setText("city");
+                stateInput.setText("state");
+                zipInput.setText("zip");
             }
         });
     }
