@@ -1,6 +1,5 @@
 package com.example.festivalawardtracker;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,22 +23,23 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Date;
 import java.util.Objects;
 
 import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
 
 /**
- * Pre-loads the necessary information to the drop-down list and date-picker components.
- * Retrieves the information input from the activity to the student class.
- * Parses that information where necessary.
- * Puts the class to the DBHashMAp class.
+ *
  * @author Carlos
- * @see DBHashMap
+ * @see StudentActivity
+ * @see StudentActivityDisplay
  */
-public class StudentActivity extends AppCompatActivity {
+public class StudentActivityEdit extends AppCompatActivity {
 
     //  This DB reference is here just for testing purposes
 //    private final DatabaseReference mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
@@ -48,16 +47,23 @@ public class StudentActivity extends AppCompatActivity {
 
     String[] INSTRUMENTS = Instrument.Options();
     CheckBox[] checkboxes = new CheckBox[INSTRUMENTS.length];
+    String _studentID;
 
     /**
      * Sets all the layout components to their required values, where necessary.
      * @param savedInstanceState Add.
-     * @see StudentFragment Where this activity is started.
+     * @see StudentActivityDisplay Where this activity is started.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.students_new_activity);
+        setContentView(R.layout.students_new_activity); // This layout is also used by StudentActivity.java
+
+        Intent intent = getIntent();
+        _studentID = intent.getStringExtra(StudentActivityDisplay.STUDENT_ID);
+//
+        Student studentDB = DBManager.Students.get(_studentID);
+        if (studentDB == null) Log.wtf(this.getClass().getSimpleName(),"NO ID PASSED");
 
         // Student fields can go below here if needed
         // Instrument checkboxes
@@ -65,19 +71,38 @@ public class StudentActivity extends AppCompatActivity {
 
         // Person fields
         final TextInputEditText firstNameInput = findViewById(R.id.editTextPersonName);
+        firstNameInput.setText(studentDB.getFirstName());
 
         final TextInputEditText middleNameInput = findViewById(R.id.editTextPersonMiddleName);
+        middleNameInput.setText(studentDB.getMiddleName());
+
         final TextInputEditText lastNameInput = findViewById(R.id.editTextPersonLastName);
+        lastNameInput.setText(studentDB.getLastName());
+
         final TextView genderInput  = (TextView) findViewById(R.id.dropdownGender);
+        genderInput.setText(studentDB.getGenderString());
+
         final TextInputEditText birthdayInput = findViewById(R.id.editTextPersonBirthdate);
+        birthdayInput.setText(formatLocalDate(studentDB.getBirthday()));
 
         // Contact fields
         final TextInputEditText emailInput = findViewById(R.id.editTextEmail);
+        emailInput.setText(studentDB.getEmail());
+
         final TextInputEditText phoneInput = findViewById(R.id.editTextPhoneNumber);
+        phoneInput.setText(studentDB.contact.getPhone());
+
         final TextInputEditText streetInput = findViewById(R.id.editTextStreet);
+        streetInput.setText(studentDB.contact.getStreet());
+
         final TextInputEditText cityInput = findViewById(R.id.editTextCity);
+        cityInput.setText(studentDB.contact.getCity());
+
         final TextInputEditText stateInput = findViewById(R.id.editTextState);
+        stateInput.setText(studentDB.contact.getState());
+
         final TextInputEditText zipInput = findViewById(R.id.editTextZip);
+        zipInput.setText(studentDB.contact.getZip());
 
         /* ACTION BAR */
         Toolbar toolbarStudent = findViewById(R.id.toolbarNewStudent);
@@ -136,7 +161,7 @@ public class StudentActivity extends AppCompatActivity {
         btnAddParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent activityIntent = new Intent(StudentActivity.this, ParentActivity.class);
+                Intent activityIntent = new Intent(StudentActivityEdit.this, ParentActivity.class);
                 startActivity(activityIntent);
             }
         });
@@ -180,7 +205,7 @@ public class StudentActivity extends AppCompatActivity {
             // Pushing to the DBHashMap
             DBManager.Students.put(newStudent);
 
-            Toast toast = Toast.makeText(view.getContext(), "New student saved", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(view.getContext(), "Changes saved", Toast.LENGTH_SHORT);
             toast.show();
 
             finish();
@@ -188,8 +213,23 @@ public class StudentActivity extends AppCompatActivity {
         });
     }
 
+    private String formatLocalDate(String dateStringIn) {
+        String dateStringOut = "Hello";
+        final SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        final SimpleDateFormat outputFormat = new SimpleDateFormat("MMM d, yyyy");
+
+        try {
+            Date dateCarrier = inputFormat.parse(dateStringIn);
+            dateStringOut = outputFormat.format(dateCarrier);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateStringOut;
+    } // End of formatLocalDate(...)
+
     /**
      * It parses a string date in the given format into a LocalDate data type.
+     * Date picker returning string format requires to use this method.
      * @param date Birthday, or any other date from the UI.
      */
     public LocalDate stringToLocalDate(String date) {
@@ -220,5 +260,5 @@ public class StudentActivity extends AppCompatActivity {
             Log.wtf("DATE_TIME_PARSING", "Something terrible has just happened.");
         }
         return localDate;
-    } // End of stringToLocalDate()
+    } // End of stringToLocalDate(...)
 } // End of StudentActivity class

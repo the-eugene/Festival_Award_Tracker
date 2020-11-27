@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 
 import com.example.festivalawardtracker.R;
 
+// TODO This is here as the first step for implementing a student user interface for the app. Carlos
+
 public class StudentUserFragment extends Fragment {
 
     private StudentUserFragmentViewModel mViewModel;

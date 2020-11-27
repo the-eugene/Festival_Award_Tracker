@@ -83,7 +83,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         newEventDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Intent = new Intent(EventDescriptionsActivity.this, EventDescriptionsNewActivity.class);
+                Intent Intent = new Intent(EventDescriptionsActivity.this, EventDescriptionsActivity.class);
                 startActivity(Intent);
             }
         });

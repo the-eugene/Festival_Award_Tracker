@@ -26,6 +26,7 @@ public class StudentActivityDisplay extends AppCompatActivity {
     RecyclerView recyclerView;
     StudentDisplayRecyclerAdapter studentDisplayRecyclerAdapter;
     List<String> year,event,ccs,tp,awards,level;
+    public static final String STUDENT_ID = "STUDENT_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,8 @@ public class StudentActivityDisplay extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        String StudentID=getIntent().getExtras().getString("StudentID",null);
+        final String StudentID=getIntent().getExtras().getString("StudentID",null);
+        Log.d("STUDENT_DISPLAY", "StudentID: " + StudentID);
         Student s=DBManager.Students.get(StudentID);
         if (s==null) Log.wtf(this.getClass().getSimpleName(),"NO ID PASSED");
 
@@ -80,7 +82,8 @@ public class StudentActivityDisplay extends AppCompatActivity {
         fabEditStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent activityIntent = new Intent( view.getContext(), StudentActivity.class);
+                Intent activityIntent = new Intent( view.getContext(), StudentActivityEdit.class);
+                activityIntent.putExtra(STUDENT_ID, StudentID);
                 startActivity(activityIntent);
             }
         });
@@ -151,7 +154,6 @@ public class StudentActivityDisplay extends AppCompatActivity {
         level.add("5");
         level.add("5");
         level.add("5");
-
     }
 }
 

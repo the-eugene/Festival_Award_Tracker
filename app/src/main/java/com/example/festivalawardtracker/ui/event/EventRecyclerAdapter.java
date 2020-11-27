@@ -14,9 +14,6 @@ import com.example.festivalawardtracker.Event;
 import com.example.festivalawardtracker.EventDescription;
 import com.example.festivalawardtracker.EventDisplayActivity;
 import com.example.festivalawardtracker.R;
-import com.example.festivalawardtracker.StudentActivityDisplay;
-import com.example.festivalawardtracker.StudentRatingsActivity;
-import com.example.festivalawardtracker.StudentRatingsRecyclerAdapter;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 
 import java.util.ArrayList;

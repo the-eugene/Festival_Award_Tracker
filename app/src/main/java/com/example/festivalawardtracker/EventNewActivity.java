@@ -99,6 +99,7 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
         /* ACTION BAR */
         toolbarEvent = findViewById(R.id.toolbarNewEvent);
         toolbarEvent.setTitle("Add event");
+        toolbarEvent.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbarEvent);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
