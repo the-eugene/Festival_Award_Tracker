@@ -53,6 +53,7 @@ public class StudentEditActivity extends AppCompatActivity {
     String[] INSTRUMENTS = Instrument.Options();
     CheckBox[] checkboxes = new CheckBox[INSTRUMENTS.length];
     String _studentID;
+    Student studentDB;
 
     /**
      * Sets all the layout components to their required values, where necessary.
@@ -67,7 +68,7 @@ public class StudentEditActivity extends AppCompatActivity {
         Intent intent = getIntent();
         _studentID = intent.getStringExtra(StudentSummeryActivity.STUDENT_ID);
 //
-        Student studentDB = DBManager.Students.get(_studentID);
+        studentDB = DBManager.Students.get(_studentID);
         if (studentDB == null) Log.wtf(this.getClass().getSimpleName(),"NO ID PASSED");
 
         // Student fields can go below here if needed
@@ -181,8 +182,8 @@ public class StudentEditActivity extends AppCompatActivity {
         studentSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Student newStudent = new Student();
-            Contact newContact = new Contact();
+            Student newStudent = studentDB;
+            Contact newContact= studentDB.contact;
 
             /* Retrieve Student.java fields input */
             newStudent.instruments.clear(); //necessary if editing student.
@@ -207,7 +208,6 @@ public class StudentEditActivity extends AppCompatActivity {
             newContact.city = cityInput.getText().toString();
             newContact.state = stateInput.getText().toString();
             newContact.zip = zipInput.getText().toString();
-            newStudent.setContact(newContact);
 
             // This DB reference is here just for testing purposes
 //                mFirebaseDatabaseReference.child(MESSAGES_CHILD).push().setValue(newStudent);
