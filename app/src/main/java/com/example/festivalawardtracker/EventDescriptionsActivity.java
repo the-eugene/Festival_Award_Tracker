@@ -20,7 +20,6 @@ import java.util.List;
 
 public class EventDescriptionsActivity extends AppCompatActivity implements RecyclerViewClickInterface {
 
-    private Toolbar toolbarEvent;
     EventDescriptionsRecyclerAdapter eventDescriptionsRecyclerAdapter;
     RecyclerView recyclerView;
     List<String> Name, Instrument;
@@ -87,10 +86,10 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
 
 
         /* ACTION BAR */
-        toolbarEvent = findViewById(R.id.toolbar_eventDescriptions);
-        toolbarEvent.setTitle("Event Descriptions");
-        toolbarEvent.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbarEvent);
+        Toolbar toolbar = findViewById(R.id.toolbar_eventDescriptions);
+        toolbar.setTitle("Festival description");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -99,7 +98,6 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
     public void onItemClick(int position) {
         Intent Intent = new Intent(EventDescriptionsActivity.this, EventActivity.class);
         startActivity(Intent);
-
     }
 
 }

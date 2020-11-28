@@ -21,7 +21,6 @@ public class FestivalNewActivity extends AppCompatActivity {
 
     private Toolbar toolbarFestival;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,12 +69,17 @@ public class FestivalNewActivity extends AppCompatActivity {
                 f.name = editFestivalName.getText().toString().trim();
                 f.isNFMC = check;
                 DBManager.Festivals.put(f);
+
                 Toast toast = Toast.makeText(v.getContext(), "New festival saved", Toast.LENGTH_LONG);
                 toast.show();
 
                 //clear input boxes
                 editFestivalName.setText("");
                 editIsNFMC.setText("");
+
+                // TODO If finishing the activity, clearing the fields is not necessary. Carlos.
+//                finish();
+
             }
         });
 

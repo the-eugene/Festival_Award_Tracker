@@ -23,9 +23,7 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
 
     private RecyclerViewClickInterface recyclerViewClickInterface;
     Map<String, Festival> festivalNames;
-    List<String> festivalIDs=new ArrayList<>();
-
-
+    List<String> festivalIDs = new ArrayList<>();
 
     public FestivalRecyclerAdapter(Map<String, Festival> festivalNames, RecyclerViewClickInterface recyclerViewClickInterface) {
         this.festivalNames = festivalNames;
@@ -64,8 +62,6 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
         }else{
             return festivalNames.size();
         }
-
-
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
