@@ -20,7 +20,6 @@ import com.example.festivalawardtracker.StudentRatingsActivity;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +28,6 @@ import java.util.List;
 public class EventFragment extends Fragment implements View.OnClickListener, RecyclerViewClickInterface {
 
     RecyclerView recyclerView;
-    FloatingActionButton fabNewEvent;
     EventRecyclerAdapter eventRecyclerAdapter;
     List<String> eventName, startDate, endDate, eventInstruments;
     Context thisContext;
@@ -50,7 +48,7 @@ public class EventFragment extends Fragment implements View.OnClickListener, Rec
         thisContext = container.getContext();
         Context context = root.getContext();
 
-        recyclerView = root.findViewById(R.id.recyclerView_event);
+        recyclerView = root.findViewById(R.id.recyclerView_eventsFragment);
         eventRecyclerAdapter = new EventRecyclerAdapter(DBManager.Events, DBManager.EventDescriptions,this);
         recyclerView.setAdapter(eventRecyclerAdapter);
         class queryThread implements Runnable{
@@ -80,18 +78,9 @@ public class EventFragment extends Fragment implements View.OnClickListener, Rec
         recyclerView.addItemDecoration(dividerItemDecoration);
 
 
-        // Setting up the FAB button for add event
-        // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener
-        fabNewEvent = root.findViewById(R.id.fab_newEvent);
-        fabNewEvent.setOnClickListener(this);
-
         return root; // Returning the view.
     }
 
-    /**
-     *
-     * @param v
-     */
     @Override
     public void onClick(View v) {
         Intent activityIntent = new Intent( v.getContext(), EventNewActivity.class);

@@ -2,21 +2,17 @@ package com.example.festivalawardtracker;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.festivalawardtracker.ui.event.EventFragment;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.textfield.TextInputEditText;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +34,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         Name = new ArrayList<>();
         Instrument = new ArrayList<>();
 
-        recyclerView = findViewById(R.id.recyclerView_event_descriptions);
+        recyclerView = findViewById(R.id.recyclerView_eventDescriptions);
 
         eventDescriptionsRecyclerAdapter = new EventDescriptionsRecyclerAdapter(Name, Instrument, this);
         recyclerView.setAdapter(eventDescriptionsRecyclerAdapter);
@@ -79,18 +75,18 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         Instrument.add("Piano");
         Instrument.add("Piano");
 
-        newEventDescription = findViewById(R.id.new_event_description);
+        newEventDescription = findViewById(R.id.goTo_EventDescriptionsNewActivity);
         newEventDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Intent = new Intent(EventDescriptionsActivity.this, EventDescriptionsActivity.class);
+                Intent Intent = new Intent(EventDescriptionsActivity.this, EventDescriptionsNewActivity.class);
                 startActivity(Intent);
             }
         });
 
 
         /* ACTION BAR */
-        toolbarEvent = findViewById(R.id.toolbarEventDescriptions);
+        toolbarEvent = findViewById(R.id.toolbar_eventDescriptions);
         toolbarEvent.setTitle("Event Descriptions");
         setSupportActionBar(toolbarEvent);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -99,7 +95,8 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
 
     @Override
     public void onItemClick(int position) {
-        Navigation.findNavController(this,R.id.recyclerView_event_descriptions).navigate(R.id.nav_event);
+        Intent Intent = new Intent(EventDescriptionsActivity.this, EventActivity.class);
+        startActivity(Intent);
 
     }
 

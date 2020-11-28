@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".FestivalActivity">
+    tools:context=".FestivalNewActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" >
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarNewEventDescription"
+            android:id="@+id/toolbar_newEventDescription"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_baseline_close_24"/>
@@ -37,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextNewEventName"
+            android:id="@+id/editText_eventName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -59,20 +59,20 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventName">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextNewEventDescription"
+            android:id="@+id/editText_eventDescription"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:inputType="textMultiLine" />
 
         <include
-            android:id="@+id/NewEventInstrument"
+            android:id="@+id/dropdown_eventInstrument"
             layout="@layout/include_instrument_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSaveParent"
+        android:id="@+id/btnSaveEvent"
         android:layout_width="148dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

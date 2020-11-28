@@ -83,10 +83,10 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            eventName = itemView.findViewById(R.id.textViewRowEventName);
-            startDate = itemView.findViewById(R.id.textViewRowDateStart);
-            endDate = itemView.findViewById(R.id.textViewRowDateEnd);
-            eventInstruments = itemView.findViewById(R.id.textViewRowEventInstruments);
+            eventName = itemView.findViewById(R.id.textView_eventName);
+            startDate = itemView.findViewById(R.id.textView_startDate);
+            endDate = itemView.findViewById(R.id.textView_endDate);
+            eventInstruments = itemView.findViewById(R.id.textViewInstrument);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

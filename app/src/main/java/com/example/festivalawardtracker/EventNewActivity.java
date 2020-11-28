@@ -5,18 +5,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
-import com.example.festivalawardtracker.ui.student.StudentRecyclerAdapter;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
@@ -48,7 +43,7 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
         birthday = new ArrayList<>();
         age = new ArrayList<>();
 
-        recyclerView = findViewById(R.id.recyclerViewStudentDisplay);
+        recyclerView = findViewById(R.id.recyclerView_selectSudents);
 
         eventNewRecyclerAdapter = new EventNewRecyclerAdapter(studentNames,birthday,age,this);
         recyclerView.setAdapter(eventNewRecyclerAdapter);
@@ -97,7 +92,7 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
         age.add("6");
 
         /* ACTION BAR */
-        toolbarEvent = findViewById(R.id.toolbarNewEvent);
+        toolbarEvent = findViewById(R.id.toolbar_newEvent);
         toolbarEvent.setTitle("Add event");
         toolbarEvent.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbarEvent);
@@ -110,7 +105,7 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
         final MaterialDatePicker materialDatePickerStart = builderStart.build();
 
         // Setting Listener for Material Date Picker
-        editTextDatePickerStart = findViewById(R.id.editTextStartingDate);
+        editTextDatePickerStart = findViewById(R.id.editText_startingDate);
         editTextDatePickerStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,7 +130,7 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
         final MaterialDatePicker materialDatePickerEnd = builderEnd.build();
 
         // Setting Listener for Material Date Picker
-        editTextDatePickerEnd = findViewById(R.id.editTextEndingDate);
+        editTextDatePickerEnd = findViewById(R.id.editText_endingDate);
         editTextDatePickerEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

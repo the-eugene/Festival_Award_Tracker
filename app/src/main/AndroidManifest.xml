@@ -20,7 +20,7 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".EventNewActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".EventActivity" />
         <activity
             android:name=".MainEmptyActivity"
             android:theme="@android:style/Theme.NoDisplay">
@@ -46,16 +46,19 @@
             android:name=".ParentActivity"
             android:parentActivityName=".StudentActivity" />
         <activity
-            android:name=".FestivalActivity"
+            android:name=".FestivalNewActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".StudentRatingsActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".EventActivity"/>
         <activity
             android:name=".EventDescriptionsActivity"
             android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".EventDescriptionsNewActivity"
+            android:parentActivityName=".EventDescriptionsActivity" />
+        <activity
+            android:name=".EventActivity"
             android:parentActivityName=".EventDescriptionsActivity" />
     </application>
 

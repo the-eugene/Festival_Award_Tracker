@@ -7,37 +7,50 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textViewEventName"
-        android:layout_width="183dp"
+        android:id="@+id/textView_eventName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:paddingHorizontal="10dp"
-        android:paddingVertical="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
         android:text="Event Name"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textViewInstrument"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView_leftBracket"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:text="("
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_eventName"
+        app:layout_constraintEnd_toStartOf="@+id/textViewInstrument"
+        app:layout_constraintStart_toEndOf="@+id/textView_eventName" />
+
+    <TextView
         android:id="@+id/textViewInstrument"
-        android:layout_width="168dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Instrument"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_leftBracket"
+        app:layout_constraintEnd_toStartOf="@+id/textView_rightBracket"
+        app:layout_constraintStart_toEndOf="@+id/textView_leftBracket" />
+
+    <TextView
+        android:id="@+id/textView_rightBracket"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:paddingHorizontal="10dp"
-        android:paddingVertical="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:text="Instrument"
-        android:textAlignment="center"
+        android:text=")"
+        android:textAlignment="viewStart"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewInstrument"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/textViewInstrument" />
 </androidx.constraintlayout.widget.ConstraintLayout>

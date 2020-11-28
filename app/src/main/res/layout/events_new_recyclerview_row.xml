@@ -7,19 +7,23 @@
     android:layout_height="wrap_content">
 
     <include
-        android:id="@+id/EventsNewRecyclerviewRowHeader"
+        android:id="@+id/include_StudentHeader"
         layout="@layout/include_student_header"
-        android:layout_width="357dp"
-        android:layout_height="52dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="2dp" />
+        app:layout_constraintStart_toEndOf="@+id/checkBox_selectStudent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBox_selectStudent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/EventsNewRecyclerviewRowHeader"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

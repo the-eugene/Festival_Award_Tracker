@@ -60,7 +60,7 @@ public class StudentDisplayRecyclerAdapter extends RecyclerView.Adapter<StudentD
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             year = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewYear);
-            event = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewEvent);
+            event = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewEventName);
             ccs = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewCCS);
             tp = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewTP);
             awards = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewAwards);
