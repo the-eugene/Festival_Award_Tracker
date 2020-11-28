@@ -6,6 +6,7 @@ import java.util.Arrays;
  * @author Eugene
  */
 public enum Instrument {
+    // TODO If possible change this enums into upper case. It retrieves weird error related to Firebase when trying to do so. Carlos
     piano, violin, viola, cello, voice
     ;
 

@@ -14,7 +14,6 @@ import java.util.Objects;
 
 public class StudentRatingsActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     RecyclerView recyclerView;
     StudentRatingsRecyclerAdapter studentRatingsRecyclerAdapter;
     List<String> name,age,birthday;
@@ -77,7 +76,7 @@ public class StudentRatingsActivity extends AppCompatActivity {
         age.add("6");
 
         /* ACTION BAR */
-        toolbar = findViewById(R.id.toolbar_studentRatings);
+        Toolbar toolbar = findViewById(R.id.toolbar_studentRatings);
         toolbar.setTitle("Student Ratings");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);

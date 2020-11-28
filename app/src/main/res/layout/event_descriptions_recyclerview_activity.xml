@@ -31,7 +31,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="List of events"
+        android:text="FestivalName"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -59,7 +59,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_add_24" />
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

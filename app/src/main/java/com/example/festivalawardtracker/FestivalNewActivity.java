@@ -19,20 +19,19 @@ import com.google.android.material.button.MaterialButton;
  */
 public class FestivalNewActivity extends AppCompatActivity {
 
-    private Toolbar toolbarFestival;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.festival_new_activity);
+
         final EditText editFestivalName = (EditText)findViewById(R.id.editText_festivalName);
         final AutoCompleteTextView editIsNFMC = (AutoCompleteTextView)findViewById(R.id.autoCompleteTextViewDropdownNewFestivalNFMC);
 
-                /* ACTION BAR */
-        toolbarFestival = findViewById(R.id.toolbar_newFestival);
-        toolbarFestival.setTitle("Add Festival");
-        toolbarFestival.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbarFestival);
+        /* ACTION BAR */
+        Toolbar toolbar = findViewById(R.id.toolbar_newFestival);
+        toolbar.setTitle("Add Festival");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         /* DROPDOWN LIST is NFMC festival? Yes or No question */
