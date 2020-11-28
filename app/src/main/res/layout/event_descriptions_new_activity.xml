@@ -70,7 +70,7 @@
 
     <include
         android:id="@+id/dropdown_eventInstrument"
-        layout="@layout/include_instrument_dropdown"
+        layout="@layout/include_instruments_dropdown"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
