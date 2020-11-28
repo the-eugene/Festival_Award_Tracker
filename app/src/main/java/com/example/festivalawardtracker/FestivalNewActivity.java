@@ -17,7 +17,7 @@ import com.google.android.material.button.MaterialButton;
  * Create new festival activity that adds festivals to the database
  * @author carloswashingtonmercado@gmail.com and Jimmy
  */
-public class FestivalActivity extends AppCompatActivity {
+public class FestivalNewActivity extends AppCompatActivity {
 
     private Toolbar toolbarFestival;
 
@@ -26,11 +26,11 @@ public class FestivalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.festival_new_activity);
-        final EditText editFestivalName = (EditText)findViewById(R.id.editTextNewFestivalName);
+        final EditText editFestivalName = (EditText)findViewById(R.id.editText_festivalName);
         final AutoCompleteTextView editIsNFMC = (AutoCompleteTextView)findViewById(R.id.autoCompleteTextViewDropdownNewFestivalNFMC);
 
                 /* ACTION BAR */
-        toolbarFestival = findViewById(R.id.toolbarNewFestival);
+        toolbarFestival = findViewById(R.id.toolbar_newFestival);
         toolbarFestival.setTitle("Add Festival");
         toolbarFestival.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbarFestival);

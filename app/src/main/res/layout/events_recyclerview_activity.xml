@@ -18,20 +18,20 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_eventDescriptions"
+            android:id="@+id/toolbarEventDescriptions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/ic_baseline_close_24" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
-        android:id="@+id/textView_festivalName"
+        android:id="@+id/textView_eventName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Festival Name"
+        android:text="Event"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -39,8 +39,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
 
+    <TextView
+        android:id="@+id/textView_eventDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Event Description"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_eventName" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_eventDescriptions"
+        android:id="@+id/recyclerView_eventsActivity"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -48,10 +61,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_festivalName" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_eventDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/goTo_EventDescriptionsNewActivity"
+        android:id="@+id/goTo_EventNewActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"

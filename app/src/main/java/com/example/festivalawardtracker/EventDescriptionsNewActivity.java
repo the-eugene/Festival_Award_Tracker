@@ -19,8 +19,9 @@ public class EventDescriptionsNewActivity extends AppCompatActivity {
         setContentView(R.layout.event_descriptions_new_activity);
 
         /* ACTION BAR */
-        toolbarEventDescriptions = findViewById(R.id.toolbarNewEventDescription);
+        toolbarEventDescriptions = findViewById(R.id.toolbar_newEventDescription);
         toolbarEventDescriptions.setTitle("Add event description");
+        toolbarEventDescriptions.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbarEventDescriptions);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

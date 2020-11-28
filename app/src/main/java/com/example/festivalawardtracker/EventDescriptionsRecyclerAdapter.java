@@ -55,7 +55,7 @@ public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<Event
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
-            Name = itemView.findViewById(R.id.textViewEventName);
+            Name = itemView.findViewById(R.id.textView_eventName);
             Instrument = itemView.findViewById(R.id.textViewInstrument);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -78,7 +78,7 @@
             </include>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSaveParent"
+                android:id="@+id/btnSaveEvent"
                 android:layout_width="148dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

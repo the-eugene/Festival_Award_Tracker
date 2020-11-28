@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +29,7 @@ public class StudentRatingsActivity extends AppCompatActivity {
         birthday = new ArrayList<>();
 
 
-        recyclerView =findViewById(R.id.recyclerView_student_ratings);
+        recyclerView =findViewById(R.id.recyclerView_studentRatings);
         studentRatingsRecyclerAdapter = new StudentRatingsRecyclerAdapter(name,age,birthday);
         recyclerView.setAdapter(studentRatingsRecyclerAdapter);
 
@@ -76,8 +77,9 @@ public class StudentRatingsActivity extends AppCompatActivity {
         age.add("6");
 
         /* ACTION BAR */
-        toolbar = findViewById(R.id.toolbarStudentRatings);
+        toolbar = findViewById(R.id.toolbar_studentRatings);
         toolbar.setTitle("Student Ratings");
+        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }

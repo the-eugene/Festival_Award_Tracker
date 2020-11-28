@@ -68,15 +68,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/student_contact" />
 
-            <LinearLayout
-                android:id="@+id/InstrumentLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="9dp"
-                android:layout_marginBottom="9dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginRight="32dp"
-                android:orientation="vertical"
+            <include
+                android:id="@+id/instruments_checkboxes"
+                layout="@layout/include_instruments_programmatically"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/student_data" />
@@ -88,7 +85,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/InstrumentLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/instruments_checkboxes" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnStudentAddParent"

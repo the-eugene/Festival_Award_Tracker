@@ -11,14 +11,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.EventDescriptionsActivity;
-import com.example.festivalawardtracker.FestivalActivity;
+import com.example.festivalawardtracker.FestivalNewActivity;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -56,7 +54,7 @@ public class FestivalFragment extends Fragment implements View.OnClickListener, 
 
         festivalNames = new ArrayList<>();
 
-        recyclerView = root.findViewById(R.id.recyclerView_festival);
+        recyclerView = root.findViewById(R.id.recyclerView_festivals);
         festivalRecyclerAdapter = new FestivalRecyclerAdapter(DBManager.Festivals,this);
         recyclerView.setAdapter(festivalRecyclerAdapter);
 
@@ -90,7 +88,7 @@ public class FestivalFragment extends Fragment implements View.OnClickListener, 
 
         // Setting up the FAB button for add festival
         // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener
-        fabNewFestival = root.findViewById(R.id.fab_newFestival);
+        fabNewFestival = root.findViewById(R.id.goTo_FestivalNewActivity);
         fabNewFestival.setOnClickListener(this);
 
 
@@ -104,7 +102,7 @@ public class FestivalFragment extends Fragment implements View.OnClickListener, 
      */
     @Override
     public void onClick(View v) {
-        Intent activityIntent = new Intent( v.getContext(), FestivalActivity.class);
+        Intent activityIntent = new Intent( v.getContext(), FestivalNewActivity.class);
         startActivity(activityIntent);
     }
 

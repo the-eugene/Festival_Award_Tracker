@@ -19,7 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -31,7 +30,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
@@ -148,10 +146,10 @@ public class StudentActivityEdit extends AppCompatActivity {
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
 
         /* INSTRUMENT CHECKBOXES */
-        // TODO Possible pragmatical solution for current checkbox layout:
+        // TODO Possible programmatical solution for current checkbox layout ugly arrangement:
         //  https://spin.atomicobject.com/2019/04/08/constraintlayout-chaining-views-programmatically/
         //  Carlos
-        LinearLayout insLayout = findViewById(R.id.InstrumentLayout);
+        LinearLayout insLayout = findViewById(R.id.instruments_programmatical_layout);
         for (int i = 0; i < INSTRUMENTS.length; i++){
             CheckBox checkBox = new CheckBox(this);
             checkBox.setText(INSTRUMENTS[i]);

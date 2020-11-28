@@ -5,62 +5,91 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewRowEventName"
-        style="@style/Widget.MaterialComponents.TextView"
-        android:layout_width="210dp"
+    <TextView
+        android:id="@+id/textView_eventName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="EventName"
+        android:layout_marginTop="16dp"
+        android:text="Event Name"
         android:textAlignment="viewStart"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_chainStyle="spread"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewRowDateStart"
-        style="@style/Widget.MaterialComponents.TextView"
+    <TextView
+        android:id="@+id/textView_leftBracket"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:text="("
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_eventName"
+        app:layout_constraintEnd_toStartOf="@+id/textViewInstrument"
+        app:layout_constraintStart_toEndOf="@+id/textView_eventName" />
+
+    <TextView
+        android:id="@+id/textViewInstrument"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Instrument"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_leftBracket"
+        app:layout_constraintEnd_toStartOf="@+id/textView_rightBracket"
+        app:layout_constraintStart_toEndOf="@+id/textView_leftBracket" />
+
+    <TextView
+        android:id="@+id/textView_rightBracket"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="DateStart"
-        android:textAlignment="center"
+        android:layout_marginEnd="16dp"
+        android:text=")"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewInstrument"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewInstrument" />
+
+    <TextView
+        android:id="@+id/textView_startDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="Start Date"
+        android:textAlignment="viewEnd"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textViewRowDateEnd"
-        app:layout_constraintStart_toEndOf="@+id/textViewRowEventName"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRowEventInstruments"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_eventName" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewRowDateEnd"
-        style="@style/Widget.MaterialComponents.TextView"
-        android:layout_width="84dp"
+    <TextView
+        android:id="@+id/textView_dateDivider"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="DateEnd"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="-"
         android:textAlignment="center"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewRowDateStart"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_startDate"
+        app:layout_constraintEnd_toStartOf="@+id/textView_endDate"
+        app:layout_constraintStart_toEndOf="@+id/textView_startDate" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewRowEventInstruments"
-        style="@style/Widget.MaterialComponents.TextView"
+    <TextView
+        android:id="@+id/textView_endDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="Instrument"
-        android:textAlignment="center"
+        android:text="End Date"
+        android:textAlignment="viewStart"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_dateDivider"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewRowEventName"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/textView_dateDivider" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

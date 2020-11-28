@@ -10,10 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.festivalawardtracker.EventDescription;
 import com.example.festivalawardtracker.EventDescriptionsActivity;
 import com.example.festivalawardtracker.Festival;
-import com.example.festivalawardtracker.FestivalActivity;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 

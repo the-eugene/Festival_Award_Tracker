@@ -27,11 +27,14 @@
     <EditText
         android:id="@+id/editTextNumberLevel"
         android:layout_width="117dp"
-        android:layout_height="33dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewLevel"
-        app:layout_constraintStart_toEndOf="@+id/textViewLevel" />
+        app:layout_constraintStart_toEndOf="@+id/textViewLevel"
+        app:layout_constraintTop_toTopOf="@+id/textViewLevel" />
 
     <TextView
         android:id="@+id/textViewRating"
@@ -41,20 +44,22 @@
         android:autoSizeTextType="none"
         android:text="Rating:"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextNumberLevel"
         app:layout_constraintStart_toEndOf="@+id/editTextNumberLevel"
         app:layout_constraintTop_toBottomOf="@+id/StudentRatingsRecyclerviewRowHeader" />
 
     <EditText
         android:id="@+id/editTextNumberRating"
         android:layout_width="0dp"
-        android:layout_height="33dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewRating"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewRating" />
+        app:layout_constraintStart_toEndOf="@+id/textViewRating"
+        app:layout_constraintTop_toTopOf="@+id/textViewRating" />
 
 
 
