@@ -83,22 +83,18 @@ public class StudentActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         /* BIRTHDAY DATE PICKER */
-        // Material Date Picker
         Builder<Long> builder = Builder.datePicker();
         builder.setTitleText("Student Birthday");
         final MaterialDatePicker<Long> materialDatePicker = builder.build();
-        // Setting Listener for Material Date Picker
         birthdayInput.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // Setting Listener
                 materialDatePicker.show(getSupportFragmentManager(), "DATE_PICKER_BIRTHDAY");
             }
         });
-        // Retrieving date
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
-            public void onPositiveButtonClick(Object selection) {
-                // HEADS UP! The date can be retrieved either as plaintext or as object
+            public void onPositiveButtonClick(Object selection) { // Retrieving date
                 birthdayInput.setText(materialDatePicker.getHeaderText());
             }
         }); /* End Birthday Date Picker */

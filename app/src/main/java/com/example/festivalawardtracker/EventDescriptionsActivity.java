@@ -87,7 +87,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
 
         /* ACTION BAR */
         Toolbar toolbar = findViewById(R.id.toolbar_eventDescriptions);
-        toolbar.setTitle("Festival description");
+        toolbar.setTitle("Festival");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

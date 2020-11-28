@@ -12,27 +12,20 @@ public class Event extends DBAware {
     public SchoolYear retrieveYear() {
         return DBManager.SchoolYears.get(schoolYearID);
     }
-
-    public EventDescription getDescription() {
-        return DBManager.EventDescriptions.get(eventDescriptionID);
+    public String getSchoolYearID() {
+        return schoolYearID;
+    }
+    public void setSchoolYearID(String schoolYearID) {
+        this.schoolYearID = schoolYearID;
     }
 
     public boolean isInYear(SchoolYear year) {
         return year!=null&&schoolYearID.equals(year.ID);
     }
 
-    public String getSchoolYearID() {
-        return schoolYearID;
-    }
-
-    public void setSchoolYearID(String schoolYearID) {
-        this.schoolYearID = schoolYearID;
-    }
-
     public String getStart() {
         return start.toString();
     }
-
     public void setStart(String start) {
         this.start = LocalDate.parse(start);
     }
@@ -40,7 +33,6 @@ public class Event extends DBAware {
     public String getEnd() {
         return end.toString();
     }
-
     public void setEnd(String end) {
         this.end = LocalDate.parse(end);
     }
@@ -48,15 +40,14 @@ public class Event extends DBAware {
     public Contact getLocation() {
         return location;
     }
-
     public void setLocation(Contact location) {
         this.location = location;
     }
 
+    public EventDescription getDescription() { return DBManager.EventDescriptions.get(eventDescriptionID); }
     public String getEventDescriptionID() {
         return eventDescriptionID;
     }
-
     public void setEventDescriptionID(String eventDescriptionID) {
         this.eventDescriptionID = eventDescriptionID;
     }
