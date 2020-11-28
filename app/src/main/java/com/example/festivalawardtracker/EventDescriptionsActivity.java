@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,58 +23,27 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
 
     EventDescriptionsRecyclerAdapter eventDescriptionsRecyclerAdapter;
     RecyclerView recyclerView;
-    List<String> Name, Instrument;
     FloatingActionButton newEventDescription;
     Context context;
+    String fID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(this.getClass().getName(),"onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_descriptions_recyclerview_activity);
 
-        Name = new ArrayList<>();
-        Instrument = new ArrayList<>();
+        fID=getIntent().getExtras().getString("festivalID",null);
+        if (fID == null) Log.wtf(this.getClass().getSimpleName(),"NO ID PASSED");
 
         recyclerView = findViewById(R.id.recyclerView_eventDescriptions);
 
-        eventDescriptionsRecyclerAdapter = new EventDescriptionsRecyclerAdapter(Name, Instrument, this);
+        eventDescriptionsRecyclerAdapter = new EventDescriptionsRecyclerAdapter(fID, this);
         recyclerView.setAdapter(eventDescriptionsRecyclerAdapter);
         recyclerView.setMotionEventSplittingEnabled(false);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
-
-        Name.add("Name1");
-        Name.add("Name2");
-        Name.add("Name3");
-        Name.add("Name4");
-        Name.add("Name5");
-        Name.add("Name6");
-        Name.add("Name7");
-        Name.add("Name8");
-        Name.add("Name9");
-        Name.add("Name10");
-        Name.add("Name11");
-        Name.add("Name12");
-        Name.add("Name13");
-        Name.add("Name14");
-        Name.add("Name15");
-
-        Instrument.add("Piano");
-        Instrument.add("Piano");
-        Instrument.add("Piano");
-        Instrument.add("Piano");
-        Instrument.add("Piano");
-        Instrument.add("Piano");
-        Instrument.add("Piano");
-        Instrument.add("Piano");
-        Instrument.add("Piano");
-        Instrument.add("Piano");
-        Instrument.add("Piano");
-        Instrument.add("Piano");
-        Instrument.add("Piano");
-        Instrument.add("Piano");
-        Instrument.add("Piano");
 
         newEventDescription = findViewById(R.id.goTo_EventDescriptionsNewActivity);
         newEventDescription.setOnClickListener(new View.OnClickListener() {

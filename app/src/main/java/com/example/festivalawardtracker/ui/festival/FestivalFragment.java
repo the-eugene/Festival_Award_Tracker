@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,6 @@ public class FestivalFragment extends Fragment implements View.OnClickListener, 
     RecyclerView recyclerView;
     FloatingActionButton fabNewFestival;
     FestivalRecyclerAdapter festivalRecyclerAdapter;
-    List<String> festivalNames;
     Context thisContext;
     Context context;
 
@@ -52,12 +52,10 @@ public class FestivalFragment extends Fragment implements View.OnClickListener, 
         thisContext = container.getContext();
         context = root.getContext();
 
-        festivalNames = new ArrayList<>();
-
         recyclerView = root.findViewById(R.id.recyclerView_festivals);
         festivalRecyclerAdapter = new FestivalRecyclerAdapter(DBManager.Festivals,this);
         recyclerView.setAdapter(festivalRecyclerAdapter);
-
+        Log.d(this.getClass().getName(),"onCreateView");
         class queryThread implements Runnable{
             final Activity activity;
             queryThread(Activity activity){
@@ -97,15 +95,16 @@ public class FestivalFragment extends Fragment implements View.OnClickListener, 
      */
     @Override
     public void onClick(View v) {
-        Intent activityIntent = new Intent( v.getContext(), FestivalNewActivity.class);
-        startActivity(activityIntent);
+  //      Intent activityIntent = new Intent( v.getContext(), FestivalNewActivity.class);
+  //      startActivity(activityIntent);
+        Log.d(this.getClass().getName(),"onClick");
     }
 
     @Override
     public void onItemClick(int position) {
-        Intent activityIntent = new Intent(context, EventDescriptionsActivity.class);
-        startActivity(activityIntent);
-
+ //       Intent activityIntent = new Intent(context, EventDescriptionsActivity.class);
+ //       startActivity(activityIntent);
+        Log.d(this.getClass().getName(),"onItemClick");
 //        NavHostFragment.findNavController(this).navigate(R.id.action_festival_to_event);
     }
 }

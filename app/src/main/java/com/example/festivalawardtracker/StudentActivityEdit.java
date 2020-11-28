@@ -41,11 +41,6 @@ import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
  * @see StudentActivityDisplay
  */
 public class StudentActivityEdit extends AppCompatActivity {
-
-    //  This DB reference is here just for testing purposes
-//    private final DatabaseReference mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
-//    public static final String MESSAGES_CHILD = "zzz_student_test";
-
     private static final String TAG = "STUDENT_EDIT";
     String[] INSTRUMENTS = Instrument.Options();
     CheckBox[] checkboxes = new CheckBox[INSTRUMENTS.length];

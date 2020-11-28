@@ -75,9 +75,9 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
                 public void onClick(View v) {
 //                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
                     int p=getAdapterPosition();
-                    Log.d("RecycleView Click", String.valueOf(festivalNames.get(festivalIDs.get(p))));
+                    Log.d("RecycleView Click", festivalIDs.get(p));
                     Intent intent = new Intent(v.getContext(), EventDescriptionsActivity.class);
-                    intent.putExtra("festivalIDs",festivalIDs.get(p));
+                    intent.putExtra("festivalID",festivalIDs.get(p));
                     v.getContext().startActivity(intent);
                            }
             });

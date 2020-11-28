@@ -50,7 +50,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
      */
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
-
+        Log.d(this.getClass().getName(),"onCreateView");
         View root = inflater.inflate(R.layout.students_recyclerview_fragment_main, container, false);
 
         thisContext = container.getContext();
