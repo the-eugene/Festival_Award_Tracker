@@ -6,14 +6,9 @@ public class EventDescription extends DBAware {
     Instrument instrument;
     String festivalID;
 
-    public Festival retrieveFestival() {
-        return DBManager.Festivals.get(festivalID);
-    }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -21,7 +16,6 @@ public class EventDescription extends DBAware {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -29,7 +23,6 @@ public class EventDescription extends DBAware {
     public Instrument getInstrument() {
         return instrument;
     }
-
     public void setInstrument(Instrument instrument) {
         this.instrument = instrument;
     }
@@ -37,8 +30,6 @@ public class EventDescription extends DBAware {
     public String getFestivalID() {
         return festivalID;
     }
-
-    public void setFestivalID(String festivalID) {
-        this.festivalID = festivalID;
-    }
+    public void setFestivalID(String festivalID) { this.festivalID = festivalID; }
+    public Festival retrieveFestival() { return DBManager.Festivals.get(festivalID); }
 }

@@ -31,7 +31,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Festival Name"
+        android:text="List of events"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"

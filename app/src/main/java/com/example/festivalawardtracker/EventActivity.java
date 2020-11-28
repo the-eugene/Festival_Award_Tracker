@@ -19,7 +19,7 @@ import java.util.List;
 
 public class EventActivity extends AppCompatActivity implements RecyclerViewClickInterface {
 
-    private Toolbar toolbarEvent;
+    private Toolbar toolbat;
     EventActivityRecyclerAdapter eventActivityRecyclerAdapter;
     RecyclerView recyclerView;
     List<String> eventName, startDate, endDate, eventInstruments;
@@ -92,8 +92,6 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
         eventInstruments.add("piano");
         eventInstruments.add("piano");
 
-
-
         newEvent = findViewById(R.id.goTo_EventNewActivity);
         newEvent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,15 +101,13 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
             }
         });
 
-
         /* ACTION BAR */
-        toolbarEvent = findViewById(R.id.toolbarEventDescriptions);
-        toolbarEvent.setTitle("Events");
-        toolbarEvent.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbarEvent);
+        toolbat = findViewById(R.id.toolbarEventDescriptions);
+        toolbat.setTitle("Event description");
+        toolbat.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbat);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
 
     @Override
     public void onItemClick(int position) {

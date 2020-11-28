@@ -74,24 +74,19 @@ public class FestivalFragment extends Fragment implements View.OnClickListener, 
                     }
                 });
             }
-        };
+        }
+
         new Thread(new queryThread(getActivity())).start();
-
-
 
         recyclerView.setMotionEventSplittingEnabled(false);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-
-
         // Setting up the FAB button for add festival
         // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener
         fabNewFestival = root.findViewById(R.id.goTo_FestivalNewActivity);
         fabNewFestival.setOnClickListener(this);
-
-
 
         return root;
     }
@@ -112,6 +107,5 @@ public class FestivalFragment extends Fragment implements View.OnClickListener, 
         startActivity(activityIntent);
 
 //        NavHostFragment.findNavController(this).navigate(R.id.action_festival_to_event);
-
     }
 }

@@ -145,44 +145,44 @@ public class StudentActivity extends AppCompatActivity {
         studentSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Student newStudent = new Student();
-            Contact newContact = new Contact();
+                Student newStudent = new Student();
+                Contact newContact = new Contact();
 
-            /* Retrieve Student.java fields input */
-            newStudent.instruments.clear(); //necessary if editing student.
-            for (int i = 0; i < INSTRUMENTS.length; i++){
-                if(checkboxes[i].isChecked()) {
-                    newStudent.addInstrument(Instrument.values()[i]);
-                    Log.d("FOR", "Instruments: " + newStudent.instruments.toString());
+                /* Retrieve Student.java fields input */
+                newStudent.instruments.clear(); //necessary if editing student.
+                for (int i = 0; i < INSTRUMENTS.length; i++){
+                    if(checkboxes[i].isChecked()) {
+                        newStudent.addInstrument(Instrument.values()[i]);
+                        Log.d("FOR", "Instruments: " + newStudent.instruments.toString());
+                    }
                 }
-            }
 
-            /* Person.java */
-            newStudent.firstName = firstNameInput.getText().toString();
-            newStudent.middleName = middleNameInput.getText().toString();
-            newStudent.lastName = lastNameInput.getText().toString();
-            newStudent.gender = Person.Gender.valueOf(genderInput.getText().toString().toUpperCase());
-            newStudent.birthday = stringToLocalDate(birthdayInput.getText().toString());
+                /* Person.java */
+                newStudent.firstName = firstNameInput.getText().toString();
+                newStudent.middleName = middleNameInput.getText().toString();
+                newStudent.lastName = lastNameInput.getText().toString();
+                newStudent.gender = Person.Gender.valueOf(genderInput.getText().toString().toUpperCase());
+                newStudent.birthday = stringToLocalDate(birthdayInput.getText().toString());
 
-            /* Contact.java */
-            newContact.phone = phoneInput.getText().toString();
-            newContact.email = emailInput.getText().toString();
-            newContact.street = streetInput.getText().toString();
-            newContact.city = cityInput.getText().toString();
-            newContact.state = stateInput.getText().toString();
-            newContact.zip = zipInput.getText().toString();
-            newStudent.setContact(newContact);
+                /* Contact.java */
+                newContact.phone = phoneInput.getText().toString();
+                newContact.email = emailInput.getText().toString();
+                newContact.street = streetInput.getText().toString();
+                newContact.city = cityInput.getText().toString();
+                newContact.state = stateInput.getText().toString();
+                newContact.zip = zipInput.getText().toString();
+                newStudent.setContact(newContact);
 
-            // This DB reference is here just for testing purposes
+                // This DB reference is here just for testing purposes
 //                mFirebaseDatabaseReference.child(MESSAGES_CHILD).push().setValue(newStudent);
 
-            // Pushing to the DBHashMap
-            DBManager.Students.put(newStudent);
+                // Pushing to the DBHashMap
+                DBManager.Students.put(newStudent);
 
-            Toast toast = Toast.makeText(view.getContext(), "New student saved", Toast.LENGTH_SHORT);
-            toast.show();
+                Toast toast = Toast.makeText(view.getContext(), "New student saved", Toast.LENGTH_SHORT);
+                toast.show();
 
-            finish();
+                finish();
             }
         });
     }
