@@ -2,6 +2,7 @@ package com.example.festivalawardtracker;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
@@ -88,6 +89,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         /* ACTION BAR */
         toolbarEvent = findViewById(R.id.toolbar_eventDescriptions);
         toolbarEvent.setTitle("Event Descriptions");
+        toolbarEvent.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbarEvent);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

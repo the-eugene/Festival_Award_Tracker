@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -78,6 +79,7 @@ public class StudentRatingsActivity extends AppCompatActivity {
         /* ACTION BAR */
         toolbar = findViewById(R.id.toolbar_studentRatings);
         toolbar.setTitle("Student Ratings");
+        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }

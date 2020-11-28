@@ -12,13 +12,13 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_newEventDescription"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_baseline_close_24"/>
+            app:navigationIcon="@drawable/ic_baseline_close_24" />
     </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -30,12 +30,13 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="32dp"
-        android:hint="Event Name"
+        android:hint="@string/event_name"
         app:boxBackgroundMode="outline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText_eventName"
             android:layout_width="match_parent"
@@ -46,14 +47,16 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutNewEventDescription"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="346dp"
-        android:layout_height="256dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:hint="Add event description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="1dp"
+        android:hint="@string/add_event_description"
         app:boxBackgroundMode="outline"
         app:endIconMode="clear_text"
+        app:layout_constraintBottom_toTopOf="@+id/dropdown_eventInstrument"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventName">
@@ -63,13 +66,16 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:inputType="textMultiLine" />
-
-        <include
-            android:id="@+id/dropdown_eventInstrument"
-            layout="@layout/include_instrument_dropdown"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <include
+        android:id="@+id/dropdown_eventInstrument"
+        layout="@layout/include_instrument_dropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSaveEvent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventDescription" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSaveEvent"
@@ -77,9 +83,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="40dp"
-        android:text="SAVE"
+        android:text="@string/save"
         app:flow_horizontalAlign="start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewEventDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/dropdown_eventInstrument" />
 </androidx.constraintlayout.widget.ConstraintLayout>

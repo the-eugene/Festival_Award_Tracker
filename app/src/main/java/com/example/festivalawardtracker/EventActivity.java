@@ -1,6 +1,7 @@
 package com.example.festivalawardtracker;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -106,6 +107,7 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
         /* ACTION BAR */
         toolbarEvent = findViewById(R.id.toolbarEventDescriptions);
         toolbarEvent.setTitle("Events");
+        toolbarEvent.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbarEvent);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
