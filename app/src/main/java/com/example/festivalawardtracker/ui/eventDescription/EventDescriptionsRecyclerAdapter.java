@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker;
+package com.example.festivalawardtracker.ui.eventDescription;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,11 +11,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.DBManager;
+import com.example.festivalawardtracker.EventDescription;
+import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.ui.event.EventActivity;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,7 +37,7 @@ public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<Event
             }
             @Override
             public void run(){
-                Query query=DBManager.currentDB.child(EventDescription.class.getSimpleName()).orderByChild("festivalID").equalTo(fID);
+                Query query= DBManager.currentDB.child(EventDescription.class.getSimpleName()).orderByChild("festivalID").equalTo(fID);
                 final Map<String,EventDescription> result=DBManager.EventDescriptions.getMapByQuery(query);
                 DBManager.EventDescriptions.putAll(result); //not strictly necessary, just keeps cache fresh
                 activity.runOnUiThread(new Runnable() {@Override public void run() {updateList(new ArrayList<>( result.values()));}});
@@ -82,7 +85,7 @@ public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<Event
                 @Override
                 public void onClick(View v) {
 //                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
-                    Intent Intent = new Intent(v.getContext(), EventDescriptionsActivity.class);
+                    Intent Intent = new Intent(v.getContext(), EventActivity.class);
                     Intent.putExtra("EventID",eventDescriptions.get(getAdapterPosition()).ID);
                     v.getContext().startActivity(Intent);
                 }

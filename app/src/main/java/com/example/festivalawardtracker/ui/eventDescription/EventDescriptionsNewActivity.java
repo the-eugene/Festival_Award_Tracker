@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker;
+package com.example.festivalawardtracker.ui.eventDescription;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,6 +13,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.festivalawardtracker.DBManager;
+import com.example.festivalawardtracker.EventDescription;
+import com.example.festivalawardtracker.Instrument;
+import com.example.festivalawardtracker.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 /**

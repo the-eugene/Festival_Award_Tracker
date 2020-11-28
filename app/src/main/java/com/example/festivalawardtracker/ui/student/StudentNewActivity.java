@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker;
+package com.example.festivalawardtracker.ui.student;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,6 +17,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.festivalawardtracker.Contact;
+import com.example.festivalawardtracker.DBHashMap;
+import com.example.festivalawardtracker.DBManager;
+import com.example.festivalawardtracker.Gender;
+import com.example.festivalawardtracker.Instrument;
+import com.example.festivalawardtracker.ParentActivity;
+import com.example.festivalawardtracker.Person;
+import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.Student;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
@@ -37,7 +46,7 @@ import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
  * @author Carlos
  * @see DBHashMap
  */
-public class StudentActivity extends AppCompatActivity {
+public class StudentNewActivity extends AppCompatActivity {
 
     //  This DB reference is here just for testing purposes
 //    private final DatabaseReference mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
@@ -131,7 +140,7 @@ public class StudentActivity extends AppCompatActivity {
         btnAddParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent activityIntent = new Intent(StudentActivity.this, ParentActivity.class);
+                Intent activityIntent = new Intent(StudentNewActivity.this, ParentActivity.class);
                 startActivity(activityIntent);
             }
         });
@@ -216,4 +225,4 @@ public class StudentActivity extends AppCompatActivity {
         }
         return localDate;
     } // End of stringToLocalDate()
-} // End of StudentActivity class
+} // End of StudentNewActivity class

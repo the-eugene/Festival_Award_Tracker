@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker;
+package com.example.festivalawardtracker.ui.event;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,12 +11,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.festivalawardtracker.MainActivity;
+import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 

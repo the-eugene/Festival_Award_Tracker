@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Festival extends DBAware {
-    String name;
-    boolean isNFMC;
+    public String name;
+    public boolean isNFMC;
     List<String> eventDescriptionIDs = new ArrayList<>();
 
     public List<String> getEventDescriptions() {

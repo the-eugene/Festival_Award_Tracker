@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker;
+package com.example.festivalawardtracker.ui.event;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -111,7 +112,7 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
 
     @Override
     public void onItemClick(int position) {
-        Intent activityIntent = new Intent(EventActivity.this, StudentRatingsActivity.class);
+        Intent activityIntent = new Intent(EventActivity.this, EventsRatingsActivity.class);
         startActivity(activityIntent);
 
     }

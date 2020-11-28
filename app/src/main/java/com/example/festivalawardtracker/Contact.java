@@ -5,15 +5,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Contact {
-    String business;
-    String email;
-    String phone;
-    String street;
-    String city;
-    String state;
-    String zip;
+    public String business;
+    public String email;
+    public String phone;
+    public String street;
+    public String city;
+    public String state;
+    public String zip;
 
-    Contact(){}
+    public Contact(){}
     Contact(String business, String phone, String email, String street, String city, String state, String zip){
         this.business=business;
         this.phone=phone;

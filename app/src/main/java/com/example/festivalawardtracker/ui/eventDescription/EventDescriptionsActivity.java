@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker;
+package com.example.festivalawardtracker.ui.eventDescription;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,12 +12,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.ui.event.EventActivity;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class EventDescriptionsActivity extends AppCompatActivity implements RecyclerViewClickInterface {
 
@@ -57,7 +55,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
 
         /* ACTION BAR */
         Toolbar toolbar = findViewById(R.id.toolbar_eventDescriptions);
-        toolbar.setTitle("Festival");
+        toolbar.setTitle("Event Descriptions");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

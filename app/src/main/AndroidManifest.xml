@@ -13,14 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".StudentActivityDisplay"
+            android:name=".ui.student.StudentSummeryActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".StudentActivityEdit"
+            android:name=".ui.student.StudentEditActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".EventNewActivity"
-            android:parentActivityName=".EventActivity" />
+            android:name=".ui.event.EventNewActivity"
+            android:parentActivityName=".ui.event.EventActivity" />
         <activity
             android:name=".MainEmptyActivity"
             android:theme="@android:style/Theme.NoDisplay">
@@ -40,26 +40,26 @@
         <activity android:name=".SignInActivity" />
         <activity android:name=".LogInOptionsActivity" />
         <activity
-            android:name=".StudentActivity"
+            android:name=".ui.student.StudentNewActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ParentActivity"
-            android:parentActivityName=".StudentActivity" />
+            android:parentActivityName=".ui.student.StudentNewActivity" />
         <activity
-            android:name=".FestivalNewActivity"
+            android:name=".ui.festival.FestivalNewActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".StudentRatingsActivity"
-            android:parentActivityName=".EventActivity"/>
+            android:name=".ui.event.EventsRatingsActivity"
+            android:parentActivityName=".ui.event.EventActivity"/>
         <activity
-            android:name=".EventDescriptionsActivity"
+            android:name=".ui.eventDescription.EventDescriptionsActivity"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".EventDescriptionsNewActivity"
-            android:parentActivityName=".EventDescriptionsActivity" />
+            android:name=".ui.eventDescription.EventDescriptionsNewActivity"
+            android:parentActivityName=".ui.eventDescription.EventDescriptionsActivity" />
         <activity
-            android:name=".EventActivity"
-            android:parentActivityName=".EventDescriptionsActivity" />
+            android:name=".ui.event.EventActivity"
+            android:parentActivityName=".ui.eventDescription.EventDescriptionsActivity" />
     </application>
 
 </manifest>

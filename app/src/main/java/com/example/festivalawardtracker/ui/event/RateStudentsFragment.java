@@ -14,21 +14,18 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.DBManager;
-import com.example.festivalawardtracker.EventNewActivity;
 import com.example.festivalawardtracker.R;
-import com.example.festivalawardtracker.StudentRatingsActivity;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 /**
  * @author carloswashingtonmercado@gmail.com
  */
-public class EventFragment extends Fragment implements View.OnClickListener, RecyclerViewClickInterface {
+public class RateStudentsFragment extends Fragment implements View.OnClickListener, RecyclerViewClickInterface {
 
     RecyclerView recyclerView;
-    EventRecyclerAdapter eventRecyclerAdapter;
+    RateStudentsRecyclerAdapter rateStudentsRecyclerAdapter;
     List<String> eventName, startDate, endDate, eventInstruments;
     Context thisContext;
 
@@ -49,8 +46,8 @@ public class EventFragment extends Fragment implements View.OnClickListener, Rec
         Context context = root.getContext();
 
         recyclerView = root.findViewById(R.id.recyclerView_eventsFragment);
-        eventRecyclerAdapter = new EventRecyclerAdapter(DBManager.Events, DBManager.EventDescriptions,this);
-        recyclerView.setAdapter(eventRecyclerAdapter);
+        rateStudentsRecyclerAdapter = new RateStudentsRecyclerAdapter(DBManager.Events, DBManager.EventDescriptions,this);
+        recyclerView.setAdapter(rateStudentsRecyclerAdapter);
         class queryThread implements Runnable{
             final Activity activity;
             queryThread(Activity activity){
@@ -62,8 +59,8 @@ public class EventFragment extends Fragment implements View.OnClickListener, Rec
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        eventRecyclerAdapter.updateEventsList();
-//                        EventRecyclerAdapter.notifyDataSetChanged();
+                        rateStudentsRecyclerAdapter.updateEventsList();
+//                        RateStudentsRecyclerAdapter.notifyDataSetChanged();
                     }
                 });
             }
@@ -89,7 +86,7 @@ public class EventFragment extends Fragment implements View.OnClickListener, Rec
 
     @Override
     public void onItemClick(int position) {
-        Intent activityIntent = new Intent(thisContext, StudentRatingsActivity.class);
+        Intent activityIntent = new Intent(thisContext, EventsRatingsActivity.class);
         startActivity(activityIntent);
     }
 }

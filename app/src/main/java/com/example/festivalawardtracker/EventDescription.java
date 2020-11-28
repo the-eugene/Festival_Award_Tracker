@@ -1,9 +1,9 @@
 package com.example.festivalawardtracker;
 
 public class EventDescription extends DBAware {
-    String name;
+    public String name;
     String description;
-    Instrument instrument;
+    public Instrument instrument;
     String festivalID;
 
     public String getName() {

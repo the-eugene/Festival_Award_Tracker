@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:fillViewport="true"
     android:nestedScrollingEnabled="false"
-    tools:context=".StudentActivity" >
+    tools:context=".ui.student.StudentNewActivity" >
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutPersonBirthdate"

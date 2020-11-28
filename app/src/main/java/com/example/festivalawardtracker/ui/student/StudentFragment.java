@@ -20,11 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.R;
-import com.example.festivalawardtracker.StudentActivity;
-import com.example.festivalawardtracker.StudentActivityDisplay;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -100,13 +97,13 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
      */
     @Override
     public void onClick(View v) {
-        Intent activityIntent = new Intent( v.getContext(), StudentActivity.class);
+        Intent activityIntent = new Intent( v.getContext(), StudentNewActivity.class);
         startActivity(activityIntent);
     }
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent (thisContext, StudentActivityDisplay.class);
+        Intent intent = new Intent (thisContext, StudentSummeryActivity.class);
         startActivity(intent);
     }
 

@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.Student;
-import com.example.festivalawardtracker.StudentActivity;
-import com.example.festivalawardtracker.StudentActivityDisplay;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -121,7 +119,7 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecycler
 //                    recyclerViewClickInterface.onItemClick(getAdapterPosition()); // don't know what this did but it was crashing
                     int p=getAdapterPosition();
                     Log.d("RecyclerView Click",students.get(studentIDs.get(p)).getFullName());
-                    Intent intent = new Intent( v.getContext(), StudentActivityDisplay.class);
+                    Intent intent = new Intent( v.getContext(), StudentSummeryActivity.class);
                     intent.putExtra("StudentID", studentIDs.get(p));
                     v.getContext().startActivity(intent);
                 }

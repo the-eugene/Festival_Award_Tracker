@@ -6,12 +6,12 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class Person extends DBAware {
-    String firstName;
-    String middleName;
-    String lastName;
-    Gender gender;
-    LocalDate birthday;
-    Contact contact;
+    public String firstName;
+    public String middleName;
+    public String lastName;
+    public Gender gender;
+    public LocalDate birthday;
+    public Contact contact;
 
     public Person(String firstName, String middleName) {
         this.firstName = firstName;
@@ -84,7 +84,7 @@ public class Person extends DBAware {
     public String getEmail(){return contact.email;}
     public static Class<Person> ofType(){return Person.class;}
 
-    enum Gender {
+    public enum Gender {
         MALE,
         FEMALE
         ;

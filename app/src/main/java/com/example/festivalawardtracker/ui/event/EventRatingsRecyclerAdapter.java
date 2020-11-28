@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker;
+package com.example.festivalawardtracker.ui.event;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,13 +8,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.R;
+
 import java.util.List;
 
-public class StudentRatingsRecyclerAdapter extends RecyclerView.Adapter<StudentRatingsRecyclerAdapter.ViewHolder> {
+public class EventRatingsRecyclerAdapter extends RecyclerView.Adapter<EventRatingsRecyclerAdapter.ViewHolder> {
 
     List<String> name,age,birthday;
 
-    public StudentRatingsRecyclerAdapter(List<String> name, List<String> age, List<String> birthday) {
+    public EventRatingsRecyclerAdapter(List<String> name, List<String> age, List<String> birthday) {
         this.name = name;
         this.age = age;
         this.birthday = birthday;

@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker;
+package com.example.festivalawardtracker.ui.student;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,13 +8,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.R;
+
 import java.util.List;
 
-public class StudentDisplayRecyclerAdapter extends RecyclerView.Adapter<StudentDisplayRecyclerAdapter.ViewHolder> {
+public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentSummaryRecyclerAdapter.ViewHolder> {
 
     List<String> year,event,ccs,tp,awards,level;
 
-    public StudentDisplayRecyclerAdapter(List<String> year, List<String> event, List<String> ccs, List<String> tp, List<String> awards, List<String> level) {
+    public StudentSummaryRecyclerAdapter(List<String> year, List<String> event, List<String> ccs, List<String> tp, List<String> awards, List<String> level) {
         this.year = year;
         this.event = event;
         this.ccs = ccs;

@@ -10,10 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.festivalawardtracker.EventDescriptionsActivity;
+import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsActivity;
 import com.example.festivalawardtracker.Festival;
 import com.example.festivalawardtracker.R;
-import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +20,11 @@ import java.util.Map;
 
 public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecyclerAdapter.ViewHolder> {
 
-    private RecyclerViewClickInterface recyclerViewClickInterface;
+
     Map<String, Festival> festivalNames;
     List<String> festivalIDs = new ArrayList<>();
 
-    public FestivalRecyclerAdapter(Map<String, Festival> festivalNames, RecyclerViewClickInterface recyclerViewClickInterface) {
+    public FestivalRecyclerAdapter(Map<String, Festival> festivalNames) {
         this.festivalNames = festivalNames;
         festivalIDs.addAll(festivalNames.keySet());
 //        this.recyclerViewClickInterface = recyclerViewClickInterface;

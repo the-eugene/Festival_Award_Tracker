@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Student extends Person {
-    List<String> teacherIDs = new ArrayList<>();
-    List<String> parentIDs = new ArrayList<>();
-    List<Instrument> instruments = new ArrayList<>();
-    List<Award> awards = new ArrayList<>();
-    List<Performance> performances = new ArrayList<>();
+    public List<String> teacherIDs = new ArrayList<>();
+    public List<String> parentIDs = new ArrayList<>();
+    public List<Instrument> instruments = new ArrayList<>();
+    public List<Award> awards = new ArrayList<>();
+    public List<Performance> performances = new ArrayList<>();
 
-    Student() {
+    public Student() {
         super();
     }
 

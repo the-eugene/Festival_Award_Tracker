@@ -26,6 +26,7 @@ public class MainEmptyActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             activityIntent = new Intent(this, MainActivity.class);
+            //TODO: check email and pull data from firebase
 
         } else {
             activityIntent = new Intent(this, LogInOptionsActivity.class);

@@ -8,7 +8,7 @@
     android:fillViewport="true"
     android:nestedScrollingEnabled="false"
     android:id="@+id/new_student"
-    tools:context=".StudentActivity" >
+    tools:context=".ui.student.StudentNewActivity" >
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker;
+package com.example.festivalawardtracker.ui.festival;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +11,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.festivalawardtracker.Answer;
+import com.example.festivalawardtracker.DBManager;
+import com.example.festivalawardtracker.Festival;
+import com.example.festivalawardtracker.R;
 import com.google.android.material.button.MaterialButton;
 
 /**

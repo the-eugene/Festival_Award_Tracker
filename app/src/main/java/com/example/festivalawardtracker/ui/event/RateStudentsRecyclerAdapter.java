@@ -1,6 +1,5 @@
 package com.example.festivalawardtracker.ui.event;
 
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdapter.ViewHolder>{
+public class RateStudentsRecyclerAdapter extends RecyclerView.Adapter<RateStudentsRecyclerAdapter.ViewHolder>{
     Map<String, Event> events;
     List<String> eventsIDs=new ArrayList<>();
     Map<String, EventDescription> eventDescription;
@@ -29,7 +28,7 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
 //    List<String> eventName, startDate, endDate, eventInstruments;
     private RecyclerViewClickInterface recyclerViewClickInterface;
 
-    public EventRecyclerAdapter(Map<String, Event> events, Map<String,EventDescription> eventDescription, RecyclerViewClickInterface recyclerViewClickInterface) {
+    public RateStudentsRecyclerAdapter(Map<String, Event> events, Map<String,EventDescription> eventDescription, RecyclerViewClickInterface recyclerViewClickInterface) {
         this.events = events;
         eventsIDs.addAll(events.keySet());
         this.eventDescription = eventDescription;

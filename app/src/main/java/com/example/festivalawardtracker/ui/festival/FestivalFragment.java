@@ -16,19 +16,13 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.DBManager;
-import com.example.festivalawardtracker.EventDescriptionsActivity;
-import com.example.festivalawardtracker.FestivalNewActivity;
 import com.example.festivalawardtracker.R;
-import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author carloswashingtonmercado@gmail.com
  */
-public class FestivalFragment extends Fragment implements View.OnClickListener, RecyclerViewClickInterface {
+public class FestivalFragment extends Fragment implements View.OnClickListener {
 
     private Toolbar toolbar;
     RecyclerView recyclerView;
@@ -53,7 +47,7 @@ public class FestivalFragment extends Fragment implements View.OnClickListener, 
         context = root.getContext();
 
         recyclerView = root.findViewById(R.id.recyclerView_festivals);
-        festivalRecyclerAdapter = new FestivalRecyclerAdapter(DBManager.Festivals,this);
+        festivalRecyclerAdapter = new FestivalRecyclerAdapter(DBManager.Festivals);
         recyclerView.setAdapter(festivalRecyclerAdapter);
         Log.d(this.getClass().getName(),"onCreateView");
         class queryThread implements Runnable{
@@ -95,16 +89,10 @@ public class FestivalFragment extends Fragment implements View.OnClickListener, 
      */
     @Override
     public void onClick(View v) {
-  //      Intent activityIntent = new Intent( v.getContext(), FestivalNewActivity.class);
-  //      startActivity(activityIntent);
+        Intent activityIntent = new Intent( v.getContext(), FestivalNewActivity.class);
+        startActivity(activityIntent);
         Log.d(this.getClass().getName(),"onClick");
     }
 
-    @Override
-    public void onItemClick(int position) {
- //       Intent activityIntent = new Intent(context, EventDescriptionsActivity.class);
- //       startActivity(activityIntent);
-        Log.d(this.getClass().getName(),"onItemClick");
-//        NavHostFragment.findNavController(this).navigate(R.id.action_festival_to_event);
-    }
+
 }

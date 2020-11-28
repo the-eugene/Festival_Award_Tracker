@@ -4,9 +4,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 
 public class DBAware {
-    String ID = null; //this holds UID for all derived classes
+    public String ID = null; //this holds UID for all derived classes
 
-    public void setID(String ID) { this.ID = ID; }
+//    public void setID(String ID) { this.ID = ID; }
 
     /**
      * Save the object to FireBase, generate a new UID, or update an existing object

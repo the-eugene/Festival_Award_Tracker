@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker;
+package com.example.festivalawardtracker.ui.student;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -18,6 +18,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.festivalawardtracker.Contact;
+import com.example.festivalawardtracker.DBManager;
+import com.example.festivalawardtracker.Gender;
+import com.example.festivalawardtracker.Instrument;
+import com.example.festivalawardtracker.ParentActivity;
+import com.example.festivalawardtracker.Person;
+import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.Student;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
@@ -37,10 +45,10 @@ import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
 /**
  *
  * @author Carlos
- * @see StudentActivity
- * @see StudentActivityDisplay
+ * @see StudentNewActivity
+ * @see StudentSummeryActivity
  */
-public class StudentActivityEdit extends AppCompatActivity {
+public class StudentEditActivity extends AppCompatActivity {
     private static final String TAG = "STUDENT_EDIT";
     String[] INSTRUMENTS = Instrument.Options();
     CheckBox[] checkboxes = new CheckBox[INSTRUMENTS.length];
@@ -49,15 +57,15 @@ public class StudentActivityEdit extends AppCompatActivity {
     /**
      * Sets all the layout components to their required values, where necessary.
      * @param savedInstanceState Add.
-     * @see StudentActivityDisplay Where this activity is started.
+     * @see StudentSummeryActivity Where this activity is started.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.students_new_activity); // This layout is also used by StudentActivity.java
+        setContentView(R.layout.students_new_activity); // This layout is also used by StudentNewActivity.java
 
         Intent intent = getIntent();
-        _studentID = intent.getStringExtra(StudentActivityDisplay.STUDENT_ID);
+        _studentID = intent.getStringExtra(StudentSummeryActivity.STUDENT_ID);
 //
         Student studentDB = DBManager.Students.get(_studentID);
         if (studentDB == null) Log.wtf(this.getClass().getSimpleName(),"NO ID PASSED");
@@ -163,7 +171,7 @@ public class StudentActivityEdit extends AppCompatActivity {
         btnAddParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent activityIntent = new Intent(StudentActivityEdit.this, ParentActivity.class);
+                Intent activityIntent = new Intent(StudentEditActivity.this, ParentActivity.class);
                 startActivity(activityIntent);
             }
         });
@@ -269,4 +277,4 @@ public class StudentActivityEdit extends AppCompatActivity {
         }
         return localDate;
     } // End of stringToLocalDate(...)
-} // End of StudentActivity class
+} // End of StudentNewActivity class

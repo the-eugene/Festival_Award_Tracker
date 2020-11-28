@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker;
+package com.example.festivalawardtracker.ui.student;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,19 +12,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.festivalawardtracker.DBManager;
+import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.Student;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-public class StudentActivityDisplay extends AppCompatActivity {
+public class StudentSummeryActivity extends AppCompatActivity {
 
     public FloatingActionButton fabEditStudent;
     RecyclerView recyclerView;
-    StudentDisplayRecyclerAdapter studentDisplayRecyclerAdapter;
+    StudentSummaryRecyclerAdapter studentSummaryRecyclerAdapter;
     List<String> year,event,ccs,tp,awards,level;
     public static final String STUDENT_ID = "STUDENT_ID";
 
@@ -41,8 +43,8 @@ public class StudentActivityDisplay extends AppCompatActivity {
         level = new ArrayList<>();
 
         recyclerView = findViewById(R.id.StudentDisplayRecyclerview);
-        studentDisplayRecyclerAdapter = new StudentDisplayRecyclerAdapter(year,event,ccs,tp,awards,level);
-        recyclerView.setAdapter(studentDisplayRecyclerAdapter);
+        studentSummaryRecyclerAdapter = new StudentSummaryRecyclerAdapter(year,event,ccs,tp,awards,level);
+        recyclerView.setAdapter(studentSummaryRecyclerAdapter);
         recyclerView.setMotionEventSplittingEnabled(false);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
@@ -57,7 +59,7 @@ public class StudentActivityDisplay extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         final String StudentID=getIntent().getExtras().getString("StudentID",null);
         Log.d("STUDENT_DISPLAY", "StudentID: " + StudentID);
-        Student s=DBManager.Students.get(StudentID);
+        Student s= DBManager.Students.get(StudentID);
         if (s==null) Log.wtf(this.getClass().getSimpleName(),"NO ID PASSED");
 
         TextView name=findViewById(R.id.textViewStudentFullName);
@@ -82,7 +84,7 @@ public class StudentActivityDisplay extends AppCompatActivity {
         fabEditStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent activityIntent = new Intent( view.getContext(), StudentActivityEdit.class);
+                Intent activityIntent = new Intent( view.getContext(), StudentEditActivity.class);
                 activityIntent.putExtra(STUDENT_ID, StudentID);
                 startActivity(activityIntent);
             }

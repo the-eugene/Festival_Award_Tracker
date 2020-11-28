@@ -1,4 +1,4 @@
-package com.example.festivalawardtracker;
+package com.example.festivalawardtracker.ui.event;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,14 +8,17 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.ui.event.EventRatingsRecyclerAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class StudentRatingsActivity extends AppCompatActivity {
+public class EventsRatingsActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    StudentRatingsRecyclerAdapter studentRatingsRecyclerAdapter;
+    EventRatingsRecyclerAdapter eventRatingsRecyclerAdapter;
     List<String> name,age,birthday;
 
     @Override
@@ -29,8 +32,8 @@ public class StudentRatingsActivity extends AppCompatActivity {
 
 
         recyclerView =findViewById(R.id.recyclerView_studentRatings);
-        studentRatingsRecyclerAdapter = new StudentRatingsRecyclerAdapter(name,age,birthday);
-        recyclerView.setAdapter(studentRatingsRecyclerAdapter);
+        eventRatingsRecyclerAdapter = new EventRatingsRecyclerAdapter(name,age,birthday);
+        recyclerView.setAdapter(eventRatingsRecyclerAdapter);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);

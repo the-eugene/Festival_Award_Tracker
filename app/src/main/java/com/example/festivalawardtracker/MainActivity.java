@@ -73,9 +73,6 @@ public class MainActivity extends AppCompatActivity {
                 NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
                 NavigationUI.setupWithNavController(navigationView, navController);
 
-                // TODO: FRAGMENT HOME RECYCLERVIEW
-                database = FirebaseDatabase.getInstance().getReference();
-                recyclerView = findViewById(R.id.recyclerView_student);
 
                 Log.d("MAIN_ACTIVITY", "Switch: 1 case");
                 break;
@@ -148,56 +145,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void createSignInIntent(View view) {
-        // [START auth_fui_create_intent]
-        // Choose authentication providers
-        List<AuthUI.IdpConfig> providers = Arrays.asList(
-                new AuthUI.IdpConfig.EmailBuilder().build());
 
-        // Create and launch sign-in intent
-        startActivityForResult(
-                AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setAvailableProviders(providers)
-                        .build(),
-                RC_SIGN_IN);
-        // [END auth_fui_create_intent]
-    }
-
-    public void questionIsItClickable(View view) {
-        Toast.makeText(this, "It is toasting, yeah.", Toast.LENGTH_SHORT).show();
-    }
-
-// TODO: Works Here but I think it should have its own class?
-
-    public void saveStudent(View view) {
-        Toast.makeText(this, "Student Saved", Toast.LENGTH_SHORT).show();
-
-        database = FirebaseDatabase.getInstance().getReference("student");
-        EditText editFirstName = (EditText) findViewById(R.id.editTextPersonName);
-//        EditText editLastName = (EditText) findViewById(R.id.editTextStudentLastName);
-//        EditText editBirthDate = (EditText) findViewById(R.id.editTextBirthDate);
-//        Spinner editGender = (Spinner) findViewById(R.id.spinnerGender);
-//        EditText editPhoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
-//        Spinner editInstruments = (Spinner) findViewById(R.id.spinnerInstruments);
-//        EditText editTeacher = (EditText) findViewById(R.id.editTextTeachersName);
-
-        String FirstName = editFirstName.getText().toString().trim();
-//        String lastName = editLastName.getText().toString().trim();
-//        String birthDate = editBirthDate.getText().toString().trim();
-//        String gender = editGender.getSelectedItem().toString();
-//        String phoneNumber = editPhoneNumber.getText().toString().trim();
-//        String instrument = editInstruments.getSelectedItem().toString();
-//        String teacher = editTeacher.getText().toString().trim();
-
-//        studentDatabase student = new studentDatabase(FirstName, lastName, birthDate, gender, phoneNumber, instrument, teacher);
-//        studentDatabase student = new studentDatabase(FirstName);
-        String id = database.push().getKey();
-
-//        database.child(id).setValue(student);
-
-
-    }
 
     /**
      * @author Carlos
