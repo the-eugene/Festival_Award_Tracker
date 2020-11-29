@@ -5,7 +5,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,23 +29,22 @@ public class StudentSummeryActivity extends AppCompatActivity {
     public FloatingActionButton fabEditStudent;
     RecyclerView recyclerView;
     StudentSummaryRecyclerAdapter studentSummaryRecyclerAdapter;
-    List<String> year,event,ccs,tp,awards,level;
-    public static final String STUDENT_ID = "STUDENT_ID";
+    public static final String STUDENT_ID = "StudentID";
+    String StudentID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.students_display_activity);
-
-        year = new ArrayList<>();
-        event = new ArrayList<>();
-        ccs = new ArrayList<>();
-        tp = new ArrayList<>();
-        awards = new ArrayList<>();
-        level = new ArrayList<>();
+        if (getIntent().hasExtra(STUDENT_ID))
+            StudentID = getIntent().getExtras().getString(STUDENT_ID);
+        else
+            StudentID= getPreferences(Context.MODE_PRIVATE).getString(STUDENT_ID,null);
+        if(StudentID==null) Log.wtf(this.getClass().getSimpleName(),"NO ID PASSED");
+        Student s= DBManager.Students.get(StudentID);
 
         recyclerView = findViewById(R.id.StudentDisplayRecyclerview);
-        studentSummaryRecyclerAdapter = new StudentSummaryRecyclerAdapter(year,event,ccs,tp,awards,level);
+        studentSummaryRecyclerAdapter = new StudentSummaryRecyclerAdapter(s,this);
         recyclerView.setAdapter(studentSummaryRecyclerAdapter);
         recyclerView.setMotionEventSplittingEnabled(false);
 
@@ -57,10 +58,7 @@ public class StudentSummeryActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        final String StudentID=getIntent().getExtras().getString("StudentID",null);
-        Log.d("STUDENT_DISPLAY", "StudentID: " + StudentID);
-        Student s= DBManager.Students.get(StudentID);
-        if (s==null) Log.wtf(this.getClass().getSimpleName(),"NO ID PASSED");
+
 
         TextView name=findViewById(R.id.textViewStudentFullName);
         name.setText(s.getFullName());
@@ -89,72 +87,19 @@ public class StudentSummeryActivity extends AppCompatActivity {
                 startActivity(activityIntent);
             }
         });
+    }
 
-        year.add("2000");
-        year.add("2000");
-        year.add("2000");
-        year.add("2000");
-        year.add("2000");
-        year.add("2000");
-        year.add("2000");
-        year.add("2000");
-        year.add("2000");
-        year.add("2000");
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //run queries here if necessary...
+    }
 
-        event.add("piano");
-        event.add("piano");
-        event.add("piano");
-        event.add("piano");
-        event.add("piano");
-        event.add("piano");
-        event.add("piano");
-        event.add("piano");
-        event.add("piano");
-        event.add("piano");
-
-
-        ccs.add("4");
-        ccs.add("4");
-        ccs.add("4");
-        ccs.add("4");
-        ccs.add("4");
-        ccs.add("4");
-        ccs.add("4");
-        ccs.add("4");
-        ccs.add("4");
-        ccs.add("4");
-
-        tp.add("200");
-        tp.add("200");
-        tp.add("200");
-        tp.add("200");
-        tp.add("200");
-        tp.add("200");
-        tp.add("200");
-        tp.add("200");
-        tp.add("200");
-        tp.add("200");
-
-        awards.add("Smile");
-        awards.add("Smile");
-        awards.add("Smile");
-        awards.add("Smile");
-        awards.add("Smile");
-        awards.add("Smile");
-        awards.add("Smile");
-        awards.add("Smile");
-        awards.add("Smile");
-        awards.add("Smile");
-
-        level.add("5");
-        level.add("5");
-        level.add("5");
-        level.add("5");
-        level.add("5");
-        level.add("5");
-        level.add("5");
-        level.add("5");
-        level.add("5");
-        level.add("5");
+    protected void onPause() {
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(STUDENT_ID,StudentID);
+        editor.apply();
+        super.onPause();
     }
 }

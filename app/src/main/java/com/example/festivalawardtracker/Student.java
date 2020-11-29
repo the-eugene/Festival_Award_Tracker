@@ -54,7 +54,7 @@ public class Student extends Person {
     public void addPerformance(String eventID, LocalDate date, String level, int rating){
         Performance p=new Performance(eventID,date,level, rating);
         performances.add(p);
-        addAward(p);
+        //addAward(p); //TODO Add awards as a separate step!
         DBManager.Students.put(ID,this); //instead of save
     }
 

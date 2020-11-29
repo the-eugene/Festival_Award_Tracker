@@ -1,6 +1,7 @@
 package com.example.festivalawardtracker;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 
 public class Performance {
     String eventID;
@@ -56,5 +57,15 @@ public class Performance {
 
     public void setDate(String date) {
         this.date = LocalDate.parse(date);
+    }
+
+    public static class sortByYear implements Comparator<Performance>
+    {
+        public int compare(Performance a, Performance b)
+        {
+            int byYear = a.retrieveEvent().retrieveYear().sequence - b.retrieveEvent().retrieveYear().sequence;
+            int byAlphabet = DBManager.EventDescriptions.get(a.retrieveEvent().eventDescriptionID).name.compareTo(DBManager.EventDescriptions.get(b.retrieveEvent().eventDescriptionID).name);
+            return byYear==0?byAlphabet:-byYear;
+        }
     }
 }

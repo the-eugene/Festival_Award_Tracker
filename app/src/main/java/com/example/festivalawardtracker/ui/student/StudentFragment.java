@@ -76,7 +76,8 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
                 });
             }
         };
-        new Thread(new queryThread(getActivity())).start();
+        if (DBManager.Students.size()==0)
+            new Thread(new queryThread(getActivity())).start(); //only do this if nothing is preloaded
 
 
         recyclerView.setMotionEventSplittingEnabled(false);
