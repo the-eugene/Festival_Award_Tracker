@@ -86,11 +86,4 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         editor.apply();
         super.onPause();
     }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        savedInstanceState.putString(FESTIVAL_ID, fID);
-        Log.d(this.getClass().getName(),"Saving State");
-    }
 }
