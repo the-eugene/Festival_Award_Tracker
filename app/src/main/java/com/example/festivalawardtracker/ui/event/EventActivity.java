@@ -1,8 +1,11 @@
 package com.example.festivalawardtracker.ui.event;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,12 +14,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.DBManager;
+import com.example.festivalawardtracker.Event;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -29,6 +35,8 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
     RecyclerView recyclerView;
     List<String> eventName, startDate, endDate, eventInstruments;
     FloatingActionButton newEvent;
+    Context thisContext;
+    Context context;
     TextView event,eventDescription;
 
     /**
@@ -48,12 +56,33 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
 
         event = findViewById(R.id.textView_eventName);
         eventDescription = findViewById(R.id.textView_eventDescription);
+        Log.d(this.getClass().getName(),"onCreateView");
 
         /* RECYCLER */
         recyclerView = findViewById(R.id.recyclerView_eventsActivity);
-
-        eventActivityRecyclerAdapter= new EventActivityRecyclerAdapter(eventName,startDate,endDate,eventInstruments, this);
+        eventActivityRecyclerAdapter= new EventActivityRecyclerAdapter(DBManager.Events);
         recyclerView.setAdapter(eventActivityRecyclerAdapter);
+
+
+        class queryThread implements Runnable{
+            final Activity activity;
+            queryThread(Activity activity){
+                this.activity = activity;
+            }
+            @Override
+            public void run(){
+                DBManager.Events.loadAll();
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        eventActivityRecyclerAdapter.updateEventList();
+                        eventActivityRecyclerAdapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        }
+//        new Thread(new queryThread()).start();
+
         recyclerView.setMotionEventSplittingEnabled(false);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
@@ -120,6 +149,9 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+//    private Activity getActivity() {
+//    }
 
     /**
      *
