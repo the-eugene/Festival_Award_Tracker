@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class StudentSummeryActivity extends AppCompatActivity {
+public class StudentSummaryActivity extends AppCompatActivity {
 
     public FloatingActionButton fabEditStudent;
     RecyclerView recyclerView;

@@ -34,9 +34,6 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
@@ -47,7 +44,7 @@ import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
  *
  * @author Carlos
  * @see StudentNewActivity
- * @see StudentSummeryActivity
+ * @see StudentSummaryActivity
  */
 public class StudentEditActivity extends AppCompatActivity {
     private static final String TAG = "STUDENT_EDIT";
@@ -59,7 +56,7 @@ public class StudentEditActivity extends AppCompatActivity {
     /**
      * Sets all the layout components to their required values, where necessary.
      * @param savedInstanceState Add.
-     * @see StudentSummeryActivity Where this activity is started.
+     * @see StudentSummaryActivity Where this activity is started.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +64,7 @@ public class StudentEditActivity extends AppCompatActivity {
         setContentView(R.layout.students_new_activity); // This layout is also used by StudentNewActivity.java
 
         Intent intent = getIntent();
-        _studentID = intent.getStringExtra(StudentSummeryActivity.STUDENT_ID);
+        _studentID = intent.getStringExtra(StudentSummaryActivity.STUDENT_ID);
 
         studentDB = DBManager.Students.get(_studentID);
         if (studentDB == null) Log.wtf(this.getClass().getSimpleName(),"NO ID PASSED");

@@ -108,7 +108,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
      */
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent (thisContext, StudentSummeryActivity.class);
+        Intent intent = new Intent (thisContext, StudentSummaryActivity.class);
         startActivity(intent);
     }
 

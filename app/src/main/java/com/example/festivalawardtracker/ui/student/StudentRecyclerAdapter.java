@@ -119,7 +119,7 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecycler
 //                    recyclerViewClickInterface.onItemClick(getAdapterPosition()); // don't know what this did but it was crashing
                     int p=getAdapterPosition();
                     Log.d("RecyclerView Click",students.get(studentIDs.get(p)).getFullName());
-                    Intent intent = new Intent( v.getContext(), StudentSummeryActivity.class);
+                    Intent intent = new Intent( v.getContext(), StudentSummaryActivity.class);
                     intent.putExtra("StudentID", studentIDs.get(p));
                     v.getContext().startActivity(intent);
                 }
