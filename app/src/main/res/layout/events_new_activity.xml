@@ -23,27 +23,35 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
-        android:id="@+id/editText_dates"
-        layout="@layout/include_dates"
-        android:layout_width="0dp"
+        android:id="@+id/dropdown_schoolYear"
+        layout="@layout/include_school_year_dropdown"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView_selectSudents"
+        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout4" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/include_rangeDates"
+        layout="@layout/include_dates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dropdown_schoolYear" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_selectSudents"
+        android:id="@+id/recyclerView_selectStudents"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/btnSaveEvent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_dates" />
+        app:layout_constraintTop_toBottomOf="@+id/include_rangeDates" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSaveEvent"
@@ -56,6 +64,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView_selectSudents" />
-
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView_selectStudents" />
 </androidx.constraintlayout.widget.ConstraintLayout>

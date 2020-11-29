@@ -18,6 +18,10 @@ import com.example.festivalawardtracker.ui.event.EventActivity;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+/**
+ *
+ * @author
+ */
 public class EventDescriptionsActivity extends AppCompatActivity implements RecyclerViewClickInterface {
 
     private static final String FESTIVAL_ID = "festivalID";
@@ -27,11 +31,17 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
     Context context;
     String fID;
 
+    /**
+     *
+     * @author
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(this.getClass().getName(),"onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_descriptions_recyclerview_activity);
+
         if (getIntent().hasExtra(FESTIVAL_ID))
             fID = getIntent().getExtras().getString(FESTIVAL_ID);
         else
@@ -39,6 +49,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
 
         if(fID==null) Log.wtf(this.getClass().getSimpleName(),"NO ID PASSED");
 
+        /* RECYCLER VIEW */
         recyclerView = findViewById(R.id.recyclerView_eventDescriptions);
 
         eventDescriptionsRecyclerAdapter = new EventDescriptionsRecyclerAdapter(fID, this);
@@ -48,7 +59,8 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        newEventDescription = findViewById(R.id.goTo_EventDescriptionsNewActivity);
+        /* BUTTON NEW EVENT DESCRIPTION */
+        newEventDescription = findViewById(R.id.btnNewEventDescription);
         newEventDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +68,6 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
                 startActivity(Intent);
             }
         });
-
 
         /* ACTION BAR */
         Toolbar toolbar = findViewById(R.id.toolbar_eventDescriptions);
@@ -66,19 +77,31 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     } // End OnCreate
 
-
+    /**
+     *
+     * @author
+     * @param position
+     */
     @Override
     public void onItemClick(int position) {
         Intent Intent = new Intent(EventDescriptionsActivity.this, EventActivity.class);
         startActivity(Intent);
     }
 
+    /**
+     *
+     * @author
+     */
     @Override
     protected void onResume() {
         super.onResume();
         eventDescriptionsRecyclerAdapter.update();
     }
 
+    /**
+     *
+     * @author
+     */
     protected void onPause() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();

@@ -26,6 +26,7 @@ import com.example.festivalawardtracker.ParentActivity;
 import com.example.festivalawardtracker.Person;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.Student;
+import com.example.festivalawardtracker.ui.Utilities;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
@@ -167,7 +168,7 @@ public class StudentNewActivity extends AppCompatActivity {
                 newStudent.middleName = middleNameInput.getText().toString();
                 newStudent.lastName = lastNameInput.getText().toString();
                 newStudent.gender = Person.Gender.valueOf(genderInput.getText().toString().toUpperCase());
-                newStudent.birthday = stringToLocalDate(birthdayInput.getText().toString());
+                newStudent.birthday = Utilities.stringToLocalDate(birthdayInput.getText().toString());
 
                 /* Contact.java */
                 newContact.phone = phoneInput.getText().toString();
@@ -191,38 +192,4 @@ public class StudentNewActivity extends AppCompatActivity {
             }
         });
     }
-
-    /**
-     * It parses a string date in the given format into a LocalDate data type.
-     * @param date Birthday, or any other date from the UI.
-     */
-    public LocalDate stringToLocalDate(String date) {
-        /*
-         * MaterialDatePicker: https://developer.android.com/reference/com/google/android/material/datepicker/MaterialDatePicker.Builder?authuser=1
-         * Date parsing issue: https://docs.oracle.com/javase/tutorial/datetime/iso/format.html
-         */
-        DateTimeFormatter pattern;
-        LocalDate localDate = null;
-
-        try {
-
-            try {
-                pattern = DateTimeFormatter.ofPattern("MMM dd, yyyy");
-                localDate = LocalDate.parse(date, pattern);
-            } catch (DateTimeParseException e1) {
-                Log.e("DATE_TIME_PARSING", "Failed at first case.");
-            }
-
-            try {
-                pattern = DateTimeFormatter.ofPattern("MMM d, yyyy");
-                localDate = LocalDate.parse(date, pattern);
-            } catch (DateTimeParseException e2) {
-                Log.e("DATE_TIME_PARSING", "Failed at second case.");
-            }
-
-        } catch (DateTimeParseException e2) {
-            Log.wtf("DATE_TIME_PARSING", "Something terrible has just happened.");
-        }
-        return localDate;
-    } // End of stringToLocalDate()
-} // End of StudentNewActivity class
+} // End of class

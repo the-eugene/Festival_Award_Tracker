@@ -18,15 +18,24 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author
+ */
 public class EventActivity extends AppCompatActivity implements RecyclerViewClickInterface {
 
-    private Toolbar toolbat;
+    private static final String TAG = "EVENT_ACTIVITY";
     EventActivityRecyclerAdapter eventActivityRecyclerAdapter;
     RecyclerView recyclerView;
     List<String> eventName, startDate, endDate, eventInstruments;
     FloatingActionButton newEvent;
     TextView event,eventDescription;
 
+    /**
+     *
+     * @author
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +49,7 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
         event = findViewById(R.id.textView_eventName);
         eventDescription = findViewById(R.id.textView_eventDescription);
 
+        /* RECYCLER */
         recyclerView = findViewById(R.id.recyclerView_eventsActivity);
 
         eventActivityRecyclerAdapter= new EventActivityRecyclerAdapter(eventName,startDate,endDate,eventInstruments, this);
@@ -93,7 +103,8 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
         eventInstruments.add("piano");
         eventInstruments.add("piano");
 
-        newEvent = findViewById(R.id.goTo_EventNewActivity);
+        /* BUTTON NEW EVENT ACTIVITY */
+        newEvent = findViewById(R.id.btnNewEventActivity);
         newEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,13 +114,18 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
         });
 
         /* ACTION BAR */
-        toolbat = findViewById(R.id.toolbarEventDescriptions);
-        toolbat.setTitle("Event");
-        toolbat.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbat);
+        Toolbar toolbar = findViewById(R.id.toolbarEventDescriptions);
+        toolbar.setTitle("Event");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    /**
+     *
+     * @author
+     * @param position
+     */
     @Override
     public void onItemClick(int position) {
         Intent activityIntent = new Intent(EventActivity.this, EventsRatingsActivity.class);

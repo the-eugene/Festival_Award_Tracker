@@ -20,6 +20,7 @@ import com.example.festivalawardtracker.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 /**
+ *
  * @author Carlos
  */
 public class EventDescriptionsNewActivity extends AppCompatActivity {
