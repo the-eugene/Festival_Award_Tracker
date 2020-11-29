@@ -127,6 +127,11 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
             }
         });
         super.onCreateOptionsMenu(menu, inflater);
+    }
 
+    public void onResume() {
+        studentRecyclerAdapter.updateStudentList();
+        studentRecyclerAdapter.notifyDataSetChanged();
+        super.onResume();
     }
 }
