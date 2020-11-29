@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker.ui.student;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,21 +9,30 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.DBManager;
+import com.example.festivalawardtracker.Event;
+import com.example.festivalawardtracker.EventDescription;
+import com.example.festivalawardtracker.Performance;
 import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.SchoolYear;
+import com.example.festivalawardtracker.Student;
+import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsRecyclerAdapter;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentSummaryRecyclerAdapter.ViewHolder> {
+    private Activity activity;
+    private final Student student;
+    private List<Performance>performances;
 
-    List<String> year,event,ccs,tp,awards,level;
-
-    public StudentSummaryRecyclerAdapter(List<String> year, List<String> event, List<String> ccs, List<String> tp, List<String> awards, List<String> level) {
-        this.year = year;
-        this.event = event;
-        this.ccs = ccs;
-        this.tp = tp;
-        this.awards = awards;
-        this.level = level;
+    public StudentSummaryRecyclerAdapter(final Student student, Activity activity) {
+        this.activity=activity;
+        this.student=student;
+        this.performances=new ArrayList<>(student.performances);
+        Collections.sort(performances, new Performance.sortByYear());
     }
 
     @NonNull
@@ -36,22 +46,22 @@ public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentS
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.year.setText(year.get(position));
-        holder.event.setText(event.get(position));
-        holder.ccs.setText(ccs.get(position));
-        holder.tp.setText(tp.get(position));
-        holder.awards.setText(awards.get(position));
-        holder.level.setText(level.get(position));
+        if (performances.size()>0){
+            Event event =performances.get(position).retrieveEvent();
+            EventDescription ed=DBManager.EventDescriptions.get(event.getEventDescriptionID());
+            SchoolYear year = event.retrieveYear();
+            holder.year.setText(year.getName());
+            holder.event.setText(ed.getName());
+            holder.ccs.setText("WIP");
+            holder.tp.setText("WIP");
+            holder.awards.setText(((Integer)performances.get(position).getRating()).toString());
+            holder.level.setText(performances.get(position).getLevel());
+        }
     }
 
     @Override
     public int getItemCount() {
-
-        if (event.size() == 0){
-            return 0;
-        }else {
-            return event.size();
-        }
+        return student.performances.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
