@@ -20,7 +20,6 @@ import java.util.Map;
 
 public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecyclerAdapter.ViewHolder> {
 
-
     Map<String, Festival> festivalNames;
     List<String> festivalIDs = new ArrayList<>();
 
@@ -40,7 +39,7 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Log.d("Festival Recycler: FestivalID.size()", ((Integer) festivalIDs.size()).toString());
+        Log.e("Festival Recycler: FestivalID.size()", ((Integer) festivalIDs.size()).toString());
         if(festivalIDs.size()>0){
             String ID = festivalIDs.get(position);
             Festival f = festivalNames.get(ID);
@@ -81,5 +80,5 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
                            }
             });
         }
-    }
-}
+    } // End ViewHolder
+} // End class

@@ -76,15 +76,9 @@ public class FestivalNewActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(v.getContext(), "New festival saved", Toast.LENGTH_LONG);
                 toast.show();
 
-                //clear input boxes
-                editFestivalName.setText("");
-                editIsNFMC.setText("");
-
-                // TODO If finishing the activity, clearing the fields is not necessary. Carlos.
-//                finish();
-
+                finish();
             }
-        });
+        }); // End OnClickListener
 
     } // End OnCreate
 }

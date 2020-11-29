@@ -28,7 +28,6 @@ public class EventDescriptionsNewActivity extends AppCompatActivity {
     AutoCompleteTextView autoCompleteTextView;
     String _festivalID = "festivalID_test";
 
-    // TODO Cayla, please, add in @see which classes are important for this class
     /**
      *
      * @author Carlos

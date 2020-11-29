@@ -178,8 +178,9 @@ public class StudentEditActivity extends AppCompatActivity {
         });
 
         /* SAVE STUDENT BUTTON */
-        Button studentSaveButton = (Button) findViewById(R.id.btnSaveStudent);
-        studentSaveButton.setOnClickListener(new View.OnClickListener() {
+        Button btnStudentUpdate = (Button) findViewById(R.id.btnSaveStudent);
+        btnStudentUpdate.setText("UPDATE");
+        btnStudentUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             Student newStudent = studentDB;

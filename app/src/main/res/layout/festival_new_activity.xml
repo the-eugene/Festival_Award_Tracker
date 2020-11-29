@@ -22,20 +22,19 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutNewtFestivalName"
+        android:id="@+id/textInputLayoutNewFestivalName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
         android:hint="@string/festival_name"
         app:boxBackgroundMode="outline"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout3">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText_festivalName"
@@ -48,16 +47,15 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
         android:hint="@string/is_this_festival_nfmc"
         app:boxBackgroundMode="outline"
         app:endIconMode="dropdown_menu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewtFestivalName">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNewFestivalName">
 
         <AutoCompleteTextView
             android:id="@+id/autoCompleteTextViewDropdownNewFestivalNFMC"
@@ -70,7 +68,7 @@
         android:layout_width="148dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/save_festival"
+        android:text="@string/save"
         app:flow_horizontalAlign="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

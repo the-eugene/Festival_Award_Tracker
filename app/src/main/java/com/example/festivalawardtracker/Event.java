@@ -26,9 +26,8 @@ public class Event extends DBAware {
     public String getStart() {
         return start.toString();
     }
-    public void setStart(String start) {
-        this.start = LocalDate.parse(start);
-    }
+    public void setStart(String start) { this.start = LocalDate.parse(start); }
+    public void setStartLocalDate(LocalDate start) { this.start = start; }
 
     public String getEnd() {
         return end.toString();
@@ -36,6 +35,7 @@ public class Event extends DBAware {
     public void setEnd(String end) {
         this.end = LocalDate.parse(end);
     }
+    public void setEndLocalDate(LocalDate end) { this.end = end; }
 
     public Contact getLocation() {
         return location;
@@ -60,3 +60,4 @@ public class Event extends DBAware {
         DBManager.Events.put(ID,this); //not save()
     }
 }
+

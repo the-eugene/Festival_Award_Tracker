@@ -92,7 +92,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
     }
 
     /**
-     *
+     * @author
      * @param v
      */
     @Override
@@ -101,12 +101,21 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
         startActivity(activityIntent);
     }
 
+    /**
+     * @author
+     * @param position
+     */
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent (thisContext, StudentSummeryActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * @author
+     * @param menu
+     * @param inflater
+     */
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
 
@@ -129,6 +138,9 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    /**
+     * @author Eugene
+     */
     public void onResume() {
         studentRecyclerAdapter.updateStudentList();
         studentRecyclerAdapter.notifyDataSetChanged();

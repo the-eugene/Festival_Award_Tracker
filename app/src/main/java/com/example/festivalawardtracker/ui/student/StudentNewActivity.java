@@ -52,8 +52,8 @@ public class StudentNewActivity extends AppCompatActivity {
 //    private final DatabaseReference mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
 //    public static final String MESSAGES_CHILD = "zzz_student_test";
 
-    String[] INSTRUMENTS = Instrument.Options();
-    CheckBox[] checkboxes = new CheckBox[INSTRUMENTS.length];
+    final String[] INSTRUMENTS = Instrument.Options();
+    final CheckBox[] checkboxes = new CheckBox[INSTRUMENTS.length];
 
     /**
      * Sets all the layout components to their required values, where necessary.

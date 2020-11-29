@@ -50,10 +50,11 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
         festivalRecyclerAdapter = new FestivalRecyclerAdapter(DBManager.Festivals);
         recyclerView.setAdapter(festivalRecyclerAdapter);
         Log.d(this.getClass().getName(),"onCreateView");
+
         class queryThread implements Runnable{
             final Activity activity;
             queryThread(Activity activity){
-                this.activity=activity;
+                this.activity = activity;
             }
             @Override
             public void run(){
@@ -72,15 +73,24 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
 
         recyclerView.setMotionEventSplittingEnabled(false);
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         // Setting up the FAB button for add festival
         // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener
-        fabNewFestival = root.findViewById(R.id.goTo_FestivalNewActivity);
+        fabNewFestival = root.findViewById(R.id.newFestivalActivity);
         fabNewFestival.setOnClickListener(this);
 
         return root;
+    } // End onCreateView
+
+    /**
+     * @author Eugene
+     */
+    public void onResume() {
+        festivalRecyclerAdapter.updateFestivalList();
+        festivalRecyclerAdapter.notifyDataSetChanged();
+        super.onResume();
     }
 
     /**
@@ -92,7 +102,5 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
         Intent activityIntent = new Intent( v.getContext(), FestivalNewActivity.class);
         startActivity(activityIntent);
         Log.d(this.getClass().getName(),"onClick");
-    }
-
-
-}
+    } // End onClick()
+} // End class

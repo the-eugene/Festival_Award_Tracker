@@ -64,7 +64,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
+    } // End OnCreate
 
 
     @Override
@@ -86,4 +86,4 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         editor.apply();
         super.onPause();
     }
-}
+} // End class
