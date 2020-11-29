@@ -2,6 +2,7 @@ package com.example.festivalawardtracker.ui.eventDescription;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class EventDescriptionsActivity extends AppCompatActivity implements RecyclerViewClickInterface {
 
+    private static final String FESTIVAL_ID = "festivalID";
     EventDescriptionsRecyclerAdapter eventDescriptionsRecyclerAdapter;
     RecyclerView recyclerView;
     FloatingActionButton newEventDescription;
@@ -30,9 +32,12 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         Log.d(this.getClass().getName(),"onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_descriptions_recyclerview_activity);
+        if (getIntent().hasExtra(FESTIVAL_ID))
+            fID = getIntent().getExtras().getString(FESTIVAL_ID);
+        else
+            fID= getPreferences(Context.MODE_PRIVATE).getString(FESTIVAL_ID,null);
 
-        fID=getIntent().getExtras().getString("festivalID",null);
-        if (fID == null) Log.wtf(this.getClass().getSimpleName(),"NO ID PASSED");
+        if(fID==null) Log.wtf(this.getClass().getSimpleName(),"NO ID PASSED");
 
         recyclerView = findViewById(R.id.recyclerView_eventDescriptions);
 
@@ -68,4 +73,24 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         startActivity(Intent);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        eventDescriptionsRecyclerAdapter.update();
+    }
+
+    protected void onPause() {
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(FESTIVAL_ID,fID);
+        editor.apply();
+        super.onPause();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString(FESTIVAL_ID, fID);
+        Log.d(this.getClass().getName(),"Saving State");
+    }
 }

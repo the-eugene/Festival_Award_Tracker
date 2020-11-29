@@ -25,25 +25,15 @@ import java.util.Map;
 public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<EventDescriptionsRecyclerAdapter.ViewHolder> {
 
 
+    private final String fID;
     private RecyclerViewClickInterface recyclerViewClickInterface;
     private List<EventDescription> eventDescriptions=new ArrayList<>();
-
+    private Activity activity;
     public EventDescriptionsRecyclerAdapter(final String fID, Activity activity) {
         Log.d(this.getClass().getName(),"Festival ID Passed: "+fID);
-        class queryThread implements Runnable{
-            final Activity activity;
-            queryThread(Activity activity){
-                this.activity=activity;
-            }
-            @Override
-            public void run(){
-                Query query= DBManager.currentDB.child(EventDescription.class.getSimpleName()).orderByChild("festivalID").equalTo(fID);
-                final Map<String,EventDescription> result=DBManager.EventDescriptions.getMapByQuery(query);
-                DBManager.EventDescriptions.putAll(result); //not strictly necessary, just keeps cache fresh
-                activity.runOnUiThread(new Runnable() {@Override public void run() {updateList(new ArrayList<>( result.values()));}});
-            }
-        }
-        new Thread(new queryThread(activity)).start();
+        this.fID=fID;
+        this.activity=activity;
+//        new Thread(new queryThread(activity,fID)).start();
     }
 
     private void updateList(List<EventDescription> r) {
@@ -73,6 +63,10 @@ public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<Event
        return eventDescriptions.size();
     }
 
+    public void update() {
+        new Thread(new queryThread(activity,fID)).start();
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView Name, Instrument;
 
@@ -92,5 +86,23 @@ public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<Event
             });
         }
 
+    }
+
+    class queryThread implements Runnable{
+        final Activity activity;
+        final String fID;
+
+        queryThread(Activity activity,String fID){
+            this.activity=activity;
+            this.fID=fID;
+        }
+        @Override
+        public void run(){
+            Log.d(this.getClass().getName(),"Running Query on "+fID);
+            Query query= DBManager.currentDB.child(EventDescription.class.getSimpleName()).orderByChild("festivalID").equalTo(fID);
+            final Map<String,EventDescription> result=DBManager.EventDescriptions.getMapByQuery(query);
+            DBManager.EventDescriptions.putAll(result); //not strictly necessary, just keeps cache fresh
+            activity.runOnUiThread(new Runnable() {@Override public void run() {updateList(new ArrayList<>( result.values()));}});
+        }
     }
 }
