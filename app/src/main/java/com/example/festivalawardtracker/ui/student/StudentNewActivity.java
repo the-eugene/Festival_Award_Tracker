@@ -32,9 +32,6 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Objects;
 
 import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
@@ -168,7 +165,7 @@ public class StudentNewActivity extends AppCompatActivity {
                 newStudent.middleName = middleNameInput.getText().toString();
                 newStudent.lastName = lastNameInput.getText().toString();
                 newStudent.gender = Person.Gender.valueOf(genderInput.getText().toString().toUpperCase());
-                newStudent.birthday = Utilities.stringToLocalDate(birthdayInput.getText().toString());
+                newStudent.birthday = Utilities.stringMaterialToLocalDate(birthdayInput.getText().toString());
 
                 /* Contact.java */
                 newContact.phone = phoneInput.getText().toString();

@@ -24,11 +24,12 @@ import java.util.Map;
 
 public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<EventDescriptionsRecyclerAdapter.ViewHolder> {
 
-
+    private final String TAG = this.getClass().toString();
     private final String fID;
     private RecyclerViewClickInterface recyclerViewClickInterface;
     private List<EventDescription> eventDescriptions=new ArrayList<>();
     private Activity activity;
+
     public EventDescriptionsRecyclerAdapter(final String fID, Activity activity) {
         Log.d(this.getClass().getName(),"Festival ID Passed: "+fID);
         this.fID=fID;
@@ -79,9 +80,9 @@ public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<Event
                 @Override
                 public void onClick(View v) {
 //                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
-                    Intent Intent = new Intent(v.getContext(), EventActivity.class);
-                    Intent.putExtra("EventID",eventDescriptions.get(getAdapterPosition()).ID);
-                    v.getContext().startActivity(Intent);
+                    Intent intent = new Intent(v.getContext(), EventActivity.class);
+                    intent.putExtra("EVENT_ID", eventDescriptions.get(getAdapterPosition()).ID);
+                    v.getContext().startActivity(intent);
                 }
             });
         }

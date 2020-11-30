@@ -20,6 +20,7 @@ import java.util.Map;
 
 public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecyclerAdapter.ViewHolder> {
 
+    public static final String FESTIVAL_ID = "FESTIVAL_ID";
     Map<String, Festival> festivalNames;
     List<String> festivalIDs = new ArrayList<>();
 
@@ -75,7 +76,7 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
                     int p=getAdapterPosition();
                     Log.d("RecycleView Click", festivalIDs.get(p));
                     Intent intent = new Intent(v.getContext(), EventDescriptionsActivity.class);
-                    intent.putExtra("festivalID",festivalIDs.get(p));
+                    intent.putExtra(FESTIVAL_ID, festivalIDs.get(p));
                     v.getContext().startActivity(intent);
                            }
             });

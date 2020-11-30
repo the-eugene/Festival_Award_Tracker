@@ -198,7 +198,7 @@ public class StudentEditActivity extends AppCompatActivity {
             newStudent.middleName = middleNameInput.getText().toString();
             newStudent.lastName = lastNameInput.getText().toString();
             newStudent.gender = Person.Gender.valueOf(genderInput.getText().toString().toUpperCase());
-            newStudent.birthday = Utilities.stringToLocalDate(birthdayInput.getText().toString());
+            newStudent.birthday = Utilities.stringMaterialToLocalDate(birthdayInput.getText().toString());
 
             /* Contact.java */
             newContact.phone = phoneInput.getText().toString();

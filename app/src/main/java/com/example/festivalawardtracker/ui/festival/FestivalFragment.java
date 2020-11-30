@@ -38,8 +38,7 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
      * @param savedInstanceState
      * @return root Returning view to the fragment
      */
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.festival_recyclerview_fragment_main, container, false);
 
@@ -85,6 +84,7 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
     } // End onCreateView
 
     /**
+     *
      * @author Eugene
      */
     public void onResume() {
@@ -99,8 +99,8 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
      */
     @Override
     public void onClick(View v) {
-        Intent activityIntent = new Intent( v.getContext(), FestivalNewActivity.class);
-        startActivity(activityIntent);
+        Intent intent = new Intent( v.getContext(), FestivalNewActivity.class);
+        startActivity(intent);
         Log.d(this.getClass().getName(),"onClick");
     } // End onClick()
 } // End class

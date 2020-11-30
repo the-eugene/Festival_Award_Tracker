@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.ui.Utilities;
 import com.example.festivalawardtracker.ui.event.EventActivity;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -24,13 +25,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  */
 public class EventDescriptionsActivity extends AppCompatActivity implements RecyclerViewClickInterface {
 
-    private static final String FESTIVAL_ID = "festivalID";
+    private static final String TAG = "EVENT_DESCRIPTIONS_ACTIVITY";
+
     EventDescriptionsRecyclerAdapter eventDescriptionsRecyclerAdapter;
     RecyclerView recyclerView;
-    FloatingActionButton newEventDescription;
-    Context context;
-    String fID;
 
+    private static final String FESTIVAL_ID = "FESTIVAL_ID";
+    public String festival_ID;;
+
+    FloatingActionButton btnNewEventDescription;
+    Context context;
     /**
      *
      * @author
@@ -38,21 +42,18 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(this.getClass().getName(),"onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_descriptions_recyclerview_activity);
+        Log.d(TAG,"onCreate" + this.getClass().getName());
 
-        if (getIntent().hasExtra(FESTIVAL_ID))
-            fID = getIntent().getExtras().getString(FESTIVAL_ID);
-        else
-            fID= getPreferences(Context.MODE_PRIVATE).getString(FESTIVAL_ID,null);
-
-        if(fID==null) Log.wtf(this.getClass().getSimpleName(),"NO ID PASSED");
+        /* Retrieving festival ID */
+        festival_ID = Utilities.retrieveExtra(this, FESTIVAL_ID);
 
         /* RECYCLER VIEW */
         recyclerView = findViewById(R.id.recyclerView_eventDescriptions);
 
-        eventDescriptionsRecyclerAdapter = new EventDescriptionsRecyclerAdapter(fID, this);
+        /* RECYCLER ADAPTER */
+        eventDescriptionsRecyclerAdapter = new EventDescriptionsRecyclerAdapter(festival_ID, this);
         recyclerView.setAdapter(eventDescriptionsRecyclerAdapter);
         recyclerView.setMotionEventSplittingEnabled(false);
 
@@ -60,12 +61,13 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         /* BUTTON NEW EVENT DESCRIPTION */
-        newEventDescription = findViewById(R.id.btnNewEventDescription);
-        newEventDescription.setOnClickListener(new View.OnClickListener() {
+        btnNewEventDescription = findViewById(R.id.btnNewEventDescription);
+        btnNewEventDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Intent = new Intent(EventDescriptionsActivity.this, EventDescriptionsNewActivity.class);
-                startActivity(Intent);
+                Intent intent = new Intent(EventDescriptionsActivity.this, EventDescriptionsNewActivity.class);
+                intent.putExtra(FESTIVAL_ID, festival_ID);
+                startActivity(intent);
             }
         });
 
@@ -84,8 +86,11 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
      */
     @Override
     public void onItemClick(int position) {
-        Intent Intent = new Intent(EventDescriptionsActivity.this, EventActivity.class);
-        startActivity(Intent);
+        Intent intent = new Intent(EventDescriptionsActivity.this, EventActivity.class);
+        Log.d(TAG, "OnItemClick: " + FESTIVAL_ID);
+        Log.d(TAG, "OnItemClick: " + festival_ID);
+        intent.putExtra(FESTIVAL_ID, festival_ID);
+        startActivity(intent);
     }
 
     /**
@@ -105,7 +110,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
     protected void onPause() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(FESTIVAL_ID,fID);
+        editor.putString(FESTIVAL_ID, festival_ID);
         editor.apply();
         super.onPause();
     }

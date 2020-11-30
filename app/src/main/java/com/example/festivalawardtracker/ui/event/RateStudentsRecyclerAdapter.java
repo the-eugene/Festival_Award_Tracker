@@ -20,9 +20,9 @@ import java.util.Map;
 
 public class RateStudentsRecyclerAdapter extends RecyclerView.Adapter<RateStudentsRecyclerAdapter.ViewHolder>{
     Map<String, Event> events;
-    List<String> eventsIDs=new ArrayList<>();
+    List<String> eventsIDs = new ArrayList<>();
     Map<String, EventDescription> eventDescription;
-    List<String> eventsDescriptionIDs=new ArrayList<>();
+    List<String> eventsDescriptionIDs = new ArrayList<>();
 
 
 //    List<String> eventName, startDate, endDate, eventInstruments;
@@ -66,8 +66,6 @@ public class RateStudentsRecyclerAdapter extends RecyclerView.Adapter<RateStuden
         eventsIDs.addAll(events.keySet());
     }
 
-
-
     @Override
     public int getItemCount() {
         if (events.size() == 0){
@@ -91,10 +89,8 @@ public class RateStudentsRecyclerAdapter extends RecyclerView.Adapter<RateStuden
                 @Override
                 public void onClick(View v) {
                     recyclerViewClickInterface.onItemClick(getAdapterPosition());
-
                 }
             });
-
         }
     }
-    }
+}

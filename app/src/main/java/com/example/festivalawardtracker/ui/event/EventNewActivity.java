@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.Event;
 import com.example.festivalawardtracker.MainActivity;
 import com.example.festivalawardtracker.R;
@@ -29,7 +31,6 @@ import java.util.Objects;
 import static com.example.festivalawardtracker.R.id.autoCompleteTextViewDropdownSchoolYear;
 import static com.example.festivalawardtracker.R.id.editText_endingDate;
 import static com.example.festivalawardtracker.R.id.editText_startingDate;
-import static com.example.festivalawardtracker.R.id.start;
 
 /**
  * @author Carlos
@@ -37,6 +38,7 @@ import static com.example.festivalawardtracker.R.id.start;
 public class EventNewActivity extends AppCompatActivity implements View.OnClickListener, RecyclerViewClickInterface {
 
     private static final String TAG = "EVENT_NEW_ACTIVITY";
+    private static final String EVENT_DESCRIPTION_ID = "EVENT_DESCRIPTION_ID";
     private TextInputEditText editTextDatePickerStart;
     private TextInputEditText editTextDatePickerEnd;
 
@@ -68,6 +70,9 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
         eventNewRecyclerAdapter = new EventNewRecyclerAdapter(studentNames,birthday,age,this);
         recyclerView.setAdapter(eventNewRecyclerAdapter);
         recyclerView.setMotionEventSplittingEnabled(false);
+
+        /* GETTING INTENT */
+        final String _event_description_ID = Utilities.retrieveExtra(this, EVENT_DESCRIPTION_ID);
 
         /* ACTION BAR */
         Toolbar toolbar = findViewById(R.id.toolbar_newEvent);
@@ -116,20 +121,12 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View v) {
                 Event newEvent = new Event();
-//                String schoolYearID;          GET FROM DROPDOWN LIST FOR SCHOOL YEARS
-//                LocalDate start;              USE
-//                LocalDate end;                USE
-//                Contact location;             DON'T USE IT
-//                String eventDescriptionID;    GET FROM DB
-
+//
                 // TODO I'm still working on this class. Carlos
                 newEvent.setSchoolYearID(schoolYearInput.getText().toString());
-                newEvent.setStartLocalDate(Utilities.stringToLocalDate(Objects.requireNonNull(startingDateInput.getText()).toString()));
-                newEvent.setEndLocalDate(Utilities.stringToLocalDate(Objects.requireNonNull(endingDateInput.getText()).toString()));
-
-                Log.d(TAG, "onClick: " + newEvent.getSchoolYearID());
-                Log.d(TAG, "onClick: " + newEvent.getStart());
-                Log.d(TAG, "onClick: " + newEvent.getEnd());
+                newEvent.setStartLocalDate(Utilities.stringMaterialToLocalDate(Objects.requireNonNull(startingDateInput.getText()).toString()));
+                newEvent.setEndLocalDate(Utilities.stringMaterialToLocalDate(Objects.requireNonNull(endingDateInput.getText()).toString()));
+                newEvent.setEventDescriptionID(_event_description_ID);
 
                 Toast toast = Toast.makeText(v.getContext(), "New event saved", Toast.LENGTH_SHORT);
                 toast.show();

@@ -79,6 +79,5 @@ public class FestivalNewActivity extends AppCompatActivity {
                 finish();
             }
         }); // End OnClickListener
-
     } // End OnCreate
-}
+} // End class
