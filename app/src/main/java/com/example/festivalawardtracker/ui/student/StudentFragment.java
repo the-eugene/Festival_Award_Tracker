@@ -53,8 +53,6 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
         thisContext = container.getContext();
         Context context = root.getContext();
 
-
-
         recyclerView = root.findViewById(R.id.recyclerView_student);
         studentRecyclerAdapter = new StudentRecyclerAdapter(DBManager.Students,this);
         recyclerView.setAdapter(studentRecyclerAdapter);

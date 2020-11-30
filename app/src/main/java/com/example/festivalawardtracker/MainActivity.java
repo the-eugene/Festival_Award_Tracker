@@ -6,10 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Menu;
-import android.widget.EditText;
-import android.widget.Toast;
 
 
 import com.firebase.ui.auth.AuthUI;
@@ -18,7 +15,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
@@ -29,11 +25,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 NavigationView navigationView = findViewById(R.id.nav_view);
 
                 mAppBarConfiguration = new AppBarConfiguration.Builder(
-                        R.id.nav_home, R.id.nav_festival, R.id.nav_event)
+                        R.id.nav_home, R.id.nav_festival, R.id.nav_ratings)
                         .setDrawerLayout(drawer)
                         .build();
                 NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

@@ -40,7 +40,7 @@ public class FestivalNewActivity extends AppCompatActivity {
 
         /* DROPDOWN LIST is NFMC festival? Yes or No question */
         String[] YESORNO = Answer.Options();
-        // ADAPTER
+        // Drop-down list adapter
         ArrayAdapter<String> adapterYesOrNO =
                 new ArrayAdapter<>(
                         this,

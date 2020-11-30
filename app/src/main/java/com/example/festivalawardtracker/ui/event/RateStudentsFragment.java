@@ -48,6 +48,7 @@ public class RateStudentsFragment extends Fragment implements View.OnClickListen
         recyclerView = root.findViewById(R.id.recyclerView_eventsFragment);
         rateStudentsRecyclerAdapter = new RateStudentsRecyclerAdapter(DBManager.Events, DBManager.EventDescriptions,this);
         recyclerView.setAdapter(rateStudentsRecyclerAdapter);
+
         class queryThread implements Runnable{
             final Activity activity;
             queryThread(Activity activity){
@@ -65,15 +66,13 @@ public class RateStudentsFragment extends Fragment implements View.OnClickListen
                 });
             }
         };
+
         new Thread(new queryThread(getActivity())).start();
-
-
 
         recyclerView.setMotionEventSplittingEnabled(false);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
-
 
         return root; // Returning the view.
     }

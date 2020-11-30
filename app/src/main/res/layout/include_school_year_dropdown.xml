@@ -30,7 +30,7 @@
             android:id="@+id/autoCompleteTextViewDropdownSchoolYear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="2019-2020"
+            android:text="School Year"
             android:enabled="false"
             android:inputType="none"/>
     </com.google.android.material.textfield.TextInputLayout>
