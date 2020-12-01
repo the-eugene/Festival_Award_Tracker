@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -113,15 +114,30 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecycler
             birthday = itemView.findViewById(R.id.Birthday);
             age = itemView.findViewById(R.id.Age);
             awardsInfo = itemView.findViewById((R.id.AwardsInfo));
+
+            /* Single press for StudentSummaryActivity */
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View view) {
 //                    recyclerViewClickInterface.onItemClick(getAdapterPosition()); // don't know what this did but it was crashing
-                    int p=getAdapterPosition();
-                    Log.d("RecyclerView Click",students.get(studentIDs.get(p)).getFullName());
-                    Intent intent = new Intent( v.getContext(), StudentSummaryActivity.class);
-                    intent.putExtra("StudentID", studentIDs.get(p));
-                    v.getContext().startActivity(intent);
+                    int adapterPosition = getAdapterPosition();
+                    Log.d("RecyclerView single click", students.get(studentIDs.get(adapterPosition)).getFullName());
+                    Intent intent = new Intent( view.getContext(), StudentSummaryActivity.class);
+                    intent.putExtra("StudentID", studentIDs.get(adapterPosition));
+                    view.getContext().startActivity(intent);
+                }
+            });
+
+            /* Long press for StudentEditActivity */
+            // @author: Carlos
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    int adapterPosition = getAdapterPosition();
+                    Intent intent = new Intent( view.getContext(), StudentEditActivity.class);
+                    intent.putExtra("StudentID", studentIDs.get(adapterPosition));
+                    view.getContext().startActivity(intent);
+                    return false;
                 }
             });
         }
