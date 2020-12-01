@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SignInActivity extends AppCompatActivity {
+public class SignInUpActivity extends AppCompatActivity {
 
     EditText emailInput;
     EditText passwordInput;
@@ -36,7 +36,7 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.sign_in_up_activity);
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
 
         email = sharedPref.getString("Email",null);
@@ -75,7 +75,7 @@ public class SignInActivity extends AppCompatActivity {
                 else if (!(email.isEmpty() && password.isEmpty())){
                     // TODO The entire set of conditions above could be deleted and the activity would still works. Carlos
                     mAuth.signInWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
+                            .addOnCompleteListener(SignInUpActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
@@ -83,13 +83,13 @@ public class SignInActivity extends AppCompatActivity {
                                         Log.d("SignInActivity", "signInWithEmail:success");
                                         FirebaseUser user = mAuth.getCurrentUser();
                                         //updateUI(user);
-                                        Intent activityIntent = new Intent(SignInActivity.this, MainActivity.class);
+                                        Intent activityIntent = new Intent(SignInUpActivity.this, MainActivity.class);
                                         startActivity(activityIntent);
                                         finish();
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.w("SignInActivity", "signInWithEmail:failure", task.getException());
-                                        Toast.makeText(SignInActivity.this, "Authentication failed",
+                                        Toast.makeText(SignInUpActivity.this, "Authentication failed",
                                                 Toast.LENGTH_SHORT).show();
                                         //updateUI(null);
                                         // ...
@@ -117,7 +117,7 @@ public class SignInActivity extends AppCompatActivity {
 
                 else if (!(email.isEmpty() && passwd.isEmpty())) {
                     mAuth.createUserWithEmailAndPassword(email, passwd)
-                            .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
+                            .addOnCompleteListener(SignInUpActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
@@ -126,12 +126,12 @@ public class SignInActivity extends AppCompatActivity {
                                         //FirebaseUser user = mAuth.getCurrentUser();
                                         // Get a reference to the database service
                                         database = FirebaseDatabase.getInstance().getReference("user");
-                                        EditText userName = (EditText) findViewById(R.id.SignUpEmailAddress);
+                                        EditText userName = (EditText) findViewById(R.id.SignInEmailAddress);
                                         String uName = userName.getText().toString().trim();
                                         UserDatabase User = new UserDatabase(uName);
                                         String id = database.push().getKey();
                                         database.child(id).setValue(User);
-                                        Intent activityIntent = new Intent(SignInActivity.this, MainActivity.class);
+                                        Intent activityIntent = new Intent(SignInUpActivity.this, MainActivity.class);
                                         startActivity(activityIntent);
                                         finish();
 
@@ -139,7 +139,7 @@ public class SignInActivity extends AppCompatActivity {
                                     else {
                                         // If sign in fails, display a message to the user.
                                         Log.w("SignUpActivity", "createUserWithEmail:failure", task.getException());
-                                        Toast.makeText(SignInActivity.this, "Authentication failed.",
+                                        Toast.makeText(SignInUpActivity.this, "Authentication failed.",
                                                 Toast.LENGTH_SHORT).show();
                                     }
 
@@ -148,7 +148,7 @@ public class SignInActivity extends AppCompatActivity {
                             });
                 }
                 else {
-                    Toast.makeText(SignInActivity.this, "Error Occurred!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInUpActivity.this, "Error Occurred!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

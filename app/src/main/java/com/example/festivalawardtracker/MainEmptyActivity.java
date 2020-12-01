@@ -30,11 +30,11 @@ public class MainEmptyActivity extends AppCompatActivity {
 //        Log.d("Token", String.valueOf(b));
         // go straight to main if a token is stored
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        new Thread(new queryThread(this)).start();
+//        new Thread(new queryThread(this)).start();
         if (user != null) {
             activityIntent = new Intent(this, MainActivity.class);
         } else {
-            activityIntent = new Intent(this, LogInOptionsActivity.class);
+            activityIntent = new Intent(this, SignInUpActivity.class);
         }
         startActivity(activityIntent);
         finish();

@@ -36,9 +36,7 @@
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".SignInActivity" />
-        <activity android:name=".LogInOptionsActivity" />
+        <activity android:name=".SignInUpActivity" />
         <activity
             android:name=".ui.student.StudentNewActivity"
             android:parentActivityName=".MainActivity" />

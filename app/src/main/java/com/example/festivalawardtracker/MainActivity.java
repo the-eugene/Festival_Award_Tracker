@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                 .signOut(MainActivity.this)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     public void onComplete(@NonNull Task<Void> task) {
-                        Intent activityIntent = new Intent(MainActivity.this, LogInOptionsActivity.class);
+                        Intent activityIntent = new Intent(MainActivity.this, SignInUpActivity.class);
                         startActivity(activityIntent);
                         finish();
                     }
