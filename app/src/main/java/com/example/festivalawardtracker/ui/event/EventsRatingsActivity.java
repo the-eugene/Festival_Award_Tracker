@@ -20,6 +20,8 @@ public class EventsRatingsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     EventRatingsRecyclerAdapter eventRatingsRecyclerAdapter;
     List<String> name,age,birthday;
+    String[] level;
+    Integer[] rating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class EventsRatingsActivity extends AppCompatActivity {
 
 
         recyclerView =findViewById(R.id.recyclerView_studentRatings);
-        eventRatingsRecyclerAdapter = new EventRatingsRecyclerAdapter(name,age,birthday);
+        eventRatingsRecyclerAdapter = new EventRatingsRecyclerAdapter(name,age,birthday,level,rating);
         recyclerView.setAdapter(eventRatingsRecyclerAdapter);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
@@ -45,12 +47,12 @@ public class EventsRatingsActivity extends AppCompatActivity {
         name.add("Billy4");
         name.add("Billy5");
         name.add("Billy6");
-        name.add("Billy");
-        name.add("Billy2");
-        name.add("Billy3");
-        name.add("Billy4");
-        name.add("Billy5");
-        name.add("Billy6");
+        name.add("Billy7");
+        name.add("Billy8");
+        name.add("Billy9");
+        name.add("Billy10");
+        name.add("Billy11");
+        name.add("Billy12");
 
         birthday.add("12/5/2000");
         birthday.add("12/5/2000");
@@ -71,12 +73,12 @@ public class EventsRatingsActivity extends AppCompatActivity {
         age.add("4");
         age.add("5");
         age.add("6");
-        age.add("1");
-        age.add("2");
-        age.add("3");
-        age.add("4");
-        age.add("5");
-        age.add("6");
+        age.add("7");
+        age.add("8");
+        age.add("9");
+        age.add("10");
+        age.add("11");
+        age.add("12");
 
         /* ACTION BAR */
         Toolbar toolbar = findViewById(R.id.toolbar_studentRatings);
