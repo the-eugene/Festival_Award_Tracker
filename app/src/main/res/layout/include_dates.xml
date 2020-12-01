@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="true"
-    tools:context=".ui.festival.FestivalNewActivity" >
+    tools:context=".ui.festival.FestivalActivity" >
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutStartingDate"

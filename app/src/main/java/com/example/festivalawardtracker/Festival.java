@@ -3,6 +3,10 @@ package com.example.festivalawardtracker;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author Eugene
+ */
 public class Festival extends DBAware {
     public String name;
     public boolean isNFMC;
@@ -19,15 +23,13 @@ public class Festival extends DBAware {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public boolean isNFMC() {
+    public boolean getNFMC() {
         return isNFMC;
     }
-
     public void setNFMC(boolean NFMC) {
         isNFMC = NFMC;
     }

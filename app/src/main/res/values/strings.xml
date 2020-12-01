@@ -74,4 +74,5 @@
     <string name="add_event_description">Add event description</string>
     <string name="event_name">Event Name</string>
     <string name="save">SAVE</string>
+    <string name="update">UPDATE</string>
 </resources>

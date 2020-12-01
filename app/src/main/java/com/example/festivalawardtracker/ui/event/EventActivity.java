@@ -1,6 +1,5 @@
 package com.example.festivalawardtracker.ui.event;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,15 +15,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.DBManager;
-import com.example.festivalawardtracker.Event;
 import com.example.festivalawardtracker.EventDescription;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.Utilities;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -35,7 +30,7 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
     private static final String TAG = "EVENT_ACTIVITY";
     private static final String EVENT_DESCRIPTION_ID = "EVENT_DESCRIPTION_ID";
     public String event_description_id;
-    EventDescription eventDescription;
+    EventDescription eventDescriptionDB;
     EventActivityRecyclerAdapter eventActivityRecyclerAdapter;
     RecyclerView recyclerView;
     FloatingActionButton newEvent;
@@ -56,16 +51,16 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
 
         /* Receiving ID */
         event_description_id = Utilities.retrieveExtra(this, EVENT_DESCRIPTION_ID);
-        eventDescription=DBManager.EventDescriptions.get(event_description_id);
+        eventDescriptionDB = DBManager.EventDescriptions.get(event_description_id);
 
         event_description_name = findViewById(R.id.textView_eventName);
-        event_description_name.setText(eventDescription.getName());
+        event_description_name.setText(eventDescriptionDB.getName());
         event_description_description = findViewById(R.id.textView_eventDescription);
-        event_description_description.setText(eventDescription.getDescription());
+        event_description_description.setText(eventDescriptionDB.getDescription());
 
         /* RECYCLER */
         recyclerView = findViewById(R.id.recyclerView_eventsActivity);
-        eventActivityRecyclerAdapter= new EventActivityRecyclerAdapter(eventDescription, this);
+        eventActivityRecyclerAdapter= new EventActivityRecyclerAdapter(eventDescriptionDB, this);
         recyclerView.setAdapter(eventActivityRecyclerAdapter);
         recyclerView.setMotionEventSplittingEnabled(false);
 

@@ -80,4 +80,28 @@ public final class Utilities {
 
         return retrievable;
     }
+
+    /**
+     * Simple method that returns "Yes" or "No"
+     * @author Carlos
+     * @param booleanValue A boolean true or false.
+     * @return If boolean true, returns String "Yes". If boolean false, returns String "No".
+     */
+    public static String booleanToYesOrNo(boolean booleanValue) {
+        if(booleanValue)
+            return "Yes";
+        else
+            return "No";
+    }
+
+    /**
+     * A simple method returning boolean true or false.
+     * @author Carlos
+     * @param answer String with "Yes" or "No"
+     * @return Expected boolean value.
+     */
+    public static boolean yesOrNoToBoolean(String answer) {
+        if (answer.equals("Yes")) return true;
+        else return false;
+    }
 }

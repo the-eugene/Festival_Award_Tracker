@@ -46,7 +46,7 @@
             android:name=".ParentActivity"
             android:parentActivityName=".ui.student.StudentNewActivity" />
         <activity
-            android:name=".ui.festival.FestivalNewActivity"
+            android:name=".ui.festival.FestivalActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.event.EventsRatingsActivity"

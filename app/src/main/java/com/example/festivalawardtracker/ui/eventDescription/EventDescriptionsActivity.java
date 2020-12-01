@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.Utilities;
 import com.example.festivalawardtracker.ui.event.EventActivity;
+import com.example.festivalawardtracker.ui.festival.FestivalActivity;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -31,9 +32,10 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
     RecyclerView recyclerView;
 
     private static final String FESTIVAL_ID = "FESTIVAL_ID";
-    public String festival_ID;;
+    public String _festivalID;;
 
     FloatingActionButton btnNewEventDescription;
+    FloatingActionButton btnEditFestival;
     Context context;
     /**
      *
@@ -47,13 +49,11 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         Log.d(TAG,"onCreate" + this.getClass().getName());
 
         /* Retrieving festival ID */
-        festival_ID = Utilities.retrieveExtra(this, FESTIVAL_ID);
+        _festivalID = Utilities.retrieveExtra(this, FESTIVAL_ID);
 
-        /* RECYCLER VIEW */
+        /* RECYCLER VIEW and ADAPTER*/
         recyclerView = findViewById(R.id.recyclerView_eventDescriptions);
-
-        /* RECYCLER ADAPTER */
-        eventDescriptionsRecyclerAdapter = new EventDescriptionsRecyclerAdapter(festival_ID, this);
+        eventDescriptionsRecyclerAdapter = new EventDescriptionsRecyclerAdapter(_festivalID, this);
         recyclerView.setAdapter(eventDescriptionsRecyclerAdapter);
         recyclerView.setMotionEventSplittingEnabled(false);
 
@@ -66,7 +66,18 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EventDescriptionsActivity.this, EventDescriptionsNewActivity.class);
-                intent.putExtra(FESTIVAL_ID, festival_ID);
+                intent.putExtra(FESTIVAL_ID, _festivalID);
+                startActivity(intent);
+            }
+        });
+
+        /* BUTTON EDIT FESTIVAL */
+        btnEditFestival = findViewById(R.id.btnEditFestival);
+        btnEditFestival.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EventDescriptionsActivity.this, FestivalActivity.class);
+                intent.putExtra(FESTIVAL_ID, _festivalID);
                 startActivity(intent);
             }
         });
@@ -87,9 +98,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(EventDescriptionsActivity.this, EventActivity.class);
-        Log.d(TAG, "OnItemClick: " + FESTIVAL_ID);
-        Log.d(TAG, "OnItemClick: " + festival_ID);
-        intent.putExtra(FESTIVAL_ID, festival_ID);
+        intent.putExtra(FESTIVAL_ID, _festivalID);
         startActivity(intent);
     }
 
@@ -110,7 +119,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
     protected void onPause() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(FESTIVAL_ID, festival_ID);
+        editor.putString(FESTIVAL_ID, _festivalID);
         editor.apply();
         super.onPause();
     }
