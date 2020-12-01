@@ -5,7 +5,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +21,7 @@ import android.widget.Toast;
 import com.example.festivalawardtracker.Answer;
 import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.Event;
+import com.example.festivalawardtracker.EventDescription;
 import com.example.festivalawardtracker.Gender;
 import com.example.festivalawardtracker.MainActivity;
 import com.example.festivalawardtracker.R;
@@ -28,9 +32,15 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import static com.example.festivalawardtracker.R.id.autoCompleteTextViewDropdownSchoolYear;
@@ -45,12 +55,14 @@ import static com.example.festivalawardtracker.R.id.editText_startingDate;
 public class EventNewActivity extends AppCompatActivity implements View.OnClickListener, RecyclerViewClickInterface {
 
     private static final String TAG = "EVENT_NEW_ACTIVITY";
+    private static final String EVENT_ID = "EVENT_ID";
     private static final String EVENT_DESCRIPTION_ID = "EVENT_DESCRIPTION_ID";
 
     EventNewRecyclerAdapter eventNewRecyclerAdapter;
     RecyclerView recyclerView;
-    List<String> studentNames, birthday, age;
-
+    String event_description_ID, event_ID;
+    Event event;
+    EventDescription eventDescription;
     /**
      *
      * @author Carlos
@@ -59,25 +71,26 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(this.getClass().getName(), "Starting OnCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events_new_activity);
+        /* GETTING INTENT */
+        event_description_ID = Utilities.retrieveExtra(this, EVENT_DESCRIPTION_ID);
+        eventDescription=DBManager.EventDescriptions.get(event_description_ID);
+
+        event_ID=getIntent().hasExtra(EVENT_ID)?
+                getIntent().getExtras().getString(EVENT_ID):
+                getPreferences(Context.MODE_PRIVATE).getString(EVENT_ID, null);
+
+        if (event_ID!=null)
+            event = DBManager.Events.get(event_ID);
+        else {
+            event = new Event();
+        }
 
         final AutoCompleteTextView schoolYearInput = findViewById(autoCompleteTextViewDropdownSchoolYear);
         final TextInputEditText startingDateInput = findViewById(editText_startingDate);
         final TextInputEditText endingDateInput = findViewById(editText_endingDate);
-
-        studentNames = new ArrayList<>();
-        birthday = new ArrayList<>();
-        age = new ArrayList<>();
-
-        /* RECYCLER ADAPTER */
-        recyclerView = findViewById(R.id.recyclerView_selectStudents);
-        eventNewRecyclerAdapter = new EventNewRecyclerAdapter(studentNames,birthday,age,this);
-        recyclerView.setAdapter(eventNewRecyclerAdapter);
-        recyclerView.setMotionEventSplittingEnabled(false);
-
-        /* GETTING INTENT */
-        final String _event_description_ID = Utilities.retrieveExtra(this, EVENT_DESCRIPTION_ID);
 
         /* ACTION BAR */
         Toolbar toolbar = findViewById(R.id.toolbar_newEvent);
@@ -87,18 +100,27 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         /* DROPDOWN LIST SCHOOL YEAR */
-        String[] schoolYearList = schoolYearList(); // Method of the current class
+        Map<String, String> schoolYearOptionsMap=new HashMap<>();
+        String schoolYearDefault=null;
+        for (Map.Entry<String,SchoolYear> row:DBManager.SchoolYears.entrySet()){
+            if (row.getKey().equals(event.getSchoolYearID())) schoolYearDefault=row.getValue().getName();
+            schoolYearOptionsMap.put(row.getValue().getName(),row.getKey());
+        }
+        String[] schoolYearList = (String[]) schoolYearOptionsMap.keySet().toArray(new String[schoolYearOptionsMap.size()]);
+        Arrays.sort(schoolYearList);
+
         // Drop-down list adapter
         ArrayAdapter<String> adapterScholarYearList =
                 new ArrayAdapter<>(
                         this,
                         R.layout.dropdown_layout,
                         schoolYearList);
-        AutoCompleteTextView editTextFilledExposedDropdownInstruments =
+        AutoCompleteTextView schoolYearDropDown =
                 this.findViewById(R.id.autoCompleteTextViewDropdownSchoolYear);
-        editTextFilledExposedDropdownInstruments.setAdapter(adapterScholarYearList);
+        schoolYearDropDown.setAdapter(adapterScholarYearList);
+        schoolYearDropDown.setText(schoolYearDefault,false);
 
-        /* STARTING DATE PICKER */
+                /* STARTING DATE PICKER */
         MaterialDatePicker.Builder<Long> builderStartingDate = MaterialDatePicker.Builder.datePicker();
         builderStartingDate.setTitleText("Event Starting Date");
         final MaterialDatePicker<Long> materialStartDatePicker = builderStartingDate.build();
@@ -114,6 +136,8 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
                 startingDateInput.setText(materialStartDatePicker.getHeaderText());
             }
         }); // End Starting Date Picker
+
+        startingDateInput.setText(formatLocalDate(event.getStart()));
 
         /* ENDING DATE PICKER */
         MaterialDatePicker.Builder<Long> builderEndingDate = MaterialDatePicker.Builder.datePicker();
@@ -131,6 +155,7 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
                 endingDateInput.setText(materialEndDatePicker.getHeaderText());
             }
         }); // End Ending Date Picker
+        endingDateInput.setText(formatLocalDate(event.getEnd()));
 
         /* SAVE EVENT BUTTON */
         Button eventSaveButton = findViewById(R.id.btnSaveEvent);
@@ -139,16 +164,16 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
             public void onClick(View v) {
 
                 // New event
-                Event newEvent = new Event();
-                newEvent.setSchoolYearID(schoolYearInput.getText().toString());
-                newEvent.setStartLocalDate(Utilities.stringMaterialToLocalDate(Objects.requireNonNull(startingDateInput.getText()).toString()));
-                newEvent.setEndLocalDate(Utilities.stringMaterialToLocalDate(Objects.requireNonNull(endingDateInput.getText()).toString()));
-
-                // TODO: This ID must be fixed from the EventActivity. Carlos
-                newEvent.setEventDescriptionID(_event_description_ID);
-
-                // Time to push the new event
-                DBManager.Events.put(newEvent);
+//                Event newEvent = new Event();
+//                newEvent.setSchoolYearID(schoolYearInput.getText().toString());
+//                newEvent.setStartLocalDate(Utilities.stringMaterialToLocalDate(Objects.requireNonNull(startingDateInput.getText()).toString()));
+//                newEvent.setEndLocalDate(Utilities.stringMaterialToLocalDate(Objects.requireNonNull(endingDateInput.getText()).toString()));
+//
+//                // TODO: This ID must be fixed from the EventActivity. Carlos
+//                newEvent.setEventDescriptionID(_event_description_ID);
+//
+//                // Time to push the new event
+//                DBManager.Events.put(newEvent);
 
                 Toast toast = Toast.makeText(v.getContext(), "New event saved", Toast.LENGTH_SHORT);
                 toast.show();
@@ -157,71 +182,16 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
+        /* RECYCLER ADAPTER */
+        recyclerView = findViewById(R.id.recyclerView_selectStudents);
+        eventNewRecyclerAdapter = new EventNewRecyclerAdapter(event,this);
+        recyclerView.setAdapter(eventNewRecyclerAdapter);
+        recyclerView.setMotionEventSplittingEnabled(false);
+
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        studentNames.add("Billy");
-        studentNames.add("Billy2");
-        studentNames.add("Billy3");
-        studentNames.add("Billy4");
-        studentNames.add("Billy5");
-        studentNames.add("Billy6");
-        studentNames.add("Billy");
-        studentNames.add("Billy2");
-        studentNames.add("Billy3");
-        studentNames.add("Billy4");
-        studentNames.add("Billy5");
-        studentNames.add("Billy6");
-
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-        birthday.add("12/5/2000");
-
-        age.add("1");
-        age.add("2");
-        age.add("3");
-        age.add("4");
-        age.add("5");
-        age.add("6");
-        age.add("1");
-        age.add("2");
-        age.add("3");
-        age.add("4");
-        age.add("5");
-        age.add("6");
     } // End OnCreate
-
-    /**
-     * Retrieves a String array with the desired n * 2 amount of school years.
-     * If chosen n = 1, it should retrieve current scholar year and next.
-     * 0 is nor a valid value.
-     * @author Carlos
-     * @return schoolYearList A list of scholar years from n years ago, until n years into the future.
-     */
-    private String[] schoolYearList() { ;
-        int n = 5; // Only change this variable if MORE or LESS school years are needed.
-        int m = 2 * n;
-        String[] schoolYearList = new String[m];
-        int nYearsAgo = LocalDate.now().getYear() - n;
-
-        for (int i = 0; i < m; i++) {
-            String formerYear = Integer.toString(nYearsAgo + i);
-            String latterYear = Integer.toString(nYearsAgo + i + 1);
-            String schoolPeriod = formerYear + "-" + latterYear;
-            schoolYearList[i] = schoolPeriod;
-        }
-
-        return schoolYearList;
-    } // End schoolYearList
 
     @Override
     public void onItemClick(int position) {
@@ -231,5 +201,49 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
 
+    }
+
+    /**
+     * It changes a given string date from on date format into another (string).
+     * @author Carlos
+     * @param dateStringIn string date provided by the database. Its format is provided by LocalDate.toString()
+     * @return string date in the format "MMM d, yyyy", which is the format used by materialDatePicker.
+     */
+    private String formatLocalDate(String dateStringIn) {
+        String dateStringOut = "Hello";
+        @SuppressLint("SimpleDateFormat") final SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") final SimpleDateFormat outputFormat = new SimpleDateFormat("MMM d, yyyy");
+
+        try {
+            Date dateCarrier = inputFormat.parse(dateStringIn);
+            assert dateCarrier != null;
+            dateStringOut = outputFormat.format(dateCarrier);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateStringOut;
+    } // End of formatLocalDate(...)
+
+    /**
+     *
+     * @author
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        eventNewRecyclerAdapter.update();
+    }
+
+    /**
+     *
+     * @author
+     */
+    protected void onPause() {
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(EVENT_DESCRIPTION_ID, event_description_ID);
+        editor.putString(EVENT_ID, event_ID);
+        editor.apply();
+        super.onPause();
     }
 }

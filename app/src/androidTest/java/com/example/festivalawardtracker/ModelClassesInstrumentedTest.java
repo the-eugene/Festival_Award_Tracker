@@ -12,7 +12,7 @@ public class ModelClassesInstrumentedTest {
 
     @Test
     public void testYearTraverse(){
-        DBManager.setCurrentDB("TEST"); //switch to test DB
+//        DBManager.setCurrentDB("TEST"); //switch to test DB
         DBManager.currentDB.setValue(null); //Clear test DB
         SchoolYear[] years=new SchoolYear[10];
         for (int i=0;i<10;i++){
@@ -48,7 +48,7 @@ public class ModelClassesInstrumentedTest {
 
     @Test
     public void instantiate_objects_db(){
-        DBManager.setCurrentDB("TEST"); //switch to test DB
+ //       DBManager.setCurrentDB("TEST"); //switch to test DB
         DBManager.currentDB.setValue(null); //Clear test DB
 
         Festival f=TestStaticObjects.setUpFestival1();

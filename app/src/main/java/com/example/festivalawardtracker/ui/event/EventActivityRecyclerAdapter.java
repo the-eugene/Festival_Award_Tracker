@@ -54,15 +54,6 @@ public class EventActivityRecyclerAdapter extends RecyclerView.Adapter<EventActi
         }
     }
 
-    public void update() {
-        new Thread(new EventActivityRecyclerAdapter.queryThread(activity,eventDescription.ID)).start();
-    }
-
-    private void updateList(List<Event> r) {
-        r.sort(new Event.sortByYear());
-        events=r;
-        notifyDataSetChanged();
-    }
     @Override
     public int getItemCount() {
             return events.size();
@@ -85,6 +76,7 @@ public class EventActivityRecyclerAdapter extends RecyclerView.Adapter<EventActi
                     Log.d("RecycleView Click", events.get(p).ID);
                     Intent intent = new Intent(v.getContext(),EventNewActivity.class);
                     intent.putExtra("EVENT_ID", events.get(p).ID);
+                    intent.putExtra("EVENT_DESCRIPTION_ID", eventDescription.ID);
                     v.getContext().startActivity(intent);
                 }
 
@@ -92,6 +84,17 @@ public class EventActivityRecyclerAdapter extends RecyclerView.Adapter<EventActi
             });
         }
     }
+
+    public void update() {
+        new Thread(new EventActivityRecyclerAdapter.queryThread(activity,eventDescription.ID)).start();
+    }
+
+    private void updateList(List<Event> r) {
+        r.sort(new Event.sortByYear());
+        events=r;
+        notifyDataSetChanged();
+    }
+
     class queryThread implements Runnable{
         final Activity activity;
         final String edID;

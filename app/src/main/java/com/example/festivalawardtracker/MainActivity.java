@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker;
 
+import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -41,6 +42,31 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+        class queryThread implements Runnable {
+            final Activity activity;
+
+            queryThread(Activity activity) {
+                this.activity = activity;
+            }
+
+            @Override
+            public void run() {
+                Log.d(this.getClass().getName(), "Loading Teacher and Student Database...");
+                DBManager.Teachers.loadAll();
+                DBManager.Students.loadAll();
+                Log.d(this.getClass().getName(), "Loading Festival and Event Database...");
+                DBManager.Festivals.loadAll();
+                DBManager.EventDescriptions.loadAll();
+                DBManager.Events.loadAll();
+                DBManager.SchoolYears.loadAll();
+                Log.d(this.getClass().getName(), "...Finished");
+            }
+        }
+        new Thread(new queryThread(this)).start();
+
         int userMode = 1; // yserMode = 2 displays Student Mode
 
         super.onCreate(savedInstanceState);

@@ -1,5 +1,7 @@
 package com.example.festivalawardtracker;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.Task;
@@ -122,6 +124,7 @@ public class DBManager {
      */
     public static DataSnapshot runQuery(Query query) {
         final TaskCompletionSource<DataSnapshot> task = new TaskCompletionSource<>();
+        Log.e("DBManager.runQuery", "Called with "+query.toString());
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot ds) {

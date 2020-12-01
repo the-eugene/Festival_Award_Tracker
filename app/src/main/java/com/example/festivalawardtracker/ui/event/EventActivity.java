@@ -52,7 +52,7 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events_recyclerview_activity);
-        Log.d(TAG,"onCreate" + this.getClass().getName());
+        Log.d(this.getClass().getName(), "Starting OnCreate");
 
         /* Receiving ID */
         event_description_id = Utilities.retrieveExtra(this, EVENT_DESCRIPTION_ID);

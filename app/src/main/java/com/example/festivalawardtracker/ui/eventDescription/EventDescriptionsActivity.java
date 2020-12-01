@@ -47,7 +47,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_descriptions_recyclerview_activity);
-        Log.d(TAG,"onCreate" + this.getClass().getName());
+        Log.d(this.getClass().getName(), "Starting OnCreate");
 
         /* Retrieving festival ID */
         festival_ID = Utilities.retrieveExtra(this, FESTIVAL_ID);
@@ -91,7 +91,6 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(EventDescriptionsActivity.this, EventActivity.class);
-        Log.d(TAG, "OnItemClick: " + FESTIVAL_ID);
         Log.d(TAG, "OnItemClick: " + festival_ID);
         intent.putExtra(FESTIVAL_ID, festival_ID);
         startActivity(intent);

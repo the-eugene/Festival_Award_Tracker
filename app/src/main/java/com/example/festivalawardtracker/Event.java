@@ -1,14 +1,17 @@
 package com.example.festivalawardtracker;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class Event extends DBAware {
-    String schoolYearID;
-    LocalDate start;
-    LocalDate end;
-    Contact location;
-    String eventDescriptionID;
+    public String schoolYearID;
+    public LocalDate start;
+    public LocalDate end;
+    public Contact location;
+    public String eventDescriptionID;
+    public List<String> studentIDs = new ArrayList<>();
 
     public SchoolYear retrieveYear() {
         return DBManager.SchoolYears.get(schoolYearID);
@@ -46,12 +49,14 @@ public class Event extends DBAware {
     }
 
     public EventDescription getDescription() { return DBManager.EventDescriptions.get(eventDescriptionID); }
+
     public String getEventDescriptionID() {
         return eventDescriptionID;
     }
-    public void setEventDescriptionID(String eventDescriptionID) {
-        this.eventDescriptionID = eventDescriptionID;
-    }
+    public void setEventDescriptionID(String eventDescriptionID) {this.eventDescriptionID = eventDescriptionID;}
+
+    public List<String> getStudents() {return studentIDs;}
+    public void setStudents(List<String> students) {this.studentIDs = students;}
 
     public void addLinks(EventDescription eventDescription,SchoolYear year){
         if (eventDescription.ID==null) DBManager.EventDescriptions.put(null,eventDescription);
