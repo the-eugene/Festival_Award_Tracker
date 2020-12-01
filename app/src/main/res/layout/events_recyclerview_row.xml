@@ -6,64 +6,17 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textView_eventName"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView_startDate"
+        style="@style/Widget.MaterialComponents.TextView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Event Name"
-        android:textAlignment="viewStart"
+        android:text="Start Date"
+        android:textAlignment="viewEnd"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView_leftBracket"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:text="("
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_eventName"
-        app:layout_constraintEnd_toStartOf="@+id/textViewInstrument"
-        app:layout_constraintStart_toEndOf="@+id/textView_eventName" />
-
-    <TextView
-        android:id="@+id/textViewInstrument"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Instrument"
-        android:textAlignment="viewStart"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_leftBracket"
-        app:layout_constraintEnd_toStartOf="@+id/textView_rightBracket"
-        app:layout_constraintStart_toEndOf="@+id/textView_leftBracket" />
-
-    <TextView
-        android:id="@+id/textView_rightBracket"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text=")"
-        android:textAlignment="viewStart"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewInstrument"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewInstrument" />
-
-    <TextView
-        android:id="@+id/textView_startDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        android:text="Start Date"
-        android:textAlignment="viewEnd"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_eventName" />
 
     <TextView
         android:id="@+id/textView_dateDivider"
@@ -86,10 +39,31 @@
         android:layout_marginEnd="16dp"
         android:text="End Date"
         android:textAlignment="viewStart"
-        android:textSize="14sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView_dateDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView_dateDivider" />
+
+    <TextView
+        android:id="@+id/textView_numberStudentsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Students Attending:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_startDate" />
+
+    <TextView
+        android:id="@+id/textView_numberStudents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="# of students"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_numberStudentsLabel"
+        app:layout_constraintStart_toEndOf="@+id/textView_numberStudentsLabel" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
