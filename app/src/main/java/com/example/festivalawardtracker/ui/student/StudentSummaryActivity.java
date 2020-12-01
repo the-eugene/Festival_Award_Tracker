@@ -19,8 +19,6 @@ import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.Student;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -35,7 +33,7 @@ public class StudentSummaryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.students_display_activity);
+        setContentView(R.layout.students_summary_activity);
 
         if (getIntent().hasExtra(STUDENT_ID))
             StudentID = getIntent().getExtras().getString(STUDENT_ID);
