@@ -30,7 +30,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView_startDate"
         app:layout_constraintEnd_toStartOf="@+id/textView_endDate"
-        app:layout_constraintStart_toEndOf="@+id/textView_startDate" />
+        app:layout_constraintStart_toEndOf="@+id/textView_startDate"
+        app:layout_constraintTop_toTopOf="@+id/textView_startDate" />
 
     <TextView
         android:id="@+id/textView_endDate"
@@ -40,7 +41,7 @@
         android:text="End Date"
         android:textAlignment="viewStart"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView_dateDivider"
+        app:layout_constraintBottom_toBottomOf="@+id/textView_startDate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView_dateDivider" />
 
