@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker.ui.event;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,10 +11,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.Event;
+import com.example.festivalawardtracker.EventDescription;
 import com.example.festivalawardtracker.Festival;
 import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsRecyclerAdapter;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
+import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,21 +27,15 @@ import java.util.Map;
 
 public class EventActivityRecyclerAdapter extends RecyclerView.Adapter<EventActivityRecyclerAdapter.ViewHolder> {
 
-    Map<String, Event> events;
-    List<String> eventIDs = new ArrayList<>();
-    List<String> eventName, startDate, endDate, eventInstruments;
+    List <Event> events=new ArrayList<>();;
+    Activity activity;
+    EventDescription eventDescription;
     private RecyclerViewClickInterface recyclerViewClickInterface;
 
-    public EventActivityRecyclerAdapter(Map<String, Event> events) {
-//        this.eventName = eventName;
-//        this.startDate = startDate;
-//        this.endDate = endDate;
-//        this.eventInstruments = eventInstrument;
-//        this.recyclerViewClickInterface = recyclerViewClickInterface;
-        this.events = events;
-        this.eventIDs.addAll(events.keySet());
+    public EventActivityRecyclerAdapter(EventDescription eventDescription, Activity activity) {
+        this.eventDescription=eventDescription;
+        this.activity=activity;
     }
-
 
     @NonNull
     @Override
@@ -48,35 +47,25 @@ public class EventActivityRecyclerAdapter extends RecyclerView.Adapter<EventActi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if(eventIDs.size()>0){
-            String ID = eventIDs.get(position);
-            Event e = events.get(ID);
-            holder.eventName.setText(e.getDescription().getName());
-            holder.eventInstruments.setText(e.getDescription().getInstrument().toString());
+        if(events.size()>0){
+            Event e = events.get(position);
             holder.startDate.setText(e.getStart());
             holder.endDate.setText(e.getEnd());
         }
-//        holder.eventInstruments.setText(eventInstruments.get(position));
-//        holder.startDate.setText(startDate.get(position));
-//        holder.endDate.setText(endDate.get(position));
-//        holder.eventName.setText(eventName.get(position));
     }
 
-    public void updateEventList(){
-        eventIDs.clear();
-        eventIDs.addAll(events.keySet());
+    public void update() {
+        new Thread(new EventActivityRecyclerAdapter.queryThread(activity,eventDescription.ID)).start();
     }
 
+    private void updateList(List<Event> r) {
+        r.sort(new Event.sortByYear());
+        events=r;
+        notifyDataSetChanged();
+    }
     @Override
     public int getItemCount() {
-
-        if (events.size() == 0) {
-            return 0;
-        } else {
             return events.size();
-        }
-
-
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -93,14 +82,31 @@ public class EventActivityRecyclerAdapter extends RecyclerView.Adapter<EventActi
                 @Override
                 public void onClick(View v) {
                     int p=getAdapterPosition();
-                    Log.d("RecycleView Click", eventIDs.get(p));
-                    Intent intent = new Intent(v.getContext(),EventsRatingsActivity.class);
-                    intent.putExtra("eventIDs", eventIDs.get(p));
+                    Log.d("RecycleView Click", events.get(p).ID);
+                    Intent intent = new Intent(v.getContext(),EventNewActivity.class);
+                    intent.putExtra("EVENT_ID", events.get(p).ID);
                     v.getContext().startActivity(intent);
                 }
 
 
             });
+        }
+    }
+    class queryThread implements Runnable{
+        final Activity activity;
+        final String edID;
+
+        queryThread(Activity activity,String ID){
+            this.activity=activity;
+            this.edID=ID;
+        }
+        @Override
+        public void run(){
+            Log.d(this.getClass().getName(),"Running Query on "+edID);
+            Query query= DBManager.currentDB.child(Event.class.getSimpleName()).orderByChild("eventDescriptionID").equalTo(edID);
+            final Map<String,Event> result=DBManager.Events.getMapByQuery(query);
+            DBManager.Events.putAll(result); //not strictly necessary, just keeps cache fresh
+            activity.runOnUiThread(new Runnable() {@Override public void run() {updateList(new ArrayList<>( result.values()));}});
         }
     }
 }
