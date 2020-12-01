@@ -7,12 +7,15 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.DBManager;
+import com.example.festivalawardtracker.Festival;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.Utilities;
 import com.example.festivalawardtracker.ui.event.EventActivity;
@@ -48,6 +51,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
 
         /* Retrieving festival ID */
         festival_ID = Utilities.retrieveExtra(this, FESTIVAL_ID);
+        Festival festival= DBManager.Festivals.get(festival_ID);
 
         /* RECYCLER VIEW */
         recyclerView = findViewById(R.id.recyclerView_eventDescriptions);
@@ -73,7 +77,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
 
         /* ACTION BAR */
         Toolbar toolbar = findViewById(R.id.toolbar_eventDescriptions);
-        toolbar.setTitle("Event Descriptions");
+        toolbar.setTitle(festival.name+" Events");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

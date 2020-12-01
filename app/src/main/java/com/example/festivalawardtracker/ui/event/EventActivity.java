@@ -86,7 +86,7 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
 
         /* ACTION BAR */
         Toolbar toolbar = findViewById(R.id.toolbarEventDescriptions);
-        toolbar.setTitle("Events");
+        toolbar.setTitle("Performances for "+eventDescription.getName());
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
