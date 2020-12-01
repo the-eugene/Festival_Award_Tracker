@@ -18,6 +18,7 @@ import com.example.festivalawardtracker.Festival;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.Utilities;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
@@ -37,7 +38,7 @@ public class FestivalActivity extends AppCompatActivity {
         setContentView(R.layout.festival_new_activity);
 
         final EditText editFestivalName = findViewById(R.id.editText_festivalName);
-        final AutoCompleteTextView editIsNFMC = findViewById(R.id.autoCompleteTextViewDropdownNewFestivalNFMC);
+        final AutoCompleteTextView editIsNFMCdropDownList = findViewById(R.id.autoCompleteTextViewDropdownNewFestivalNFMC);
 
         /* Retrieving festivalID */
         final String _festivalID = Utilities.retrieveExtra(this, FESTIVAL_ID);
@@ -58,11 +59,9 @@ public class FestivalActivity extends AppCompatActivity {
                         this,
                         R.layout.dropdown_layout,
                         YESORNO);
-        AutoCompleteTextView editTextFilledExposedDropdownInstruments =
-                this.findViewById(R.id.autoCompleteTextViewDropdownNewFestivalNFMC);
-        editTextFilledExposedDropdownInstruments.setAdapter(adapterYesOrNO);
+        editIsNFMCdropDownList.setAdapter(adapterYesOrNO);
 
-        /* Setting editable fields */
+        /* Filling fields with selected festival existing data from the database */
         if(_festivalID != null) {
             Log.d(TAG, "(B) _festivalID is: " + _festivalID);
             festivalDB = DBManager.Festivals.get(_festivalID);
@@ -73,6 +72,10 @@ public class FestivalActivity extends AppCompatActivity {
             toolbar.setTitle("Change Festival");
 
             editFestivalName.setText(Objects.requireNonNull(festivalDB).getName());
+
+            TextInputLayout editIsNFMC_textInputLayout = findViewById(R.id.textInputLayoutNewFestivalNFMC);
+            editIsNFMC_textInputLayout.setHint(Utilities.booleanToYesOrNo(festivalDB.getNFMC()));
+
         }
 
         // onClick
@@ -85,13 +88,13 @@ public class FestivalActivity extends AppCompatActivity {
                 if(_festivalID != null) {
                     newFestival = festivalDB;
                     newFestival.name = editFestivalName.getText().toString().trim();
-                    newFestival.isNFMC = Utilities.yesOrNoToBoolean(editIsNFMC.getEditableText().toString());
+                    newFestival.isNFMC = Utilities.yesOrNoToBoolean(editIsNFMCdropDownList.getEditableText().toString());
 
                     Toast toast = Toast.makeText(view.getContext(), "Festival updated", Toast.LENGTH_LONG);
                     toast.show();
                 } else {
                     newFestival.name = editFestivalName.getText().toString().trim();
-                    newFestival.isNFMC = Utilities.yesOrNoToBoolean(editIsNFMC.getEditableText().toString());
+                    newFestival.isNFMC = Utilities.yesOrNoToBoolean(editIsNFMCdropDownList.getEditableText().toString());
 
                     Toast toast = Toast.makeText(view.getContext(), "New festival saved", Toast.LENGTH_LONG);
                     toast.show();
