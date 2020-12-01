@@ -16,6 +16,7 @@ import com.example.festivalawardtracker.Event;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.Student;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
@@ -46,10 +47,20 @@ public class EventNewRecyclerAdapter extends RecyclerView.Adapter<EventNewRecycl
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d("BindViewHolder", Integer.valueOf(position).toString());
-        holder.studentName.setText(students.get(position).getFullName());
-        holder.birthday.setText(students.get(position).getBirthday());
-        holder.age.setText(students.get(position).getAge(event.end).toString());
-        holder.checkbox.setSelected(event.studentIDs.contains(students.get(position).ID));
+        MaterialCheckBox checkbox=holder.itemView.findViewById(R.id.checkBox_selectStudent);
+        TextView studentName = holder.itemView.findViewById(R.id.StudentName);
+        TextView birthday = holder.itemView.findViewById(R.id.Birthday);
+        TextView age = holder.itemView.findViewById(R.id.Age);
+
+        studentName.setText(students.get(position).getFullName());
+        birthday.setText(students.get(position).getBirthday());
+        age.setText(students.get(position).getAge(event.end).toString());
+        //holder.checkbox.setEnabled(false);
+        checkbox.jumpDrawablesToCurrentState();
+        checkbox.setSelected(event.studentIDs.contains(students.get(position).ID));
+        checkbox.jumpDrawablesToCurrentState();
+
+
     }
 
     @Override
@@ -59,25 +70,17 @@ public class EventNewRecyclerAdapter extends RecyclerView.Adapter<EventNewRecycl
 
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        TextView studentName, birthday, age;
-        CheckBox checkbox;
-
         public ViewHolder(@NonNull final View itemView) {
-
             super(itemView);
-            studentName = itemView.findViewById(R.id.StudentName);
-            birthday = itemView.findViewById(R.id.Birthday);
-            age = itemView.findViewById(R.id.Age);
-            checkbox=itemView.findViewById(R.id.checkBox_selectStudent);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("Event Edit Recycler Click", students.get(getAdapterPosition()).getFullName());
                     String sID=students.get(getAdapterPosition()).ID;
-                    if (!event.studentIDs.contains(sID))
-                        event.studentIDs.add(sID);
-                    else
+                    Log.d("Event Edit Recycler Click", students.get(getAdapterPosition()).getFullName()+" "+event.studentIDs.contains(sID));
+                    if (event.studentIDs.contains(sID))
                         event.studentIDs.remove(sID);
+                    else
+                        event.studentIDs.add(sID);
                     notifyItemChanged(getAdapterPosition());
                 }
             });
