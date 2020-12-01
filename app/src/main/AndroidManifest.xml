@@ -36,9 +36,7 @@
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".SignInActivity" />
-        <activity android:name=".LogInOptionsActivity" />
+        <activity android:name=".SignInUpActivity" />
         <activity
             android:name=".ui.student.StudentNewActivity"
             android:parentActivityName=".MainActivity" />
@@ -46,7 +44,7 @@
             android:name=".ParentActivity"
             android:parentActivityName=".ui.student.StudentNewActivity" />
         <activity
-            android:name=".ui.festival.FestivalNewActivity"
+            android:name=".ui.festival.FestivalActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ui.event.EventsRatingsActivity"

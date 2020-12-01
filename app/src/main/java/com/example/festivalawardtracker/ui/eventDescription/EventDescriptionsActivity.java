@@ -19,6 +19,7 @@ import com.example.festivalawardtracker.Festival;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.Utilities;
 import com.example.festivalawardtracker.ui.event.EventActivity;
+import com.example.festivalawardtracker.ui.festival.FestivalActivity;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -37,6 +38,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
     public String festival_ID;;
 
     FloatingActionButton btnNewEventDescription;
+    FloatingActionButton btnEditFestival;
     Context context;
     /**
      *
@@ -53,10 +55,8 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         festival_ID = Utilities.retrieveExtra(this, FESTIVAL_ID);
         Festival festival= DBManager.Festivals.get(festival_ID);
 
-        /* RECYCLER VIEW */
+        /* RECYCLER VIEW and ADAPTER*/
         recyclerView = findViewById(R.id.recyclerView_eventDescriptions);
-
-        /* RECYCLER ADAPTER */
         eventDescriptionsRecyclerAdapter = new EventDescriptionsRecyclerAdapter(festival_ID, this);
         recyclerView.setAdapter(eventDescriptionsRecyclerAdapter);
         recyclerView.setMotionEventSplittingEnabled(false);
@@ -70,6 +70,17 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EventDescriptionsActivity.this, EventDescriptionsNewActivity.class);
+                intent.putExtra(FESTIVAL_ID, festival_ID);
+                startActivity(intent);
+            }
+        });
+
+        /* BUTTON EDIT FESTIVAL */
+        btnEditFestival = findViewById(R.id.btnEditFestival);
+        btnEditFestival.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EventDescriptionsActivity.this, FestivalActivity.class);
                 intent.putExtra(FESTIVAL_ID, festival_ID);
                 startActivity(intent);
             }

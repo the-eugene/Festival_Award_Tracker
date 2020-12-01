@@ -16,11 +16,9 @@ import com.example.festivalawardtracker.Performance;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.SchoolYear;
 import com.example.festivalawardtracker.Student;
-import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsRecyclerAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentSummaryRecyclerAdapter.ViewHolder> {
@@ -39,7 +37,7 @@ public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentS
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.students_display_recyclerview_row, parent, false);
+        View view = layoutInflater.inflate(R.layout.students_summary_recyclerview_row, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -52,10 +50,10 @@ public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentS
             SchoolYear year = event.retrieveYear();
             holder.year.setText(year.getName());
             holder.event.setText(ed.getName());
-            holder.ccs.setText("WIP");
-            holder.tp.setText("WIP");
+//            holder.ccs.setText("WIP");
+//            holder.tp.setText("WIP");
             holder.awards.setText(((Integer)performances.get(position).getRating()).toString());
-            holder.level.setText(performances.get(position).getLevel());
+//            holder.level.setText(performances.get(position).getLevel());
         }
     }
 
@@ -66,17 +64,19 @@ public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentS
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView year,event,ccs,tp,awards,level;
+        TextView year,event,awards,info;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            year = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewYear);
-            event = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewEventName);
-            ccs = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewCCS);
-            tp = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewTP);
-            awards = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewAwards);
-            level = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewLevel);
+            year = itemView.findViewById(R.id.textViewStudentSummaryRecyclerviewYear);
+            event = itemView.findViewById(R.id.textViewStudentSummaryRecyclerviewEventName);
+            info = itemView.findViewById(R.id.textViewStudentSummaryRecycleviewCcsTpLevel);
+            awards = itemView.findViewById(R.id.textViewStudentSummaryRecyclerviewAwards);
+
+//            ccs = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewCCS);
+//            tp = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewTP);
+//            level = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewLevel);
 
         }
     }

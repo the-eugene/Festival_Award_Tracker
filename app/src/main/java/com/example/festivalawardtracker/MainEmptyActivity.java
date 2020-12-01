@@ -29,7 +29,7 @@ public class MainEmptyActivity extends AppCompatActivity {
         if (user != null) {
             activityIntent = new Intent(this, MainActivity.class);
         } else {
-            activityIntent = new Intent(this, LogInOptionsActivity.class);
+            activityIntent = new Intent(this, SignInUpActivity.class);
         }
         startActivity(activityIntent);
         finish();

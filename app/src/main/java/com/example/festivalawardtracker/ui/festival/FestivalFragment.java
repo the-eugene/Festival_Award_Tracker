@@ -79,7 +79,7 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
         // Setting up the FAB button for add festival
         // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener
         fabNewFestival = root.findViewById(R.id.newFestivalActivity);
-        fabNewFestival.getHorizontalFadingEdgeLength();
+        fabNewFestival.setOnClickListener(this);
 
         return root;
     } // End onCreateView
@@ -100,7 +100,7 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
      */
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent( v.getContext(), FestivalNewActivity.class);
+        Intent intent = new Intent( v.getContext(), FestivalActivity.class);
         startActivity(intent);
     } // End onClick()
 } // End class

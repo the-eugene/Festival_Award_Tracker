@@ -40,7 +40,7 @@ public class RateStudentsRecyclerAdapter extends RecyclerView.Adapter<RateStuden
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.events_recyclerview_row, parent, false);
+        View view = layoutInflater.inflate(R.layout.rate_students_recyclerview_row, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -54,8 +54,6 @@ public class RateStudentsRecyclerAdapter extends RecyclerView.Adapter<RateStuden
             Event e = events.get(ID);
             EventDescription ed = eventDescription.get(dID);
             holder.eventName.setText(ed.getName());
-            //TODO: not sure how the instruments are stored?
-            holder.eventInstruments.setText("Voice");
             holder.startDate.setText(e.getStart());
             holder.endDate.setText(e.getEnd());
         }
@@ -76,14 +74,13 @@ public class RateStudentsRecyclerAdapter extends RecyclerView.Adapter<RateStuden
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
-        TextView eventName, startDate, endDate, eventInstruments;
+        TextView eventName, startDate, endDate;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            eventName = itemView.findViewById(R.id.textView_eventName);
-            startDate = itemView.findViewById(R.id.textView_startDate);
-            endDate = itemView.findViewById(R.id.textView_endDate);
-            eventInstruments = itemView.findViewById(R.id.textViewInstrument);
+            eventName = itemView.findViewById(R.id.textView_eventNameF);
+            startDate = itemView.findViewById(R.id.textView_startDateF);
+            endDate = itemView.findViewById(R.id.textView_endDateF);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
