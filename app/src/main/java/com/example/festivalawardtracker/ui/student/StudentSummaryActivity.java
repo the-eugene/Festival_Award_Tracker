@@ -36,6 +36,7 @@ public class StudentSummaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.students_display_activity);
+
         if (getIntent().hasExtra(STUDENT_ID))
             StudentID = getIntent().getExtras().getString(STUDENT_ID);
         else
