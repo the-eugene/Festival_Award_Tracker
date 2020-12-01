@@ -17,6 +17,7 @@ import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.Festival;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.Utilities;
+import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -24,7 +25,11 @@ import java.util.Objects;
 
 /**
  * Create new festival activity that adds festivals to the database
- * @author carloswashingtonmercado@gmail.com and Jimmy
+ * @author Carlos
+ * @author Jimmy
+ * @see FestivalFragment Festivas are CREATED for the first time here.
+ * @see EventDescriptionsActivity Festivals are EDITED from there.
+ * @see Festival The java class that is handled here from the app to the database
  */
 public class FestivalActivity extends AppCompatActivity {
 
@@ -32,11 +37,16 @@ public class FestivalActivity extends AppCompatActivity {
     private static final String FESTIVAL_ID = "FESTIVAL_ID";
     Festival festivalDB = null;
 
+    /**
+     * Creation/edition of new/existing festivals is made here.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.festival_new_activity);
 
+        /* Retrieve main input fields from the Android activity */
         final EditText editFestivalName = findViewById(R.id.editText_festivalName);
         final AutoCompleteTextView editIsNFMCdropDownList = findViewById(R.id.autoCompleteTextViewDropdownNewFestivalNFMC);
 
@@ -51,7 +61,8 @@ public class FestivalActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        /* DROPDOWN LIST is NFMC festival? Yes or No question */
+        /* Setting dropdown list adapter */
+        // Is NFMC festival? Yes or No answer
         String[] YESORNO = Answer.Options();
         // Drop-down list adapter
         ArrayAdapter<String> adapterYesOrNO =
@@ -59,26 +70,26 @@ public class FestivalActivity extends AppCompatActivity {
                         this,
                         R.layout.dropdown_layout,
                         YESORNO);
+        // TODO The database is receiving two isNFMC values.
+        // TODO The activity MUST NOT accept empty or erroneous input values.
         editIsNFMCdropDownList.setAdapter(adapterYesOrNO);
 
-        /* Filling fields with selected festival existing data from the database */
+        /* FESTIVAL EDITION */
+        // Not null if something is sent from EventDescriptionActivity
         if(_festivalID != null) {
-            Log.d(TAG, "(B) _festivalID is: " + _festivalID);
-            festivalDB = DBManager.Festivals.get(_festivalID);
-            Log.d(TAG, "(C) festivalDB is: " + Objects.requireNonNull(festivalDB).toString());
-            MaterialButton btnUpdate = findViewById(R.id.btnSaveFestival);
+            festivalDB = DBManager.Festivals.get(_festivalID); // Retrieving festival information from database
 
+            MaterialButton btnUpdate = findViewById(R.id.btnSaveFestival);
             btnUpdate.setText(R.string.update);
             toolbar.setTitle("Change Festival");
 
             editFestivalName.setText(Objects.requireNonNull(festivalDB).getName());
-
             TextInputLayout editIsNFMC_textInputLayout = findViewById(R.id.textInputLayoutNewFestivalNFMC);
             editIsNFMC_textInputLayout.setHint(Utilities.booleanToYesOrNo(festivalDB.getNFMC()));
-
         }
 
-        // onClick
+        /* onClickListener: Save or Update button */
+        // Here the new/edited festival is sent to the database
         MaterialButton addFestival = findViewById(R.id.btnSaveFestival);
         addFestival.setOnClickListener(new View.OnClickListener() {
             @Override

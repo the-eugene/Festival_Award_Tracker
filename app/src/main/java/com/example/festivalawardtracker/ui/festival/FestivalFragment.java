@@ -95,7 +95,7 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
     }
 
     /**
-     *
+     * Creates a new festival
      * @param v
      */
     @Override
