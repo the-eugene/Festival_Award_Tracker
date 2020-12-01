@@ -1,6 +1,7 @@
 package com.example.festivalawardtracker;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 
 public class Event extends DBAware {
     String schoolYearID;
@@ -58,6 +59,14 @@ public class Event extends DBAware {
         eventDescriptionID=eventDescription.ID;
         schoolYearID=year.ID;
         DBManager.Events.put(ID,this); //not save()
+    }
+
+    public static class sortByYear implements Comparator<Event>
+    {
+        public int compare(Event a, Event b)
+        {
+            return -a.start.compareTo(b.start);
+        }
     }
 }
 

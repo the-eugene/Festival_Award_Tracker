@@ -76,7 +76,7 @@ public final class Utilities {
         if (intent.hasExtra(extra)) retrievable = intent.getExtras().getString(extra);
         else retrievable = activity.getPreferences(Context.MODE_PRIVATE).getString(extra, null);
 
-        if (retrievable == null) Log.wtf(TAG, "retrieveExtra(): " + null);
+        if (retrievable == null) Log.wtf(TAG, "retrieveExtra("+extra+"): failed" );
 
         return retrievable;
     }

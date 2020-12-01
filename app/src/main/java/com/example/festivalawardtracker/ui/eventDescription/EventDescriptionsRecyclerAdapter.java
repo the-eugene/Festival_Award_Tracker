@@ -81,7 +81,7 @@ public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<Event
                 public void onClick(View v) {
 //                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
                     Intent intent = new Intent(v.getContext(), EventActivity.class);
-                    intent.putExtra("EVENT_ID", eventDescriptions.get(getAdapterPosition()).ID);
+                    intent.putExtra("EVENT_DESCRIPTION_ID", eventDescriptions.get(getAdapterPosition()).ID);
                     v.getContext().startActivity(intent);
                 }
             });
