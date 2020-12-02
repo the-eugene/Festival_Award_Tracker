@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker.ui.event;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.example.festivalawardtracker.Event;
 import com.example.festivalawardtracker.EventDescription;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
+import com.example.festivalawardtracker.ui.student.StudentSummaryActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,15 +27,11 @@ public class RateStudentsRecyclerAdapter extends RecyclerView.Adapter<RateStuden
     List<String> eventsDescriptionIDs = new ArrayList<>();
 
 
-//    List<String> eventName, startDate, endDate, eventInstruments;
-    private RecyclerViewClickInterface recyclerViewClickInterface;
-
     public RateStudentsRecyclerAdapter(Map<String, Event> events, Map<String,EventDescription> eventDescription, RecyclerViewClickInterface recyclerViewClickInterface) {
         this.events = events;
         eventsIDs.addAll(events.keySet());
         this.eventDescription = eventDescription;
         eventsDescriptionIDs.addAll(eventDescription.keySet());
-//        this.recyclerViewClickInterface = recyclerViewClickInterface;
     }
 
     @NonNull
@@ -73,6 +71,7 @@ public class RateStudentsRecyclerAdapter extends RecyclerView.Adapter<RateStuden
         }
     }
 
+
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView eventName, startDate, endDate;
 
@@ -85,7 +84,11 @@ public class RateStudentsRecyclerAdapter extends RecyclerView.Adapter<RateStuden
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
+                    int adapterPosition = getAdapterPosition();
+//                    Log.d("RecyclerView single click", events.get(eventsIDs.get(adapterPosition)));
+                    Intent intent = new Intent( v.getContext(), EventsRatingsActivity.class);
+                    intent.putExtra("EventID", eventsIDs.get(adapterPosition));
+                    v.getContext().startActivity(intent);
                 }
             });
         }
