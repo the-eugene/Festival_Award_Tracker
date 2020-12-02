@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker.ui.event;
 
+import androidx.annotation.ArrayRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -63,6 +64,7 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
     String event_description_ID, event_ID;
     Event event;
     EventDescription eventDescription;
+    boolean isNew=false;
     /**
      *
      * @author Carlos
@@ -71,6 +73,7 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         Log.d(this.getClass().getName(), "Starting OnCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events_new_activity);
@@ -86,6 +89,7 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
             event = DBManager.Events.get(event_ID);
         else {
             event = new Event();
+            isNew=true;
         }
 
         final AutoCompleteTextView schoolYearInput = findViewById(autoCompleteTextViewDropdownSchoolYear);
@@ -100,24 +104,28 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         /* DROPDOWN LIST SCHOOL YEAR */
-        Map<String, String> schoolYearOptionsMap=new HashMap<>();
-        String schoolYearDefault=null;
-        for (Map.Entry<String,SchoolYear> row:DBManager.SchoolYears.entrySet()){
-            if (row.getKey().equals(event.getSchoolYearID())) schoolYearDefault=row.getValue().getName();
-            schoolYearOptionsMap.put(row.getValue().getName(),row.getKey());
-        }
-        String[] schoolYearList = (String[]) schoolYearOptionsMap.keySet().toArray(new String[schoolYearOptionsMap.size()]);
-        Arrays.sort(schoolYearList);
+        String schoolYearDefault=isNew?DBManager.currentYear.getName():DBManager.SchoolYears.get(event.schoolYearID).getName();
 
-        // Drop-down list adapter
+        final Map<String, String> schoolYearOptionsMap=new HashMap<>();
+        for (Map.Entry<String, SchoolYear> row : DBManager.SchoolYears.entrySet()) {
+            schoolYearOptionsMap.put(row.getValue().getName(), row.getKey());
+        }
+
+        String[] schoolYearList = isNew?
+                schoolYearOptionsMap.keySet().toArray(new String[schoolYearOptionsMap.size()]):
+                new String[]{schoolYearDefault};
+
+        Arrays.sort(schoolYearList);
+            // Drop-down list adapter
+        AutoCompleteTextView schoolYearDropDown =findViewById(R.id.autoCompleteTextViewDropdownSchoolYear);
         ArrayAdapter<String> adapterScholarYearList =
                 new ArrayAdapter<>(
                         this,
                         R.layout.dropdown_layout,
                         schoolYearList);
-        AutoCompleteTextView schoolYearDropDown =
-                this.findViewById(R.id.autoCompleteTextViewDropdownSchoolYear);
         schoolYearDropDown.setAdapter(adapterScholarYearList);
+
+        Log.d(this.getClass().getName(),"Setting school year to: "+schoolYearDefault);
         schoolYearDropDown.setText(schoolYearDefault,false);
 
                 /* STARTING DATE PICKER */
@@ -163,17 +171,18 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View v) {
 
-                // New event
-//                Event newEvent = new Event();
-//                newEvent.setSchoolYearID(schoolYearInput.getText().toString());
-//                newEvent.setStartLocalDate(Utilities.stringMaterialToLocalDate(Objects.requireNonNull(startingDateInput.getText()).toString()));
-//                newEvent.setEndLocalDate(Utilities.stringMaterialToLocalDate(Objects.requireNonNull(endingDateInput.getText()).toString()));
-//
-//                // TODO: This ID must be fixed from the EventActivity. Carlos
-//                newEvent.setEventDescriptionID(_event_description_ID);
-//
-//                // Time to push the new event
-//                DBManager.Events.put(newEvent);
+                if (isNew)
+                    DBManager.linkEvent(
+                            event,
+                            eventDescription,
+                            DBManager.SchoolYears.get(
+                                    schoolYearOptionsMap.get( //gets year id from user friendly options
+                                            schoolYearInput.getText().toString() //get user selection
+                                    )));
+
+                event.setStartLocalDate(Utilities.stringMaterialToLocalDate(Objects.requireNonNull(startingDateInput.getText()).toString()));
+                event.setEndLocalDate(Utilities.stringMaterialToLocalDate(Objects.requireNonNull(endingDateInput.getText()).toString()));
+                DBManager.Events.put(event);
 
                 Toast toast = Toast.makeText(v.getContext(), "New event saved", Toast.LENGTH_SHORT);
                 toast.show();

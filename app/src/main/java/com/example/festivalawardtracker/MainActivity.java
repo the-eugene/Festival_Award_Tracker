@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 DBManager.EventDescriptions.loadAll();
                 DBManager.Events.loadAll();
                 DBManager.SchoolYears.loadAll();
+                DBManager.currentYear=DBManager.findCurrentYear();
                 Log.d(this.getClass().getName(), "...Finished");
             }
         }

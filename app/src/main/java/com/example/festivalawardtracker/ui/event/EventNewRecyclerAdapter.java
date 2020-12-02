@@ -55,19 +55,14 @@ public class EventNewRecyclerAdapter extends RecyclerView.Adapter<EventNewRecycl
         studentName.setText(students.get(position).getFullName());
         birthday.setText(students.get(position).getBirthday());
         age.setText(students.get(position).getAge(event.end).toString());
-        //holder.checkbox.setEnabled(false);
-        checkbox.jumpDrawablesToCurrentState();
-        checkbox.setSelected(event.studentIDs.contains(students.get(position).ID));
-        checkbox.jumpDrawablesToCurrentState();
-
-
+        checkbox.setEnabled(false);
+        checkbox.setChecked(event.studentIDs.contains(students.get(position).ID));
     }
 
     @Override
     public int getItemCount() {
         return students.size();
     }
-
 
     class ViewHolder extends RecyclerView.ViewHolder{
         public ViewHolder(@NonNull final View itemView) {

@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -38,6 +39,8 @@ public class DBManager {
     public static DBHashMap<EventDescription> EventDescriptions = new DBHashMap<>(EventDescription.class);
     public static DBHashMap<Festival> Festivals = new DBHashMap<>(Festival.class);
     public static DBHashMap<SchoolYear> SchoolYears = new DBHashMap<>(SchoolYear.class);
+
+    public static SchoolYear currentYear;
 
     /**
      * Set rooot location for database operations
@@ -199,6 +202,32 @@ public class DBManager {
         return null;
     }
 
+    public static SchoolYear findCurrentYear(){
+        int seq=0;
+        int start=2010;
+        for (SchoolYear sy:SchoolYears.values()) {
+            seq=Math.max(seq,sy.sequence);
+            if (!LocalDate.now().isBefore(sy.start) && !LocalDate.now().isAfter(sy.end)) {
+                return sy;
+            }
+        }
+        //Making it here means we ran out of years!
+        seq++;
+        SchoolYear cyear=null;
+        while ((start+seq)<=LocalDate.now().getYear()) {
+            SchoolYear year = new SchoolYear();
+            year.setName((start + seq) + "-" + (start + seq + 1) + " School Year");
+            year.setStart(String.valueOf(LocalDate.of(start + seq, 7, 15)));
+            year.setEnd(String.valueOf(LocalDate.of(start + seq + 1, 7, 14)));
+            year.setSequence(seq);
+            DBManager.SchoolYears.put(year);
+            if (!LocalDate.now().isBefore(year.start) && !LocalDate.now().isAfter(year.end)) {
+                cyear=year;
+            }
+            seq++;
+        }
+        return cyear;
+    }
 
 }
 
