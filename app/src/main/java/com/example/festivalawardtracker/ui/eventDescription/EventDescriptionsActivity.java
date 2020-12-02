@@ -71,6 +71,7 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
             public void onClick(View view) {
                 Intent intent = new Intent(EventDescriptionsActivity.this, EventDescriptionsNewActivity.class);
                 intent.putExtra(FESTIVAL_ID, festival_ID);
+                intent.putExtra("EVENT_DESCRIPTION_ID", "new");
                 startActivity(intent);
             }
         });

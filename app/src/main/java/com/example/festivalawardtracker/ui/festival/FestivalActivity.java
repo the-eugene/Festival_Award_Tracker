@@ -19,6 +19,7 @@ import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.Utilities;
 import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsActivity;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
@@ -48,7 +49,7 @@ public class FestivalActivity extends AppCompatActivity {
 
         /* Retrieve main input fields from the Android activity */
         final EditText editFestivalName = findViewById(R.id.editText_festivalName);
-        final AutoCompleteTextView editIsNFMCdropDownList = findViewById(R.id.autoCompleteTextViewDropdownNewFestivalNFMC);
+        final MaterialCheckBox isNFMC= findViewById(R.id.checkBoxNFMC);
 
         /* Retrieving festivalID */
         final String _festivalID = Utilities.retrieveExtra(this, FESTIVAL_ID);
@@ -61,31 +62,17 @@ public class FestivalActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        /* Setting dropdown list adapter */
-        // Is NFMC festival? Yes or No answer
-        String[] YESORNO = Answer.Options();
-        // Drop-down list adapter
-        ArrayAdapter<String> adapterYesOrNO =
-                new ArrayAdapter<>(
-                        this,
-                        R.layout.dropdown_layout,
-                        YESORNO);
-        // TODO The database is receiving two isNFMC values.
-        // TODO The activity MUST NOT accept empty or erroneous input values.
-        editIsNFMCdropDownList.setAdapter(adapterYesOrNO);
+//        // TODO The activity MUST NOT accept empty or erroneous input values.
 
-        /* FESTIVAL EDITION */
         // Not null if something is sent from EventDescriptionActivity
         if(_festivalID != null) {
             festivalDB = DBManager.Festivals.get(_festivalID); // Retrieving festival information from database
 
             MaterialButton btnUpdate = findViewById(R.id.btnSaveFestival);
             btnUpdate.setText(R.string.update);
-            toolbar.setTitle("Change Festival");
-
+            toolbar.setTitle("Edit "+festivalDB.name);
             editFestivalName.setText(Objects.requireNonNull(festivalDB).getName());
-            TextInputLayout editIsNFMC_textInputLayout = findViewById(R.id.textInputLayoutNewFestivalNFMC);
-            editIsNFMC_textInputLayout.setHint(Utilities.booleanToYesOrNo(festivalDB.getNFMC()));
+            isNFMC.setChecked(festivalDB.getNFMC());
         }
 
         /* onClickListener: Save or Update button */
@@ -94,18 +81,21 @@ public class FestivalActivity extends AppCompatActivity {
         addFestival.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (editFestivalName.getText().length()==0){
+                    editFestivalName.setError("Can't Be Blank!");
+                    return;
+                }
                 Festival newFestival = new Festival();
-
                 if(_festivalID != null) {
                     newFestival = festivalDB;
                     newFestival.name = editFestivalName.getText().toString().trim();
-                    newFestival.isNFMC = Utilities.yesOrNoToBoolean(editIsNFMCdropDownList.getEditableText().toString());
+                    newFestival.isNFMC = isNFMC.isChecked();
 
                     Toast toast = Toast.makeText(view.getContext(), "Festival updated", Toast.LENGTH_LONG);
                     toast.show();
                 } else {
                     newFestival.name = editFestivalName.getText().toString().trim();
-                    newFestival.isNFMC = Utilities.yesOrNoToBoolean(editIsNFMCdropDownList.getEditableText().toString());
+                    newFestival.isNFMC = isNFMC.isChecked();
 
                     Toast toast = Toast.makeText(view.getContext(), "New festival saved", Toast.LENGTH_LONG);
                     toast.show();

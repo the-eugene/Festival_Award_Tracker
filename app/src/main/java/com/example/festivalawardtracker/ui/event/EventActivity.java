@@ -18,6 +18,9 @@ import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.EventDescription;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.Utilities;
+import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsActivity;
+import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsNewActivity;
+import com.example.festivalawardtracker.ui.festival.FestivalActivity;
 import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -33,7 +36,7 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
     EventDescription eventDescriptionDB;
     EventActivityRecyclerAdapter eventActivityRecyclerAdapter;
     RecyclerView recyclerView;
-    FloatingActionButton newEvent;
+    FloatingActionButton newEvent,btnEditEventDescription;
     Context thisContext;
     Context context;
     TextView event_description_description, event_description_name;
@@ -66,6 +69,18 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
+
+        /* BUTTON EDIT Description */
+        btnEditEventDescription = findViewById(R.id.btnEditEvent);
+        btnEditEventDescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EventActivity.this, EventDescriptionsNewActivity.class);
+                intent.putExtra(EVENT_DESCRIPTION_ID, event_description_id);
+                intent.putExtra("EVENT_ID", "new");
+                startActivity(intent);
+            }
+        });
 
         /* BUTTON NEW EVENT ACTIVITY */
         newEvent = findViewById(R.id.btnNewEventActivity);

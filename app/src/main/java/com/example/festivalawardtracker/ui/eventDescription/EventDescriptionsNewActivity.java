@@ -15,8 +15,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.EventDescription;
+import com.example.festivalawardtracker.Festival;
 import com.example.festivalawardtracker.Instrument;
 import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.ui.Utilities;
 import com.google.android.material.textfield.TextInputEditText;
 
 /**
@@ -27,7 +29,11 @@ public class EventDescriptionsNewActivity extends AppCompatActivity {
 
     private static final String TAG = "EVENT_DESCRIPTION";
     AutoCompleteTextView autoCompleteTextView;
-    String _festivalID = "festivalID_test";
+
+    Festival festival;
+    EventDescription eventDescription;
+
+    boolean isNew;
 
     /**
      *
@@ -39,17 +45,30 @@ public class EventDescriptionsNewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_descriptions_new_activity);
-
-        // TODO possible solution for festivalID retrieval
-//        Intent intent = getIntent();
-//        _festivalID = intent.getExtras().getString("festivalID",null);
-
         final TextInputEditText inputEventName = findViewById(R.id.editText_eventName);
         final TextInputEditText inputEventDescription = findViewById(R.id.editText_eventDescription);
 
+        /* Retrieving festival ID */
+
+
+        String eventDescriptionID = Utilities.retrieveExtra(this, "EVENT_DESCRIPTION_ID");
+        isNew=eventDescriptionID.equals("new");
+        if(isNew){
+            eventDescription = new EventDescription();
+            String festivalID = Utilities.retrieveExtra(this, "FESTIVAL_ID");
+            festival = DBManager.Festivals.get(festivalID);
+        } else {
+            eventDescription = DBManager.EventDescriptions.get(eventDescriptionID);
+            festival=eventDescription.retrieveFestival();
+        }
+
+
         /* ACTION BAR */
         Toolbar toolbar = findViewById(R.id.toolbar_newEventDescription);
-        toolbar.setTitle("Add new event");
+        if (isNew)
+            toolbar.setTitle("Adding new event to " + festival.name);
+        else
+            toolbar.setTitle("Editing " + festival.name +" : "+eventDescription.name);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,19 +80,39 @@ public class EventDescriptionsNewActivity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, dropDownLayout, options);
         autoCompleteTextView.setAdapter(arrayAdapter);
 
+        if (!isNew) {
+            autoCompleteTextView.setText(eventDescription.instrument.ToCapitalizedString());
+            inputEventDescription.setText(eventDescription.getDescription());
+            inputEventName.setText(eventDescription.getName());
+        }
+
         /* SAVE NEW EVENT with DESCRIPTION */
         Button saveButton = findViewById(R.id.btnSaveEvent);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventDescription newEventDescription = new EventDescription();
+                if (inputEventName.getText().length()==0){
+                    inputEventName.setError("Name cannot be left blank");
+                    return;
+                }
+                else
+                    inputEventName.setError(null);
 
-                newEventDescription.setFestivalID(_festivalID);
-                newEventDescription.setName(inputEventName.getText().toString());
-                newEventDescription.setDescription(inputEventDescription.getText().toString());
-                newEventDescription.setInstrument(Instrument.valueOf(autoCompleteTextView.getText().toString().toLowerCase()));
+                if (autoCompleteTextView.getText().length()==0){
+                    autoCompleteTextView.setError("Instrument cannot be left blank");
+                    return;
+                }
+                else
+                    autoCompleteTextView.setError(null);
 
-                DBManager.EventDescriptions.put(newEventDescription);
+                eventDescription.setName(inputEventName.getText().toString());
+                eventDescription.setDescription(inputEventDescription.getText().toString());
+                eventDescription.setInstrument(Instrument.valueOf(autoCompleteTextView.getText().toString().toLowerCase()));
+
+                if (isNew)
+                    DBManager.linkFestivalEventDescription(festival,eventDescription); //linking also saves event
+                else
+                    eventDescription.save();
 
                 Toast toast = Toast.makeText(v.getContext(), "New event saved", Toast.LENGTH_SHORT);
                 toast.show();

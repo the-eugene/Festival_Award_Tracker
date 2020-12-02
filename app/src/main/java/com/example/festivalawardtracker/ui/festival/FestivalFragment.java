@@ -50,27 +50,6 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
         recyclerView.setAdapter(festivalRecyclerAdapter);
         Log.d(this.getClass().getName(),"onCreateView");
 
-/* ****** NOT NEEDED, FESTIVALS ARE PRELOADED********* */
-//        class queryThread implements Runnable{
-//            final Activity activity;
-//            queryThread(Activity activity){
-//                this.activity = activity;
-//            }
-//            @Override
-//            public void run(){
-//                DBManager.Festivals.loadAll();
-//                activity.runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        festivalRecyclerAdapter.updateFestivalList();
-//                        festivalRecyclerAdapter.notifyDataSetChanged();
-//                    }
-//                });
-//            }
-//        }
-//
-//        new Thread(new queryThread(getActivity())).start();
-
         recyclerView.setMotionEventSplittingEnabled(false);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
