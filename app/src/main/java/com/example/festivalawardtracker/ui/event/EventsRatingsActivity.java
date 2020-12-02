@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.festivalawardtracker.Event;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.event.EventRatingsRecyclerAdapter;
 
@@ -20,8 +21,8 @@ public class EventsRatingsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     EventRatingsRecyclerAdapter eventRatingsRecyclerAdapter;
     List<String> name,age,birthday;
-    String[] level;
-    Integer[] rating;
+    ArrayList<EventStudentRatingEditTextBoxes> level;
+    ArrayList<EventStudentRatingEditTextBoxes> rating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +81,10 @@ public class EventsRatingsActivity extends AppCompatActivity {
         age.add("11");
         age.add("12");
 
+        level = populateLevel();
+        rating = populateRating();
+
+
         /* ACTION BAR */
         Toolbar toolbar = findViewById(R.id.toolbar_studentRatings);
         toolbar.setTitle("Student Ratings");
@@ -87,4 +92,29 @@ public class EventsRatingsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
+
+    private ArrayList<EventStudentRatingEditTextBoxes> populateLevel() {
+
+        ArrayList<EventStudentRatingEditTextBoxes> levelList = new ArrayList<>();
+
+        for (int i = 0; i < 12; i++) {
+            EventStudentRatingEditTextBoxes editLevel = new EventStudentRatingEditTextBoxes();
+            editLevel.setEditLevelValue(String.valueOf(i));
+            levelList.add(editLevel);
+        }
+        return levelList;
+    }
+
+    private ArrayList<EventStudentRatingEditTextBoxes> populateRating() {
+
+        ArrayList<EventStudentRatingEditTextBoxes> ratingList = new ArrayList<>();
+
+        for (int i = 0; i < 12; i++) {
+            EventStudentRatingEditTextBoxes editRating = new EventStudentRatingEditTextBoxes();
+            editRating.setEditLevelValue(String.valueOf(i));
+            ratingList.add(editRating);
+        }
+        return ratingList;
+    }
+
 }
