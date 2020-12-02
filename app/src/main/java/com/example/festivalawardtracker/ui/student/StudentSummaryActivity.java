@@ -52,15 +52,15 @@ public class StudentSummaryActivity extends AppCompatActivity {
 
         /* ACTION BAR */
         Toolbar toolbar = findViewById(R.id.toolbarStudentDisplay);
-        toolbar.setTitle("Student Data");
+        toolbar.setTitle(s.getFullName());
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
 
-        TextView name=findViewById(R.id.textViewStudentFullName);
-        name.setText(s.getFullName());
+//        TextView name=findViewById(R.id.textViewStudentFullName);
+//        name.setText(s.getFullName());
 
         TextView birthday=findViewById(R.id.textViewStudentBirthday);
         birthday.setText(s.getBirthday());

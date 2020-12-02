@@ -36,7 +36,7 @@ public class Contact {
     public String stateCode() {return state;}
     public String stateName() {return STATE_MAP.get(state);}
     public String fullAddress(){
-        return String.format("%s\n%s\n%s, %s  %s", business, street, city, state, zip);
+        return String.format("%s\n%s, %s  %s", street, city, state, zip);
     }
 
     public static String[] OptionsStates(){
