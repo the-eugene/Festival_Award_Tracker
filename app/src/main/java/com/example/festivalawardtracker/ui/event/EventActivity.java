@@ -75,6 +75,7 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
                 Intent intent = new Intent(EventActivity.this, EventNewActivity.class);
                 Log.d(TAG, " NEW Event For: " + event_description_id);
                 intent.putExtra(EVENT_DESCRIPTION_ID, event_description_id);
+                intent.putExtra("EVENT_ID", "new");
                 startActivity(intent);
             }
         });

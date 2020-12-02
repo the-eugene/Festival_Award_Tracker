@@ -85,11 +85,14 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
                 getIntent().getExtras().getString(EVENT_ID):
                 getPreferences(Context.MODE_PRIVATE).getString(EVENT_ID, null);
 
-        if (event_ID!=null)
+        if (!event_ID.equals("new"))
             event = DBManager.Events.get(event_ID);
         else {
             event = new Event();
             isNew=true;
+            event.start=LocalDate.now();
+            event.end=LocalDate.now();
+            event.eventDescriptionID=event_description_ID;
         }
 
         final AutoCompleteTextView schoolYearInput = findViewById(autoCompleteTextViewDropdownSchoolYear);
