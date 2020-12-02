@@ -54,7 +54,7 @@ public class Student extends Person {
     public void addPerformance(String eventID, LocalDate date, String level, int rating){
         Performance p=new Performance(eventID,date,level, rating);
         performances.add(p);
-        //addAward(p); //TODO Add awards as a separate step!
+        addAward(p); //TODO Add awards as a separate step!
         DBManager.Students.put(ID,this); //instead of save
     }
 
@@ -69,7 +69,7 @@ public class Student extends Person {
     public void addAward(@NotNull Performance performance) {
         Event event=performance.retrieveEvent();
         SchoolYear year=event.retrieveYear();
-        EventDescription description=event.getDescription();
+        EventDescription description=event.retrieveDescription();
         Festival festival=description.retrieveFestival();
         if (festival.isNFMC){
             //deal with cups

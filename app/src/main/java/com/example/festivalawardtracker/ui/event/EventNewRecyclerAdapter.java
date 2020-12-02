@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,14 +14,11 @@ import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.Event;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.Student;
-import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.checkbox.MaterialCheckBox;
-import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 
 public class EventNewRecyclerAdapter extends RecyclerView.Adapter<EventNewRecyclerAdapter.ViewHolder> {
 
@@ -84,7 +80,7 @@ public class EventNewRecyclerAdapter extends RecyclerView.Adapter<EventNewRecycl
     public void update() {
         students.clear();
         for(Student s:DBManager.Students.values()){
-            if(s.instruments.contains(event.getDescription().instrument))
+            if(s.instruments.contains(event.retrieveDescription().instrument))
                 students.add(s);
         }
         students.sort(new Comparator<Student>() {

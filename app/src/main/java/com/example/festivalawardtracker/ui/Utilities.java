@@ -17,6 +17,10 @@ import java.time.format.DateTimeParseException;
  */
 public final class Utilities {
     private static final String TAG = "UTILITIES";
+    public static String EVENT_ID="EVENT_ID";
+    public static String EVENT_DESCRIPTION_ID="EVENT_DESCRIPTION_ID";
+    public static String FESTIVAL_ID="FESTIVAL_ID";
+    public static String STUDENT_ID="STUDENT_ID";
 
     // Private constructor to prevent instantiation
     private Utilities() {
@@ -63,7 +67,7 @@ public final class Utilities {
 
     /**
      *
-     * @author Jimmy?
+     * @author Eugene
      * @author Carlos
      * @param activity
      * @param extra

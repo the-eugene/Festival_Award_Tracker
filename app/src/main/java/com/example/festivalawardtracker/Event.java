@@ -48,7 +48,7 @@ public class Event extends DBAware {
         this.location = location;
     }
 
-    public EventDescription getDescription() { return DBManager.EventDescriptions.get(eventDescriptionID); }
+    public EventDescription retrieveDescription() { return DBManager.EventDescriptions.get(eventDescriptionID); }
 
     public String getEventDescriptionID() {
         return eventDescriptionID;

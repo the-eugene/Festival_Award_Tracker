@@ -30,7 +30,6 @@ public class RateStudentsFragment extends Fragment implements RecyclerViewClickI
 
     RecyclerView recyclerView;
     RateStudentsRecyclerAdapter rateStudentsRecyclerAdapter;
-    List<String> eventName, startDate, endDate, eventInstruments;
     Context thisContext;
 
 
@@ -50,30 +49,8 @@ public class RateStudentsFragment extends Fragment implements RecyclerViewClickI
         Context context = root.getContext();
 
         recyclerView = root.findViewById(R.id.recyclerView_eventsFragment);
-        rateStudentsRecyclerAdapter = new RateStudentsRecyclerAdapter(DBManager.Events, DBManager.EventDescriptions,this);
+        rateStudentsRecyclerAdapter = new RateStudentsRecyclerAdapter(DBManager.currentYear,getActivity());
         recyclerView.setAdapter(rateStudentsRecyclerAdapter);
-
-        class queryThread implements Runnable{
-            final Activity activity;
-            queryThread(Activity activity){
-                this.activity=activity;
-            }
-            @Override
-            public void run(){
-                DBManager.Events.loadAll();
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        rateStudentsRecyclerAdapter.updateEventsList();
-                        rateStudentsRecyclerAdapter.notifyDataSetChanged();
-                    }
-                });
-            }
-        };
-        if (DBManager.Events.size()==0)
-            new Thread(new queryThread(getActivity())).start();
-
-
         recyclerView.setMotionEventSplittingEnabled(false);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
@@ -114,11 +91,5 @@ public class RateStudentsFragment extends Fragment implements RecyclerViewClickI
 
         });
         super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    public void onResume() {
-        rateStudentsRecyclerAdapter.updateEventsList();
-        rateStudentsRecyclerAdapter.notifyDataSetChanged();
-        super.onResume();
     }
 }
