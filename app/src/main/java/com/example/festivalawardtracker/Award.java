@@ -2,6 +2,10 @@ package com.example.festivalawardtracker;
 
 import java.time.LocalDate;
 
+/**
+ *
+ * @author Eugene
+ */
 public class Award {
     String studentID;
     LocalDate dateReceived;

@@ -19,7 +19,7 @@
         <item
             android:id="@+id/nav_export"
             android:icon="@drawable/ic_baseline_north_east_24"
-            android:title="Export data" />
+            android:title="@string/export_data" />
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_baseline_exit_to_app_24"

@@ -1,6 +1,7 @@
 package com.example.festivalawardtracker;
 
 /**
+ *
  * @author Eugene
  */
 public enum Answer {

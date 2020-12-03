@@ -61,7 +61,7 @@ public class StudentEditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.students_new_activity); // This layout is also used by StudentNewActivity.java
+        setContentView(R.layout.student_activity); // This layout is also used by StudentNewActivity.java
 
         Intent intent = getIntent();
         _studentID = intent.getStringExtra(StudentSummaryActivity.STUDENT_ID);
@@ -166,14 +166,15 @@ public class StudentEditActivity extends AppCompatActivity {
         }
 
         /* NEW ACTIVITY: Student Parent */
-        MaterialButton btnAddParent = findViewById(R.id.btnStudentAddParent);
-        btnAddParent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent activityIntent = new Intent(StudentEditActivity.this, ParentActivity.class);
-                startActivity(activityIntent);
-            }
-        });
+        // Disabled feature fot from student_activity.xml file
+//        MaterialButton btnAddParent = findViewById(R.id.btnStudentAddParent);
+//        btnAddParent.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent activityIntent = new Intent(StudentEditActivity.this, ParentActivity.class);
+//                startActivity(activityIntent);
+//            }
+//        });
 
         /* SAVE STUDENT BUTTON */
         Button btnStudentUpdate = (Button) findViewById(R.id.btnSaveStudent);

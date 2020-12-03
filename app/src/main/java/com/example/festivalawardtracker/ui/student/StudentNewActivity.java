@@ -61,7 +61,7 @@ public class StudentNewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.students_new_activity);
+        setContentView(R.layout.student_activity);
 
         // Student fields can go below here if needed
         // Instrument
@@ -134,14 +134,15 @@ public class StudentNewActivity extends AppCompatActivity {
         }
 
         /* NEW ACTIVITY: Student Parent */
-        MaterialButton btnAddParent = findViewById(R.id.btnStudentAddParent);
-        btnAddParent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent activityIntent = new Intent(StudentNewActivity.this, ParentActivity.class);
-                startActivity(activityIntent);
-            }
-        });
+        // Disabled feature fot from student_activity.xml file
+//        MaterialButton btnAddParent = findViewById(R.id.btnStudentAddParent);
+//        btnAddParent.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent activityIntent = new Intent(StudentNewActivity.this, ParentActivity.class);
+//                startActivity(activityIntent);
+//            }
+//        });
 
         /* SAVE STUDENT BUTTON */
         Button studentSaveButton = (Button) findViewById(R.id.btnSaveStudent);
