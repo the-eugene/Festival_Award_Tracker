@@ -17,6 +17,10 @@
             android:icon="@drawable/ic_baseline_view_list_24"
             android:title="@string/ratings" />
         <item
+            android:id="@+id/nav_export"
+            android:icon="@drawable/ic_baseline_north_east_24"
+            android:title="Export data" />
+        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_baseline_exit_to_app_24"
             android:title="@string/log_out"
