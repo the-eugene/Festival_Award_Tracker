@@ -51,6 +51,7 @@ public class EventActivityRecyclerAdapter extends RecyclerView.Adapter<EventActi
             Event e = events.get(position);
             holder.startDate.setText(e.getStart());
             holder.endDate.setText(e.getEnd());
+            holder.numberStudents.setText(Integer.toString(e.studentIDs.size()));
         }
     }
 

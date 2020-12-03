@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +38,10 @@ public class EventsRatingsActivity extends AppCompatActivity {
                 getIntent().getExtras().getString(Utilities.EVENT_ID):
                 getPreferences(Context.MODE_PRIVATE).getString(Utilities.EVENT_ID, null);
 
+        Event e=DBManager.Events.get(event_ID);
+        ((TextView)findViewById(R.id.textView_eventNameR)).setText(DBManager.EventDescriptions.get(e.getEventDescriptionID()).getName());
+        ((TextView)findViewById(R.id.textView_startDate)).setText(e.getStart());
+        ((TextView)findViewById(R.id.textView_endDate)).setText(e.getEnd());
         recyclerView =findViewById(R.id.recyclerView_studentRatings);
         eventRatingsRecyclerAdapter = new EventRatingsRecyclerAdapter(event_ID,this);
         recyclerView.setAdapter(eventRatingsRecyclerAdapter);
@@ -62,9 +67,9 @@ public class EventsRatingsActivity extends AppCompatActivity {
                     String sID=eventRatingsRecyclerAdapter.studentIDs.get(i);
                     String lvl= eventRatingsRecyclerAdapter.level.get(i).getText().toString();
                     String rating=eventRatingsRecyclerAdapter.rating.get(i).getText().toString();
-                    if (lvl.length()>0&&rating.length()>0) {
+                    if (lvl.length()>0&&rating.length()>0&&eventRatingsRecyclerAdapter.performances.get(i)==null) {
                         Log.d(this.getClass().getName(), String.format("Student: %s Level: %s, Rating: %s", sID, lvl, rating));
-                        //DBManager.Students.get(sID).addPerformance(event_ID, event.end, lvl, Integer.parseInt(rating));
+                        DBManager.Students.get(sID).addPerformance(event_ID, event.end, lvl, Integer.parseInt(rating));
                     }
                 }
 

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.Event;
+import com.example.festivalawardtracker.Performance;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.Student;
 
@@ -22,10 +23,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventRatingsRecyclerAdapter extends RecyclerView.Adapter<EventRatingsRecyclerAdapter.ViewHolder> {
-
     public List<EditText> level=new ArrayList<>();
     public List<EditText> rating=new ArrayList<>();
     public List<String> studentIDs;
+    public List<Performance> performances;
 
     Activity activity;
     Event event;
@@ -35,6 +36,7 @@ public class EventRatingsRecyclerAdapter extends RecyclerView.Adapter<EventRatin
     public EventRatingsRecyclerAdapter(String EventID, Activity activity) {
         event = DBManager.Events.get(EventID);
         studentIDs=event.studentIDs;
+        performances=new ArrayList<>(studentIDs.size());
         this.activity=activity;
     }
 
@@ -54,6 +56,18 @@ public class EventRatingsRecyclerAdapter extends RecyclerView.Adapter<EventRatin
             Student s = DBManager.Students.get(studentIDs.get(position));
             level.add(position, holder.editLevel);
             rating.add(position, holder.editRating);
+            //disable students that already have performances and therefore awards
+            performances.add(position, null);
+            for (Performance p: s.performances) {
+                if(p.getEventID().equals(event.ID)){
+                    performances.add(position,p);
+                    holder.editLevel.setText(p.getLevel());
+                    holder.editLevel.setEnabled(false);
+                    holder.editRating.setText(Integer.toString(p.getRating()));
+                    holder.editRating.setEnabled(false);
+                }
+            }
+
 
             holder.birthday.setText(s.getBirthday());
             holder.age.setText(Integer.toString(s.getAge(event.end))); // their age at the end of the event
