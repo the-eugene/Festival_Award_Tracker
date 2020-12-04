@@ -15,6 +15,7 @@ import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.EventDescription;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.event.EventActivity;
+import com.example.festivalawardtracker.ui.student.StudentEditActivity;
 import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
@@ -80,6 +81,19 @@ public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<Event
                     Intent intent = new Intent(v.getContext(), EventActivity.class);
                     intent.putExtra("EVENT_DESCRIPTION_ID", eventDescriptions.get(getAdapterPosition()).ID);
                     v.getContext().startActivity(intent);
+                }
+            });
+
+            /* Long press for event descriptions */
+            // @author: Carlos
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    int adapterPosition = getAdapterPosition();
+                    Intent intent = new Intent( view.getContext(), EventDescriptionsNewActivity.class);
+//                    intent.putExtra("EVENT_DESCRIPTION_ID", eventDescriptions.get(adapterPosition));
+                    view.getContext().startActivity(intent);
+                    return false;
                 }
             });
         }

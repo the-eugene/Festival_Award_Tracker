@@ -126,7 +126,7 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecycler
                 }
             });
 
-            /* Long press for StudentEditActivity */
+            /* Long press for students */
             // @author: Carlos
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override

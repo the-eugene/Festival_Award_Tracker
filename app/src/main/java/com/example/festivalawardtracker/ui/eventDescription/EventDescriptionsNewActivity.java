@@ -51,8 +51,6 @@ public class EventDescriptionsNewActivity extends AppCompatActivity {
         final TextInputEditText inputEventDescription = findViewById(R.id.editText_eventDescription);
 
         /* Retrieving festival ID */
-
-
         String eventDescriptionID = Utilities.retrieveExtra(this, "EVENT_DESCRIPTION_ID");
         isNew=eventDescriptionID.equals("new");
         if(isNew){

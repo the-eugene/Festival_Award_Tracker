@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsActivity;
 import com.example.festivalawardtracker.Festival;
 import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.ui.student.StudentEditActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,6 +79,19 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
                     intent.putExtra(FESTIVAL_ID, festivalIDs.get(p));
                     v.getContext().startActivity(intent);
                            }
+            });
+
+            /* Long press for festival update */
+            // @author: Carlos
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    int adapterPosition = getAdapterPosition();
+                    Intent intent = new Intent( view.getContext(), FestivalActivity.class);
+                    intent.putExtra("FESTIVAL_ID", festivalIDs.get(adapterPosition));
+                    view.getContext().startActivity(intent);
+                    return false;
+                }
             });
         }
     } // End ViewHolder
