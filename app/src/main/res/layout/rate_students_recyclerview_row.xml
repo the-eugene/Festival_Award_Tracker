@@ -56,8 +56,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Event Name"
-        android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="#00695b"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

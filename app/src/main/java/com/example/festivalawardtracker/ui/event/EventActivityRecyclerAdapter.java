@@ -30,7 +30,7 @@ public class EventActivityRecyclerAdapter extends RecyclerView.Adapter<EventActi
     List <Event> events=new ArrayList<>();;
     Activity activity;
     EventDescription eventDescription;
-    private RecyclerViewClickInterface recyclerViewClickInterface;
+
 
     public EventActivityRecyclerAdapter(EventDescription eventDescription, Activity activity) {
         this.eventDescription=eventDescription;

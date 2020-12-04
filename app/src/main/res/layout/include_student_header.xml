@@ -13,7 +13,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="Student's Full Name"
-        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#00695b"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

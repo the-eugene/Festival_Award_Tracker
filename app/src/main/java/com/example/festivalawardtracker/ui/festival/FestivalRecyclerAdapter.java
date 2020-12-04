@@ -27,7 +27,7 @@ public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecycl
     public FestivalRecyclerAdapter(Map<String, Festival> festivalNames) {
         this.festivalNames = festivalNames;
         festivalIDs.addAll(festivalNames.keySet());
-//        this.recyclerViewClickInterface = recyclerViewClickInterface;
+
     }
 
     @NonNull

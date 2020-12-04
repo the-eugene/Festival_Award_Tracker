@@ -26,7 +26,7 @@ public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<Event
 
     private final String TAG = this.getClass().toString();
     private final String fID;
-    private RecyclerViewClickInterface recyclerViewClickInterface;
+
     private List<EventDescription> eventDescriptions=new ArrayList<>();
     private Activity activity;
 
