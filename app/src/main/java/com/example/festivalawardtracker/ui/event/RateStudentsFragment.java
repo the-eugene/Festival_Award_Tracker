@@ -53,26 +53,4 @@ public class RateStudentsFragment extends Fragment {
 
         return root; // Returning the view.
     }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-
-        inflater.inflate(R.menu.main_menu,menu);
-        MenuItem menuItem = menu.findItem(R.id.action_search);
-        SearchView sv = (SearchView) menuItem.getActionView();
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-
-
-        });
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-}
+} // End fragment

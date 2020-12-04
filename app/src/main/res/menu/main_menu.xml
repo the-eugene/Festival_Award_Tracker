@@ -2,11 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/action_search"
-        android:orderInCategory="100"
-        app:showAsAction="always|collapseActionView"
-        android:icon="@drawable/ic_baseline_search_24"
-        android:title="Search"
-        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+<!--
+    Menu items for the main app bar can be added here.
+    Check commit NUMBER in project repo for more getting back the code.
+    See: https://developer.android.com/guide/topics/ui/menus#options-menu
+-->
 </menu>

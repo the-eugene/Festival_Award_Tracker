@@ -52,7 +52,6 @@
     <string name="add_parent">Add parent</string>
     <string name="festival_name">Festival Name</string>
     <string name="sample_text">Sample_Text</string>
-    <string name="search">Search</string>
     <string name="search_event">Search Event</string>
     <string name="event_list">Event List</string>
     <string name="business">Business</string>
@@ -76,4 +75,5 @@
     <string name="save">SAVE</string>
     <string name="update">UPDATE</string>
     <string name="export_data">Export data</string>
+    <string name="search">Search</string>
 </resources>

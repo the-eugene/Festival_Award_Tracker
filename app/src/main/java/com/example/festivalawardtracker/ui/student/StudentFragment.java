@@ -101,33 +101,6 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
     }
 
     /**
-     * @author
-     * @param menu
-     * @param inflater
-     */
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-
-        inflater.inflate(R.menu.main_menu,menu);
-        MenuItem menuItem = menu.findItem(R.id.action_search);
-        SearchView sv = (SearchView) menuItem.getActionView();
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                studentRecyclerAdapter.getFilter().filter(newText);
-                return false;
-
-            }
-        });
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    /**
      * @author Eugene
      */
     public void onResume() {
@@ -135,4 +108,4 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
         studentRecyclerAdapter.notifyDataSetChanged();
         super.onResume();
     }
-}
+} // End fragment
