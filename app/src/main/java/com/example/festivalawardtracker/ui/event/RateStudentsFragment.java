@@ -1,8 +1,6 @@
 package com.example.festivalawardtracker.ui.event;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,14 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.R;
-import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
-
-import java.util.List;
 
 /**
  * @author carloswashingtonmercado@gmail.com
  */
-public class RateStudentsFragment extends Fragment implements RecyclerViewClickInterface {
+public class RateStudentsFragment extends Fragment {
 
     RecyclerView recyclerView;
     RateStudentsRecyclerAdapter rateStudentsRecyclerAdapter;
@@ -57,18 +52,6 @@ public class RateStudentsFragment extends Fragment implements RecyclerViewClickI
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         return root; // Returning the view.
-    }
-
-//    @Override
-//    public void onClick(View v) {
-//        Intent activityIntent = new Intent( v.getContext(), EventNewActivity.class);
-//        startActivity(activityIntent);
-//    }
-
-    @Override
-    public void onItemClick(int position) {
-        Intent activityIntent = new Intent(thisContext, EventsRatingsActivity.class);
-        startActivity(activityIntent);
     }
 
     @Override

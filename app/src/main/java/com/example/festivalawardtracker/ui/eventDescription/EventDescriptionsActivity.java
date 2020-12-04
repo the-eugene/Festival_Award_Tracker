@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,16 +17,14 @@ import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.Festival;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.Utilities;
-import com.example.festivalawardtracker.ui.event.EventActivity;
 import com.example.festivalawardtracker.ui.festival.FestivalActivity;
-import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  *
  * @author
  */
-public class EventDescriptionsActivity extends AppCompatActivity implements RecyclerViewClickInterface {
+public class EventDescriptionsActivity extends AppCompatActivity {
 
     private static final String TAG = "EVENT_DESCRIPTIONS_ACTIVITY";
 
@@ -95,18 +92,6 @@ public class EventDescriptionsActivity extends AppCompatActivity implements Recy
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     } // End OnCreate
 
-    /**
-     *
-     * @author
-     * @param position
-     */
-    @Override
-    public void onItemClick(int position) {
-        Intent intent = new Intent(EventDescriptionsActivity.this, EventActivity.class);
-        Log.d(TAG, "OnItemClick: " + festival_ID);
-        intent.putExtra(FESTIVAL_ID, festival_ID);
-        startActivity(intent);
-    }
 
     /**
      *

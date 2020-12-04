@@ -15,7 +15,6 @@ import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.EventDescription;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.event.EventActivity;
-import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<Event
 
     private final String TAG = this.getClass().toString();
     private final String fID;
-
     private List<EventDescription> eventDescriptions=new ArrayList<>();
     private Activity activity;
 
@@ -79,7 +77,6 @@ public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<Event
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
                     Intent intent = new Intent(v.getContext(), EventActivity.class);
                     intent.putExtra("EVENT_DESCRIPTION_ID", eventDescriptions.get(getAdapterPosition()).ID);
                     v.getContext().startActivity(intent);

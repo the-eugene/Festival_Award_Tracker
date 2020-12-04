@@ -7,39 +7,25 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/textViewStudentSummaryRecyclerviewAwards"
+        android:id="@+id/textViewStudentSummaryRecyclerviewEventName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="Awards"
+        android:text="Event Name"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewStudentSummaryRecycleviewCcsTpLevel" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewStudentSummaryRecyclerviewYear"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text=" Year"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewStudentSummaryRecyclerviewEventName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Event Name"
-        android:textSize="24sp"
+        android:text="Year"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView_left"
         app:layout_constraintStart_toEndOf="@+id/textView_left"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,9 +36,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="("
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewStudentSummaryRecyclerviewYear"
-        app:layout_constraintStart_toEndOf="@+id/textViewStudentSummaryRecyclerviewYear" />
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewStudentSummaryRecyclerviewEventName"
+        app:layout_constraintStart_toEndOf="@+id/textViewStudentSummaryRecyclerviewEventName" />
 
     <TextView
         android:id="@+id/textView_right"
@@ -61,20 +48,23 @@
         android:layout_marginEnd="16dp"
         android:text=")"
         android:textAlignment="viewStart"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewStudentSummaryRecyclerviewEventName"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewStudentSummaryRecyclerviewYear"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewStudentSummaryRecyclerviewEventName" />
+        app:layout_constraintStart_toEndOf="@+id/textViewStudentSummaryRecyclerviewYear" />
 
     <TextView
-        android:id="@+id/textViewStudentSummaryRecycleviewCcsTpLevel"
+        android:id="@+id/textViewStudentSummaryRecycleviewCcsTpLevelAwards"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="CCS, TP, Level"
+        android:layout_marginBottom="8dp"
+        android:text="CCS, TP, Level, Awards"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewStudentSummaryRecyclerviewYear" />

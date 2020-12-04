@@ -1,6 +1,5 @@
 package com.example.festivalawardtracker.ui.event;
 
-import androidx.annotation.ArrayRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -8,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,16 +17,13 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.festivalawardtracker.Answer;
 import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.Event;
 import com.example.festivalawardtracker.EventDescription;
-import com.example.festivalawardtracker.Gender;
 import com.example.festivalawardtracker.MainActivity;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.SchoolYear;
 import com.example.festivalawardtracker.ui.Utilities;
-import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -36,11 +31,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -53,7 +46,7 @@ import static com.example.festivalawardtracker.R.id.editText_startingDate;
  * @author Carlos
  * @see EventActivity which calls this activity.
  */
-public class EventNewActivity extends AppCompatActivity implements View.OnClickListener, RecyclerViewClickInterface {
+public class EventNewActivity extends AppCompatActivity {
 
     private static final String TAG = "EVENT_NEW_ACTIVITY";
     private static final String EVENT_ID = "EVENT_ID";
@@ -204,16 +197,6 @@ public class EventNewActivity extends AppCompatActivity implements View.OnClickL
         recyclerView.addItemDecoration(dividerItemDecoration);
 
     } // End OnCreate
-
-    @Override
-    public void onItemClick(int position) {
-
-    }
-
-    @Override
-    public void onClick(View v) {
-
-    }
 
     /**
      * It changes a given string date from on date format into another (string).

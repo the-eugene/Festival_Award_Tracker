@@ -14,10 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.Event;
 import com.example.festivalawardtracker.EventDescription;
-import com.example.festivalawardtracker.Festival;
 import com.example.festivalawardtracker.R;
-import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsRecyclerAdapter;
-import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.firebase.database.Query;
 
 import java.util.ArrayList;

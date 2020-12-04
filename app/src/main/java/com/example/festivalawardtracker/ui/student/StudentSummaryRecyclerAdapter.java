@@ -52,7 +52,7 @@ public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentS
             holder.event.setText(ed.getName());
 //            holder.ccs.setText("WIP");
 //            holder.tp.setText("WIP");
-            holder.awards.setText(((Integer)performances.get(position).getRating()).toString());
+//            holder.awards.setText(((Integer)performances.get(position).getRating()).toString());
 //            holder.level.setText(performances.get(position).getLevel());
         }
     }
@@ -71,12 +71,7 @@ public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentS
             super(itemView);
             year = itemView.findViewById(R.id.textViewStudentSummaryRecyclerviewYear);
             event = itemView.findViewById(R.id.textViewStudentSummaryRecyclerviewEventName);
-            info = itemView.findViewById(R.id.textViewStudentSummaryRecycleviewCcsTpLevel);
-            awards = itemView.findViewById(R.id.textViewStudentSummaryRecyclerviewAwards);
-
-//            ccs = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewCCS);
-//            tp = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewTP);
-//            level = itemView.findViewById(R.id.textViewStudentDisplayRecyclerviewLevel);
+            info = itemView.findViewById(R.id.textViewStudentSummaryRecycleviewCcsTpLevelAwards);
 
         }
     }

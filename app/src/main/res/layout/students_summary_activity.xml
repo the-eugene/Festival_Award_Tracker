@@ -38,77 +38,77 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
 
-        <TextView
-            android:id="@+id/textViewStudentBirthday"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:outlineProvider="bounds"
-            android:text="Birthday"
-            android:textAlignment="viewStart"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewStudentBirthdayLabel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textViewStudentBirthdayLabel" />
+    <TextView
+        android:id="@+id/textViewStudentBirthday"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:outlineProvider="bounds"
+        android:text="Birthday"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewStudentBirthdayLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewStudentBirthdayLabel" />
 
-        <TextView
-            android:id="@+id/textViewStudentPhoneLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:outlineProvider="bounds"
-            android:text="Phone:"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewStudentBirthdayLabel" />
+    <TextView
+        android:id="@+id/textViewStudentPhoneLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:outlineProvider="bounds"
+        android:text="Phone:"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStudentBirthdayLabel" />
 
-        <TextView
-            android:id="@+id/textViewStudentPhone"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:outlineProvider="bounds"
-            android:text="Phone"
-            android:textAlignment="viewStart"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewStudentPhoneLabel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textViewStudentPhoneLabel" />
+    <TextView
+        android:id="@+id/textViewStudentPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:outlineProvider="bounds"
+        android:text="Phone"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewStudentPhoneLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewStudentPhoneLabel" />
 
-        <TextView
-            android:id="@+id/textViewStudentEmailLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:outlineProvider="bounds"
-            android:text="Email:"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewStudentPhoneLabel" />
+    <TextView
+        android:id="@+id/textViewStudentEmailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:outlineProvider="bounds"
+        android:text="Email:"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStudentPhoneLabel" />
 
-        <TextView
-            android:id="@+id/textViewStudentEmail"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:outlineProvider="bounds"
-            android:text="Email"
-            android:textAlignment="viewStart"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewStudentEmailLabel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textViewStudentEmailLabel" />
+    <TextView
+        android:id="@+id/textViewStudentEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:outlineProvider="bounds"
+        android:text="Email"
+        android:textAlignment="viewStart"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewStudentEmailLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewStudentEmailLabel" />
 
         <TextView
             android:id="@+id/textViewStudentAddressLabel"
@@ -140,33 +140,33 @@
             app:layout_constraintStart_toEndOf="@+id/textViewStudentAddressLabel"
             app:layout_constraintTop_toTopOf="@+id/textViewStudentAddressLabel" />
 
-        <TextView
-            android:id="@+id/textViewStudentInstrumentLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:outlineProvider="bounds"
-            android:text="Instrument(s):"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewStudentAddress" />
+    <TextView
+        android:id="@+id/textViewStudentInstrumentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:outlineProvider="bounds"
+        android:text="Instrument(s):"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStudentAddress" />
 
-        <TextView
-            android:id="@+id/textViewStudentInstrument"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:outlineProvider="bounds"
-            android:text="Instruments"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewStudentInstrumentLabel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textViewStudentInstrumentLabel" />
+    <TextView
+        android:id="@+id/textViewStudentInstrument"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:outlineProvider="bounds"
+        android:text="Instruments"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewStudentInstrumentLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewStudentInstrumentLabel" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/StudentDisplayRecyclerview"

@@ -18,17 +18,14 @@ import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.EventDescription;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.Utilities;
-import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsActivity;
 import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsNewActivity;
-import com.example.festivalawardtracker.ui.festival.FestivalActivity;
-import com.example.festivalawardtracker.ui.student.RecyclerViewClickInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  *
  * @author
  */
-public class EventActivity extends AppCompatActivity implements RecyclerViewClickInterface {
+public class EventActivity extends AppCompatActivity {
 
     private static final String TAG = "EVENT_ACTIVITY";
     private static final String EVENT_DESCRIPTION_ID = "EVENT_DESCRIPTION_ID";
@@ -105,17 +102,6 @@ public class EventActivity extends AppCompatActivity implements RecyclerViewClic
 
 //    private Activity getActivity() {
 //    }
-
-    /**
-     *
-     * @author
-     * @param position
-     */
-    @Override
-    public void onItemClick(int position) {
-        Intent activityIntent = new Intent(EventActivity.this, EventsRatingsActivity.class);
-        startActivity(activityIntent);
-    } // End onItemClick
 
     /**
      *

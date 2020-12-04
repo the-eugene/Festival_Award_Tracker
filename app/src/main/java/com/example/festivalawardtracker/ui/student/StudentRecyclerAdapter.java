@@ -23,11 +23,10 @@ import java.util.Map;
 
 public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecyclerAdapter.ViewHolder> implements Filterable {
 
-    private RecyclerViewClickInterface recyclerViewClickInterface;
     Map<String, Student> students;
     List<String> studentIDs=new ArrayList<>();
 
-    public StudentRecyclerAdapter(Map<String,Student> students, RecyclerViewClickInterface recyclerViewClickInterface) {
+    public StudentRecyclerAdapter(Map<String,Student> students) {
         this.students=students;
         studentIDs.addAll(students.keySet());
     }
@@ -119,7 +118,6 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecycler
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//                    recyclerViewClickInterface.onItemClick(getAdapterPosition()); // don't know what this did but it was crashing
                     int adapterPosition = getAdapterPosition();
                     Log.d("RecyclerView single click", students.get(studentIDs.get(adapterPosition)).getFullName());
                     Intent intent = new Intent( view.getContext(), StudentSummaryActivity.class);

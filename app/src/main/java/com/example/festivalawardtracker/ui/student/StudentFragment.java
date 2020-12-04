@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * @author carloswashingtonmercado@gmail.com
  */
-public class StudentFragment extends Fragment implements View.OnClickListener, RecyclerViewClickInterface {
+public class StudentFragment extends Fragment implements View.OnClickListener {
 
     StudentRecyclerAdapter studentRecyclerAdapter;
     FloatingActionButton fabNewStudent;
@@ -54,7 +54,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
         Context context = root.getContext();
 
         recyclerView = root.findViewById(R.id.recyclerView_student);
-        studentRecyclerAdapter = new StudentRecyclerAdapter(DBManager.Students,this);
+        studentRecyclerAdapter = new StudentRecyclerAdapter(DBManager.Students);
         recyclerView.setAdapter(studentRecyclerAdapter);
         //This is working but there has to be a better way...
         class queryThread implements Runnable{
@@ -98,16 +98,6 @@ public class StudentFragment extends Fragment implements View.OnClickListener, R
     public void onClick(View v) {
         Intent activityIntent = new Intent( v.getContext(), StudentNewActivity.class);
         startActivity(activityIntent);
-    }
-
-    /**
-     * @author
-     * @param position
-     */
-    @Override
-    public void onItemClick(int position) {
-        Intent intent = new Intent (thisContext, StudentSummaryActivity.class);
-        startActivity(intent);
     }
 
     /**
