@@ -65,9 +65,15 @@
         app:layout_constraintStart_toEndOf="@+id/textViewRating"
         app:layout_constraintTop_toTopOf="@+id/textViewRating" />
 
-
-
-
-
+    <ImageView
+        android:id="@+id/arrowContinue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/nextscreen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

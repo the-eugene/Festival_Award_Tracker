@@ -103,7 +103,7 @@ public class EventNewActivity extends AppCompatActivity {
         Toolbar.LayoutParams toolbarLayoutParams = new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT);
         toolbarLayoutParams.gravity = Gravity.END;
         button.setLayoutParams(toolbarLayoutParams);
-        button.setText(R.string.save);
+        button.setText(R.string.update);
         button.setBackground(null);
         button.setTextColor(Color.WHITE);
         toolbar.addView(button);
