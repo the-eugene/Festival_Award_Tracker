@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -24,6 +25,7 @@ import com.example.festivalawardtracker.MainActivity;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.SchoolYear;
 import com.example.festivalawardtracker.ui.Utilities;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -57,7 +59,8 @@ public class EventNewActivity extends AppCompatActivity {
     String event_description_ID, event_ID;
     Event event;
     EventDescription eventDescription;
-    boolean isNew=false;
+    boolean isNew = false;
+
     /**
      *
      * @author Carlos
@@ -70,11 +73,12 @@ public class EventNewActivity extends AppCompatActivity {
         Log.d(this.getClass().getName(), "Starting OnCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events_new_activity);
+
         /* GETTING INTENT */
         event_description_ID = Utilities.retrieveExtra(this, EVENT_DESCRIPTION_ID);
         eventDescription=DBManager.EventDescriptions.get(event_description_ID);
 
-        event_ID=getIntent().hasExtra(EVENT_ID)?
+        event_ID = getIntent().hasExtra(EVENT_ID)?
                 getIntent().getExtras().getString(EVENT_ID):
                 getPreferences(Context.MODE_PRIVATE).getString(EVENT_ID, null);
 
@@ -82,10 +86,10 @@ public class EventNewActivity extends AppCompatActivity {
             event = DBManager.Events.get(event_ID);
         else {
             event = new Event();
-            isNew=true;
-            event.start=LocalDate.now();
-            event.end=LocalDate.now();
-            event.eventDescriptionID=event_description_ID;
+            isNew = true;
+            event.start = LocalDate.now();
+            event.end = LocalDate.now();
+            event.eventDescriptionID = event_description_ID;
         }
 
         final AutoCompleteTextView schoolYearInput = findViewById(autoCompleteTextViewDropdownSchoolYear);
@@ -94,7 +98,16 @@ public class EventNewActivity extends AppCompatActivity {
 
         /* ACTION BAR */
         Toolbar toolbar = findViewById(R.id.toolbar_newEvent);
-        toolbar.setTitle("Add event");
+        // Adding and setting save/update button to action bar
+        MaterialButton button = new MaterialButton(this);
+        Toolbar.LayoutParams toolbarLayoutParams = new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT);
+        toolbarLayoutParams.gravity = Gravity.END;
+        button.setLayoutParams(toolbarLayoutParams);
+        button.setText(R.string.save);
+        button.setBackground(null);
+        button.setTextColor(Color.WHITE);
+        toolbar.addView(button);
+        toolbar.setTitle("Add Event");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -124,7 +137,7 @@ public class EventNewActivity extends AppCompatActivity {
         Log.d(this.getClass().getName(),"Setting school year to: "+schoolYearDefault);
         schoolYearDropDown.setText(schoolYearDefault,false);
 
-                /* STARTING DATE PICKER */
+        /* STARTING DATE PICKER */
         MaterialDatePicker.Builder<Long> builderStartingDate = MaterialDatePicker.Builder.datePicker();
         builderStartingDate.setTitleText("Event Starting Date");
         final MaterialDatePicker<Long> materialStartDatePicker = builderStartingDate.build();
@@ -140,7 +153,6 @@ public class EventNewActivity extends AppCompatActivity {
                 startingDateInput.setText(materialStartDatePicker.getHeaderText());
             }
         }); // End Starting Date Picker
-
         startingDateInput.setText(formatLocalDate(event.getStart()));
 
         /* ENDING DATE PICKER */
@@ -162,8 +174,7 @@ public class EventNewActivity extends AppCompatActivity {
         endingDateInput.setText(formatLocalDate(event.getEnd()));
 
         /* SAVE EVENT BUTTON */
-        Button eventSaveButton = findViewById(R.id.btnSaveEvent);
-        eventSaveButton.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

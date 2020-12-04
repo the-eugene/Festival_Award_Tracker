@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -57,6 +58,15 @@ public class FestivalActivity extends AppCompatActivity {
 
         /* ACTION BAR */
         final Toolbar toolbar = findViewById(R.id.toolbar_newFestival);
+        // Adding and setting save/update button to action bar
+        MaterialButton button = new MaterialButton(this);
+        Toolbar.LayoutParams toolbarLayoutParams = new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT);
+        toolbarLayoutParams.gravity = Gravity.END;
+        button.setLayoutParams(toolbarLayoutParams);
+        button.setText(R.string.save);
+        button.setBackground(null);
+        button.setTextColor(Color.WHITE);
+        toolbar.addView(button);
         toolbar.setTitle("Add Festival");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
@@ -68,17 +78,14 @@ public class FestivalActivity extends AppCompatActivity {
         if(_festivalID != null) {
             festivalDB = DBManager.Festivals.get(_festivalID); // Retrieving festival information from database
 
-            MaterialButton btnUpdate = findViewById(R.id.btnSaveFestival);
-            btnUpdate.setText(R.string.update);
-            toolbar.setTitle("Edit "+festivalDB.name);
+            button.setText(R.string.update); // Button for UPDATE Festival activity
+            toolbar.setTitle(festivalDB.name);
             editFestivalName.setText(Objects.requireNonNull(festivalDB).getName());
             isNFMC.setChecked(festivalDB.getNFMC());
         }
 
-        /* onClickListener: Save or Update button */
-        // Here the new/edited festival is sent to the database
-        MaterialButton addFestival = findViewById(R.id.btnSaveFestival);
-        addFestival.setOnClickListener(new View.OnClickListener() {
+        /* BUTTON set listener */
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (editFestivalName.getText().length()==0){

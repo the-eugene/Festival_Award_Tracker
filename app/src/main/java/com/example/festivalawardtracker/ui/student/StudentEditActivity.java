@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -110,10 +111,10 @@ public class StudentEditActivity extends AppCompatActivity {
         zipInput.setText(studentDB.contact.getZip());
 
         /* ACTION BAR */
-        Toolbar toolbarStudent = findViewById(R.id.toolbarNewStudent);
-        toolbarStudent.setTitle("Change student data");
-        toolbarStudent.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbarStudent);
+        Toolbar toolbar = findViewById(R.id.toolbarNewStudent);
+        toolbar.setTitle("Student data");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         /* BIRTHDAY DATE PICKER */
@@ -165,21 +166,17 @@ public class StudentEditActivity extends AppCompatActivity {
             checkboxes[i] = checkBox;
         }
 
-        /* NEW ACTIVITY: Student Parent */
-        // Disabled feature fot from student_activity.xml file
-//        MaterialButton btnAddParent = findViewById(R.id.btnStudentAddParent);
-//        btnAddParent.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent activityIntent = new Intent(StudentEditActivity.this, ParentActivity.class);
-//                startActivity(activityIntent);
-//            }
-//        });
-
-        /* SAVE STUDENT BUTTON */
-        Button btnStudentUpdate = (Button) findViewById(R.id.btnSaveStudent);
-        btnStudentUpdate.setText("UPDATE");
-        btnStudentUpdate.setOnClickListener(new View.OnClickListener() {
+        /* UPDATE STUDENT BUTTON */
+        // Adding and setting button to action bar
+        MaterialButton button = new MaterialButton(this);
+        Toolbar.LayoutParams toolbarLayoutParams = new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT);
+        toolbarLayoutParams.gravity = Gravity.END;
+        button.setLayoutParams(toolbarLayoutParams);
+        button.setText(R.string.update);
+        button.setBackground(null);
+        button.setTextColor(Color.WHITE);
+        toolbar.addView(button);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             Student newStudent = studentDB;

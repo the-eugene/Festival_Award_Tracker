@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -19,6 +20,7 @@ import com.example.festivalawardtracker.Festival;
 import com.example.festivalawardtracker.Instrument;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.Utilities;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 /**
@@ -62,13 +64,16 @@ public class EventDescriptionsNewActivity extends AppCompatActivity {
             festival=eventDescription.retrieveFestival();
         }
 
-
         /* ACTION BAR */
         Toolbar toolbar = findViewById(R.id.toolbar_newEventDescription);
-        if (isNew)
-            toolbar.setTitle("Adding new event to " + festival.name);
-        else
-            toolbar.setTitle("Editing " + festival.name +" : "+eventDescription.name);
+        MaterialButton button = new MaterialButton(this);
+        if (isNew) {
+            toolbar.setTitle("Add event to " + festival.name);
+            button.setText(R.string.save);
+        } else {
+            toolbar.setTitle("Event from " + festival.name);
+            button.setText(R.string.update);
+        }
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -87,8 +92,13 @@ public class EventDescriptionsNewActivity extends AppCompatActivity {
         }
 
         /* SAVE NEW EVENT with DESCRIPTION */
-        Button saveButton = findViewById(R.id.btnSaveEvent);
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        Toolbar.LayoutParams toolbarLayoutParams = new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT);
+        toolbarLayoutParams.gravity = Gravity.END;
+        button.setLayoutParams(toolbarLayoutParams);
+        button.setBackground(null);
+        button.setTextColor(Color.WHITE);
+        toolbar.addView(button);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (inputEventName.getText().length()==0){

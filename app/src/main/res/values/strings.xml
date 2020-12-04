@@ -72,8 +72,9 @@
     <string name="ratings">Rate Students</string>
     <string name="add_event_description">Add event description</string>
     <string name="event_name">Event Name</string>
-    <string name="save">SAVE</string>
-    <string name="update">UPDATE</string>
+    <string name="save">Save</string>
+    <string name="update">Update</string>
     <string name="export_data">Export data</string>
     <string name="search">Search</string>
+    <string name="nfmc_festival">NFMC Festival</string>
 </resources>

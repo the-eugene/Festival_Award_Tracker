@@ -52,17 +52,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include_rangeDates" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSaveEvent"
-        android:layout_width="148dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/save_event"
-        app:flow_horizontalAlign="start"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView_selectStudents" />
 </androidx.constraintlayout.widget.ConstraintLayout>
