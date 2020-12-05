@@ -3,6 +3,7 @@ package com.example.festivalawardtracker.ui.student;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -29,13 +30,20 @@ import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.Student;
 import com.example.festivalawardtracker.ui.Utilities;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointBackward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
+import static com.google.android.material.datepicker.MaterialDatePicker.todayInUtcMilliseconds;
 
 /**
  * Pre-loads the necessary information to the drop-down list and date-picker components.
@@ -93,6 +101,15 @@ public class StudentNewActivity extends AppCompatActivity {
         /* BIRTHDAY DATE PICKER */
         Builder<Long> builder = Builder.datePicker();
         builder.setTitleText("Student Birthday");
+
+        //constraint on calender, Max birthday is today.
+        CalendarConstraints.Builder constraintsBuilderRange = new CalendarConstraints.Builder();
+        long max = System.currentTimeMillis();
+        CalendarConstraints.DateValidator dateValidatorMax = DateValidatorPointBackward.before(max - 86400000);
+        constraintsBuilderRange.setValidator(dateValidatorMax);
+        builder.setCalendarConstraints(constraintsBuilderRange.build());
+
+        //build calendar
         final MaterialDatePicker<Long> materialDatePicker = builder.build();
         birthdayInput.setOnClickListener(new View.OnClickListener() {
             @Override
