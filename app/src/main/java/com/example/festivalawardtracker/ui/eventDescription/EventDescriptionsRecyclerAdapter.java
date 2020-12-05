@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.EventDescription;
 import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.ui.Utilities;
 import com.example.festivalawardtracker.ui.event.EventActivity;
 import com.example.festivalawardtracker.ui.student.StudentEditActivity;
 import com.google.firebase.database.Query;
@@ -80,7 +81,7 @@ public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<Event
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), EventActivity.class);
-                    intent.putExtra("EVENT_DESCRIPTION_ID", eventDescriptions.get(getAdapterPosition()).ID);
+                    intent.putExtra(Utilities.EVENT_DESCRIPTION_ID, eventDescriptions.get(getAdapterPosition()).ID);
                     v.getContext().startActivity(intent);
                 }
             });
@@ -90,12 +91,10 @@ public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<Event
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    // TODO This long press is not working. There's a problem with the event descriptions IDs
-//                    int adapterPosition = getAdapterPosition();
-//                    Intent intent = new Intent( view.getContext(), EventDescriptionsNewActivity.class);
-//                    intent.putExtra("EVENT_DESCRIPTION_ID", eventDescriptions.get(adapterPosition));
-//                    view.getContext().startActivity(intent);
-                    Toast.makeText(view.getContext(), "This long-press is not working.", Toast.LENGTH_SHORT).show();
+                    int adapterPosition = getAdapterPosition();
+                    Intent intent = new Intent( view.getContext(), EventDescriptionsNewActivity.class);
+                    intent.putExtra(Utilities.EVENT_DESCRIPTION_ID, eventDescriptions.get(adapterPosition).ID);
+                    view.getContext().startActivity(intent);
                     return false;
                 }
             });

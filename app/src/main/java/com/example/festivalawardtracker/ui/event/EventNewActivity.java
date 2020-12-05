@@ -51,8 +51,6 @@ import static com.example.festivalawardtracker.R.id.editText_startingDate;
 public class EventNewActivity extends AppCompatActivity {
 
     private static final String TAG = "EVENT_NEW_ACTIVITY";
-    private static final String EVENT_ID = "EVENT_ID";
-    private static final String EVENT_DESCRIPTION_ID = "EVENT_DESCRIPTION_ID";
 
     EventNewRecyclerAdapter eventNewRecyclerAdapter;
     RecyclerView recyclerView;
@@ -75,12 +73,12 @@ public class EventNewActivity extends AppCompatActivity {
         setContentView(R.layout.events_new_activity);
 
         /* GETTING INTENT */
-        event_description_ID = Utilities.retrieveExtra(this, EVENT_DESCRIPTION_ID);
+        event_description_ID = Utilities.retrieveExtra(this, Utilities.EVENT_DESCRIPTION_ID);
         eventDescription=DBManager.EventDescriptions.get(event_description_ID);
 
-        event_ID = getIntent().hasExtra(EVENT_ID)?
-                getIntent().getExtras().getString(EVENT_ID):
-                getPreferences(Context.MODE_PRIVATE).getString(EVENT_ID, null);
+        event_ID = getIntent().hasExtra(Utilities.EVENT_ID)?
+                getIntent().getExtras().getString(Utilities.EVENT_ID):
+                getPreferences(Context.MODE_PRIVATE).getString(Utilities.EVENT_ID, null);
 
         if (!event_ID.equals("new"))
             event = DBManager.Events.get(event_ID);
@@ -247,8 +245,8 @@ public class EventNewActivity extends AppCompatActivity {
     protected void onPause() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(EVENT_DESCRIPTION_ID, event_description_ID);
-        editor.putString(EVENT_ID, event_ID);
+        editor.putString(Utilities.EVENT_DESCRIPTION_ID, event_description_ID);
+        editor.putString(Utilities.EVENT_ID, event_ID);
         editor.apply();
         super.onPause();
     }

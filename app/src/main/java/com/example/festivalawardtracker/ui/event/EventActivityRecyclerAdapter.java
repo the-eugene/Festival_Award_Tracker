@@ -16,6 +16,7 @@ import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.Event;
 import com.example.festivalawardtracker.EventDescription;
 import com.example.festivalawardtracker.R;
+import com.example.festivalawardtracker.ui.Utilities;
 import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
@@ -73,8 +74,8 @@ public class EventActivityRecyclerAdapter extends RecyclerView.Adapter<EventActi
                     int p = getAdapterPosition();
                     Log.d("RecycleView Click", events.get(p).ID);
                     Intent intent = new Intent(v.getContext(), EventNewActivity.class);
-                    intent.putExtra("EVENT_ID", events.get(p).ID);
-                    intent.putExtra("EVENT_DESCRIPTION_ID", eventDescription.ID);
+                    intent.putExtra(Utilities.EVENT_ID, events.get(p).ID);
+                    intent.putExtra(Utilities.EVENT_DESCRIPTION_ID, eventDescription.ID);
                     v.getContext().startActivity(intent);
                 }
 

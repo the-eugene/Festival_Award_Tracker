@@ -30,7 +30,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class EventActivity extends AppCompatActivity {
 
     private static final String TAG = "EVENT_ACTIVITY";
-    private static final String EVENT_DESCRIPTION_ID = "EVENT_DESCRIPTION_ID";
     public String event_description_id;
     EventDescription eventDescriptionDB;
     EventActivityRecyclerAdapter eventActivityRecyclerAdapter;
@@ -52,7 +51,7 @@ public class EventActivity extends AppCompatActivity {
         Log.d(this.getClass().getName(), "Starting OnCreate");
 
         /* Receiving ID */
-        event_description_id = Utilities.retrieveExtra(this, EVENT_DESCRIPTION_ID);
+        event_description_id = Utilities.retrieveExtra(this, Utilities.EVENT_DESCRIPTION_ID);
         eventDescriptionDB = DBManager.EventDescriptions.get(event_description_id);
 
         event_description_name = findViewById(R.id.textView_eventName);
@@ -91,8 +90,8 @@ public class EventActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EventActivity.this, EventDescriptionsNewActivity.class);
-                intent.putExtra(EVENT_DESCRIPTION_ID, event_description_id);
-                intent.putExtra("EVENT_ID", "new");
+                intent.putExtra(Utilities.EVENT_DESCRIPTION_ID, event_description_id);
+                intent.putExtra(Utilities.EVENT_ID, "new");
                 startActivity(intent);
             }
         });
@@ -104,8 +103,8 @@ public class EventActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(EventActivity.this, EventNewActivity.class);
                 Log.d(TAG, " NEW Event For: " + event_description_id);
-                intent.putExtra(EVENT_DESCRIPTION_ID, event_description_id);
-                intent.putExtra("EVENT_ID", "new");
+                intent.putExtra(Utilities.EVENT_DESCRIPTION_ID, event_description_id);
+                intent.putExtra(Utilities.EVENT_ID, "new");
                 startActivity(intent);
             }
         });
@@ -130,7 +129,7 @@ public class EventActivity extends AppCompatActivity {
     protected void onPause() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(EVENT_DESCRIPTION_ID, event_description_id);
+        editor.putString(Utilities.EVENT_DESCRIPTION_ID, event_description_id);
         editor.apply();
         super.onPause();
     }
