@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import com.example.festivalawardtracker.Festival;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.Utilities;
 import com.example.festivalawardtracker.ui.festival.FestivalActivity;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
@@ -61,7 +63,36 @@ public class EventDescriptionsActivity extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        /* BUTTON NEW EVENT DESCRIPTION */
+
+
+        /* ACTION BAR */
+        Toolbar toolbar = findViewById(R.id.toolbar_eventDescriptions);
+        toolbar.setTitle(festival.name+" Events");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        /* BUTTON EDIT FESTIVAL */
+        // Adding edit icon button to action bar
+        MaterialButton button = new MaterialButton(this);
+        Toolbar.LayoutParams toolbarLayoutParams = new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT);
+        toolbarLayoutParams.gravity = Gravity.END;
+        button.setLayoutParams(toolbarLayoutParams);
+        button.setIconResource(R.drawable.ic_baseline_edit_24);
+        button.setBackground(null);
+        button.setTooltipText("Edit current festival information here");
+        toolbar.addView(button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EventDescriptionsActivity.this, FestivalActivity.class);
+                intent.putExtra(FESTIVAL_ID, festival_ID);
+                startActivity(intent);
+            }
+        });
+
+        /* BUTTON NEW EVENT  */
         btnNewEventDescription = findViewById(R.id.btnNewEventDescription);
         btnNewEventDescription.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,24 +103,6 @@ public class EventDescriptionsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        /* BUTTON EDIT FESTIVAL */
-        btnEditFestival = findViewById(R.id.btnEditFestival);
-        btnEditFestival.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(EventDescriptionsActivity.this, FestivalActivity.class);
-                intent.putExtra(FESTIVAL_ID, festival_ID);
-                startActivity(intent);
-            }
-        });
-
-        /* ACTION BAR */
-        Toolbar toolbar = findViewById(R.id.toolbar_eventDescriptions);
-        toolbar.setTitle(festival.name+" Events");
-        toolbar.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     } // End OnCreate
 
 

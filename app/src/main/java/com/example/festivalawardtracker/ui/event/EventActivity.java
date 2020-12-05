@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import com.example.festivalawardtracker.EventDescription;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.Utilities;
 import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsNewActivity;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
@@ -67,9 +69,25 @@ public class EventActivity extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        /* BUTTON EDIT Description */
-        btnEditEventDescription = findViewById(R.id.btnEditEvent);
-        btnEditEventDescription.setOnClickListener(new View.OnClickListener() {
+        /* ACTION BAR */
+        Toolbar toolbar = findViewById(R.id.toolbarEventDescriptions);
+        toolbar.setTitle(eventDescriptionDB.getName());
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        /* BUTTON EDIT EVENT */
+        // Adding edit icon button to action bar
+        MaterialButton button = new MaterialButton(this);
+        Toolbar.LayoutParams toolbarLayoutParams = new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT);
+        toolbarLayoutParams.gravity = Gravity.END;
+        button.setLayoutParams(toolbarLayoutParams);
+        button.setIconResource(R.drawable.ic_baseline_edit_24);
+        button.setBackground(null);
+        button.setTooltipText("Edit current event information here");
+        toolbar.addView(button);
+
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EventActivity.this, EventDescriptionsNewActivity.class);
@@ -79,7 +97,7 @@ public class EventActivity extends AppCompatActivity {
             }
         });
 
-        /* BUTTON NEW EVENT ACTIVITY */
+        /* FLOATING ACTION BUTTON NEW PERFORMANCE ACTIVITY */
         newEvent = findViewById(R.id.btnNewEventActivity);
         newEvent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,16 +110,8 @@ public class EventActivity extends AppCompatActivity {
             }
         });
 
-        /* ACTION BAR */
-        Toolbar toolbar = findViewById(R.id.toolbarEventDescriptions);
-        toolbar.setTitle("Performances for "+eventDescriptionDB.getName());
-        toolbar.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    } // End onCreate
 
-//    private Activity getActivity() {
-//    }
+    } // End onCreate
 
     /**
      *

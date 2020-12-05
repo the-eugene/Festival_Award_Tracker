@@ -64,17 +64,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_eventDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnEditEvent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        android:contentDescription="@string/todo"
-        android:tooltipText="Edit this event here"
-        app:layout_constraintBottom_toTopOf="@id/btnNewEventActivity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_baseline_edit_24" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnNewEventActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
