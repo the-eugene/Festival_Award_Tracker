@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -89,10 +90,12 @@ public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<Event
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    int adapterPosition = getAdapterPosition();
-                    Intent intent = new Intent( view.getContext(), EventDescriptionsNewActivity.class);
+                    // TODO This long press is not working. There's a problem with the event descriptions IDs
+//                    int adapterPosition = getAdapterPosition();
+//                    Intent intent = new Intent( view.getContext(), EventDescriptionsNewActivity.class);
 //                    intent.putExtra("EVENT_DESCRIPTION_ID", eventDescriptions.get(adapterPosition));
-                    view.getContext().startActivity(intent);
+//                    view.getContext().startActivity(intent);
+                    Toast.makeText(view.getContext(), "This long-press is not working.", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             });

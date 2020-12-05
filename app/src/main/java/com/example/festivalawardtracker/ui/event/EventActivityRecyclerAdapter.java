@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -62,22 +63,32 @@ public class EventActivityRecyclerAdapter extends RecyclerView.Adapter<EventActi
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            numberStudents =itemView.findViewById(R.id.textView_numberStudents);
+            numberStudents = itemView.findViewById(R.id.textView_numberStudents);
             startDate = itemView.findViewById(R.id.textView_startDate);
             endDate = itemView.findViewById(R.id.textView_endDate);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int p=getAdapterPosition();
+                    int p = getAdapterPosition();
                     Log.d("RecycleView Click", events.get(p).ID);
-                    Intent intent = new Intent(v.getContext(),EventNewActivity.class);
+                    Intent intent = new Intent(v.getContext(), EventNewActivity.class);
                     intent.putExtra("EVENT_ID", events.get(p).ID);
                     intent.putExtra("EVENT_DESCRIPTION_ID", eventDescription.ID);
                     v.getContext().startActivity(intent);
                 }
 
 
+            });
+
+            /* Long press */
+            // @author: Carlos
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    Toast.makeText(view.getContext(), "Add students to the event.", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
             });
         }
     }
