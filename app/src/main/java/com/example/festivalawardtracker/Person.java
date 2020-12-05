@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 import java.time.LocalDate;
 import java.time.Period;
 
-public class Person extends DBAware {
+public class Person extends DBAware implements Comparable<Person>{
     public String firstName;
     public String middleName;
     public String lastName;
@@ -83,6 +83,11 @@ public class Person extends DBAware {
     }
     public String getEmail(){return contact.email;}
     public static Class<Person> ofType(){return Person.class;}
+
+    @Override
+    public int compareTo(Person o) {
+        return lastName.compareTo(o.lastName);
+    }
 
     public enum Gender {
         MALE,

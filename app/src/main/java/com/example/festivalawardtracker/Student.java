@@ -1,12 +1,17 @@
 package com.example.festivalawardtracker;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Student extends Person {
     public List<String> teacherIDs = new ArrayList<>();
@@ -50,11 +55,58 @@ public class Student extends Person {
         }
     }
 
-    //TODO ? getAwardSummary(){}
+    public String retrieveAwardSummary(){
+        Map <String,Integer> TAP=new HashMap<>();
+        Map <String,Integer> CCS=new HashMap<>();
+        Map <String,Performance> LST_STAT=new HashMap<>();
+        EventDescription ed;
+        for (Award award:awards){
+            ed = DBManager.EventDescriptions.get(DBManager.Events.get(award.eventID).eventDescriptionID);
+            if(TAP.containsKey(ed.ID)) continue;
+            TAP.put(ed.ID,totalAccumulatedPoints(ed));
+            CCS.put(ed.ID,findCCS(ed));
+            for (int i=performances.size(); i-- >0;){
+                if(performances.get(i).retrieveEvent().eventDescriptionID.equals(ed.ID)){
+                    LST_STAT.put(ed.ID,performances.get(i));
+                }
+            }
+        }
+        Log.d ("Summary", getFullName()+" "+TAP.size());
+        List<String> result=new ArrayList<>();
+        for(String ID:TAP.keySet()){
+            @SuppressLint("DefaultLocale") String row=String.format(
+                    "%s %s:%d TAP:%d CCS:%d CUP:%s",
+                    DBManager.EventDescriptions.get(ID).name,
+                    LST_STAT.get(ID).level,
+                    LST_STAT.get(ID).rating,
+                    TAP.get(ID),
+                    CCS.get(ID),
+                    (TAP.get(ID)/15)>0?Award.lookUpCupAwardType(5).toString():"none"
+                    );
+            result.add(row);
+        }
+        Collections.sort(result);
+        return String.join("\n",result);
+
+//        List<String> result=new ArrayList<>();
+//        Map<Award.AwardType,Integer> awardCount=new HashMap<>();
+//        for (Award.AwardType awardType: Award.AwardType.values())
+//            awardCount.put(awardType,0);
+//        for (Award award:awards){
+//            awardCount.put(award.type, awardCount.get(award.type)+1);
+//        }
+//        for (Award.AwardType awardType: Award.AwardType.values()){
+//            Integer count=awardCount.get(awardType);
+//            if(count>0){
+//                result.add(String.format("%s: %d",awardType.toString(), count));
+//            }
+//        }
+//        return String.join(", ", result);
+    }
     public void addPerformance(String eventID, LocalDate date, String level, int rating){
         Performance p=new Performance(eventID,date,level, rating);
         performances.add(p);
-        addAward(p); //TODO Add awards as a separate step!
+        addAward(p); //TODO Add awards as a separate step
         DBManager.Students.put(ID,this); //instead of save
     }
 
@@ -120,6 +172,31 @@ public class Student extends Person {
         }
     }
 
+    public int findCCS(Performance performance){
+        int result=0;
+        String edID=performance.retrieveEvent().eventDescriptionID;
+        for(int i=performances.indexOf(performance); i>=0; i--){
+            Performance p=performances.get(i);
+            if(p.retrieveEvent().eventDescriptionID.equals(edID)){
+                if (p.rating<5) return result;
+                result++;
+            }
+        }
+        return result;
+    }
+
+    public int findCCS(EventDescription ed){
+        int result=0;
+        for(int i=performances.size(); i-- >0;){
+            Performance p=performances.get(i);
+            if(p.retrieveEvent().eventDescriptionID.equals(ed.ID)){
+                if (p.rating<5) return result;
+                result++;
+            }
+        }
+        return result;
+    }
+
     private Performance retrieveLastYearsPerformance(Event event) {
         SchoolYear lastYear=DBManager.getPreviousSchoolYear(event.retrieveYear());
 
@@ -131,7 +208,7 @@ public class Student extends Person {
         return null;
     }
 
-    private int totalAccumulatedPoints(EventDescription ed) {
+    public int totalAccumulatedPoints(EventDescription ed) {
         int points=0;
         for (Performance p: performances) {
             if (p.retrieveEvent().eventDescriptionID.equals(ed.ID)){

@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker;
 
+import androidx.annotation.NonNull;
 import java.time.LocalDate;
 
 /**
@@ -93,5 +94,24 @@ public class Award {
         CUP_4TH,
         GRAND_CUP,
         PRESIDENTS_CUP
+        ;
+
+        @NonNull
+        @Override
+        public String toString() {
+            switch(this){
+                case NFMC_CERT: return "CERT";
+                case SUPERIOR_CERT: return "SUP";
+                case CONSECUTIVE_SUPERIOR_CERT: return "CS";
+                case MEDAL: return "Medal";
+                case CUP: return "Cup";
+                case CUP_2ND: return "2nd Cup";
+                case CUP_3RD: return "3rd Cup";
+                case CUP_4TH: return "4th Cup";
+                case GRAND_CUP: return "Grand Cup";
+                case PRESIDENTS_CUP: return "Pres. Cup";
+            }
+            return "Other";
+        }
     }
 }

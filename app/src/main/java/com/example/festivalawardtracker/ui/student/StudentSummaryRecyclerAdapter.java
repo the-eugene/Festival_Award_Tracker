@@ -1,6 +1,7 @@
 package com.example.festivalawardtracker.ui.student;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentS
     private List<Performance>performances;
 
     public StudentSummaryRecyclerAdapter(final Student student, Activity activity) {
+        Log.d(this.getClass().getName(),"Constructor");
         this.activity=activity;
         this.student=student;
         this.performances=new ArrayList<>(student.performances);
@@ -50,10 +52,18 @@ public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentS
             SchoolYear year = event.retrieveYear();
             holder.year.setText(year.getName());
             holder.event.setText(ed.getName());
+            holder.info.setText(
+                    String.format("Level:%s, Rating:%s, TAP:%d, CCS:%d",
+                            performances.get(position).getLevel(),
+                            ((Integer)performances.get(position).getRating()).toString(),
+                            student.totalAccumulatedPoints(ed),
+                            student.findCCS(performances.get(position))
+                    )
+            );
 //            holder.ccs.setText("WIP");
 //            holder.tp.setText("WIP");
-//            holder.awards.setText(((Integer)performances.get(position).getRating()).toString());
-//            holder.level.setText(performances.get(position).getLevel());
+//            holder.awards.setText();
+//            holder.level.setText();
         }
     }
 
@@ -72,7 +82,6 @@ public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentS
             year = itemView.findViewById(R.id.textViewStudentSummaryRecyclerviewYear);
             event = itemView.findViewById(R.id.textViewStudentSummaryRecyclerviewEventName);
             info = itemView.findViewById(R.id.textViewStudentSummaryRecycleviewCcsTpLevelAwards);
-
         }
     }
 }

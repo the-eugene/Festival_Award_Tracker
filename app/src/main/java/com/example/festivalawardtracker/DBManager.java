@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker;
 
+import android.app.Activity;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ import java.util.concurrent.ExecutionException;
 public class DBManager {
     public static FirebaseDatabase DB = FirebaseDatabase.getInstance(); //Database instance
     public static DatabaseReference currentDB; //Reference to root of data storage
+    public static boolean isLoaded=false;
 
     static {
         setCurrentDB(""); //default root is root of FireBase
@@ -216,7 +218,7 @@ public class DBManager {
         SchoolYear cyear=null;
         while ((start+seq)<=LocalDate.now().getYear()) {
             SchoolYear year = new SchoolYear();
-            year.setName((start + seq) + "-" + (start + seq + 1) + " School Year");
+            year.setName((start + seq) + "-" + (start + seq + 1) + "");
             year.setStart(String.valueOf(LocalDate.of(start + seq, 7, 15)));
             year.setEnd(String.valueOf(LocalDate.of(start + seq + 1, 7, 14)));
             year.setSequence(seq);
@@ -227,6 +229,32 @@ public class DBManager {
             seq++;
         }
         return cyear;
+    }
+
+    public static Thread preload(Activity activity){
+        class queryThread implements Runnable {
+            final Activity activity;
+
+            queryThread(Activity activity) {
+                this.activity = activity;
+            }
+
+            @Override
+            public void run() {
+                Log.d(this.getClass().getName(), "Loading Teacher and Student Database...");
+                DBManager.Teachers.loadAll();
+                DBManager.Students.loadAll();
+                Log.d(this.getClass().getName(), "Loading Festival and Event Database...");
+                DBManager.Festivals.loadAll();
+                DBManager.EventDescriptions.loadAll();
+                DBManager.Events.loadAll();
+                DBManager.SchoolYears.loadAll();
+                DBManager.currentYear=DBManager.findCurrentYear();
+                Log.d(this.getClass().getName(), "...Finished");
+                DBManager.isLoaded=true;
+            }
+        }
+       return new Thread(new queryThread(activity));
     }
 
 }

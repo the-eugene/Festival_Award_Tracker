@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -57,14 +58,12 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
         studentRecyclerAdapter = new StudentRecyclerAdapter(DBManager.Students);
         recyclerView.setAdapter(studentRecyclerAdapter);
         //This is working but there has to be a better way...
-        class queryThread implements Runnable{
+        class pauseForLoad implements Runnable{
             final Activity activity;
-            queryThread(Activity activity){
-               this.activity=activity;
-            }
+            pauseForLoad (Activity activity){this.activity=activity;}
             @Override
             public void run(){
-                DBManager.Students.loadAll();
+                while (!DBManager.isLoaded) SystemClock.sleep(100);
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -74,8 +73,8 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
                 });
             }
         };
-        if (DBManager.Students.size()==0)
-            new Thread(new queryThread(getActivity())).start(); //only do this if nothing is preloaded
+
+        if (!DBManager.isLoaded) new Thread(new pauseForLoad(getActivity())).start(); //only do this if nothing is preloaded
 
 
         recyclerView.setMotionEventSplittingEnabled(false);
