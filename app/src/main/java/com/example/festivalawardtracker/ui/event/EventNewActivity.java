@@ -185,6 +185,34 @@ public class EventNewActivity extends AppCompatActivity {
                                             schoolYearInput.getText().toString() //get user selection
                                     )));
 
+
+                //used to catch if dates are outside of school year
+                String SchoolYearStart = schoolYearInput.getText().toString().substring(0,4);
+                String SchoolYearEnd = schoolYearInput.getText().toString().substring(5,9);
+                String inputStartDate = startingDateInput.getText().toString().substring(7,11);
+                String inputEndDate = endingDateInput.getText().toString().substring(7,11);
+                Log.d("Startyear", SchoolYearStart);
+                Log.d("Startdate", inputStartDate);
+                Log.d("EndYear", SchoolYearEnd);
+                Log.d("Enddate", inputEndDate);
+
+                if(inputStartDate.equals(SchoolYearStart) || inputStartDate.equals(SchoolYearEnd)){
+                    startingDateInput.setError(null);
+                }
+                else{
+                    startingDateInput.setError("Start date needs to be during school year");
+                    return;
+                }
+
+                if(inputEndDate.equals(SchoolYearStart) || inputEndDate.equals(SchoolYearEnd)){
+                    endingDateInput.setError(null);
+                }
+                else{
+                    endingDateInput.setError("End date needs to be during school year");
+                    return;
+                }
+
+
                 event.setStartLocalDate(Utilities.stringMaterialToLocalDate(Objects.requireNonNull(startingDateInput.getText()).toString()));
                 event.setEndLocalDate(Utilities.stringMaterialToLocalDate(Objects.requireNonNull(endingDateInput.getText()).toString()));
                 DBManager.Events.put(event);

@@ -29,7 +29,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText_startingDate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:errorEnabled="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -53,6 +54,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText_endingDate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:errorEnabled="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
