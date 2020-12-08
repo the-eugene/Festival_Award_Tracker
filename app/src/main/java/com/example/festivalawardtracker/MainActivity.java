@@ -1,26 +1,24 @@
 package com.example.festivalawardtracker;
 
-import android.app.Activity;
-import android.app.SearchManager;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 
-import com.example.festivalawardtracker.ui.Utilities;
-import com.example.festivalawardtracker.ui.studentUser.StudentUserFragment;
 import com.firebase.ui.auth.AuthUI;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.dialog.MaterialDialogs;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.SearchView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -29,8 +27,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.time.LocalDate;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -99,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         switch(userMode) {
             // https://brightinventions.pl/blog/handling-different-user-types-in-android-application
             case 1:
-                setContentView(R.layout.activity_main);
+                setContentView(R.layout.main_activity);
 
                 Toolbar mToolbar = findViewById(R.id.main_toolbar);
                 setSupportActionBar(mToolbar);
@@ -120,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("MAIN_ACTIVITY", "Switch: 1 case");
                 break;
             case 2:
-                setContentView(R.layout.activity_main_student_user);
+                setContentView(R.layout.main_student_user_activity);
                 StudentID = intent.getStringExtra("StudentID");
                 Log.d(TAG,"StudentID:"+ StudentID);
 
@@ -162,6 +158,78 @@ public class MainActivity extends AppCompatActivity {
     private void mToolbarMenuAction(Toolbar mToolbar) {
         // TODO Maybe with a OnClickListener, for the items in the inflated menu
     }
+
+    /**
+     * It handles the creation of options menu from the action bar.
+     * @author carloswashingtonmercado@gmail.com
+     * @param menu
+     * @return
+     * @link <a>https://stackoverflow.com/a/37562572/7389293</a> Not used
+     * @link <a>https://developer.android.com/guide/topics/search/search-dialog.html#UsingSearchWidget</a>
+     * This is the solution I used here.
+     * @link <a>https://developer.android.com/guide/topics/ui/layout/recyclerview?authuser=1</a>
+     * Not used
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main_activity2, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        final MenuItem howToItem = menu.findItem(R.id.action_how_to);
+        final MenuItem aboutItem = menu.findItem(R.id.action_about);
+
+        howToItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                final MaterialAlertDialogBuilder builderHowTo = new MaterialAlertDialogBuilder(MainActivity.this);
+                builderHowTo.setTitle("INSTRUCTIONS");
+                builderHowTo.setMessage(
+                        "1) You can chose from three different lists in the left hand side menu: Student List, Festival List, and Rate Students (list)." +
+                                "\n\n2) If you want to add any new item, click on the right lower hand side floating button with a plus sign." +
+                                "\n\n3) If you want to edit information about the students, festivals or events, long press for around 2 seconds in the chosen item until the edition screen opens.");
+
+                builderHowTo.setPositiveButton("DISMISS", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builderHowTo.show();
+                return false;
+            }
+        }); // End howToItem
+
+        aboutItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                final MaterialAlertDialogBuilder builderAbout = new MaterialAlertDialogBuilder(MainActivity.this);
+                builderAbout.setTitle("ABOUT THIS APP");
+                builderAbout.setIcon(R.mipmap.ic_launcher);
+                builderAbout.setMessage(
+                        "College Project for CS246" +
+                                "\nBrigham Young University, Idaho" +
+                                "\nFall 2020" +
+                                "\n\nCS246 - Software Design and Development" +
+                                "\n\nTeacher: Dario Suarez Gonzalez" +
+                                "\nStudents: Eugene Williams, Jimmy England, Cayla Tribett, Carlos W. Mercado" +
+                                "\n\nHope never faileth.");
+
+                builderAbout.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast toast = Toast.makeText(getBaseContext(), "Thanks for passing by ;)", Toast.LENGTH_SHORT);
+                        toast.show();
+                        dialog.dismiss();
+                    }
+                });
+                builderAbout.show();
+                return false;
+            }
+        }); // End aboutItem
+        return true;
+    } // End onCreateOptionsMenu
+
+
 
     /**
      * @author Carlos
