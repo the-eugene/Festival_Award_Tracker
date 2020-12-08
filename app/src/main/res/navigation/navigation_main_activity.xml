@@ -38,10 +38,11 @@
             app:popUpTo="@+id/nav_ratings"
             app:popUpToInclusive="true"/>
     </fragment>
+
     <fragment
         android:id="@+id/nav_ratings"
         android:name="com.example.festivalawardtracker.ui.event.RateStudentsFragment"
-        android:label="Event List"
+        android:label="Rate Students"
         tools:layout="@layout/events_recyclerview_fragment_main">
 
         <action
