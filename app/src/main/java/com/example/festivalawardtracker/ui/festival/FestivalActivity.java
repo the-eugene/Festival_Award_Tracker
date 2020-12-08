@@ -70,9 +70,9 @@ public class FestivalActivity extends AppCompatActivity {
         toolbar.setTitle("Add Festival");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-//        // TODO The activity MUST NOT accept empty or erroneous input values.
+        // TODO The activity MUST NOT accept empty or erroneous input values.
 
         // Not null if something is sent from EventDescriptionActivity
         if(_festivalID != null) {
