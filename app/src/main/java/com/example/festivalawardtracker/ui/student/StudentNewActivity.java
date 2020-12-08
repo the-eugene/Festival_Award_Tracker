@@ -34,6 +34,7 @@ import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointBackward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.internal.FlowLayout;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.time.LocalDate;
@@ -109,7 +110,7 @@ public class StudentNewActivity extends AppCompatActivity {
         constraintsBuilderRange.setValidator(dateValidatorMax);
         builder.setCalendarConstraints(constraintsBuilderRange.build());
 
-        //build calendar
+        // Build calendar
         final MaterialDatePicker<Long> materialDatePicker = builder.build();
         birthdayInput.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +139,7 @@ public class StudentNewActivity extends AppCompatActivity {
         // TODO Possible programmatical solution for current checkbox layout ugly arrangement:
         //  https://spin.atomicobject.com/2019/04/08/constraintlayout-chaining-views-programmatically/
         //  Carlos
-        LinearLayout insLayout = findViewById(R.id.instruments_programmatical_layout);
+        FlowLayout insLayout = findViewById(R.id.instruments_programmatical_layout);
         for (int i = 0; i < INSTRUMENTS.length; i++){
             CheckBox checkBox= new CheckBox(this);
             checkBox.setText(INSTRUMENTS[i]);
