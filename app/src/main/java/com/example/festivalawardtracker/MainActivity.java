@@ -28,6 +28,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDate;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -45,6 +47,19 @@ public class MainActivity extends AppCompatActivity {
 
         Thread preload=DBManager.preload(this);
         preload.start();
+
+
+        //TODO: code used to add the four of us as teachers, Delete once testing is done
+//        Teacher newTeacher = new Teacher();
+//        Contact newContact = new Contact();
+//        newTeacher.firstName = "Carlos";
+//        newTeacher.middleName = "C";
+//        newTeacher.lastName = "Mercado";
+//        newTeacher.gender = Person.Gender.MALE;
+//        newTeacher.birthday = LocalDate.of(1991,03,23);
+//        newContact.email = "superegotist@gmail.com";
+//        newTeacher.setContact(newContact);
+//        DBManager.Teachers.put(newTeacher);
 
         int userMode = 1; // yserMode = 2 displays Student Mode
 

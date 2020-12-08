@@ -181,9 +181,6 @@ public class StudentNewActivity extends AppCompatActivity {
                 newStudent.middleName = middleNameInput.getText().toString();
                 newStudent.lastName = lastNameInput.getText().toString();
                 newStudent.gender = Person.Gender.valueOf(genderInput.getText().toString().toUpperCase());
-
-
-
                 newStudent.birthday = Utilities.stringMaterialToLocalDate(birthdayInput.getText().toString());
 
                 /* Contact.java */
