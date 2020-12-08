@@ -43,7 +43,7 @@ public class StudentSummaryActivity extends AppCompatActivity {
         Student s= DBManager.Students.get(StudentID);
 
         recyclerView = findViewById(R.id.StudentDisplayRecyclerview);
-        studentSummaryRecyclerAdapter = new StudentSummaryRecyclerAdapter(s,this);
+        studentSummaryRecyclerAdapter = new StudentSummaryRecyclerAdapter(s);
         recyclerView.setAdapter(studentSummaryRecyclerAdapter);
         recyclerView.setMotionEventSplittingEnabled(false);
 

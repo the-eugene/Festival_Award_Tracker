@@ -23,13 +23,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentSummaryRecyclerAdapter.ViewHolder> {
-    private Activity activity;
     private final Student student;
     private List<Performance>performances;
 
-    public StudentSummaryRecyclerAdapter(final Student student, Activity activity) {
+    public StudentSummaryRecyclerAdapter(final Student student) {
         Log.d(this.getClass().getName(),"Constructor");
-        this.activity=activity;
         this.student=student;
         this.performances=new ArrayList<>(student.performances);
         Collections.sort(performances, new Performance.sortByYear());

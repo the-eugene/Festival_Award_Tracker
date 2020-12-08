@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.Menu;
 
 
+import com.example.festivalawardtracker.ui.Utilities;
+import com.example.festivalawardtracker.ui.studentUser.StudentUserFragment;
 import com.firebase.ui.auth.AuthUI;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,21 +35,24 @@ import java.time.LocalDate;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private final String TAG = "MainActivity";
     private static final int RC_SIGN_IN = 123;
-
+    private static final String TYPE = "Type";
     // FRAGMENT HOME RECYCLERVIEW variables
     private RecyclerView recyclerView;
     //    studentAdapter adapter;
     DatabaseReference database;
     //    private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    String StudentID;
+
+    public String getStudentID() {
+        return StudentID;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        Thread preload=DBManager.preload(this);
-        preload.start();
-
 
         //TODO: code used to add the four of us as teachers, Delete once testing is done
 //        Teacher newTeacher = new Teacher();
@@ -61,7 +66,33 @@ public class MainActivity extends AppCompatActivity {
 //        newTeacher.setContact(newContact);
 //        DBManager.Teachers.put(newTeacher);
 
-        int userMode = 1; // yserMode = 2 displays Student Mode
+
+//        class queryThread implements Runnable {
+//            final Activity activity;
+//
+//            queryThread(Activity activity) {
+//                this.activity = activity;
+//            }
+//
+//            @Override
+//            public void run() {
+//                Log.d(this.getClass().getName(), "Loading Teacher and Student Database...");
+//                DBManager.Teachers.loadAll();
+//                DBManager.Students.loadAll();
+//                Log.d(this.getClass().getName(), "Loading Festival and Event Database...");
+//                DBManager.Festivals.loadAll();
+//                DBManager.EventDescriptions.loadAll();
+//                DBManager.Events.loadAll();
+//                DBManager.SchoolYears.loadAll();
+//                DBManager.currentYear=DBManager.findCurrentYear();
+//                Log.d(this.getClass().getName(), "...Finished");
+//            }
+//        }
+//        new Thread(new queryThread(this)).start();
+
+        Intent intent = getIntent();
+        int userMode = intent.getIntExtra("Type",1);
+        Log.d(TAG, "My number is:" + userMode);
 
         super.onCreate(savedInstanceState);
 
@@ -90,6 +121,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 2:
                 setContentView(R.layout.activity_main_student_user);
+                StudentID = intent.getStringExtra("StudentID");
+                Log.d(TAG,"StudentID:"+ StudentID);
 
                 Toolbar mToolbarStudentUser = findViewById(R.id.main_toolbar_student_user);
                 setSupportActionBar(mToolbarStudentUser);
