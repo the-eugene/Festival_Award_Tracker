@@ -8,12 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.festivalawardtracker.Answer;
 import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.Festival;
 import com.example.festivalawardtracker.R;
@@ -21,7 +18,6 @@ import com.example.festivalawardtracker.ui.Utilities;
 import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.checkbox.MaterialCheckBox;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
@@ -70,9 +66,9 @@ public class FestivalActivity extends AppCompatActivity {
         toolbar.setTitle("Add Festival");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-//        // TODO The activity MUST NOT accept empty or erroneous input values.
+        // TODO The activity MUST NOT accept empty or erroneous input values.
 
         // Not null if something is sent from EventDescriptionActivity
         if(_festivalID != null) {

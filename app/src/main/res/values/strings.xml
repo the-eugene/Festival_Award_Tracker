@@ -78,4 +78,8 @@
     <string name="search">Search</string>
     <string name="nfmc_festival">NFMC Festival</string>
     <string name="nextscreen">NextScreen</string>
+    <string name="password">Password</string>
+    <string name="email_address">Email address</string>
+    <string name="how_to_use">How to use</string>
+    <string name="about">About</string>
 </resources>

@@ -18,6 +18,6 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/activity_main_container_student_user" />
+    <include layout="@layout/main_container_student_user_activity" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

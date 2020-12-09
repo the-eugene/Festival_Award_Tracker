@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,7 +22,6 @@ import com.example.festivalawardtracker.Contact;
 import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.Gender;
 import com.example.festivalawardtracker.Instrument;
-import com.example.festivalawardtracker.ParentActivity;
 import com.example.festivalawardtracker.Person;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.Student;
@@ -31,6 +29,7 @@ import com.example.festivalawardtracker.ui.Utilities;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.internal.FlowLayout;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.ParseException;
@@ -149,10 +148,7 @@ public class StudentEditActivity extends AppCompatActivity {
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
 
         /* INSTRUMENT CHECKBOXES */
-        // TODO Possible programmatical solution for current checkbox layout ugly arrangement:
-        //  https://spin.atomicobject.com/2019/04/08/constraintlayout-chaining-views-programmatically/
-        //  Carlos
-        LinearLayout insLayout = findViewById(R.id.instruments_programmatical_layout);
+        FlowLayout insLayout = findViewById(R.id.instruments_programmatical_layout);
         for (int i = 0; i < INSTRUMENTS.length; i++){
             CheckBox checkBox = new CheckBox(this);
             checkBox.setText(INSTRUMENTS[i]);

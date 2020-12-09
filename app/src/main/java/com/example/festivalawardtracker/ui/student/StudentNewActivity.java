@@ -1,16 +1,13 @@
 package com.example.festivalawardtracker.ui.student;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,7 +21,6 @@ import com.example.festivalawardtracker.DBHashMap;
 import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.Gender;
 import com.example.festivalawardtracker.Instrument;
-import com.example.festivalawardtracker.ParentActivity;
 import com.example.festivalawardtracker.Person;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.Student;
@@ -34,16 +30,12 @@ import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointBackward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.internal.FlowLayout;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Objects;
 
 import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
-import static com.google.android.material.datepicker.MaterialDatePicker.todayInUtcMilliseconds;
 
 /**
  * Pre-loads the necessary information to the drop-down list and date-picker components.
@@ -109,7 +101,7 @@ public class StudentNewActivity extends AppCompatActivity {
         constraintsBuilderRange.setValidator(dateValidatorMax);
         builder.setCalendarConstraints(constraintsBuilderRange.build());
 
-        //build calendar
+        // Build calendar
         final MaterialDatePicker<Long> materialDatePicker = builder.build();
         birthdayInput.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,10 +127,7 @@ public class StudentNewActivity extends AppCompatActivity {
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
 
         /* INSTRUMENT CHECKBOXES */
-        // TODO Possible programmatical solution for current checkbox layout ugly arrangement:
-        //  https://spin.atomicobject.com/2019/04/08/constraintlayout-chaining-views-programmatically/
-        //  Carlos
-        LinearLayout insLayout = findViewById(R.id.instruments_programmatical_layout);
+        FlowLayout insLayout = findViewById(R.id.instruments_programmatical_layout);
         for (int i = 0; i < INSTRUMENTS.length; i++){
             CheckBox checkBox= new CheckBox(this);
             checkBox.setText(INSTRUMENTS[i]);
@@ -181,14 +170,11 @@ public class StudentNewActivity extends AppCompatActivity {
                 newStudent.middleName = middleNameInput.getText().toString();
                 newStudent.lastName = lastNameInput.getText().toString();
                 newStudent.gender = Person.Gender.valueOf(genderInput.getText().toString().toUpperCase());
-
-
-
                 newStudent.birthday = Utilities.stringMaterialToLocalDate(birthdayInput.getText().toString());
 
                 /* Contact.java */
                 newContact.phone = phoneInput.getText().toString();
-                newContact.email = emailInput.getText().toString();
+                newContact.email = emailInput.getText().toString().toLowerCase();
                 newContact.street = streetInput.getText().toString();
                 newContact.city = cityInput.getText().toString();
                 newContact.state = stateInput.getText().toString();

@@ -19,8 +19,10 @@ import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.Objects;
+
 /**
- * @author carloswashingtonmercado@gmail.com
+ * @author Carlos
  */
 public class FestivalFragment extends Fragment implements View.OnClickListener {
 
@@ -55,8 +57,7 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        // Setting up the FAB button for add festival
-        // https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener
+        // FAB button
         fabNewFestival = root.findViewById(R.id.newFestivalActivity);
         fabNewFestival.setOnClickListener(this);
 
