@@ -175,17 +175,6 @@ public class EventNewActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (isNew)
-                    DBManager.linkEvent(
-                            event,
-                            eventDescription,
-                            DBManager.SchoolYears.get(
-                                    schoolYearOptionsMap.get( //gets year id from user friendly options
-                                            schoolYearInput.getText().toString() //get user selection
-                                    )));
-
-
                 //used to catch if dates are outside of school year
                 String SchoolYearStart = schoolYearInput.getText().toString().substring(0,4);
                 String SchoolYearEnd = schoolYearInput.getText().toString().substring(5,9);
@@ -212,6 +201,14 @@ public class EventNewActivity extends AppCompatActivity {
                     return;
                 }
 
+                if (isNew)
+                    DBManager.linkEvent(
+                            event,
+                            eventDescription,
+                            DBManager.SchoolYears.get(
+                                    schoolYearOptionsMap.get( //gets year id from user friendly options
+                                            schoolYearInput.getText().toString() //get user selection
+                                    )));
 
                 event.setStartLocalDate(Utilities.stringMaterialToLocalDate(Objects.requireNonNull(startingDateInput.getText()).toString()));
                 event.setEndLocalDate(Utilities.stringMaterialToLocalDate(Objects.requireNonNull(endingDateInput.getText()).toString()));

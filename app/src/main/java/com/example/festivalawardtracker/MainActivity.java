@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
+import android.provider.DocumentsContract;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.Menu;
@@ -28,11 +31,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private static final int RC_SIGN_IN = 123;
-
+    final int CREATE_FILE = 1;
     // FRAGMENT HOME RECYCLERVIEW variables
     private RecyclerView recyclerView;
     //    studentAdapter adapter;
@@ -63,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 NavigationView navigationView = findViewById(R.id.nav_view);
 
                 mAppBarConfiguration = new AppBarConfiguration.Builder(
-                        R.id.nav_home, R.id.nav_festival, R.id.nav_ratings)
+                        R.id.nav_home, R.id.nav_festival, R.id.nav_ratings, R.id.nav_export)
                         .setDrawerLayout(drawer)
                         .build();
                 NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -132,5 +143,91 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     }
                 });
+    }
+
+    public void exportFile(MenuItem item){
+        createFile(Uri.EMPTY);
+
+    }
+
+    private void createFile(Uri pickerInitialUri) {
+        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("text/csv");
+        intent.putExtra(Intent.EXTRA_TITLE, "students.csv");
+        intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, pickerInitialUri);
+        startActivityForResult(intent, CREATE_FILE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode,
+                                 Intent resultData) {
+        if (requestCode == CREATE_FILE
+                && resultCode == Activity.RESULT_OK) {
+            Uri uri = null;
+            if (resultData != null) {
+                uri = resultData.getData();
+                Log.d(this.getClass().getName(),uri.toString());
+                // Perform operations on the document using its URI.
+                saveFile(uri);
+            }
+        }
+        super.onActivityResult(requestCode,resultCode, resultData);
+    }
+
+
+    private void saveFile(Uri uri) {
+        final String[] fields={"Event","Code","Club","Teacher","Last Name","First Name","Middle Name","Birthdate","PCS","PPs","Class","Rtg"};
+        Map<String, String> row=new HashMap<>();
+        String[] row_string=new String[fields.length];
+        try {
+            ParcelFileDescriptor pfd = getContentResolver().
+                    openFileDescriptor(uri, "w");
+            FileOutputStream fileOutputStream = new FileOutputStream(pfd.getFileDescriptor());
+
+            //write out headers
+            fileOutputStream.write((String.join(",",fields)+"\n").getBytes());
+            Log.d(this.getClass().getName(),"Processing Export");
+            row.put("Code",""); //there are no codes
+            for(String eID:DBManager.currentYear.eventIDs){
+                Event e=DBManager.Events.get(eID);
+                EventDescription ed= DBManager.EventDescriptions.get(e.eventDescriptionID);
+                row.put("Event", ed.name);
+                Log.d("Saving Event", ed.name);
+                for(String sID:e.studentIDs){
+                    Student s=DBManager.Students.get(sID);
+                    //Teacher t=DBManager.Teachers.get(s.teacherIDs.get(0)); //TODO: V2, handle multiple teachers
+                    Performance p=null;
+                    for(Performance performance:s.performances)
+                        if(performance.eventID.equals(eID))
+                            p=performance;
+                    if (p!=null) { //student actually participated
+                        row.put("Club", "Wachter Music"); //TODO: V2, add club to Teacher
+                        row.put("Teacher", "Nina Wachter"); //row.put("Teacher", t.getFullName());
+                        row.put("Last Name", s.getLastName());
+                        row.put("First Name", s.getFirstName());
+                        row.put("Middle Name", s.getMiddleName());
+                        row.put("Birthdate", s.getBirthday());
+                        row.put("PCS", Integer.toString(s.findPCS(ed)));
+                        row.put("PPs", Integer.toString(s.totalAccumulatedPoints(ed)-p.rating));
+                        row.put("Class",p.level);
+                        row.put("Rtg",Integer.toString(p.rating));
+                        for(int i=0;i<fields.length;i++)
+                            row_string[i]=row.get(fields[i]);
+                        fileOutputStream.write((String.join(",",row_string)+"\n").getBytes());
+                        Log.d("FileExport Row",String.join(",",row_string)+"\n");
+                    }
+                }
+            }
+            // Let the document provider know you're done by closing the stream.
+            fileOutputStream.close();
+            pfd.close();
+        } catch (FileNotFoundException e) {
+            Log.wtf(this.getClass().getName(), "File not found in saveFile()");
+            e.printStackTrace();
+        } catch (IOException e) {
+            Log.wtf(this.getClass().getName(), "Failed Write in saveFile()");
+            e.printStackTrace();
+        }
     }
 }

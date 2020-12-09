@@ -106,7 +106,7 @@ public class Student extends Person {
     public void addPerformance(String eventID, LocalDate date, String level, int rating){
         Performance p=new Performance(eventID,date,level, rating);
         performances.add(p);
-        addAward(p); //TODO Add awards as a separate step
+        addAward(p); //TODO V2, Add awards as a separate step
         DBManager.Students.put(ID,this); //instead of save
     }
 
@@ -192,6 +192,20 @@ public class Student extends Person {
             if(p.retrieveEvent().eventDescriptionID.equals(ed.ID)){
                 if (p.rating<5) return result;
                 result++;
+            }
+        }
+        return result;
+    }
+
+    public int findPCS(EventDescription ed){
+        boolean one=false;
+        int result=0;
+        for(int i=performances.size(); i-- >0;){
+            Performance p=performances.get(i);
+            if(p.retrieveEvent().eventDescriptionID.equals(ed.ID)){
+                if (one&p.rating<5) return result;
+                result++;
+                one=true;
             }
         }
         return result;
