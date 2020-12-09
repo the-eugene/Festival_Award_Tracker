@@ -174,7 +174,7 @@ public class StudentNewActivity extends AppCompatActivity {
 
                 /* Contact.java */
                 newContact.phone = phoneInput.getText().toString();
-                newContact.email = emailInput.getText().toString();
+                newContact.email = emailInput.getText().toString().toLowerCase();
                 newContact.street = streetInput.getText().toString();
                 newContact.city = cityInput.getText().toString();
                 newContact.state = stateInput.getText().toString();
