@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
