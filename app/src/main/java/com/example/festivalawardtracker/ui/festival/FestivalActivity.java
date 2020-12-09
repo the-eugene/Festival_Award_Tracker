@@ -109,4 +109,11 @@ public class FestivalActivity extends AppCompatActivity {
             }
         }); // End OnClickListener
     } // End OnCreate
+
+    // code that sends app back to last page when you hit the x in the tool bar
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish(); // close this activity as oppose to navigating up
+        return false;
+    }
 } // End class
