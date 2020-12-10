@@ -25,8 +25,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * Pulls event Data from firebase realtime Database
- * Shows event details in a recycle view
- * clicking any event will go to event descriptions page
+ * Shows event details in a recycle view pulled from EventActivityRecyclerAdapter
+ * clicking any event will go to the edit event page
  * Clicking the add button will bring up the add event page.
  * @author Cayla, Carlos, Jimmy, & Eugene
  */
