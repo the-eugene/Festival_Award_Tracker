@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskCompletionSource;
 import com.google.android.gms.tasks.Tasks;
-import com.google.common.net.InternetDomainName;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,7 +16,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -27,11 +25,7 @@ import java.util.concurrent.ExecutionException;
 public class DBManager {
     public static FirebaseDatabase DB = FirebaseDatabase.getInstance(); //Database instance
     public static DatabaseReference currentDB; //Reference to root of data storage
-    public static boolean isLoaded=false; //true when all preload operations are complete
-
-    static {
-        setCurrentDB(""); //default root is root of FireBase
-    }
+    public static boolean isLoaded = false; //true when all preload operations are complete
 
     //HashMap objects holding String UID - Object key value pairs
     public static DBHashMap<Teacher> Teachers = new DBHashMap<>(Teacher.class);
@@ -41,11 +35,15 @@ public class DBManager {
     public static DBHashMap<EventDescription> EventDescriptions = new DBHashMap<>(EventDescription.class);
     public static DBHashMap<Festival> Festivals = new DBHashMap<>(Festival.class);
     public static DBHashMap<SchoolYear> SchoolYears = new DBHashMap<>(SchoolYear.class);
-
     public static SchoolYear currentYear;
+
+    static {
+        setCurrentDB(""); //default root is root of FireBase
+    }
 
     /**
      * Set rooot location for database operations
+     *
      * @param location Set this to where in the DB all data should be stored, leave as "" for main database and "TEST" for a test location
      */
     public static void setCurrentDB(String location) {
@@ -54,6 +52,7 @@ public class DBManager {
 
     /**
      * Finds the school year previous to year passed to the method
+     *
      * @param year SchoolYear object for year in question
      * @return SchoolYear immediately before the year passed
      */
@@ -65,6 +64,7 @@ public class DBManager {
 
     /**
      * Get a SchoolYear object based on the sequence assigned to school years
+     *
      * @param seq integer sequence of the year
      * @return SchoolYear with that sequence or null if year was the first year.
      */
@@ -86,7 +86,8 @@ public class DBManager {
 
     /**
      * Provides logic needed to link a festival and an event description belonging to that festival
-     * @param festival Festival object to link to
+     *
+     * @param festival         Festival object to link to
      * @param eventDescription EventDescription object to link to
      */
     public static void linkFestivalEventDescription(Festival festival, EventDescription eventDescription) {
@@ -103,16 +104,18 @@ public class DBManager {
 
     /**
      * Provides logic for linking an event to a school year and an event description
-     * @param event Event being linked
+     *
+     * @param event            Event being linked
      * @param eventDescription Event Description being linked
-     * @param schoolYear SchoolYear being linked
+     * @param schoolYear       SchoolYear being linked
      */
     public static void linkEvent(Event event, EventDescription eventDescription, SchoolYear schoolYear) {
         event.addLinks(eventDescription, schoolYear);
         schoolYear.addEvent(event);
     }
 
-    /** Provides logic for linking student and teacher
+    /**
+     * Provides logic for linking student and teacher
      *
      * @param teacher Teacher object being linked
      * @param student Student object being linked
@@ -124,12 +127,13 @@ public class DBManager {
 
     /**
      * Execute a query on the database.
+     *
      * @param query Firebase Query to run
      * @return raw DataSnapshot result of the query.
      */
     public static DataSnapshot runQuery(Query query) {
         final TaskCompletionSource<DataSnapshot> task = new TaskCompletionSource<>();
-        Log.e("DBManager.runQuery", "Called with "+query.toString());
+        Log.e("DBManager.runQuery", "Called with " + query.toString());
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot ds) {
@@ -155,6 +159,7 @@ public class DBManager {
 
     /**
      * Finds a teacher with a specific email (if exists)
+     *
      * @param email email string to find
      * @return teacher object if one is found, null otherwise.
      */
@@ -173,8 +178,10 @@ public class DBManager {
         }
         return null;
     }
+
     /**
      * Finds a student with a specific email (if exists)
+     *
      * @param email email string to find
      * @return student object if one is found, null otherwise.
      */
@@ -186,10 +193,11 @@ public class DBManager {
 
     /**
      * Find the FIRST object in the database based on one of its attributes and the value searched for
-     * @param map the DBHashMap of the object type to be searched (and result added to if found)
+     *
+     * @param map       the DBHashMap of the object type to be searched (and result added to if found)
      * @param attribute name of the attribute to be searched, needs to be first child of object. For example, "gender"
-     * @param value Value being searched for, for example "MALE"
-     * @param <T> Class of object being searched for.
+     * @param value     Value being searched for, for example "MALE"
+     * @param <T>       Class of object being searched for.
      * @return instance of the object if found, or null
      */
     public static <T extends DBAware> T getOneByAttribute(DBHashMap<T> map, String attribute, String value) {
@@ -206,21 +214,22 @@ public class DBManager {
 
     /**
      * finds the schoolyear object representing the current year, if it exists, or adds a new one if it does not exist yet
+     *
      * @return SchoolYear object representing current school year
      */
-    public static SchoolYear findCurrentYear(){
-        int seq=0;
-        int start=2010;
-        for (SchoolYear sy:SchoolYears.values()) {
-            seq=Math.max(seq,sy.sequence);
+    public static SchoolYear findCurrentYear() {
+        int seq = 0;
+        int start = 2010;
+        for (SchoolYear sy : SchoolYears.values()) {
+            seq = Math.max(seq, sy.sequence);
             if (!LocalDate.now().isBefore(sy.start) && !LocalDate.now().isAfter(sy.end)) {
                 return sy;
             }
         }
         //Making it here means we ran out of years!
         seq++;
-        SchoolYear cyear=null;
-        while ((start+seq)<=LocalDate.now().getYear()) {
+        SchoolYear cyear = null;
+        while ((start + seq) <= LocalDate.now().getYear()) {
             SchoolYear year = new SchoolYear();
             year.setName((start + seq) + "-" + (start + seq + 1) + "");
             year.setStart(String.valueOf(LocalDate.of(start + seq, 7, 15)));
@@ -228,7 +237,7 @@ public class DBManager {
             year.setSequence(seq);
             DBManager.SchoolYears.put(year);
             if (!LocalDate.now().isBefore(year.start) && !LocalDate.now().isAfter(year.end)) {
-                cyear=year;
+                cyear = year;
             }
             seq++;
         }
@@ -237,10 +246,11 @@ public class DBManager {
 
     /**
      * Creates a thread to preload all the data from firebase at once
+     *
      * @param activity activity to run the thread on
      * @return returns a thread object that can be run to complete the preload
      */
-    public static Thread preload(Activity activity){
+    public static Thread preload(Activity activity) {
         class queryThread implements Runnable {
             final Activity activity;
 
@@ -258,12 +268,12 @@ public class DBManager {
                 DBManager.EventDescriptions.loadAll();
                 DBManager.Events.loadAll();
                 DBManager.SchoolYears.loadAll();
-                DBManager.currentYear=DBManager.findCurrentYear();
+                DBManager.currentYear = DBManager.findCurrentYear();
                 Log.d(this.getClass().getName(), "...Finished");
-                DBManager.isLoaded=true;
+                DBManager.isLoaded = true;
             }
         }
-       return new Thread(new queryThread(activity));
+        return new Thread(new queryThread(activity));
     }
 }
 
