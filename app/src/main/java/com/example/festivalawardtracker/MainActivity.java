@@ -18,9 +18,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.dialog.MaterialDialogs;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.database.DatabaseReference;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
@@ -30,13 +28,10 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,61 +41,42 @@ public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
     private static final int RC_SIGN_IN = 123;
     final int CREATE_FILE = 1;
+    //String used to store user type number
     private static final String TYPE = "Type";
-    // FRAGMENT HOME RECYCLERVIEW variables
-    private RecyclerView recyclerView;
-    //    studentAdapter adapter;
-    DatabaseReference database;
-    //    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
+    //Used to store studentID
     String StudentID;
+    //Used to store teacherID
+    String TeacherID;
 
+    /**
+     * Returns the student ID so the fragment calling it can know what information to display.
+     * @auther Cayla, Carlos, Jimmy, & Eugene
+     * @return StudentID the Id of the student logged in.
+     */
     public String getStudentID() {
         return StudentID;
     }
 
+    /**
+     * Returns the student ID so the fragment calling it can know what information to display.
+     * @auther Cayla, Carlos, Jimmy, & Eugene
+     * @return TeacherID the Id of the teacher logged in.
+     */
+    public String getTeacherID(){return TeacherID;}
 
+    /**
+     * Depending on who logs in sets the correct fragment for the user to see.
+     * Case 1 is for teachers and case 2 is for students.
+     * Also retrieves IDs needed for the fragments to display the correct information for a specific teacher or student.
+     * @auther Cayla, Carlos, Jimmy, & Eugene
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        //TODO: code used to add the four of us as teachers, Delete once testing is done
-//        Teacher newTeacher = new Teacher();
-//        Contact newContact = new Contact();
-//        newTeacher.firstName = "Carlos";
-//        newTeacher.middleName = "C";
-//        newTeacher.lastName = "Mercado";
-//        newTeacher.gender = Person.Gender.MALE;
-//        newTeacher.birthday = LocalDate.of(1991,03,23);
-//        newContact.email = "superegotist@gmail.com";
-//        newTeacher.setContact(newContact);
-//        DBManager.Teachers.put(newTeacher);
-
-
-//        class queryThread implements Runnable {
-//            final Activity activity;
-//
-//            queryThread(Activity activity) {
-//                this.activity = activity;
-//            }
-//
-//            @Override
-//            public void run() {
-//                Log.d(this.getClass().getName(), "Loading Teacher and Student Database...");
-//                DBManager.Teachers.loadAll();
-//                DBManager.Students.loadAll();
-//                Log.d(this.getClass().getName(), "Loading Festival and Event Database...");
-//                DBManager.Festivals.loadAll();
-//                DBManager.EventDescriptions.loadAll();
-//                DBManager.Events.loadAll();
-//                DBManager.SchoolYears.loadAll();
-//                DBManager.currentYear=DBManager.findCurrentYear();
-//                Log.d(this.getClass().getName(), "...Finished");
-//            }
-//        }
-//        new Thread(new queryThread(this)).start();
-
+        //Retrieves the number from login for the user. 1 for Teacher, or 2 for student.
         Intent intent = getIntent();
-        int userMode = intent.getIntExtra("Type",1);
+        int userMode = intent.getIntExtra(TYPE,1);
         Log.d(TAG, "My number is:" + userMode);
 
         super.onCreate(savedInstanceState);
@@ -108,42 +84,52 @@ public class MainActivity extends AppCompatActivity {
         switch(userMode) {
             // https://brightinventions.pl/blog/handling-different-user-types-in-android-application
             case 1:
+                //Sets the view for a teacher
                 setContentView(R.layout.main_activity);
 
+                //Retrieves the Teacher ID from login
+                TeacherID = intent.getStringExtra("TeacherID");
+                Log.d(TAG,"TeacherID:"+ TeacherID);
+
+                //Retrieves and sets the toolbar or top bar in the app for the teacher.
                 Toolbar mToolbar = findViewById(R.id.main_toolbar);
                 setSupportActionBar(mToolbar);
                 mToolbarMenuAction(mToolbar);
 
+                //Retrieves and sets the drawer for the teacher view
                 DrawerLayout drawer = findViewById(R.id.drawer_layout);
-                NavigationView navigationView = findViewById(R.id.nav_view);
-
                 mAppBarConfiguration = new AppBarConfiguration.Builder(
                         R.id.nav_home, R.id.nav_festival, R.id.nav_ratings, R.id.nav_export)
-                        .setDrawerLayout(drawer)
+                        .setOpenableLayout(drawer)
                         .build();
+                NavigationView navigationView = findViewById(R.id.nav_view);
                 NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
                 NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
                 NavigationUI.setupWithNavController(navigationView, navController);
-
-
                 Log.d("MAIN_ACTIVITY", "Switch: 1 case");
                 break;
+
+
             case 2:
+                //Sets the view for a student
                 setContentView(R.layout.main_student_user_activity);
+
+                //Retrieves the Teacher ID from login
                 StudentID = intent.getStringExtra("StudentID");
                 Log.d(TAG,"StudentID:"+ StudentID);
 
+                //Retrieves and sets the toolbar or top bar in the app for the student.
                 Toolbar mToolbarStudentUser = findViewById(R.id.main_toolbar_student_user);
                 setSupportActionBar(mToolbarStudentUser);
                 mToolbarMenuAction(mToolbarStudentUser);
 
+                //Retrieves and sets the drawer for the student view
                 DrawerLayout drawerStudentUser = findViewById(R.id.drawer_layout_student_user);
-                NavigationView navigationViewStudentUser = findViewById(R.id.nav_view_student_user);
-//
                 mAppBarConfiguration = new AppBarConfiguration.Builder(
                         R.id.nav_home_student_user)
-                        .setDrawerLayout(drawerStudentUser)
+                        .setOpenableLayout(drawerStudentUser)
                         .build();
+                NavigationView navigationViewStudentUser = findViewById(R.id.nav_view_student_user);
                 NavController navControllerStudentUser = Navigation.findNavController(this, R.id.nav_host_fragment);
                 NavigationUI.setupActionBarWithNavController(this, navControllerStudentUser, mAppBarConfiguration);
                 NavigationUI.setupWithNavController(navigationViewStudentUser, navControllerStudentUser);
@@ -159,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method is called whenever the user chooses to navigate Up within your application's
      * activity hierarchy from the action bar.
-     * @author Carlos
+     * @author Cayla, Carlos, Jimmy, & Eugene
      */
     @Override
     public boolean onSupportNavigateUp() {
@@ -174,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * It handles the creation of options menu from the action bar.
-     * @author carloswashingtonmercado@gmail.com
+     * @author Cayla, Carlos, Jimmy, & Eugene
      * @param menu
      * @return
      * @link <a>https://stackoverflow.com/a/37562572/7389293</a> Not used
@@ -245,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * @author Carlos
+     * @author Cayla, Carlos, Jimmy, & Eugene
      * @param item
      * Functionality for the log out button.
      */
