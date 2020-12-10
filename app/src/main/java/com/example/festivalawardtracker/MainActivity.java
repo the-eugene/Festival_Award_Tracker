@@ -231,9 +231,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
+     * Functionality for the log out button.
      * @author Cayla, Carlos, Jimmy, & Eugene
      * @param item
-     * Functionality for the log out button.
      */
     public void loggingOut(MenuItem item) {
         // Accesing Items in the Menu Drawer, using OnClick attribute in the drawer menu xml file
