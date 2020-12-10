@@ -3,6 +3,9 @@ package com.example.festivalawardtracker;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Model class describing Teachers
+ */
 public class Teacher extends Person {
     List<String> studentIDs=new ArrayList<>();
 
@@ -14,6 +17,11 @@ public class Teacher extends Person {
         this.studentIDs = studentIDs;
     }
 
+    /**
+     * adds a student to the list of a teacher's student
+     * Generates IDs as necessary
+     * @param student the student to be added
+     */
     public void addStudent(Student student) {
         if (student.ID==null){
             DBManager.Students.put(null,student);
@@ -23,7 +31,7 @@ public class Teacher extends Person {
     }
 
     public void loadStudents(){
-        //TODO load students by teacher
+        //TODO V2, load students by teacher
     }
 
 }
