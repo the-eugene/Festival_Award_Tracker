@@ -20,8 +20,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Inside the new or edit event activity there is a recycle view full of students that can be added to events
+ * This is populated with this adapter
+ * The students are filtered by the instrument that the event is for
+ * Then displayed next to check boxes to be added to events
+ */
 public class EventNewRecyclerAdapter extends RecyclerView.Adapter<EventNewRecyclerAdapter.ViewHolder> {
-
     Event event;
     Activity activity;
     List<Student> students=new ArrayList<>();
@@ -60,6 +65,9 @@ public class EventNewRecyclerAdapter extends RecyclerView.Adapter<EventNewRecycl
         return students.size();
     }
 
+    /**
+     * adds students to events when they are clicked
+     */
     class ViewHolder extends RecyclerView.ViewHolder{
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -77,12 +85,20 @@ public class EventNewRecyclerAdapter extends RecyclerView.Adapter<EventNewRecycl
             });
         }
     }
+
+    /**
+     * updates student list based on what instruments they play
+     */
     public void update() {
         students.clear();
         for(Student s:DBManager.Students.values()){
             if(s.instruments.contains(event.retrieveDescription().instrument))
                 students.add(s);
         }
+
+        /**
+         * sorts students
+         */
         students.sort(new Comparator<Student>() {
             @Override
             public int compare(Student o1, Student o2) {
