@@ -63,30 +63,34 @@ public class MainEmptyActivity extends Activity {
                 DBManager.Students.loadAll();
                 Student student = DBManager.getStudentByEmail(email);
                 Teacher teacher = DBManager.getTeacherByEmail(email);
-                //If a student is found get their Id and send them to the main activity, as well as download the rest of the database.
+                //If a student is found
                 if (student != null){
                     Log.d(TAG,"Found Student, Student: "+ student.getFirstName());
+                    //Load the rest of the data
                     Log.d(this.getClass().getName(), "Loading Festival and Event Database...");
                     DBManager.Festivals.loadAll();
                     DBManager.EventDescriptions.loadAll();
                     DBManager.Events.loadAll();
                     DBManager.SchoolYears.loadAll();
                     DBManager.currentYear = DBManager.findCurrentYear();
+                    //Creates an intent with the type 2 for student and the student ID
                     Log.d(this.getClass().getName(), "...Finished");
                     activityIntent = new Intent(MainEmptyActivity.this, MainActivity.class);
                     activityIntent.putExtra("StudentID",student.ID);
                     activityIntent.putExtra("Type", 2);
                     startActivity(activityIntent);
                 }
-                //If a teacher is found get their Id and send them to the main activity, as well as download the rest of the database.
+                //If a teacher is found
                 else if (teacher != null){
                     Log.d(TAG,"Found Teacher, Teacher: " + teacher.getFirstName());
+                    //Load the rest of the data
                     Log.d(this.getClass().getName(), "Loading Festival and Event Database...");
                     DBManager.Festivals.loadAll();
                     DBManager.EventDescriptions.loadAll();
                     DBManager.Events.loadAll();
                     DBManager.SchoolYears.loadAll();
                     DBManager.currentYear = DBManager.findCurrentYear();
+                    //Creates an intent with the type 1 for teacher and the teacher ID
                     Log.d(this.getClass().getName(), "...Finished");
                     activityIntent = new Intent(MainEmptyActivity.this, MainActivity.class);
                     activityIntent.putExtra("TeacherID",teacher.ID);
