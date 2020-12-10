@@ -23,7 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * Adapter for the recycle view for Events
+ * puts data into cards for the event activity to display
+ * @author Cayla, Carlos, Jimmy, & Eugene
+ */
 public class EventActivityRecyclerAdapter extends RecyclerView.Adapter<EventActivityRecyclerAdapter.ViewHolder> {
 
     List <Event> events=new ArrayList<>();;
@@ -98,12 +102,19 @@ public class EventActivityRecyclerAdapter extends RecyclerView.Adapter<EventActi
         new Thread(new EventActivityRecyclerAdapter.queryThread(activity,eventDescription.ID)).start();
     }
 
+    /**
+     * updates event list when database changes
+     * @param r is the list of events currently loaded
+     */
     private void updateList(List<Event> r) {
         r.sort(new Event.sortByYear());
         events=r;
         notifyDataSetChanged();
     }
 
+    /**
+     * preload all the events into app
+     */
     class queryThread implements Runnable{
         final Activity activity;
         final String edID;
