@@ -20,24 +20,30 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.DBManager;
+import com.example.festivalawardtracker.MainActivity;
 import com.example.festivalawardtracker.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 /**
- * @author carloswashingtonmercado@gmail.com
+ * This class is a fragment for displaying all the current students the teacher has.
+ * Gives options of adding a new student and displaying a summery of a student.
+ * Updates list when students are added.
+ * @auther Cayla, Carlos, Jimmy, & Eugene
  */
 public class StudentFragment extends Fragment implements View.OnClickListener {
 
     StudentRecyclerAdapter studentRecyclerAdapter;
     FloatingActionButton fabNewStudent;
     RecyclerView recyclerView;
-    List<String> studentNames, birthday, age, gender, awardInfo;
-    Context thisContext;
+    Context context;
+    String TeacherID;
 
     /**
-     *
+     * Contains a recyclerview to display all current students a teacher has.
+     * Also gives options of adding a new student and displaying a summery of a student.
+     * @auther Cayla, Carlos, Jimmy, & Eugene
      * @param inflater
      * @param container
      * @param savedInstanceState
@@ -49,15 +55,23 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
         Log.d(this.getClass().getName(),"onCreateView");
+        //retrieve the layout we want to use for this fragment
         View root = inflater.inflate(R.layout.students_recyclerview_fragment_main, container, false);
 
-        thisContext = container.getContext();
-        Context context = root.getContext();
+        //find the context of the current fragment
+        context = root.getContext();
 
+        //Retrieves from the main activity the ID of the teacher that logged in.
+        MainActivity activity = (MainActivity) getActivity();
+        TeacherID = activity.getTeacherID();
+
+        //Retrieves and sets the recyclerview for UI (Displays events the student attended).
         recyclerView = root.findViewById(R.id.recyclerView_student);
         studentRecyclerAdapter = new StudentRecyclerAdapter(DBManager.Students);
         recyclerView.setAdapter(studentRecyclerAdapter);
+
         //This is working but there has to be a better way...
+        //Updates student list in the background.
         class pauseForLoad implements Runnable{
             final Activity activity;
             pauseForLoad (Activity activity){this.activity=activity;}
@@ -76,9 +90,10 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
 
         if (!DBManager.isLoaded) new Thread(new pauseForLoad(getActivity())).start(); //only do this if nothing is preloaded
 
-
+        //Prevent double clicks on the recyclerview
         recyclerView.setMotionEventSplittingEnabled(false);
 
+        //Sets the lines you see between each item in the recyclerView.
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
@@ -90,7 +105,8 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
     }
 
     /**
-     * @author
+     * Sends user to the StudentNewActivity to create a new student
+     * @author Cayla, Carlos, Jimmy, & Eugene
      * @param v
      */
     @Override
@@ -100,7 +116,8 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
     }
 
     /**
-     * @author Eugene
+     * Updates list of students when user navigates back.
+     * @author Cayla, Carlos, Jimmy, & Eugene
      */
     public void onResume() {
         studentRecyclerAdapter.updateStudentList();
