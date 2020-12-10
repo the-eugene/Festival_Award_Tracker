@@ -22,19 +22,25 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.Objects;
 
 /**
+ * Displays a list of festivals. Each of which provides access to its own list of events.
+ * It's possible to add new festivals on this screen.
+ * Long press on the festival name enables edition.
+ * Addition or edition of festivals updates the list and its information in the remote database.
  * @author Carlos
+ * @see FestivalActivity Used for addition and edition of festivals.
+ * @see com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsActivity Displays name and brief description of the events for the selected festivals.
  */
 public class FestivalFragment extends Fragment implements View.OnClickListener {
 
-    private Toolbar toolbar;
     RecyclerView recyclerView;
     FloatingActionButton fabNewFestival;
     FestivalRecyclerAdapter festivalRecyclerAdapter;
     Context thisContext;
     Context context;
+    private static final String TAG = "FESTIVAL_FRAGMENT";
+
 
     /**
-     *
      * @param inflater
      * @param container
      * @param savedInstanceState
@@ -43,6 +49,7 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.festival_recyclerview_fragment_main, container, false);
+        Log.d(TAG, "OnCreateView: " + this.getClass().getName());
 
         thisContext = container.getContext();
         context = root.getContext();
@@ -65,7 +72,6 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
     } // End onCreateView
 
     /**
-     *
      * @author Eugene
      */
     public void onResume() {

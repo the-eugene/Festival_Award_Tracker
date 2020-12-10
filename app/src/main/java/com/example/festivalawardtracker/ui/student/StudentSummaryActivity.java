@@ -21,19 +21,28 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Objects;
 
-
+/**
+ * It displays single student's information.
+ * Displays a recycler view with the information about student's past performances.
+ * @author Eugene
+ * @see StudentFragment Previously displayed screen.
+ * @see StudentEditActivity For edition of current student information.
+ * @see StudentSummaryRecyclerAdapter For displaying performance information in numerous events where the current student performed.
+ */
 public class StudentSummaryActivity extends AppCompatActivity {
 
     public FloatingActionButton fabEditStudent;
     RecyclerView recyclerView;
     StudentSummaryRecyclerAdapter studentSummaryRecyclerAdapter;
     public static final String STUDENT_ID = "StudentID";
+    private static final String TAG = "STUDENT_SUMMARY_ACTIVITY";
     String StudentID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.students_summary_activity);
+        Log.d(TAG, "OnCreate: " + this.getClass().getName());
 
         if (getIntent().hasExtra(STUDENT_ID))
             StudentID = getIntent().getExtras().getString(STUDENT_ID);
@@ -58,10 +67,6 @@ public class StudentSummaryActivity extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-
-//        TextView name=findViewById(R.id.textViewStudentFullName);
-//        name.setText(s.getFullName());
-
         TextView birthday=findViewById(R.id.textViewStudentBirthday);
         birthday.setText(s.getBirthday());
 
@@ -77,7 +82,7 @@ public class StudentSummaryActivity extends AppCompatActivity {
         TextView instruments=findViewById(R.id.textViewStudentInstrument);
         instruments.setText(s.instrumentList());
 
-        fabEditStudent = findViewById(R.id.fab_editStudent33);
+        fabEditStudent = findViewById(R.id.fab_editStudent);
         fabEditStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

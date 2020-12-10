@@ -24,11 +24,14 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
- * Pulls event Data from firebase realtime Database
+ * Pulls event Data from firebase realtime Database.
  * Shows event details in a recycle view pulled from EventActivityRecyclerAdapter
- * clicking any event will go to the edit event page
+ * clicking any event will go to the edit event page.
  * Clicking the add button will bring up the add event page.
  * @author Cayla, Carlos, Jimmy, & Eugene
+ * @see EventDescriptionsNewActivity For edition of the current event information.
+ * @see EventNewActivity For the addition of students to the event in a new performance.
+ * Long press on this screen just displays the selected event screen for adding students.
  */
 public class EventActivity extends AppCompatActivity {
 
@@ -49,7 +52,7 @@ public class EventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events_recyclerview_activity);
-        Log.d(this.getClass().getName(), "Starting OnCreate");
+        Log.d(TAG, "OnCreate: " + this.getClass().getName());
 
         /* Receiving ID */
         event_description_id = Utilities.retrieveExtra(this, Utilities.EVENT_DESCRIPTION_ID);

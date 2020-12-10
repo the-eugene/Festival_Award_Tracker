@@ -60,7 +60,7 @@ public class EventNewActivity extends AppCompatActivity {
     boolean isNew = false;
 
     /**
-     *
+     *  It creates the activity that receives input user about events.
      * @author Carlos
      * @param savedInstanceState Add.
      * @see MainActivity
@@ -68,11 +68,11 @@ public class EventNewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Log.d(this.getClass().getName(), "Starting OnCreate");
+        Log.d(TAG, "OnCreate" + this.getClass().getName());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events_new_activity);
 
-        /* GETTING INTENT */
+        /* GETTING BACK INTENT */
         event_description_ID = Utilities.retrieveExtra(this, Utilities.EVENT_DESCRIPTION_ID);
         eventDescription=DBManager.EventDescriptions.get(event_description_ID);
 
@@ -123,7 +123,8 @@ public class EventNewActivity extends AppCompatActivity {
                 new String[]{schoolYearDefault};
 
         Arrays.sort(schoolYearList);
-            // Drop-down list adapter
+
+        // Drop-down list adapter
         AutoCompleteTextView schoolYearDropDown =findViewById(R.id.autoCompleteTextViewDropdownSchoolYear);
         ArrayAdapter<String> adapterScholarYearList =
                 new ArrayAdapter<>(
@@ -234,9 +235,11 @@ public class EventNewActivity extends AppCompatActivity {
 
     /**
      * It changes a given string date from on date format into another (string).
+     * It loads a date from the database into the UI.
      * @author Carlos
      * @param dateStringIn string date provided by the database. Its format is provided by LocalDate.toString()
      * @return string date in the format "MMM d, yyyy", which is the format used by materialDatePicker.
+     * @see Utilities
      */
     private String formatLocalDate(String dateStringIn) {
         String dateStringOut = "Hello";
@@ -257,7 +260,6 @@ public class EventNewActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         finish(); // close this activity as oppose to navigating up
-
         return false;
     }
 

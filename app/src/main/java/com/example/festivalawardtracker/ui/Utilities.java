@@ -30,7 +30,6 @@ public final class Utilities {
 
     /**
      * It parses a string date in the given format into a LocalDate data type.
-     *
      * @param date Any date from the UI, specifically from any given Material Design Date Picker
      * @return localDate Returns the given date in LocalDate type
      * @author Carlos

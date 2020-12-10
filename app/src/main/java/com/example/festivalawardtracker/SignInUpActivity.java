@@ -35,12 +35,16 @@ import java.util.ArrayList;
  * database, check to see if they are a student or teacher if they are send them to
  * the main activity with their ID and type, if not it will log them out, delete
  * credentials and prompt them to see their teacher.
+ *
  * @author Cayla, Carlos, Jimmy, & Eugene
+ * @see com.example.festivalawardtracker.ui.student.StudentFragment Fragment displayed immediately after this activity closes.
+ * @see StudentUserFragment Same as StudentFragment, but for any student user.
+ * @see MainActivity
  */
 public class SignInUpActivity extends AppCompatActivity {
 
     //Used for debugging
-    private final String TAG = "SignInUpActivity";
+    private final String TAG = "SIGNIN_SIGNUP_ACTIVITY";
     //Used to retrieve email and password textfield
     EditText emailInput, passwordInput;
     //Used to store email and password
@@ -56,13 +60,15 @@ public class SignInUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in_up_activity);
+        Log.d(TAG, "OnCreate: " + this.getClass().getName());
+
 
         //Initialize shared preferences
         sharedPref = getPreferences(Context.MODE_PRIVATE);
 
         //set the email to previously saved email
         email = sharedPref.getString("Email",null);
-        Log.d("email is ", email);
+//        Log.d("email is ", email);
 
         /**
          * For downloading the database, as well as retrieving IDs and sending user to

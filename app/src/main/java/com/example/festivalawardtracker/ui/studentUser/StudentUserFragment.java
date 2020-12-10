@@ -32,7 +32,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class StudentUserFragment extends Fragment {
 
     //Used for debugging
-    private final String TAG = "StudentUserFragment";
+    private final String TAG = "STUDENT_USER_FRAGMENT";
     //Used to pass the student Id to the edit student info activity
     public static final String STUDENT_ID = "StudentID";
     //Used to store the logged in students ID
@@ -62,6 +62,8 @@ public class StudentUserFragment extends Fragment {
 
         //retrieve the layout we want to use for this fragment
         View root = inflater.inflate(R.layout.main_fragment_student_user, container, false);
+        Log.d(TAG, "OnCreateView: " + this.getClass().getName());
+
 
         //find the context of the current fragment
         context = root.getContext();
@@ -106,7 +108,7 @@ public class StudentUserFragment extends Fragment {
         instruments.setText(s.instrumentList());
 
         //retrieves the floating action button and when clicked sends the student to a page to edit their information.
-        fabEditStudent = root.findViewById(R.id.fab_editStudent33);
+        fabEditStudent = root.findViewById(R.id.fab_editStudent);
         fabEditStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

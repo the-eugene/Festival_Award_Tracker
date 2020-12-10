@@ -26,7 +26,7 @@
         android:id="@+id/nav_festival"
         android:name="com.example.festivalawardtracker.ui.festival.FestivalFragment"
         android:label="@string/menu_festival"
-        tools:layout="@layout/events_recyclerview_fragment_main">
+        tools:layout="@layout/ratings_recyclerview_fragment_main">
 
         <action
             android:id="@+id/action_festival_to_event"
@@ -43,7 +43,7 @@
         android:id="@+id/nav_ratings"
         android:name="com.example.festivalawardtracker.ui.event.RateStudentsFragment"
         android:label="Rate Students"
-        tools:layout="@layout/events_recyclerview_fragment_main">
+        tools:layout="@layout/ratings_recyclerview_fragment_main">
 
         <action
             android:id="@+id/action_event_to_home"

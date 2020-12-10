@@ -23,8 +23,15 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
- *
- * @author
+ * It displays the short description of the events of the selected festival on the festival list.
+ * Allows the edition of the festival name.
+ * Allows the addition of new events (and their description).
+ * Long press over existing events events in the list allow their individual edition.
+ * @author Carlos, Jimmy, Cayla, Eugene
+ * @see com.example.festivalawardtracker.ui.festival.FestivalFragment Previous screen.
+ * @see EventDescriptionsNewActivity Addition of new events and their description from floating button.
+ * @see FestivalActivity For the edition of the current festival information.
+ * @see com.example.festivalawardtracker.ui.event.EventActivity Performances corresponding to any selected event from the list.
  */
 public class EventDescriptionsActivity extends AppCompatActivity {
 
@@ -37,18 +44,17 @@ public class EventDescriptionsActivity extends AppCompatActivity {
     public String festival_ID;;
 
     FloatingActionButton btnNewEventDescription;
-    FloatingActionButton btnEditFestival;
-    Context context;
     /**
-     *
-     * @author
+     * Contains the recycler view with the list of events (and their descriptions) contained
+     * in the selected festival (previous screen).
+     * @author Carlos, Jimmy, Cayla
      * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_descriptions_recyclerview_activity);
-        Log.d(this.getClass().getName(), "Starting OnCreate");
+        Log.d(TAG, "OnCreate: " + this.getClass().getName());
 
         /* Retrieving festival ID */
         festival_ID = Utilities.retrieveExtra(this, FESTIVAL_ID);
@@ -62,8 +68,6 @@ public class EventDescriptionsActivity extends AppCompatActivity {
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
-
-
 
         /* ACTION BAR */
         Toolbar toolbar = findViewById(R.id.toolbar_eventDescriptions);
