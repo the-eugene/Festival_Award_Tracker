@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author Eugene
+ * Model class for festivals
+ * Festivals are a group of Events which are related to one another (but not the same)
+ * For example, a string festival may include a violin solo, violin duet, cello solo, etc.
+ * Identical events (except dates and locations) are further grouped under EventDescriptions
+ * @see Event
+ * @see EventDescription
  */
 public class Festival extends DBAware {
     public String name;
