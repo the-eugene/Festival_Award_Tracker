@@ -80,7 +80,7 @@ public class DBHashMap<V extends DBAware> extends HashMap<String, V> {
     }
 
     /**
-     * Load all objects of this maps mapped class from the database into this HashMap
+     * Load all objects of this Map's mapped class from the database into this HashMap
      */
     public void loadAll(){
         clear();

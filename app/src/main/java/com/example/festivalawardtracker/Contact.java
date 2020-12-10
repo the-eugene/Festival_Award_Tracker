@@ -11,7 +11,7 @@ public class Contact {
     public static final Map<String, String> STATE_MAP;
 
     static {
-        STATE_MAP = new HashMap<String, String>();
+        STATE_MAP = new HashMap<>();
         STATE_MAP.put("AL", "Alabama");
         STATE_MAP.put("AK", "Alaska");
         STATE_MAP.put("AB", "Alberta");

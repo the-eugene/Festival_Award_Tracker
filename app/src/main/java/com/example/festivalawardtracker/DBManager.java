@@ -27,7 +27,7 @@ import java.util.concurrent.ExecutionException;
 public class DBManager {
     public static FirebaseDatabase DB = FirebaseDatabase.getInstance(); //Database instance
     public static DatabaseReference currentDB; //Reference to root of data storage
-    public static boolean isLoaded=false;
+    public static boolean isLoaded=false; //true when all preload operations are complete
 
     static {
         setCurrentDB(""); //default root is root of FireBase
@@ -204,6 +204,10 @@ public class DBManager {
         return null;
     }
 
+    /**
+     * finds the schoolyear object representing the current year, if it exists, or adds a new one if it does not exist yet
+     * @return SchoolYear object representing current school year
+     */
     public static SchoolYear findCurrentYear(){
         int seq=0;
         int start=2010;
@@ -231,6 +235,11 @@ public class DBManager {
         return cyear;
     }
 
+    /**
+     * Creates a thread to preload all the data from firebase at once
+     * @param activity activity to run the thread on
+     * @return returns a thread object that can be run to complete the preload
+     */
     public static Thread preload(Activity activity){
         class queryThread implements Runnable {
             final Activity activity;
@@ -256,6 +265,5 @@ public class DBManager {
         }
        return new Thread(new queryThread(activity));
     }
-
 }
 

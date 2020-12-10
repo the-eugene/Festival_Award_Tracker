@@ -6,8 +6,6 @@ import com.google.firebase.database.DatabaseReference;
 public class DBAware {
     public String ID = null; //this holds UID for all derived classes
 
-//    public void setID(String ID) { this.ID = ID; }
-
     /**
      * Save the object to FireBase, generate a new UID, or update an existing object
      * use this when objects are being updated and references to them are already in cache
@@ -34,6 +32,14 @@ public class DBAware {
         return load(key, type.getSimpleName(),type);
     }
 
+    /**
+     * Load a single object from the database by its UID key from a specific location
+     * @param key String key for the object
+     * @param location firebase path to where the objects are stored
+     * @param type the class of object being loaded
+     * @param <T> the class of object being loaded
+     * @return the object being loaded or null
+     */
     public static <T extends DBAware> T load(String key, String location, Class<T> type){
         DatabaseReference loadFrom = DBManager.currentDB.child(location).child(key);
         DataSnapshot ds = DBManager.runQuery(loadFrom);
