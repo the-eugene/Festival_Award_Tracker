@@ -13,6 +13,7 @@ public class EventDescription extends DBAware {
     public Instrument instrument;
     String description;
     String festivalID;
+    //TODO: V2, maybe use a double linked list of Events.
 
     public String getName() {
         return name;

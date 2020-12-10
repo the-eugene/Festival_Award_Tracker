@@ -9,6 +9,9 @@ public enum Instrument {
     piano, violin, viola, cello, voice
     ;
 
+    /**
+     * @return String array of instrument names from this enumerator, which can be used in a dropdown
+     */
     public static String[] Options() {
 
         String[] options = new String[Instrument.values().length];
@@ -20,6 +23,10 @@ public enum Instrument {
 
         return options;
     }
+
+    /**
+     * @return String with the first letter capitalized
+     */
     public String ToCapitalizedString(){
         String string= this.toString();
         return string.substring(0, 1).toUpperCase() + string.substring(1);
