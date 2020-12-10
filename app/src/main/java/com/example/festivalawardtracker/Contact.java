@@ -4,47 +4,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Model class holding contact information such as address, phone number, and email
+ */
 public class Contact {
-    public String business;
-    public String email;
-    public String phone;
-    public String street;
-    public String city;
-    public String state;
-    public String zip;
-
-    public Contact(){}
-    Contact(String business, String phone, String email, String street, String city, String state, String zip){
-        this.business=business;
-        this.phone=phone;
-        this.email=email;
-        this.street=street;
-        this.city=city;
-        this.zip=zip;
-        if (state.length()==2) {
-            this.state = state;
-        } else if (STATE_MAP.containsValue(state)){
-            for (Map.Entry<String,String> line:STATE_MAP.entrySet()) {
-                if (line.getValue().equals(state)){
-                    this.state=line.getKey();
-                    break;
-                }
-            }
-        }
-    }
-
-    public String stateCode() {return state;}
-    public String stateName() {return STATE_MAP.get(state);}
-    public String fullAddress(){
-        return String.format("%s\n%s, %s  %s", street, city, state, zip);
-    }
-
-    public static String[] OptionsStates(){
-        String[] options=STATE_MAP.keySet().toArray(new String[0]);
-        Arrays.sort(options);
-        return options;
-    }
     public static final Map<String, String> STATE_MAP;
+
     static {
         STATE_MAP = new HashMap<String, String>();
         STATE_MAP.put("AL", "Alabama");
@@ -114,6 +79,83 @@ public class Contact {
         STATE_MAP.put("WI", "Wisconsin");
         STATE_MAP.put("WY", "Wyoming");
         STATE_MAP.put("YT", "Yukon Territory");
+    }
+
+    public String business;
+    public String email;
+    public String phone;
+    public String street;
+    public String city;
+    public String state;
+    public String zip;
+
+    /**
+     * no argument constructor for firebase
+     */
+    public Contact() {
+    }
+
+    /**
+     * All in one constructor
+     * @param business address line - business name
+     * @param phone phone number
+     * @param email email address
+     * @param street address line - street address
+     * @param city address - city
+     * @param state address - state, can be a full name of the state or the two digit code
+     * @param zip address - zip code
+     */
+    Contact(String business, String phone, String email, String street, String city, String state, String zip) {
+        this.business = business;
+        this.phone = phone;
+        this.email = email;
+        this.street = street;
+        this.city = city;
+        this.zip = zip;
+        if (state.length() == 2) {
+            this.state = state;
+        } else if (STATE_MAP.containsValue(state)) {
+            for (Map.Entry<String, String> line : STATE_MAP.entrySet()) {
+                if (line.getValue().equals(state)) {
+                    this.state = line.getKey();
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Generates possible state options in an array - use in a drop down for example
+     * @return String array of two letter state codes
+     */
+    public static String[] OptionsStates() {
+        String[] options = STATE_MAP.keySet().toArray(new String[0]);
+        Arrays.sort(options);
+        return options;
+    }
+
+    /**
+     * returns the state code for the contact
+     * @return two letter state code
+     */
+    public String stateCode() {
+        return state;
+    }
+
+    /**
+     * returns the full state name for the contact
+     * @return String with the full name of the state
+     */
+    public String stateName() {
+        return STATE_MAP.get(state);
+    }
+
+    /**
+     * gets the address for the contact - does not include the name of the business
+     * @return multi-line string address including the street, city, state, and zip (not business)
+     */
+    public String fullAddress() {
+        return String.format("%s\n%s, %s  %s", street, city, state, zip);
     }
 
     public String getBusiness() {
