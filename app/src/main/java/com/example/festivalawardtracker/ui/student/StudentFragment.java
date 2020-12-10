@@ -27,10 +27,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 /**
- * This class is a fragment for displaying all the current students the teacher has.
- * Gives options of adding a new student and displaying a summery of a student.
- * Updates list when students are added.
- * @auther Cayla, Carlos, Jimmy, & Eugene
+ * It is the first screen displayed to the user after logging in.
+ * This class is a fragment for displaying all the current students the teacher has, as a list.
+ * Edition of any student in the list is possible through long pressing on him/her name.
+ * Updates list when students are added or edited.
+ * @author Cayla, Carlos, Jimmy, & Eugene
+ * @see MainActivity
+ * @see StudentSummaryActivity Summary of selected student from the list.
+ * @see StudentNewActivity For adding new student.
+ * @see StudentEditActivity For updating information from existing student.
  */
 public class StudentFragment extends Fragment implements View.OnClickListener {
 
@@ -39,6 +44,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
     RecyclerView recyclerView;
     Context context;
     String TeacherID;
+    private static final String TAG = "STUDENT_FRAGMENT";
 
     /**
      * Contains a recyclerview to display all current students a teacher has.
@@ -54,7 +60,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
      */
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
-        Log.d(this.getClass().getName(),"onCreateView");
+        Log.d(TAG, "OnCreate: " + this.getClass().getName());
         //retrieve the layout we want to use for this fragment
         View root = inflater.inflate(R.layout.students_recyclerview_fragment_main, container, false);
 

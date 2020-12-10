@@ -44,15 +44,13 @@ import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
  * Puts the class to the DBHashMAp class.
  * @author Carlos
  * @see DBHashMap
+ * @see StudentFragment
  */
 public class StudentNewActivity extends AppCompatActivity {
 
-    //  This DB reference is here just for testing purposes
-//    private final DatabaseReference mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
-//    public static final String MESSAGES_CHILD = "zzz_student_test";
-
     final String[] INSTRUMENTS = Instrument.Options();
     final CheckBox[] checkboxes = new CheckBox[INSTRUMENTS.length];
+    private static final String TAG = "STUDENT_NEW_ACTIVITY";
 
     /**
      * Sets all the layout components to their required values, where necessary.
@@ -63,13 +61,10 @@ public class StudentNewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_activity);
-
-        // Student fields can go below here if needed
-        // Instrument
+        Log.d(TAG, "OnCreate: " + this.getClass().getName());
 
         // Person fields
         final TextInputEditText firstNameInput = findViewById(R.id.editTextPersonName);
-
         final TextInputEditText middleNameInput = findViewById(R.id.editTextPersonMiddleName);
         final TextInputEditText lastNameInput = findViewById(R.id.editTextPersonLastName);
         final TextView genderInput  = findViewById(R.id.dropdownGender);

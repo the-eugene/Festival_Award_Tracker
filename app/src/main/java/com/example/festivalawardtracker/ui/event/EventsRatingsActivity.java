@@ -24,15 +24,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Displays a screen for adding a rating to a given student.
+ * @author
+ * @see RateStudentsFragment
+ */
 public class EventsRatingsActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     EventRatingsRecyclerAdapter eventRatingsRecyclerAdapter;
+    private static final String TAG = "EVENT_RATINGS_ACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_ratings_recyclerview_activity);
+        Log.d(TAG, "OnCreate: " + this.getClass().getName());
 
         final String  event_ID=getIntent().hasExtra(Utilities.EVENT_ID)?
                 getIntent().getExtras().getString(Utilities.EVENT_ID):

@@ -24,8 +24,14 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
- *
- * @author
+ * Pulls event Data from firebase realtime Database.
+ * Shows event details in a recycle view pulled from EventActivityRecyclerAdapter
+ * clicking any event will go to the edit event page.
+ * Clicking the add button will bring up the add event page.
+ * @author Cayla, Carlos, Jimmy, & Eugene
+ * @see EventDescriptionsNewActivity For edition of the current event information.
+ * @see EventNewActivity For the addition of students to the event in a new performance.
+ * Long press on this screen just displays the selected event screen for adding students.
  */
 public class EventActivity extends AppCompatActivity {
 
@@ -34,26 +40,23 @@ public class EventActivity extends AppCompatActivity {
     EventDescription eventDescriptionDB;
     EventActivityRecyclerAdapter eventActivityRecyclerAdapter;
     RecyclerView recyclerView;
-    FloatingActionButton newEvent,btnEditEventDescription;
-    Context thisContext;
-    Context context;
+    FloatingActionButton newEvent;
     TextView event_description_description, event_description_name;
 
     /**
-     *
-     * @author
+     * Creates and sets the layout
+     * loads the info into the recycle view
      * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.events_recyclerview_activity);
-        Log.d(this.getClass().getName(), "Starting OnCreate");
+        Log.d(TAG, "OnCreate: " + this.getClass().getName());
 
         /* Receiving ID */
         event_description_id = Utilities.retrieveExtra(this, Utilities.EVENT_DESCRIPTION_ID);
         eventDescriptionDB = DBManager.EventDescriptions.get(event_description_id);
-
         event_description_name = findViewById(R.id.textView_eventName);
         event_description_name.setText(eventDescriptionDB.getName());
         event_description_description = findViewById(R.id.textView_eventDescription);
@@ -86,6 +89,9 @@ public class EventActivity extends AppCompatActivity {
         button.setTooltipText("Edit current event information here");
         toolbar.addView(button);
 
+        /**
+         * add click functionality to recycle view that saves info and sends it to next page
+         */
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,6 +102,9 @@ public class EventActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Floating action button that brings up the new event page
+         */
         /* FLOATING ACTION BUTTON NEW PERFORMANCE ACTIVITY */
         newEvent = findViewById(R.id.btnNewEventActivity);
         newEvent.setOnClickListener(new View.OnClickListener() {
@@ -108,24 +117,16 @@ public class EventActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     } // End onCreate
 
-    /**
-     *
-     * @author
-     */
+
     @Override
     protected void onResume() {
         super.onResume();
         eventActivityRecyclerAdapter.update();
     }
 
-    /**
-     *
-     * @author
-     */
+
     protected void onPause() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();

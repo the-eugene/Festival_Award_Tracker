@@ -9,7 +9,7 @@
     android:background="?attr/selectableItemBackground">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_eventsFragment"
+        android:id="@+id/recyclerView_ratings_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"

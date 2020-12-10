@@ -2,15 +2,12 @@ package com.example.festivalawardtracker.ui.event;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,31 +16,33 @@ import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.R;
 
 /**
- * @author carloswashingtonmercado@gmail.com
+ * Fragment containing the rating screen for students.
+ * This is one of the 3 main fragments inside the main app activity.
+ * @author Carlos
+ * @see EventsRatingsActivity For updating student ratings.
  */
 public class RateStudentsFragment extends Fragment {
 
     RecyclerView recyclerView;
     RateStudentsRecyclerAdapter rateStudentsRecyclerAdapter;
     Context thisContext;
-
+    private static final String TAG = "RATE_STUDENTS_FRAGMENT";
 
     /**
-     *
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
+     * Creates the current fragment inside the main activity.
+     * @param container MainActivity
      * @return root Returning view to the fragment
      */
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.d(TAG, "OnCreateView: " + this.getClass().getName());
 
-        View root = inflater.inflate(R.layout.events_recyclerview_fragment_main, container, false);
+        // Set the rate students recycler view
+        View root = inflater.inflate(R.layout.ratings_recyclerview_fragment_main, container, false);
 
         thisContext = container.getContext();
         Context context = root.getContext();
 
-        recyclerView = root.findViewById(R.id.recyclerView_eventsFragment);
+        recyclerView = root.findViewById(R.id.recyclerView_ratings_fragment);
         rateStudentsRecyclerAdapter = new RateStudentsRecyclerAdapter(DBManager.currentYear,getActivity());
         recyclerView.setAdapter(rateStudentsRecyclerAdapter);
         recyclerView.setMotionEventSplittingEnabled(false);

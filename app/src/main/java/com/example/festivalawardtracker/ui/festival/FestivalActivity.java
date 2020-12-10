@@ -31,7 +31,7 @@ import java.util.Objects;
  */
 public class FestivalActivity extends AppCompatActivity {
 
-    private static final String TAG = "FESTIVAL_NEW_ACTIVITY";
+    private static final String TAG = "FESTIVAL_ACTIVITY";
     private static final String FESTIVAL_ID = "FESTIVAL_ID";
     Festival festivalDB = null;
 
@@ -43,6 +43,7 @@ public class FestivalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.festival_new_activity);
+        Log.d(TAG, "OnCreate: " + this.getClass().getName());
 
         /* Retrieve main input fields from the Android activity */
         final EditText editFestivalName = findViewById(R.id.editText_festivalName);

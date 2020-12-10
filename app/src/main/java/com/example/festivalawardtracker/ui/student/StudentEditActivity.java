@@ -41,13 +41,14 @@ import java.util.Objects;
 import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
 
 /**
- *
+ * When selected a student for edition, this class it is used for changing the information of
+ * the student and updating his or her information in the database.
  * @author Carlos
  * @see StudentNewActivity
  * @see StudentSummaryActivity
  */
 public class StudentEditActivity extends AppCompatActivity {
-    private static final String TAG = "STUDENT_EDIT";
+    private static final String TAG = "STUDENT_EDIT_ACTIVITY";
     String[] INSTRUMENTS = Instrument.Options();
     CheckBox[] checkboxes = new CheckBox[INSTRUMENTS.length];
     String _studentID;
@@ -62,6 +63,7 @@ public class StudentEditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_activity); // This layout is also used by StudentNewActivity.java
+        Log.d(TAG, "OnCreate: " + this.getClass().getName());
 
         Intent intent = getIntent();
         _studentID = intent.getStringExtra(StudentSummaryActivity.STUDENT_ID);

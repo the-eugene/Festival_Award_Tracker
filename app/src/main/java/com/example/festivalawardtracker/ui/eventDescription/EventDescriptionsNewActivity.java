@@ -24,21 +24,20 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 /**
- *
+ * It allows the creation of new event and its full description.
  * @author Carlos
+ * @see com.example.festivalawardtracker.ui.festival.FestivalFragment
+ * @see EventDescriptionsActivity
  */
 public class EventDescriptionsNewActivity extends AppCompatActivity {
 
-    private static final String TAG = "EVENT_DESCRIPTION";
+    private static final String TAG = "EVENT_DESCRIPTIONS_NEW_ACTIVITY";
     AutoCompleteTextView autoCompleteTextView;
-
     Festival festival;
     EventDescription eventDescription;
-
     boolean isNew;
 
     /**
-     *
      * @author Carlos
      * @param savedInstanceState
      * @see
@@ -47,6 +46,7 @@ public class EventDescriptionsNewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_descriptions_new_activity);
+        Log.d(TAG, "OnCreate: " + this.getClass().getName());
         final TextInputEditText inputEventName = findViewById(R.id.editText_eventName);
         final TextInputEditText inputEventDescription = findViewById(R.id.editText_eventDescription);
 
