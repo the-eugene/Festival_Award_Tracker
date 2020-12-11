@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.festivalawardtracker.DBManager;
@@ -28,7 +29,7 @@ import java.util.List;
  */
 public class RateStudentsRecyclerAdapter extends RecyclerView.Adapter<RateStudentsRecyclerAdapter.ViewHolder>{
     List<String> eventIDs;
-    public RateStudentsRecyclerAdapter(SchoolYear year) {
+    public RateStudentsRecyclerAdapter(SchoolYear year, FragmentActivity activity) {
         eventIDs=year.getEventIDs();
     }
 

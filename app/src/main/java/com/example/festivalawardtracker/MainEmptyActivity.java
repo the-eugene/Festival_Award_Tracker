@@ -18,6 +18,11 @@ import com.google.firebase.auth.FirebaseUser;
  * send them to the main activity with their ID and type.
  * If they are not logged in it will send them to the login/sign up activity.
  * @author Cayla, Carlos, Jimmy, & Eugene
+ * @see DBManager
+ * @see Student
+ * @see Teacher
+ * @see MainActivity
+ * @see SignInUpActivity
  */
 
 public class MainEmptyActivity extends Activity {

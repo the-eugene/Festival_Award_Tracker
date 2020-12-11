@@ -6,6 +6,8 @@ import java.util.List;
 
 /**
  * Model class representing a school year (typically july of one year to july of the next year)
+ * @author Eugene
+ * @see DBAware
  */
 //TODO V2, It may be easier to set this up as a linked list
 public class SchoolYear extends DBAware {

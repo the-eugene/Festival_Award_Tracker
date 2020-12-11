@@ -21,6 +21,14 @@ import java.util.concurrent.ExecutionException;
 
 /**
  * Static class holding objects necessary for database operations, methods for linking objects together, querying, etc.
+ * @author Eugene
+ * @see Person
+ * @see Teacher
+ * @see Student
+ * @see Event
+ * @see EventDescription
+ * @see Festival
+ * @see SchoolYear
  */
 public class DBManager {
     public static FirebaseDatabase DB = FirebaseDatabase.getInstance(); //Database instance

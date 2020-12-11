@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * @author Eugene
  * A HashMap that can save and load objects from firebase
  * @param <V> The type parameter of objects this Map will hold
  */

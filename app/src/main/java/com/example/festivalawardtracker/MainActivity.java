@@ -35,6 +35,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Central class of the application.
+ * It handles the creation of the first view of the app, either for student or teacher user.
+ * @author Jimmy, Cayla, Eugene, Carlos
+ */
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -50,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Returns the student ID so the fragment calling it can know what information to display.
-     * @auther Cayla, Carlos, Jimmy, & Eugene
+     * @author Cayla, Carlos, Jimmy, & Eugene
      * @return StudentID the Id of the student logged in.
      */
     public String getStudentID() {
@@ -59,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Returns the student ID so the fragment calling it can know what information to display.
-     * @auther Cayla, Carlos, Jimmy, & Eugene
+     * @author Cayla, Carlos, Jimmy, & Eugene
      * @return TeacherID the Id of the teacher logged in.
      */
     public String getTeacherID(){return TeacherID;}
@@ -68,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
      * Depending on who logs in sets the correct fragment for the user to see.
      * Case 1 is for teachers and case 2 is for students.
      * Also retrieves IDs needed for the fragments to display the correct information for a specific teacher or student.
-     * @auther Cayla, Carlos, Jimmy, & Eugene
+     * @author Cayla, Carlos, Jimmy, & Eugene
      * @param savedInstanceState
      */
     @Override
@@ -162,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
      * It handles the creation of options menu from the action bar.
      * @author Cayla, Carlos, Jimmy, & Eugene
      * @param menu
-     * @return
+     * @return Boolean value
      * @link <a>https://stackoverflow.com/a/37562572/7389293</a> Not used
      * @link <a>https://developer.android.com/guide/topics/search/search-dialog.html#UsingSearchWidget</a>
      * This is the solution I used here.
@@ -228,8 +233,6 @@ public class MainActivity extends AppCompatActivity {
         return true;
     } // End onCreateOptionsMenu
 
-
-
     /**
      * Functionality for the log out button.
      * @author Cayla, Carlos, Jimmy, & Eugene
@@ -249,11 +252,18 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     * @author Eugene
+     * @param item
+     */
     public void exportFile(MenuItem item){
         createFile(Uri.EMPTY);
-
     }
 
+    /**
+     * @author Eugene
+     * @param pickerInitialUri
+     */
     private void createFile(Uri pickerInitialUri) {
         Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -263,6 +273,12 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, CREATE_FILE);
     }
 
+    /**
+     * @author Eugene
+     * @param requestCode
+     * @param resultCode
+     * @param resultData
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode,
                                  Intent resultData) {
@@ -280,6 +296,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * @author Eugene
+     * @param uri
+     */
     private void saveFile(Uri uri) {
         final String[] fields={"Event","Code","Club","Teacher","Last Name","First Name","Middle Name","Birthdate","PCS","PPs","Class","Rtg"};
         Map<String, String> row=new HashMap<>();

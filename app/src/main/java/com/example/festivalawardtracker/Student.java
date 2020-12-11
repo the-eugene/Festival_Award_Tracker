@@ -14,6 +14,11 @@ import java.util.Map;
 
 /**
  * Model class containing all the student information
+ * @author Eugene
+ * @see DBAware
+ * @see Person
+ * @see Performance
+ * @see Award
  */
 public class Student extends Person {
     public List<String> teacherIDs = new ArrayList<>();

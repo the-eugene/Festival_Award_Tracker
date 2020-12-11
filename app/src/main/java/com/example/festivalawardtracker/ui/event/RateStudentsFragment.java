@@ -43,7 +43,7 @@ public class RateStudentsFragment extends Fragment {
         Context context = root.getContext();
 
         recyclerView = root.findViewById(R.id.recyclerView_ratings_fragment);
-        rateStudentsRecyclerAdapter = new RateStudentsRecyclerAdapter(DBManager.currentYear,getActivity());
+        rateStudentsRecyclerAdapter = new RateStudentsRecyclerAdapter(DBManager.currentYear, getActivity());
         recyclerView.setAdapter(rateStudentsRecyclerAdapter);
         recyclerView.setMotionEventSplittingEnabled(false);
 

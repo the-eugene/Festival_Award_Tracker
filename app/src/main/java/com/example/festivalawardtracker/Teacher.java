@@ -5,6 +5,9 @@ import java.util.List;
 
 /**
  * Model class describing Teachers
+ * @author Eugene
+ * @see DBAware
+ * @see Person
  */
 public class Teacher extends Person {
     List<String> studentIDs=new ArrayList<>();

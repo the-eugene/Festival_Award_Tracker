@@ -11,6 +11,8 @@ import java.util.List;
  * Event class are the actual times and places where students will perform during a festival
  * Events are paired with EventDescriptions - which represent data that stays the same from year to year
  * @see EventDescription
+ * @see DBAware
+ * @see Contact
  */
 public class Event extends DBAware {
     public String schoolYearID;

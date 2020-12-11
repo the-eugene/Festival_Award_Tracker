@@ -3,6 +3,15 @@ package com.example.festivalawardtracker;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 
+/**
+ *
+ * @author Eugene
+ * @see Event
+ * @see Person
+ * @see DBHashMap
+ * @see Festival
+ * @see SchoolYear
+ */
 public class DBAware {
     public String ID = null; //this holds UID for all derived classes
 

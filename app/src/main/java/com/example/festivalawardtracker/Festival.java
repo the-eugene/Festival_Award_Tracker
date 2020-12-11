@@ -10,6 +10,7 @@ import java.util.List;
  * Identical events (except dates and locations) are further grouped under EventDescriptions
  * @see Event
  * @see EventDescription
+ * @see DBAware
  */
 public class Festival extends DBAware {
     public String name;

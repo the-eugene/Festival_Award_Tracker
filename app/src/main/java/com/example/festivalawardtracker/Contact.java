@@ -6,6 +6,9 @@ import java.util.Map;
 
 /**
  * Model class holding contact information such as address, phone number, and email
+ * @author Eugene
+ * @see Event
+ * @see Person
  */
 public class Contact {
     public static final Map<String, String> STATE_MAP;
