@@ -71,15 +71,18 @@
     <string name="voice">Voice</string>
     <string name="ratings">Rate Students</string>
     <string name="add_event_description">Add event description</string>
-    <string name="event_name">Event Name</string>
     <string name="save">Save</string>
     <string name="update">Update</string>
     <string name="export_data">Export data</string>
     <string name="search">Search</string>
     <string name="nfmc_festival">NFMC Festival</string>
-    <string name="nextscreen">NextScreen</string>
+    <string name="next_screen">NextScreen</string>
     <string name="password">Password</string>
     <string name="email_address">Email address</string>
     <string name="how_to_use">How to use</string>
     <string name="about">About</string>
+    <string name="start_date">Start Date</string>
+    <string name="event_name">Event Name</string>
+    <string name="to">to</string>
+    <string name="end_date">End Date</string>
 </resources>
