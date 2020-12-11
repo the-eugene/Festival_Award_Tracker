@@ -162,7 +162,8 @@ public class Person extends DBAware implements Comparable<Person> {
      */
     public enum Gender {
         MALE,
-        FEMALE;
+        FEMALE,
+        UNSPECIFIED;
 
         @NonNull
         @Override

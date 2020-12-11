@@ -4,7 +4,7 @@ package com.example.festivalawardtracker;
  * @author Eugene
  */
 public enum Gender {
-    Male, Female
+    Male, Female, Unspecified
     ;
 
     public static String[] Options() {

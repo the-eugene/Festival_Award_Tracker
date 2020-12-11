@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker.ui.student;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ import com.example.festivalawardtracker.DBHashMap;
 import com.example.festivalawardtracker.DBManager;
 import com.example.festivalawardtracker.Gender;
 import com.example.festivalawardtracker.Instrument;
+import com.example.festivalawardtracker.MainActivity;
 import com.example.festivalawardtracker.Person;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.Student;
@@ -30,9 +32,11 @@ import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointBackward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.internal.FlowLayout;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
@@ -51,6 +55,7 @@ public class StudentNewActivity extends AppCompatActivity {
     final String[] INSTRUMENTS = Instrument.Options();
     final CheckBox[] checkboxes = new CheckBox[INSTRUMENTS.length];
     private static final String TAG = "STUDENT_NEW_ACTIVITY";
+    boolean allInputValid = true;
 
     /**
      * Sets all the layout components to their required values, where necessary.
@@ -150,8 +155,10 @@ public class StudentNewActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Student newStudent = new Student();
                 Contact newContact = new Contact();
+                allInputValid = true;
 
                 /* Retrieve Student.java fields input */
+
                 newStudent.instruments.clear(); //necessary if editing student.
                 for (int i = 0; i < INSTRUMENTS.length; i++){
                     if(checkboxes[i].isChecked()) {
@@ -159,33 +166,59 @@ public class StudentNewActivity extends AppCompatActivity {
                         Log.d("FOR", "Instruments: " + newStudent.instruments.toString());
                     }
                 }
-
                 /* Person.java */
-                newStudent.firstName = firstNameInput.getText().toString();
-                newStudent.middleName = middleNameInput.getText().toString();
-                newStudent.lastName = lastNameInput.getText().toString();
-                newStudent.gender = Person.Gender.valueOf(genderInput.getText().toString().toUpperCase());
-                newStudent.birthday = Utilities.stringMaterialToLocalDate(birthdayInput.getText().toString());
+                newStudent.firstName = Objects.requireNonNull(firstNameInput.getText()).toString();
+                newStudent.middleName = Objects.requireNonNull(middleNameInput.getText()).toString();
+                newStudent.lastName = Objects.requireNonNull(lastNameInput.getText()).toString();
+                if(firstNameInput.length() < 1 || middleNameInput.length() < 1 || lastNameInput.length() < 1) {
+                    allInputValid = false;
+                }
+
+                try {
+                    newStudent.birthday = Utilities.stringMaterialToLocalDate(Objects.requireNonNull(birthdayInput.getText()).toString());
+                } catch (Exception e) {
+                    Log.e(TAG, "Non specified birthday, empty field: " + e);
+                    newStudent.birthday = LocalDate.now();
+                    allInputValid = false;
+                }
+
+                try {
+                    newStudent.gender = Person.Gender.valueOf(genderInput.getText().toString().toUpperCase());
+                } catch (Exception e) {
+                    Log.e(TAG, "Non specified gender, empty field: " + e);
+                    newStudent.gender = Person.Gender.UNSPECIFIED;
+                }
 
                 /* Contact.java */
-                newContact.phone = phoneInput.getText().toString();
-                newContact.email = emailInput.getText().toString().toLowerCase();
-                newContact.street = streetInput.getText().toString();
-                newContact.city = cityInput.getText().toString();
-                newContact.state = stateInput.getText().toString();
-                newContact.zip = zipInput.getText().toString();
+                if (phoneInput.length() < 1) newContact.phone = "Set phone"; else newContact.phone = phoneInput.getText().toString();
+                if (emailInput.length() < 1) newContact.email = "Set email"; else newContact.email = emailInput.getText().toString().toLowerCase();
+                if (streetInput.length() < 1) newContact.street = "Set Address"; else newContact.street = streetInput.getText().toString();
+                if (cityInput.length() < 1) newContact.city = ""; else newContact.city = cityInput.getText().toString();
+                if (stateInput.length() < 1) newContact.state = ""; else newContact.state = stateInput.getText().toString();
+                if (zipInput.length() < 1) newContact.zip = ""; else newContact.zip = zipInput.getText().toString();
                 newStudent.setContact(newContact);
 
-                // This DB reference is here just for testing purposes
-//                mFirebaseDatabaseReference.child(MESSAGES_CHILD).push().setValue(newStudent);
+                // Pushing to the DBHashMap only if allInputValid is true
+                if (allInputValid) {
+                    DBManager.Students.put(newStudent);
+                    Toast toast = Toast.makeText(view.getContext(), "New student saved", Toast.LENGTH_SHORT);
+                    toast.show();
+                    finish();
+                } else {
+                    MaterialAlertDialogBuilder minimalInformationRequired = new MaterialAlertDialogBuilder(StudentNewActivity.this);
+                    minimalInformationRequired.setTitle("Minimal information required");
+                    minimalInformationRequired.setMessage(
+                                    "1) Student's full name." +
+                                    "\n\n2) Student's birthdate");
 
-                // Pushing to the DBHashMap
-                DBManager.Students.put(newStudent);
-
-                Toast toast = Toast.makeText(view.getContext(), "New student saved", Toast.LENGTH_SHORT);
-                toast.show();
-
-                finish();
+                    minimalInformationRequired.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    minimalInformationRequired.show();
+                }
             }
         });
     }
