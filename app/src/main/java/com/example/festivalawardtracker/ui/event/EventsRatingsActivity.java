@@ -90,7 +90,7 @@ public class EventsRatingsActivity extends AppCompatActivity {
                     }
                 }
 
-                Toast toast = Toast.makeText(v.getContext(), "New event saved", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(v.getContext(), "New event and ratings saved", Toast.LENGTH_SHORT);
                 toast.show();
 
                 finish();

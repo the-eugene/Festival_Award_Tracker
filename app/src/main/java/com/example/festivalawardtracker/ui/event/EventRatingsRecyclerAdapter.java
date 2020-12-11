@@ -31,8 +31,6 @@ public class EventRatingsRecyclerAdapter extends RecyclerView.Adapter<EventRatin
     Activity activity;
     Event event;
 
-
-
     public EventRatingsRecyclerAdapter(String EventID, Activity activity) {
         event = DBManager.Events.get(EventID);
         studentIDs=event.studentIDs;
@@ -67,7 +65,6 @@ public class EventRatingsRecyclerAdapter extends RecyclerView.Adapter<EventRatin
                     holder.editRating.setEnabled(false);
                 }
             }
-
 
             holder.birthday.setText(s.getBirthday());
             holder.age.setText(Integer.toString(s.getAge(event.end))); // their age at the end of the event
