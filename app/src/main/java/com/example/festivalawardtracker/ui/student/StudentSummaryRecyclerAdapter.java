@@ -17,11 +17,17 @@ import com.example.festivalawardtracker.Performance;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.SchoolYear;
 import com.example.festivalawardtracker.Student;
+import com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Adapter for the Student Summaries Activity
+ * Pulls the Student information and preps it to be displayed
+ * @see StudentSummaryActivity
+ */
 public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentSummaryRecyclerAdapter.ViewHolder> {
     private final Student student;
     private List<Performance>performances;

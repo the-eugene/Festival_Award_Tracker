@@ -20,9 +20,15 @@ import com.example.festivalawardtracker.ui.Utilities;
 
 import java.util.List;
 
+
+/**
+ * Adapter for the Rate Student fragment
+ * Pulls the event information and preps it to be displayed
+ * @see RateStudentsFragment
+ */
 public class RateStudentsRecyclerAdapter extends RecyclerView.Adapter<RateStudentsRecyclerAdapter.ViewHolder>{
     List<String> eventIDs;
-    public RateStudentsRecyclerAdapter(SchoolYear year, Activity activity) {
+    public RateStudentsRecyclerAdapter(SchoolYear year) {
         eventIDs=year.getEventIDs();
     }
 

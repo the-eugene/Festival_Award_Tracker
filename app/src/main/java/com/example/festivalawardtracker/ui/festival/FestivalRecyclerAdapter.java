@@ -19,6 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Adapter for the Festival Activity
+ * Pulls the festival information and preps it to be displayed
+ * @see FestivalActivity
+ */
 public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecyclerAdapter.ViewHolder> {
 
     public static final String FESTIVAL_ID = "FESTIVAL_ID";

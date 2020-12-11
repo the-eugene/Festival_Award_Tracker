@@ -17,6 +17,7 @@ import com.example.festivalawardtracker.EventDescription;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.ui.Utilities;
 import com.example.festivalawardtracker.ui.event.EventActivity;
+import com.example.festivalawardtracker.ui.event.RateStudentsFragment;
 import com.example.festivalawardtracker.ui.student.StudentEditActivity;
 import com.google.firebase.database.Query;
 
@@ -24,6 +25,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Adapter for the Event Descriptions Activity
+ * Pulls the event description information and preps it to be displayed
+ * @see EventDescriptionsActivity
+ */
 public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<EventDescriptionsRecyclerAdapter.ViewHolder> {
 
     private final String TAG = this.getClass().toString();
