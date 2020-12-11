@@ -25,6 +25,7 @@ import java.util.List;
  * This is populated with this adapter
  * The students are filtered by the instrument that the event is for
  * Then displayed next to check boxes to be added to events
+ * @author Cayla, Jimmy, Eugene
  */
 public class EventNewRecyclerAdapter extends RecyclerView.Adapter<EventNewRecyclerAdapter.ViewHolder> {
     Event event;

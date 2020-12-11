@@ -25,6 +25,7 @@ import java.util.List;
 /**
  * Adapter for the Rate Student fragment
  * Pulls the event information and preps it to be displayed
+ * @author Cayla, Jimmy, Eugene, Carlos
  * @see RateStudentsFragment
  */
 public class RateStudentsRecyclerAdapter extends RecyclerView.Adapter<RateStudentsRecyclerAdapter.ViewHolder>{

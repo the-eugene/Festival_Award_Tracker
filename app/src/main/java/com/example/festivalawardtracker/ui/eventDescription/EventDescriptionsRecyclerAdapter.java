@@ -28,6 +28,7 @@ import java.util.Map;
 /**
  * Adapter for the Event Descriptions Activity
  * Pulls the event description information and preps it to be displayed
+ * @author Cayla, Eugene, Jimmy, Carlos
  * @see EventDescriptionsActivity
  */
 public class EventDescriptionsRecyclerAdapter extends RecyclerView.Adapter<EventDescriptionsRecyclerAdapter.ViewHolder> {

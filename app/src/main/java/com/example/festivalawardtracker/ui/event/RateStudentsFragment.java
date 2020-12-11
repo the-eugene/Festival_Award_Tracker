@@ -18,7 +18,7 @@ import com.example.festivalawardtracker.R;
 /**
  * Fragment containing the rating screen for students.
  * This is one of the 3 main fragments inside the main app activity.
- * @author Carlos
+ * @author Carlos, Jimmy, Eugene, Cayla
  * @see EventsRatingsActivity For updating student ratings.
  */
 public class RateStudentsFragment extends Fragment {

@@ -22,6 +22,7 @@ import java.util.Map;
 /**
  * Adapter for the Festival Activity
  * Pulls the festival information and preps it to be displayed
+ * @author Jimmy, Eugene, Carlos, Cayla
  * @see FestivalActivity
  */
 public class FestivalRecyclerAdapter extends RecyclerView.Adapter<FestivalRecyclerAdapter.ViewHolder> {

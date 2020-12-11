@@ -45,7 +45,7 @@ import static com.example.festivalawardtracker.R.id.editText_startingDate;
 
 /**
  * Instantiates a new Event class instance and pushes it to the database.
- * @author Carlos
+ * @author Carlos, Eugene, Cayla, Jimmy
  * @see EventActivity which calls this activity.
  */
 public class EventNewActivity extends AppCompatActivity {

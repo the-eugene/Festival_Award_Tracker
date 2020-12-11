@@ -42,7 +42,7 @@ import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
  * Retrieves the information input from the activity to the student class.
  * Parses that information where necessary.
  * Puts the class to the DBHashMAp class.
- * @author Carlos
+ * @author Carlos, Eugene, Cayla, Jimmy
  * @see DBHashMap
  * @see StudentFragment
  */

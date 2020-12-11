@@ -24,7 +24,7 @@ import java.util.Objects;
 /**
  * It displays single student's information.
  * Displays a recycler view with the information about student's past performances.
- * @author Eugene
+ * @author Eugene, Cayla, Carlos, Jimmy
  * @see StudentFragment Previously displayed screen.
  * @see StudentEditActivity For edition of current student information.
  * @see StudentSummaryRecyclerAdapter For displaying performance information in numerous events where the current student performed.

@@ -26,7 +26,7 @@ import java.util.Objects;
  * It's possible to add new festivals on this screen.
  * Long press on the festival name enables edition.
  * Addition or edition of festivals updates the list and its information in the remote database.
- * @author Carlos
+ * @author Carlos, Cayla, Jimmy, Eugene
  * @see FestivalActivity Used for addition and edition of festivals.
  * @see com.example.festivalawardtracker.ui.eventDescription.EventDescriptionsActivity Displays name and brief description of the events for the selected festivals.
  */

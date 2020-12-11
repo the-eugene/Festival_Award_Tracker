@@ -12,7 +12,7 @@ import java.time.format.DateTimeParseException;
 /**
  * Use this class for reusable custom methods.
  * It can be used for constants and methods as well.
- * @author Carlos
+ * @author Carlos, Eugene
  * @see <a href="https://stackoverflow.com/questions/11603412/android-how-to-create-a-reusable-function">How to create a reusable methods in Android</a>
  */
 public final class Utilities {

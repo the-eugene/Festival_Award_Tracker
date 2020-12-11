@@ -26,6 +26,7 @@ import java.util.List;
 /**
  * Adapter for the Student Summaries Activity
  * Pulls the Student information and preps it to be displayed
+ * @author Cayla, Jimmy, Eugene
  * @see StudentSummaryActivity
  */
 public class StudentSummaryRecyclerAdapter extends RecyclerView.Adapter<StudentSummaryRecyclerAdapter.ViewHolder> {

@@ -22,6 +22,10 @@ import com.example.festivalawardtracker.Student;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author Cayla, Jimmy, Eugene
+ */
 public class EventRatingsRecyclerAdapter extends RecyclerView.Adapter<EventRatingsRecyclerAdapter.ViewHolder> {
     public List<EditText> level=new ArrayList<>();
     public List<EditText> rating=new ArrayList<>();

@@ -23,8 +23,7 @@ import java.util.Objects;
 
 /**
  * Create new festival activity that adds festivals to the database
- * @author Carlos
- * @author Jimmy
+ * @author Carlos, Jimmy, Eugene
  * @see FestivalFragment Festivas are CREATED for the first time here.
  * @see EventDescriptionsActivity Festivals are EDITED from there.
  * @see Festival The java class that is handled here from the app to the database

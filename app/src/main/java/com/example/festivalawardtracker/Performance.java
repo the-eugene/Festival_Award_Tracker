@@ -6,6 +6,7 @@ import java.util.Comparator;
 /**
  * Model class that represents an individual student performing at an event
  * it also includes the score they received from the judges
+ * @author Eugene
  */
 public class Performance {
     String eventID;

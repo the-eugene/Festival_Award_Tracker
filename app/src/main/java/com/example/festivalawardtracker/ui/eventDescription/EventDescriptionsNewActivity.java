@@ -25,7 +25,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 /**
  * It allows the creation of new event and its full description.
- * @author Carlos
+ * @author Carlos, Cayla, Jimmy, Eugene
  * @see com.example.festivalawardtracker.ui.festival.FestivalFragment
  * @see EventDescriptionsActivity
  */

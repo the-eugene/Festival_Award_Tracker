@@ -43,7 +43,7 @@ import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
 /**
  * When selected a student for edition, this class it is used for changing the information of
  * the student and updating his or her information in the database.
- * @author Carlos
+ * @author Carlos, Eugene
  * @see StudentNewActivity
  * @see StudentSummaryActivity
  */

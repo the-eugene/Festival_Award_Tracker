@@ -8,6 +8,7 @@ import java.util.List;
  * Festivals are a group of Events which are related to one another (but not the same)
  * For example, a string festival may include a violin solo, violin duet, cello solo, etc.
  * Identical events (except dates and locations) are further grouped under EventDescriptions
+ * @author Eugene
  * @see Event
  * @see EventDescription
  * @see DBAware

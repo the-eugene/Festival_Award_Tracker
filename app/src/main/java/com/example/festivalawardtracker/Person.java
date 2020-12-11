@@ -9,7 +9,7 @@ import java.time.Period;
  * Model Class representing a person, also serves as a parent class to Student and Teacher
  * in the future this class can be used for Parents
  * NFMC needs the full name of a person including the middle name, as well as their birthday to track individuals
- * @author Eugene
+ * @author Eugene, Carlos
  * @see DBAware
  * @see Student
  * @see Teacher
