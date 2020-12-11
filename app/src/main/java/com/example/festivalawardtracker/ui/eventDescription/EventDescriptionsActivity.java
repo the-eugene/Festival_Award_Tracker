@@ -111,8 +111,8 @@ public class EventDescriptionsActivity extends AppCompatActivity {
 
 
     /**
-     *
-     * @author
+     * updates data when page is reloaded
+     * @author Carlos, Jimmy, Cayla, Eugene
      */
     @Override
     protected void onResume() {
@@ -121,8 +121,8 @@ public class EventDescriptionsActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @author
+     * saves the data so that everything doesn't need to be reloaded
+     * @author Carlos, Jimmy, Cayla, Eugene
      */
     protected void onPause() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);

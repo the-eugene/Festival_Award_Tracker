@@ -50,9 +50,9 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
      * Contains a recyclerview to display all current students a teacher has.
      * Also gives options of adding a new student and displaying a summery of a student.
      * @auther Cayla, Carlos, Jimmy, & Eugene
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
+     * @param inflater inflates the view
+     * @param container ViewGroup
+     * @param savedInstanceState bundle of information
      * @return root Returning view to the fragment
      * @link <a>https://stackoverflow.com/questions/11857022/fragment-implements-onclicklistener</a>
      * Implementing listeners for buttons on fragments seems to be something not that straight
@@ -113,7 +113,7 @@ public class StudentFragment extends Fragment implements View.OnClickListener {
     /**
      * Sends user to the StudentNewActivity to create a new student
      * @author Cayla, Carlos, Jimmy, & Eugene
-     * @param v
+     * @param v view
      */
     @Override
     public void onClick(View v) {

@@ -38,9 +38,10 @@ public class EventDescriptionsNewActivity extends AppCompatActivity {
     boolean isNew;
 
     /**
+     * creates the view and loads in the information
      * @author Carlos
-     * @param savedInstanceState
-     * @see
+     * @param savedInstanceState brings bundle into activity
+     *
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

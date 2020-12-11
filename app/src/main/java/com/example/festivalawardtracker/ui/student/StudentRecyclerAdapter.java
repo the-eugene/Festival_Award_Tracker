@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
- * @auhor Cayla, Carlos, Eugene, Jimmy
+ * Preps the information and passes it to the student pages
+ * @author  Cayla, Carlos, Eugene, Jimmy
  */
 public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecyclerAdapter.ViewHolder> {
 

@@ -41,9 +41,10 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
 
 
     /**
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
+     * create the view and loads the data
+     * @param inflater inflates the view
+     * @param container the view group
+     * @param savedInstanceState the bundle of information
      * @return root Returning view to the fragment
      */
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,6 +73,7 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
     } // End onCreateView
 
     /**
+     * updates the data when page reloads
      * @author Eugene
      */
     public void onResume() {
@@ -82,7 +84,7 @@ public class FestivalFragment extends Fragment implements View.OnClickListener {
 
     /**
      * Creates a new festival
-     * @param v
+     * @param v the view
      */
     @Override
     public void onClick(View v) {

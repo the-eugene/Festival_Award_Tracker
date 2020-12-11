@@ -51,9 +51,9 @@ public class StudentUserFragment extends Fragment {
      * to edit student information.
      *
      * @author Cayla, Carlos, Jimmy, & Eugene
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
+     * @param inflater inflates the view
+     * @param container the view group
+     * @param savedInstanceState the bundle of information
      * @return root this is the view of the fragment
      */
     @Override

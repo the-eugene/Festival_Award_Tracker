@@ -23,7 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Adapter for the Event Ratings activity
+ * Pulls the event and student information and preps it to be displayed
  * @author Cayla, Jimmy, Eugene
  */
 public class EventRatingsRecyclerAdapter extends RecyclerView.Adapter<EventRatingsRecyclerAdapter.ViewHolder> {

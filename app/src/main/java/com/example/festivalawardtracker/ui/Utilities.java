@@ -68,9 +68,9 @@ public final class Utilities {
      *
      * @author Eugene
      * @author Carlos
-     * @param activity
-     * @param extra
-     * @return
+     * @param activity the activity
+     * @param extra the extra information passed
+     * @return if there are any extras included
      */
     public static String retrieveExtra(Activity activity, String extra) {
         Intent intent = activity.getIntent();
