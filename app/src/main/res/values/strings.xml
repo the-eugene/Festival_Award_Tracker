@@ -85,4 +85,5 @@
     <string name="event_name">Event Name</string>
     <string name="to">to</string>
     <string name="end_date">End Date</string>
+    <string name="festival_award_ntracker">Festival Award\nTracker</string>
 </resources>
