@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+<!-- This layout is just for the appbar -->
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -18,6 +19,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
     </com.google.android.material.appbar.AppBarLayout>
 
+<!--    The other visible components are included here -->
     <include layout="@layout/main_container_activity" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

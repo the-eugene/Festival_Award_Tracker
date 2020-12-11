@@ -8,6 +8,13 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+<!--
+    Very first layout in the app.
+    Contains:
+        First visible layout, for the Student List, and the main appbar.
+        NavigationView, which holds the app header and its menu drawer.
+-->
+
     <include
         layout="@layout/main_app_bar"
         android:layout_width="match_parent"
