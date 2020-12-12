@@ -129,7 +129,6 @@ public class StudentNewActivity extends AppCompatActivity {
                         GENDER);
         AutoCompleteTextView editTextFilledExposedDropdownGender = this.findViewById(R.id.dropdownGender);
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
-        editTextFilledExposedDropdownGender.setText(GENDER[0]);
 
         /* INSTRUMENT CHECKBOXES */
         FlowLayout insLayout = findViewById(R.id.instruments_programmatical_layout);
@@ -191,6 +190,8 @@ public class StudentNewActivity extends AppCompatActivity {
                     newStudent.gender = Person.Gender.valueOf(genderInput.getText().toString().toUpperCase());
                 } catch (Exception e) {
                     Log.e(TAG, "Non specified gender, empty field: " + e);
+                    allInputValid = false;
+                    genderInput.setError("Please Choose a Gender");
                 }
 
                 /* Contact.java */
