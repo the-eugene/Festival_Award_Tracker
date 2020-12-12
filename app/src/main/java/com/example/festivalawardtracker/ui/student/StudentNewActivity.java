@@ -1,5 +1,6 @@
 package com.example.festivalawardtracker.ui.student;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,9 +21,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.festivalawardtracker.Contact;
 import com.example.festivalawardtracker.DBHashMap;
 import com.example.festivalawardtracker.DBManager;
-import com.example.festivalawardtracker.Gender;
 import com.example.festivalawardtracker.Instrument;
-import com.example.festivalawardtracker.MainActivity;
 import com.example.festivalawardtracker.Person;
 import com.example.festivalawardtracker.R;
 import com.example.festivalawardtracker.Student;
@@ -36,7 +35,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.internal.FlowLayout;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 import static com.google.android.material.datepicker.MaterialDatePicker.Builder;
@@ -112,12 +114,13 @@ public class StudentNewActivity extends AppCompatActivity {
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Object selection) { // Retrieving date
-                birthdayInput.setText(materialDatePicker.getHeaderText());
+                birthdayInput.setText(formatLocalDate(LocalDate.now().toString()));
             }
         }); /* End Birthday Date Picker */
 
+
         /* DROPDOWN LIST GENDER */
-        String[] GENDER = Gender.Options();
+        String[] GENDER = Person.Gender.Options();
         ArrayAdapter<String> adapterGender =
                 new ArrayAdapter<>(
                         getBaseContext(),
@@ -125,6 +128,7 @@ public class StudentNewActivity extends AppCompatActivity {
                         GENDER);
         AutoCompleteTextView editTextFilledExposedDropdownGender = this.findViewById(R.id.dropdownGender);
         editTextFilledExposedDropdownGender.setAdapter(adapterGender);
+        editTextFilledExposedDropdownGender.setText(GENDER[0]);
 
         /* INSTRUMENT CHECKBOXES */
         FlowLayout insLayout = findViewById(R.id.instruments_programmatical_layout);
@@ -186,7 +190,6 @@ public class StudentNewActivity extends AppCompatActivity {
                     newStudent.gender = Person.Gender.valueOf(genderInput.getText().toString().toUpperCase());
                 } catch (Exception e) {
                     Log.e(TAG, "Non specified gender, empty field: " + e);
-                    newStudent.gender = Person.Gender.UNSPECIFIED;
                 }
 
                 /* Contact.java */
@@ -222,4 +225,24 @@ public class StudentNewActivity extends AppCompatActivity {
             }
         });
     }
+    /**
+     * It changes a given string date from on date format into another (string).
+     * @author Carlos
+     * @param dateStringIn string date provided by the database. Its format is provided by LocalDate.toString()
+     * @return string date in the format "MMM d, yyyy", which is the format used by materialDatePicker.
+     */
+    private String formatLocalDate(String dateStringIn) {
+        String dateStringOut = "Hello";
+        @SuppressLint("SimpleDateFormat") final SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") final SimpleDateFormat outputFormat = new SimpleDateFormat("MMM d, yyyy");
+
+        try {
+            Date dateCarrier = inputFormat.parse(dateStringIn);
+            assert dateCarrier != null;
+            dateStringOut = outputFormat.format(dateCarrier);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateStringOut;
+    } // End of formatLocalDate(...)
 } // End of class

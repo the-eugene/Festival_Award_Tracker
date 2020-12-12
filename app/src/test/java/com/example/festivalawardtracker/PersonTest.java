@@ -5,7 +5,6 @@ import org.junit.Test;
 import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 /**
  * @author Eugene
@@ -50,9 +49,9 @@ public class PersonTest {
     public void testAge() {
         Person p = new Person();
         p.birthday = LocalDate.of(2010,11,3);
-        assertEquals(p.getAge(),10);
-        assertEquals(p.getAge(LocalDate.of(2020,11,2)),9);
-        assertEquals(p.getAge(LocalDate.of(2020,11,4)),10);
+        assertEquals((int)p.getAge(),10);
+        assertEquals((int)p.getAge(LocalDate.of(2020,11,2)),9);
+        assertEquals((int)p.getAge(LocalDate.of(2020,11,4)),10);
     }
 
     @Test

@@ -28,7 +28,7 @@ import java.util.Objects;
 
 /**
  * Displays a screen for adding a rating to a given student.
- * @author Jimmy, Cayla, Carlos
+ * @author Eugene, Jimmy, Cayla, Carlos
  * @see RateStudentsFragment
  */
 public class EventsRatingsActivity extends AppCompatActivity {

@@ -20,7 +20,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.festivalawardtracker.Contact;
 import com.example.festivalawardtracker.DBManager;
-import com.example.festivalawardtracker.Gender;
 import com.example.festivalawardtracker.Instrument;
 import com.example.festivalawardtracker.Person;
 import com.example.festivalawardtracker.R;
@@ -140,7 +139,7 @@ public class StudentEditActivity extends AppCompatActivity {
         }); /* End Birthday Date Picker */
 
         /* DROPDOWN LIST GENDER */
-        String[] GENDER = Gender.Options();
+        String[] GENDER = Person.Gender.Options();
         ArrayAdapter<String> adapterGender =
                 new ArrayAdapter<>(
                         getBaseContext(),

@@ -26,7 +26,7 @@ public class StudentTest {
 
     @Test
     public void testTeacher() {
-        student.addTeacher(teacherID);
+        student.addTeacher(new Teacher());
         assertEquals(1, student.teacherIDs.size());
     }
 

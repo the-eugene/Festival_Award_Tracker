@@ -6,7 +6,7 @@ import java.util.Arrays;
  * @author Eugene
  */
 public enum Instrument {
-    piano, violin, viola, cello, voice, newcomer
+    piano, violin, viola, cello, voice
     ;
 
     /**

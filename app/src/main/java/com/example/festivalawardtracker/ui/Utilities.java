@@ -66,8 +66,7 @@ public final class Utilities {
 
     /**
      *
-     * @author Eugene
-     * @author Carlos
+     * @author Eugene, Carlos
      * @param activity the activity
      * @param extra the extra information passed
      * @return if there are any extras included
