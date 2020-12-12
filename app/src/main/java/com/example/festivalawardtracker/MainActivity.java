@@ -43,7 +43,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private final String TAG = "MainActivity";
+    private final String TAG = "MAIN_ACTIVITY";
     private static final int RC_SIGN_IN = 123;
     final int CREATE_FILE = 1;
     //String used to store user type number
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         //Retrieves the number from login for the user. 1 for Teacher, or 2 for student.
         Intent intent = getIntent();
         int userMode = intent.getIntExtra(TYPE,1);
-        Log.d(TAG, "My number is:" + userMode);
+        Log.d(TAG, "My number is (onCreate):" + userMode);
 
         super.onCreate(savedInstanceState);
 
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
                 NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
                 NavigationUI.setupWithNavController(navigationView, navController);
-                Log.d("MAIN_ACTIVITY", "Switch: 1 case");
+                Log.d(TAG, "Switch: 1 case (onCreate)");
                 break;
 
 
@@ -139,13 +139,13 @@ public class MainActivity extends AppCompatActivity {
                 NavigationUI.setupActionBarWithNavController(this, navControllerStudentUser, mAppBarConfiguration);
                 NavigationUI.setupWithNavController(navigationViewStudentUser, navControllerStudentUser);
 
-                Log.d("MAIN_ACTIVITY", "Switch: 2 case");
+                Log.d(TAG, "Switch: 2 case (onCreate)");
                 break;
             default:
-                Log.d("MAIN_ACTIVITY", "Switch: Default case");
+                Log.d(TAG, "Switch: Default case (onCreate)");
                 break;
         }
-    }
+    } // End onCreate
 
     /**
      * This method is called whenever the user chooses to navigate Up within your application's
@@ -177,60 +177,104 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main_activity2, menu);
         getMenuInflater().inflate(R.menu.main_menu, menu);
         final MenuItem howToItem = menu.findItem(R.id.action_how_to);
         final MenuItem aboutItem = menu.findItem(R.id.action_about);
+        //Retrieves the number from login for the user. 1 for Teacher, or 2 for student.
+        Intent intent = getIntent();
+        int userMode = intent.getIntExtra(TYPE,1);
+        Log.d(TAG, "My number is (onCreateOptionsMenu):" + userMode);
 
-        howToItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                final MaterialAlertDialogBuilder builderHowTo = new MaterialAlertDialogBuilder(MainActivity.this);
-                builderHowTo.setTitle("INSTRUCTIONS");
-                builderHowTo.setMessage(
-                        "1) You can chose from three different lists in the left hand side menu: Student List, Festival List, and Rate Students (list)." +
-                                "\n\n2) If you want to add any new item, click on the right lower hand side floating button with a plus sign." +
-                                "\n\n3) If you want to edit information about the students, festivals or events, long press for around 2 seconds in the chosen item until the edition screen opens.");
-
-                builderHowTo.setPositiveButton("DISMISS", new DialogInterface.OnClickListener() {
+        switch(userMode) {
+            case 1:
+                howToItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
+                    public boolean onMenuItemClick(MenuItem item) {
+                        final MaterialAlertDialogBuilder builderHowTo = new MaterialAlertDialogBuilder(MainActivity.this);
+                        builderHowTo.setTitle("INSTRUCTIONS");
+                        builderHowTo.setMessage(
+                                "1) You can chose from three different lists in the left hand side menu: Student List, Festival List, and Rate Students (list)." +
+                                        "\n\n2) If you want to add any new item, click on the right lower hand side floating button with a plus sign." +
+                                        "\n\n3) If you want to edit information about the students, festivals or events, long press for around 2 seconds in the chosen item until the edition screen opens.");
+
+                        builderHowTo.setPositiveButton("DISMISS", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                        builderHowTo.show();
+                        return false;
                     }
-                });
-                builderHowTo.show();
-                return false;
-            }
-        }); // End howToItem
+                }); // End howToItem teacher
 
-        aboutItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                final MaterialAlertDialogBuilder builderAbout = new MaterialAlertDialogBuilder(MainActivity.this);
-                builderAbout.setTitle("ABOUT THIS APP");
-                builderAbout.setIcon(R.mipmap.ic_launcher);
-                builderAbout.setMessage(
-                        "College Project for CS246" +
-                                "\nBrigham Young University, Idaho" +
-                                "\nFall 2020" +
-                                "\n\nCS246 - Software Design and Development" +
-                                "\n\nTeacher: Dario Suarez Gonzalez" +
-                                "\nStudents: Eugene Williams, Jimmy England, Cayla Tribett, Carlos W. Mercado" +
-                                "\n\nHope never faileth.");
-
-                builderAbout.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                aboutItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast toast = Toast.makeText(getBaseContext(), "Thanks for passing by ;)", Toast.LENGTH_SHORT);
-                        toast.show();
-                        dialog.dismiss();
+                    public boolean onMenuItemClick(MenuItem item) {
+                        final MaterialAlertDialogBuilder builderAbout = new MaterialAlertDialogBuilder(MainActivity.this);
+                        builderAbout.setTitle("ABOUT THIS APP");
+                        builderAbout.setIcon(R.mipmap.ic_launcher);
+                        builderAbout.setMessage(
+                                "College Project for CS246" +
+                                        "\nBrigham Young University, Idaho" +
+                                        "\nFall 2020" +
+                                        "\n\nCS246 - Software Design and Development" +
+                                        "\n\nTeacher: Dario Suarez Gonzalez" +
+                                        "\nStudents: Eugene Williams, Jimmy England, Cayla Tribett, Carlos W. Mercado" +
+                                        "\n\nHope never faileth.");
+
+                        builderAbout.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast toast = Toast.makeText(getBaseContext(), "Thanks for passing by ;)", Toast.LENGTH_SHORT);
+                                toast.show();
+                                dialog.dismiss();
+                            }
+                        });
+                        builderAbout.show();
+                        return false;
                     }
-                });
-                builderAbout.show();
-                return false;
-            }
-        }); // End aboutItem
-        return true;
+                }); // End aboutItem teacher
+
+                Log.d(TAG, "Switch: 1 case (onCreateOptionsMenu)");
+                return true;
+
+            case 2:
+                howToItem.setVisible(false);
+
+                aboutItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        final MaterialAlertDialogBuilder builderAbout = new MaterialAlertDialogBuilder(MainActivity.this);
+                        builderAbout.setTitle("ABOUT THIS APP");
+                        builderAbout.setIcon(R.mipmap.ic_launcher);
+                        builderAbout.setMessage(
+                                "College Project for CS246" +
+                                        "\nBrigham Young University, Idaho" +
+                                        "\nFall 2020" +
+                                        "\n\nCS246 - Software Design and Development" +
+                                        "\n\nTeacher: Dario Suarez Gonzalez" +
+                                        "\nStudents: Eugene Williams, Jimmy England, Cayla Tribett, Carlos W. Mercado" +
+                                        "\n\nHope never faileth.");
+
+                        builderAbout.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast toast = Toast.makeText(getBaseContext(), "Thanks for passing by ;)", Toast.LENGTH_SHORT);
+                                toast.show();
+                                dialog.dismiss();
+                            }
+                        });
+                        builderAbout.show();
+                        return false;
+                    }
+                }); // End aboutItem student
+                Log.d(TAG, "Switch: 2 case (onCreateOptionsMenu)");
+                return true;
+            default:
+                Log.d(TAG, "Switch: Default case (onCreateOptionsMenu)");
+                return true;
+        }
     } // End onCreateOptionsMenu
 
     /**
