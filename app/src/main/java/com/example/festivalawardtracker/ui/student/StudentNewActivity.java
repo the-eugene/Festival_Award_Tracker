@@ -76,6 +76,7 @@ public class StudentNewActivity extends AppCompatActivity {
         final TextInputEditText lastNameInput = findViewById(R.id.editTextPersonLastName);
         final TextView genderInput  = findViewById(R.id.dropdownGender);
         final TextInputEditText birthdayInput = findViewById(R.id.editTextPersonBirthdate);
+        birthdayInput.setText(formatLocalDate(LocalDate.now().toString()));
 
         // Contact fields
         final TextInputEditText emailInput = findViewById(R.id.editTextEmail);
@@ -114,7 +115,7 @@ public class StudentNewActivity extends AppCompatActivity {
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Object selection) { // Retrieving date
-                birthdayInput.setText(formatLocalDate(LocalDate.now().toString()));
+                birthdayInput.setText(materialDatePicker.getHeaderText());
             }
         }); /* End Birthday Date Picker */
 
