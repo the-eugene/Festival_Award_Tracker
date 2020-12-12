@@ -176,23 +176,25 @@ public class StudentNewActivity extends AppCompatActivity {
 
                 try {
                     newStudent.birthday = Utilities.stringMaterialToLocalDate(Objects.requireNonNull(birthdayInput.getText()).toString());
-                } catch (Exception e) {
-                    Log.e(TAG, "Non specified birthday, empty field: " + e);
+                } catch (Exception e1) {
+                    Log.e(TAG, "Non specified birthday, empty field: " + e1);
                     newStudent.birthday = LocalDate.now();
                     allInputValid = false;
                 }
 
-                try {
-                    newStudent.gender = Person.Gender.valueOf(genderInput.getText().toString().toUpperCase());
-                } catch (Exception e) {
-                    Log.e(TAG, "Non specified gender, empty field: " + e);
-                    newStudent.gender = Person.Gender.UNSPECIFIED;
-                }
+//                try {
+//                    newStudent.gender = Person.Gender.valueOf(genderInput.getText().toString().toUpperCase());
+//                } catch (Exception e2) {
+//                    Log.e(TAG, "Non specified gender, empty field: " + e2);
+//                    newStudent.gender = Person.Gender.UNSPECIFIED;
+//                }
+                if (genderInput.getText().toString().equals("")) newStudent.gender = Person.Gender.UNSPECIFIED; else newStudent.gender = Person.Gender.valueOf(genderInput.getText().toString().toUpperCase());
+
 
                 /* Contact.java */
                 if (phoneInput.length() < 1) newContact.phone = "Set phone"; else newContact.phone = phoneInput.getText().toString();
                 if (emailInput.length() < 1) newContact.email = "Set email"; else newContact.email = emailInput.getText().toString().toLowerCase();
-                if (streetInput.length() < 1) newContact.street = "Set Address"; else newContact.street = streetInput.getText().toString();
+                if (streetInput.length() < 1) newContact.street = "(Address information is missing)"; else newContact.street = streetInput.getText().toString();
                 if (cityInput.length() < 1) newContact.city = ""; else newContact.city = cityInput.getText().toString();
                 if (stateInput.length() < 1) newContact.state = ""; else newContact.state = stateInput.getText().toString();
                 if (zipInput.length() < 1) newContact.zip = ""; else newContact.zip = zipInput.getText().toString();

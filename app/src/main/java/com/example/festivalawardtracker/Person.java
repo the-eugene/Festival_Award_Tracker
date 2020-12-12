@@ -170,8 +170,10 @@ public class Person extends DBAware implements Comparable<Person> {
         public String toString() {
             if (this == MALE) {
                 return "Male";
-            } else {
+            } else if (this == FEMALE) {
                 return "Female";
+            } else {
+                return "Unspecified";
             }
         }
     }
